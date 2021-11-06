@@ -5,13 +5,14 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new  #form_with の引数として利用
+    @user = User.new  
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-
+      flash[:info] = "登録したemailを確認しよう!"
+      redirect_to user_url(@user)    
     else
       render 'new'
     end
