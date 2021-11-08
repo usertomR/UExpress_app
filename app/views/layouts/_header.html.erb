@@ -4,4 +4,7 @@
     <% if logged_in? %>
         <h2>images here</h2>
     <% end %>
+    
+    <%= link_to "仮ログアウト" , logout_path, method: :delete %>
+
 </header>
