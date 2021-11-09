@@ -9,6 +9,11 @@
     <%= f.label :password, "パスワード" %>
     <%= f.password_field :password %>
 
+    <%= f.label :remember_me  do %>
+        <%= f.check_box:remember_me %>
+        <span>次回から入力なしでログイン</span>
+    <% end %>
+
     <%= f.submit "ログイン" %>
 
 <% end %>
