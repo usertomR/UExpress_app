@@ -20,4 +20,7 @@ test:
 
 production:
   <<: *default
-  database: production_test
+  database: UExpress_app_production
+  username: root
+  password: Mysql_tomita
+  socket: /var/lib/mysql/mysql.sock
