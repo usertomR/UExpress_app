@@ -1,8 +1,9 @@
 <% provide(:title, "Edit User")%>
 <h1>アカウント更新</h1>
 
-<%= form_with(model: @user, local:true) do |f| %>
-    <%= render'shared/error_messages' %>
+
+<%= form_with(model: @user, local: true) do |f| %>
+    <%= render 'shared/error_messages' %>
 
     <%= f.label :name, "名前" %>
     <%= f.text_field :name %>
@@ -13,11 +14,11 @@
     <%= f.label :password, "パスワード" %>
     <%= f.password_field :password %>
 
-    <%= f.label :password_confirmation, "パスワード確認"%>
+    <%= f.label :password_confirmation, "パスワード確認" %>
     <%= f.password_field :password_confirmation %>
 
-    <%= f.label :selfintrodution, "自己紹介"%>
+    <%= f.label :selfintrodution, "自己紹介" %>
     <%= f.text_field :selfintrodution %>
 
     <%= f.submit "アカウント更新" %>
-<% end %>    
+<% end %>

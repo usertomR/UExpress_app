@@ -44,4 +44,22 @@ module SessionsHelper
         @current_user = nil
     end
 
+    #渡されたユーザーがカレントユーザーであればtrueを返す
+    def current_user?(user)
+        user && user == current_user
+    end
+
+    #記憶したURL(もしくはデフォルト値)にリダイレクト
+    def redirect_back_or(default)
+        redirect_to(session[:forwarding_url]||default)
+        session.delete(:forwarding_url)
+    end
+
+    #アクセスしようとしたURLを覚えておく
+    #request.original_urlでリクエスト先を取得
+    #if以下は、エラー防止用。詳しくはチュートリアル10.2.3
+    def store_location
+        session[:forwarding_url] = request.original_url if request.get?
+    end
+
 end
