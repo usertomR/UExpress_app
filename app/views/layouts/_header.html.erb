@@ -6,5 +6,10 @@
         <%= link_to "仮アカウント更新", edit_user_path(current_user) %>
         <%= link_to "仮ログアウト" , logout_path, method: :delete %>
     <% end %>
+    <% if current_user %>
+        <% if current_user.admin? %>
+            <%= link_to "仮ユーザー削除", users_path %>
+        <% end %>
+    <% end %>
 
 </header>
