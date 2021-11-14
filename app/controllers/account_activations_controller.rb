@@ -10,5 +10,6 @@ class AccountActivationsController < ApplicationController
         else
             flash[:danger] = "アカウント有効化リンクが違います！"
             redirect_to root_url
+        end
     end
 end
