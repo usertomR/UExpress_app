@@ -1,0 +1,6 @@
+こんにちは、<%= @user.name %>さん。
+
+Understand Express アプリのユーザー登録、ありがとうございます。
+アカウントを有効化するために、下のURLをクリックして下さい。
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

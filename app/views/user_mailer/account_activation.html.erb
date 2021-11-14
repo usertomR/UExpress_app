@@ -1,0 +1,8 @@
+<h1>Understand Express アプリ</h1>
+
+<p>こんにちは、<%= @user.name %>さん。</p>
+<p>Understand Express アプリのユーザー登録、ありがとうございます。</p>
+<p>アカウントを有効化するために、下の「アカウント有効化」をクリックして下さい。</p>
+
+<%= link_to "アカウント有効化", edit_account_activation_url(@user.activation_token,
+                                email: @user.email) %>
