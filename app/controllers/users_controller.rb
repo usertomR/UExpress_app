@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @users = User.where(activated: true)
   end
 
+  #有効化されているユーザーのみ表示
   def show
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated?
