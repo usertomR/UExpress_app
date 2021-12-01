@@ -1,81 +1,82 @@
 class User < ApplicationRecord
-    attr_accessor :remember_token, :activation_token, :reset_token
-    before_save :downcase_email
-    before_create :create_activation_digest
-    validates :name, presence: true, length: {maximum: 50}
-    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-    validates( :email, presence: true, length: {maximum: 255}, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false})
-    has_secure_password
-    validates :password, presence: true, length: {minimum: 6}, allow_nil: true  
-    
-    #渡された文字列の「BCrypt」のハッシュ値を返す
-    def User.digest(string)
-        cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : 
-                                                      BCrypt::Engine.cost
-        BCrypt::Password.create(string, cost: cost)
-    end
+  attr_accessor :remember_token, :activation_token, :reset_token
 
-    #ランダムなトークンを返す
-    def User.new_token
-        SecureRandom.urlsafe_base64
-    end
+  before_save :downcase_email
+  before_create :create_activation_digest
+  validates :name, presence: true, length: { maximum: 50 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates(:email, presence: true, length: { maximum: 255 },
+            format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false })
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-    def remember
-        self.remember_token = User.new_token
-        update_attribute(:remember_digest,User.digest(remember_token))
-    end
+  # 渡された文字列の「BCrypt」のハッシュ値を返す
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
+  end
 
-    #トークンとダイジェストが一致したらtrueを返す
-    #モデル内の[self]は省略可能。[self.send]は[send]と同じ
-    def authenticated?(attribute,token)
-        digest = send("#{attribute}_digest")
-        return false if digest.nil?
-        BCrypt::Password.new(digest).is_password?(token)
-    end
+  # ランダムなトークンを返す
+  def self.new_token
+    SecureRandom.urlsafe_base64
+  end
 
-    #ユーザーのログイン情報を破棄する
-    def forget
-        update_attribute(:remember_digest, nil)
-    end
+  def remember
+    self.remember_token = User.new_token
+      update_attribute(:remember_digest, User.digest(remember_token))
+  end
 
-    #アカウントを有効にする
-    def activate
-        update_attribute(:activated, true)
-    end
+  # トークンとダイジェストが一致したらtrueを返す
+  # モデル内の[self]は省略可能。[self.send]は[send]と同じ
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+      return false if digest.nil?
+      BCrypt::Password.new(digest).is_password?(token)
+  end
 
-    #有効化用のメールを送信する
-    def send_activation_email
-        UserMailer.account_activation(self).deliver_now
-    end
+  # ユーザーのログイン情報を破棄する
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
 
-    #パスワード再設定の属性を設定する
-    def create_reset_digest
-        self.reset_token = User.new_token
-        update_colums(reset_digest: User.digest(reset_token),
-                                 reset_sent_at: Time.zone.now)
-    end
+  # アカウントを有効にする
+  def activate
+    update_attribute(:activated, true)
+  end
 
-    #パスワード再設定のメールを送信する
-    def send_password_reset_email
-        UserMailer.password_reset(self).deliver_now
-    end
+  # 有効化用のメールを送信する
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
 
-    #パスワード再設定の期限が切れている場合はtrueを返す
-    def password_reset_expired?
-        reset_sent_at < 2.hours.ago
-    end
+  # パスワード再設定の属性を設定する
+  def create_reset_digest
+    self.reset_token = User.new_token
+      update_colums(reset_digest: User.digest(reset_token),
+                               reset_sent_at: Time.zone.now)
+  end
+
+  # パスワード再設定のメールを送信する
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  # パスワード再設定の期限が切れている場合はtrueを返す
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
 
         private
 
-            #メールアドレスを全て小文字にする。DBによって大文字小文字を区別する物もある
-            def downcase_email
-                self.email = email.downcase
-            end
+  # メールアドレスを全て小文字にする。DBによって大文字小文字を区別する物もある
+  def downcase_email
+    self.email = email.downcase
+  end
 
-            #有効化トークンとダイジェストを作成及び代入する
-            def create_activation_digest
-                self.activation_token = User.new_token
-                self.activation_digest = User.digest(activation_token)
-            end
-
+  # 有効化トークンとダイジェストを作成及び代入する
+  def create_activation_digest
+    self.activation_token = User.new_token
+      self.activation_digest = User.digest(activation_token)
+  end
 end

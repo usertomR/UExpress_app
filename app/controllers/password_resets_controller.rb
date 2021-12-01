@@ -6,7 +6,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email:params[:password_reset][:email].downcase)
+    @user = User.find_by(email: params[:password_reset][:email].downcase)
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
@@ -36,28 +36,28 @@ class PasswordResetsController < ApplicationController
   end
 
       private
-      
-      def user_params
-        params.require(:user).permit(:password, :password_confirmation)
-      end
 
-      def get_user
-        @user = User.find_by(email: params[:email])
-      end
+  def user_params
+    params.require(:user).permit(:password, :password_confirmation)
+  end
 
-      #正しいユーザーかどうか確認する
-      def valid_user
-        unless (@user && @user.activated? &&
-                @user.authenticated?(:reset, params[:id]))
-        redirect_to root_url
-        end
-      end
+  def get_user
+    @user = User.find_by(email: params[:email])
+  end
 
-      #トークンが期限切れかどうか確認する
-      def check_expiration
-        if @user.password_reset_expired?
-          flash[:danger] = "新パスワードの設定期限が切れています。"
-          redirect_to new_password_reset_url
-        end
-      end
+  # 正しいユーザーかどうか確認する
+  def valid_user
+    unless (@user && @user.activated? &&
+            @user.authenticated?(:reset, params[:id]))
+      redirect_to root_url
+    end
+  end
+
+  # トークンが期限切れかどうか確認する
+  def check_expiration
+    if @user.password_reset_expired?
+      flash[:danger] = "新パスワードの設定期限が切れています。"
+      redirect_to new_password_reset_url
+    end
+  end
 end

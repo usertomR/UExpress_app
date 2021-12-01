@@ -1,0 +1,38 @@
+######## Style #######
+Style/MutableConstant:
+  Exclude:
+    - 'app/models/user.rb'
+
+######## Rails ########
+Rails/FilePath:
+  Exclude:
+    - 'config/environments/development.rb'
+
+# パスワード＆その確認の認証ができないので、使わざるを得ない
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'app/models/user.rb'
+    - 'app/controllers/password_resets_controller.rb'
+
+####### Metrics #######
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/production.rb'
+
+####### Layout ########
+
+# privateメゾッドはインデントを通常より深くしたい
+Layout/AccessModifierIndentation:
+  Exclude:
+    - 'app/controllers/users_controller.rb'
+    - 'app/models/user.rb'
+    - 'app/controllers/password_resets_controller.rb'
+
+# privateメゾッドはインデントを通常より深くしたい
+Layout/IndentationConsistency:
+  Exclude:
+    - 'app/controllers/users_controller.rb'
+    - 'app/models/user.rb'
+    - 'app/controllers/password_resets_controller.rb'
+
+

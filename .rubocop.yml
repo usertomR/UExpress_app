@@ -1,0 +1,152 @@
+# 以下ファイルに記載の、違反しているファイルを無視
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+
+AllCops:
+  Exclude:
+    - "vendor/**/*"
+    - "bin/**"
+    - "db/schema.rb"
+    - "node_modules/**/*"
+    - "tmp/**/*"
+    - "lib/**/*"
+  DisplayCopNames: true
+  TargetRubyVersion: 2.7
+
+# trueかfalseを設定しないと警告が出る
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+
+##################### Style ##################################
+
+# 日本語のコメントを許可する
+Style/AsciiComments:
+  Enabled: false
+
+# ドキュメントの無いpublic classを許可する
+Style/Documentation:
+  Enabled: false
+
+# !! のイディオムを許可
+Style/DoubleNegation:
+  Enabled: false
+
+#文字列をfreezeするか
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# selfが無くても良い時に省略するか。model内において、ローカル変数とメソッド呼び出しの区別をつけた方が分かりやすい場合が多い
+Style/RedundantSelf:
+  Enabled: false
+
+# 3項演算子を複数行で使用できるようにする
+Style/MultilineTernaryOperator:
+  Enabled: false
+
+# "と'に関する設定
+Style/StringLiterals:
+  Enabled: false
+
+# クラス継承に関わる。変にいじると動かなくなりそうだから追加
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Use %i or %I for an array of symbols.
+Style/SymbolArray:
+  Enabled: false
+
+# Use the new Ruby 1.9 hash syntax.
+Style/HashSyntax:
+  Enabled: false
+
+# Use $stdout instead of STDOUT.
+Style/GlobalStdStream:
+  Enabled: false
+
+# Use fetch("RAILS_MAX_THREADS", 5) instead of fetch("RAILS_MAX_THREADS") { 5 }.
+Style/RedundantFetchBlock:
+  Enabled: false
+
+# Use fetch("PORT", 3000) instead of fetch("PORT") { 3000 }.
+Style/RedundantFetchBlock:
+  Enabled: false
+
+#  Use safe navigation (&.) instead of checking if an object exists before calling the method.
+Style/SafeNavigation:
+  Enabled: false
+
+# Prefer string interpolation to string concatenation.
+Style/StringConcatenation:
+  Enabled: false
+
+# Use a guard clause instead of wrapping the code inside a conditional expression.
+Style/GuardClause:
+  Enabled: false
+
+#メソッドの中身を空にしない
+Style/EmptyMethod:
+  Enabled: false
+
+# unlessの条件式に括弧を使わない
+Style/ParenthesesAroundCondition:
+  Enabled: false
+
+##################### Lint ##################################
+
+##################### Metrics ##################################
+
+# 変数の代入(A)、メソッドの呼び出し等(B)、条件分岐(C)から算出される複雑度
+Metrics/AbcSize:
+  Max: 30
+
+# 循環的複雑度 ≒ 分岐の数
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# メソッドの行数
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - "db/migrate/*.rb"
+
+#################### Layout #####################################
+
+# 1行の文字数
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - "db/migrate/*.rb"
+
+# ハッシュを複数行で書く
+Layout/HashAlignment:
+  Enabled: false
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+# methodを一行で書く
+Layout/ArgumentAlignment:
+  Enabled: false
+
+################## Rails #######################################
+
+#マイグレーションファイルの書き方
+Rails/BulkChangeTable:
+  Enabled: false
+
+# Do not use instance variables in helpers
+Rails/HelperInstanceVariable:
+  Enabled: false
+
+################# Naming ########################################
+
+# Railsチュートリアルに従っておく。
+Naming/AccessorMethodName:
+  Enabled: false

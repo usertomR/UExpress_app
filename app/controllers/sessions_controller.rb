@@ -19,12 +19,10 @@ class SessionsController < ApplicationController
       flash.now[:danger] = 'どちらかまたは両方の入力を間違えています'
       render 'new'
     end
-
   end
 
   def destroy
     log_out if logged_in?
     redirect_to root_url
   end
-
 end
