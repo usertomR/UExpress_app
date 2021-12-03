@@ -90,7 +90,7 @@ Style/StringConcatenation:
 Style/GuardClause:
   Enabled: false
 
-#メソッドの中身を空にしない
+#メソッドの中身を空にする
 Style/EmptyMethod:
   Enabled: false
 
@@ -99,6 +99,11 @@ Style/ParenthesesAroundCondition:
   Enabled: false
 
 ##################### Lint ##################################
+
+# 一部変数(userなど)が使えない。可読性を下げるから使えるようにする。
+Lint/UselessAssignment:
+  Enabled: false
+
 
 ##################### Metrics ##################################
 
