@@ -3,6 +3,11 @@ Style/MutableConstant:
   Exclude:
     - 'app/models/user.rb'
 
+# bin/rails generate rspec:install 時の生成ファイルでの違反。重要な情報があるかもしれないのでExclude
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
 ######## Rails ########
 Rails/FilePath:
   Exclude:
@@ -18,6 +23,7 @@ Rails/SkipsModelValidations:
 Metrics/BlockLength:
   Exclude:
     - 'config/environments/production.rb'
+    - 'spec/models/user_spec.rb'
 
 ####### Layout ########
 
