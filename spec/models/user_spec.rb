@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe ":validation check" do
     before do
-      @user = User.create(name: "Tom", email: "Tom@email.com", password: "Testuser", password_confirmation: "Testuser")
+      @user = User.create(name: "Tester", email: "Tester1@email.com", password: "Tester", password_confirmation: "Tester")
     end
 
     context ":setting Testuser" do
-      it "is valid with name, email, password, password_confirmation set by before block" do
+      it "is valid with name, email, password, password_confirmation set by Factory bot" do
         expect(@user).to be_valid
       end
     end
@@ -56,7 +56,7 @@ RSpec.describe User, type: :model do
       end
 
       it "is invalid with a duplicate email address" do
-        user = User.new(name: "Mom", email: "Tom@email.com", password: "Tester", password_confirmation: "Tester")
+        user = User.new(name: "Mom", email: "Tester1@email.com", password: "Tester", password_confirmation: "Tester")
         user.valid?
         expect(user.errors[:email]).to include("has already been taken")
       end
@@ -77,8 +77,12 @@ RSpec.describe User, type: :model do
     end
   end
 
+  it "has a valid factory" do
+    expect(FactoryBot.build(:user)).to be_valid
+  end
+
   it "has method[authenticated?] that return false for a user with nil digest" do
-    user = User.new(name: "Tom", email: "Tom@email.com", password: "Testuser",
+    user = User.new(name: "Tester", email: "Tester1@email.com", password: "Testuser",
       password_confirmation: "Testuser")
     expect(user.authenticated?(:remember, '')).to eq false
   end
