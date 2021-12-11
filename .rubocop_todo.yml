@@ -20,10 +20,6 @@ Rails/SkipsModelValidations:
     - 'app/controllers/password_resets_controller.rb'
 
 ####### Metrics #######
-Metrics/BlockLength:
-  Exclude:
-    - 'config/environments/production.rb'
-    - 'spec/models/user_spec.rb'
 
 ####### Layout ########
 
@@ -41,4 +37,7 @@ Layout/IndentationConsistency:
     - 'app/models/user.rb'
     - 'app/controllers/password_resets_controller.rb'
 
-
+####### Naming ##############
+Naming/PredicateName:
+  Exclude:
+  -'spec/support/test_helper.rb'

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe "<model>User", type: :model do
   describe ":validation check" do
     before do
       @user = User.create(name: "Tester", email: "Tester1@email.com", password: "Tester", password_confirmation: "Tester")
@@ -46,8 +46,7 @@ RSpec.describe User, type: :model do
       end
 
       it "accept vaild addresses if email is vaild" do
-        valid_addresses = %w[user@example.com USER@foo.com A_US-ER@foo.bar.org first.last@foo.jp
-                            alice+bob@baz.cn]
+        valid_addresses = %w[user@example.com USER@foo.com A_US-ER@foo.bar.org first.last@foo.jp alice+bob@baz.cn]
         valid_addresses.each do |valid_address|
           user = User.new(name: "Tom", email: "Tom@email.com", password: "Testuser",
                           password_confirmation: "Testuser")
@@ -55,7 +54,7 @@ RSpec.describe User, type: :model do
           expect(user).to be_valid
         end
       end
-    
+
       it "is invalid with a duplicate email address" do
         user = User.new(name: "Mom", email: "Tester1@email.com", password: "Tester", password_confirmation: "Tester")
         user.valid?
@@ -96,7 +95,7 @@ RSpec.describe User, type: :model do
 
   it "has method[authenticated?] that return false for a user with nil digest" do
     user = User.new(name: "Tester", email: "Tester1@email.com", password: "Testuser",
-      password_confirmation: "Testuser")
-      expect(user.authenticated?(:remember, '')).to eq false
+                    password_confirmation: "Testuser")
+    expect(user.authenticated?(:remember, '')).to eq false
   end
 end
