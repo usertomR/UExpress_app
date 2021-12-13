@@ -13,11 +13,13 @@ Rails/FilePath:
   Exclude:
     - 'config/environments/development.rb'
 
-# パスワード＆その確認の認証ができないので、使わざるを得ない
+# パスワード＆その確認の認証ができないなどの理由で、使わざるを得ない
 Rails/SkipsModelValidations:
   Exclude:
     - 'app/models/user.rb'
     - 'app/controllers/password_resets_controller.rb'
+    - 'spec/helpers/session_helper.rb'
+    - 'spec/requests/password_reset_requests_spec.rb'
 
 ####### Metrics #######
 
@@ -40,4 +42,4 @@ Layout/IndentationConsistency:
 ####### Naming ##############
 Naming/PredicateName:
   Exclude:
-  -'spec/support/test_helper.rb'
+    - 'spec/support/test_helper.rb'

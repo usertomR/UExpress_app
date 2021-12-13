@@ -1,7 +1,7 @@
 # ユーザーを重複しないときに使う。作成する度にemailが変わるから。
 FactoryBot.define do
   factory :user do
-    name { "Tester" }
+    sequence(:name) { |n| "Tester#{n}" }
     sequence(:email) { |n| "Tester#{n}@email.com" }
     password { "Tester" }
     password_confirmation { "Tester" }

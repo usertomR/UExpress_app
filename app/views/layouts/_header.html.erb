@@ -3,8 +3,8 @@
 
     <% if logged_in? %>
         <h2>images here</h2>
-        <%= link_to "仮アカウント更新", edit_user_path(current_user) %>
         <%= link_to "仮ログアウト" , logout_path, method: :delete %>
+        <%= link_to "仮アカウント更新", edit_user_path(current_user) %>
     <% end %>
     <% if current_user && current_user.admin? %>
         <%= link_to "仮ユーザー削除", users_path %>

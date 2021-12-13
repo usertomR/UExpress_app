@@ -74,10 +74,6 @@ Style/GlobalStdStream:
 Style/RedundantFetchBlock:
   Enabled: false
 
-# Use fetch("PORT", 3000) instead of fetch("PORT") { 3000 }.
-Style/RedundantFetchBlock:
-  Enabled: false
-
 #  Use safe navigation (&.) instead of checking if an object exists before calling the method.
 Style/SafeNavigation:
   Enabled: false

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe <helper>Session, type: :helper do
+RSpec.describe "<helper>Session", type: :helper do
   before do
     @user = FactoryBot.create(:user, :activated)
   end
