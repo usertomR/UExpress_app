@@ -74,10 +74,6 @@ Style/GlobalStdStream:
 Style/RedundantFetchBlock:
   Enabled: false
 
-# Use fetch("PORT", 3000) instead of fetch("PORT") { 3000 }.
-Style/RedundantFetchBlock:
-  Enabled: false
-
 #  Use safe navigation (&.) instead of checking if an object exists before calling the method.
 Style/SafeNavigation:
   Enabled: false
@@ -121,11 +117,14 @@ Metrics/MethodLength:
   Exclude:
     - "db/migrate/*.rb"
 
+Metrics/BlockLength:
+  Enabled: false
+
 #################### Layout #####################################
 
 # 1行の文字数
 Layout/LineLength:
-  Max: 120
+  Max: 130
   Exclude:
     - "db/migrate/*.rb"
 
