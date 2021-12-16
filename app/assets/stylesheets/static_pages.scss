@@ -2,7 +2,46 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-/* header */
-.headerlogo {
-  text-decoration: none;
+/* staticpages_home */
+
+.appname {
+  margin-top: 80px;
+  font-size: 500%;
+}
+
+.appcontent {
+  font-size: 300%;
+  margin-bottom: 800px;
+}
+
+.verticalcomponent {
+  list-style: none;
+  > li {
+    width: 10em;
+    margin-bottom: 5px;
+      .loginbtn {
+        display: block;
+        height: 100%;
+        background: #33a81f;
+        padding:  15px;
+        text-align: center;
+        color: white;
+    }
+      .signupbtn {
+        display: block;
+        height: 100%;
+        background: rgb(83, 196, 167);
+        padding:  15px;
+        text-align: center;
+        color: white;
+    }
+      .testloginbtn {
+        display: block;
+        height: 100%;
+        background: #21dd00;
+        padding:  15px;
+        text-align: center;
+        color: white;
+    }
+  }
 }

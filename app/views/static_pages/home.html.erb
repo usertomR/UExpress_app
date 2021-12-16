@@ -1,14 +1,12 @@
 <% provide(:title, "Home") %>
-<h1>Understand Express</h1>
-<p>
-    ー　勉強の疑問解消アプリ　ー
-</p>
+<h1 class="appname">Understand Express</h1>
+<p class="appcontent">ー  勉強の疑問解消アプリ  ー</p>
 <br>
 <nav>
-    <ul>
-        <li><%= link_to "login", login_path %></li>
-        <li><%= link_to "sign up", signup_path %></li>
-        <li><%= link_to "test login", '#' %></li>
+    <ul class="verticalcomponent">
+        <li><%= link_to "login", login_path, class: "loginbtn" %></li>
+        <li><%= link_to "sign up", signup_path, class: "signupbtn" %></li>
+        <li><%= link_to "test login", '#', class: "testloginbtn" %></li>
     </ul>
 </nav>
 
