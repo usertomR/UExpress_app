@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-light bg-secondary">
+  <nav class="navbar navbar-light bg-secondary fixed-top">
     <div class="container-fluid">
       <span class="navbar-brand mb-0 h1">UExpress</span>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -25,11 +25,11 @@
               <a class="nav-link" href='/contact'>contact</a>
             </li>
             <% if logged_in? %>
-              <li class="nav-item"><%= link_to "仮ログアウト", logout_path, method: :delete, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "仮アカウント更新", edit_user_path(current_user), class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "ログアウト", logout_path, method: :delete, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "アカウント更新", edit_user_path(current_user), class: "nav-link" %></li>
             <% end %>
              <% if current_user && current_user.admin? %>
-              <li class="nav-item"><%= link_to "仮ユーザー削除", users_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "ユーザー削除", users_path, class: "nav-link" %></li>
             <% end %>
           </ul>
         </div>
