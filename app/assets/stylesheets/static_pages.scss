@@ -3,6 +3,24 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 /* staticpages_home */
+@mixin horizontal_line {
+  content: "";
+  height: 1px;
+  flex-grow: 1;
+  background-color: #666;
+}
+
+@mixin buttonsetting {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  padding:  15px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
 
 .appname {
   margin-top: 40px;
@@ -17,18 +35,12 @@
   display: flex;
   align-items: center;
   &:before {
-    content: "";
-    height: 1px;
-    flex-grow: 1;
-    background-color: #666;
+    @include horizontal_line;
     margin-right: 1rem;
     background: linear-gradient(-90deg, #666, transparent);
   }
   &:after {
-    content: "";
-    height: 1px;
-    flex-grow: 1;
-    background-color: #666;
+    @include horizontal_line;
     margin-left: 1rem;
     background: linear-gradient(90deg, #666, transparent);
   }
@@ -39,16 +51,8 @@
   > li {
     width: 10em;
       .loginbtn {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
+        @include buttonsetting;
         background: #33a81f;
-        padding:  15px;
-        text-align: center;
-        color: white;
-        font-weight: bold;
         box-shadow: 0 3px 0 #19530f;
         text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
         &:active {
@@ -57,16 +61,8 @@
         }
     }
       .signupbtn {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
+        @include buttonsetting;
         background: rgb(83, 196, 167);
-        padding:  15px;
-        text-align: center;
-        color: white;
-        font-weight: bold;
         box-shadow: 0 3px 0 #275c4f;
         text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
         &:active {
@@ -75,16 +71,8 @@
         }
     }
       .testloginbtn {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
+        @include buttonsetting;
         background: #21dd00;
-        padding:  15px;
-        text-align: center;
-        color: white;
-        font-weight: bold;
         box-shadow: 0 3px 0 #18a100;
         text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
         &:active {

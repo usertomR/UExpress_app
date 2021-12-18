@@ -11,8 +11,8 @@
 
   <body style="padding-bottom:4.5rem; padding-top:4.5rem;">
     <%= render 'layouts/header' %>
-    <% flash.each do |meassage_type,message| %>
-      <%= message %>
+    <% flash.each do |message_type,message| %>
+      <div class="alert alert-<%= message_type %>" role="alert"><%= message %></div>
     <% end %> 
     <%= yield %>
     <div class="container-fluid">
