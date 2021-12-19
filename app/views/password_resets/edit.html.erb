@@ -1,17 +1,22 @@
 <% provide(:title, "新パスワード入力") %>
 <h1>新パスワード入力</h1>
 
-<%= form_with(model: @user, url: password_reset_path(params[:id]),
-        local: true) do |f| %>
-    <%= render 'shared/error_messages' %>
+<%= form_with(model: @user, url: password_reset_path(params[:id]), local: true) do |f| %>
 
+    <%= render 'shared/error_messages' %>
     <%= hidden_field_tag :email, @user.email %>
 
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password %>
+    <div class="input_form">
+        <%= f.label :password, "パスワード", class: "form-label" %>
+        <%= f.password_field :password, class: "form-control" %>
+    </div>
 
-    <%= f.label :password_confirmation, "パスワード確認" %>
-    <%= f.password_field :password_confirmation %>
+    <div class="input_form">
+        <%= f.label :password_confirmation, "パスワード確認", class: "form-label" %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
 
-    <%= f.submit "パスワード更新" %>
+    <div class="submit_button">
+        <%= f.submit "パスワード更新", class: "btn btn-primary" %>
+    </div>
 <% end %>

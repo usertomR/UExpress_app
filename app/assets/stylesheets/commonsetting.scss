@@ -1,0 +1,58 @@
+/*ほぼ全てのページ*/
+a {
+  text-decoration: none;
+}
+
+body {
+  margin-top:  40px;
+}
+
+.body_container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  font-weight: bolder;
+}
+
+/*主に入力フォームのページ*/
+textarea {
+  resize: vertical;
+}
+
+.input_form {
+  width: 40%;
+  margin: 0 auto 1%;
+  .form-label {
+    font-weight: bold;
+  }
+}
+
+.submit_button {
+  width: 10%;
+  margin: 0 auto;
+}
+
+.submit_checkbox {
+  margin-left: 30%;
+}
+
+.adjust_to_form {
+  margin-left: 30%;
+  margin-top: 1%;
+}
+
+.field_with_errors {
+  .form-control {
+    border-color: rgb(219, 73, 73);
+    border-style: solid;
+    border-width: thin;
+  }
+}
+
+.message_container {
+  width: 90%;
+  margin: 0 auto;
+}
