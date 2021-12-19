@@ -1,10 +1,14 @@
 <% provide(:title, "パスワード再設定") %>
 <h1>パスワード再設定</h1>
 
-<%= form_with(url: password_resets_path, scope: :password_reset,
-        local: true) do |f| %>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+<%= form_with(url: password_resets_path, scope: :password_reset,local: true) do |f| %>
+   
+   <div class="input_form">
+        <%= f.label :email, class: "form-label" %>
+        <%= f.email_field :email, class: "form-control" %>
+    </div>
 
-    <%= f.submit "送信" %>
+    <div class="submit_button">
+        <%= f.submit "送信", class: "btn btn-primary" %>
+    </div>
 <% end %>
