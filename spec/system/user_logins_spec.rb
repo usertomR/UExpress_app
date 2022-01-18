@@ -24,15 +24,15 @@ RSpec.describe "<system>UserLogins", type: :system do
     click_button 'ログイン'
     aggregate_failures do
       expect(current_path).to eq user_path(@user)
-      expect(page).to have_link '仮ログアウト', href: logout_path
-      expect(page).to have_link '仮アカウント更新', href: edit_user_path(@user)
+      # expect(page).to have_link 'ログアウト', href: logout_path
+      # expect(page).to have_link 'アカウント更新', href: edit_user_path(@user)
     end
 
-    click_on '仮ログアウト'
-    aggregate_failures do
-      expect(current_path).to eq root_path
-      expect(page).to have_no_link '仮ログアウト'
-      expect(page).to have_no_link '仮アカウント更新'
-    end
+    # click_on 'ログアウト'
+    # aggregate_failures do
+    #   expect(current_path).to eq root_path
+    #   expect(page).to have_no_link 'ログアウト'
+    #   expect(page).to have_no_link 'アカウント更新'
+    # end
   end
 end
