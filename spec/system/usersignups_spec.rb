@@ -12,10 +12,14 @@ RSpec.describe "<system>UserSignups", type: :system do
     fill_in 'パスワード', with: 'foo'
     fill_in 'パスワード確認', with: 'bar'
     fill_in '自己紹介', with: 'Test'
+    execute_script('window.scrollBy(0,10000)')
+    sleep 0.2
     click_on 'アカウント作成'
+    execute_script('window.scrollBy(0,-1000)')
+    sleep 0.2
     aggregate_failures do
       expect(current_path).to eq users_path
-      expect(page).to have_content 'UExpress/Signup'
+      expect(page).to have_content 'Signup'
       expect(page).to have_content 'The form contains 4 errors'
     end
   end
