@@ -5,7 +5,7 @@ RSpec.describe "<system>UserSignups", type: :system do
     driven_by(:selenium_chrome_headless)
   end
 
-  it "don't create new data when user submits invalid information" do
+  it "don't create new data when user submits invalid information", js: true do
     visit signup_path
     fill_in '名前', with: ' '
     fill_in 'Email', with: 'user@invalid'
