@@ -10,10 +10,8 @@ RSpec.describe "<system>Staticpages", type: :system do
     aggregate_failures do
       expect(page.title).to eq "Home | UExpress"
       expect(page).to have_link 'login', href: login_path
+      expect(page).to have_link 'test login', href: '#'
       expect(page).to have_link 'sign up', href: signup_path
-      expect(page).to have_link 'Help', href: help_path
-      expect(page).to have_link 'About', href: about_path
-      expect(page).to have_link 'Contact', href: contact_path
     end
   end
 end

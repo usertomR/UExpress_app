@@ -5,12 +5,13 @@ default: &default
   timeout: 5000
   username: root
   password: Mysql_tomita
-  socket: /tmp/mysql.sock
+  
 
 development:
   <<: *default
   database: UExpress_DB
   host: db
+  socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -18,10 +19,11 @@ development:
 test:
   <<: *default
   database: UExpress_app_test
+  host: 127.0.0.1
+  port: 3306
+  
 
 production:
   <<: *default
   database: UExpress_app_production
-  username: root
-  password: Mysql_tomita
   socket: /var/lib/mysql/mysql.sock
