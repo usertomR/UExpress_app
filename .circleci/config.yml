@@ -7,15 +7,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: cimg/ruby:2.7.4-node-browsers
-    steps:
-      - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
-  test:
-    docker:
-      - image: cimg/ruby:2.7.4-node-browsers
+      - image: cimg/ruby:2.7.4-node
         environment:
           RAILS_ENV: test
       - image: circleci/mysql:8.0.27
@@ -31,20 +23,19 @@ jobs:
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
+
+      - run:
+          name: install chrome browser
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
           name: Wait for DB
-          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+          command: |
+            sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+            sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo apt update
+            sudo apt-get install google-chrome-stable
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
       - ruby/rubocop-check
       - ruby/rspec-test
-
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
