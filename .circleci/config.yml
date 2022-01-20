@@ -8,15 +8,15 @@ orbs:
   heroku: circleci/heroku@1.2.6 # Heroku orbを起動する.デプロイするには、環境変数を設定する必要あり。上URL参照。
 
 workflows:
-  heroku_deploy:   #ワークフローの名前
+  heroku_deploy:   # ワークフローの名前
     jobs:
       - build
       - heroku/deploy-via-git: # 事前に設定されたジョブ deploy-via-git を使う
           requires:
             - build
-          filters:
+          filters:   #実行するブランチを定義するマップ。https://circleci.com/docs/ja/2.0/configuration-reference/#jobfilters
             branches:
-              only: main
+              only: main # onlyで指定したブランチでheroku/deploy-via-gitジョブを実行する(多分).mainにマージしたらデプロイされる(多分)。
 
 jobs:
   build:
