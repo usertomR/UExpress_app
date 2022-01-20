@@ -1,8 +1,22 @@
+# herokuへのデプロイは、このURL: https://circleci.com/docs/ja/2.0/deployment-integrations/#heroku%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E7%B0%A1%E5%8D%98%E3%81%AA%E4%BE%8B
+
 version: 2.1
 
 orbs:
   ruby: circleci/ruby@1.1.2
   node: circleci/node@4.2.0
+  heroku: circleci/heroku@0.0.10. # Heroku orbを起動する.デプロイするには、環境変数を設定する必要あり。上URL参照。
+
+workflows:
+  heroku_deploy:   #ワークフローの名前
+    jobs:
+      - build
+      - heroku/deploy-via-git: # 事前に設定されたジョブ deploy-via-git を使う
+          requires:
+            - build
+          filters:
+            branches:
+              only: main
 
 jobs:
   build:
