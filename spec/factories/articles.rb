@@ -7,6 +7,25 @@ FactoryBot.define do
     Eschool_level { false }
     JHschool_level { false }
     Hschool_level { false }
-    user { nil }
+
+    association :user,
+      factory: :user,
+      strategy: :create,
+      activated: true
+
+    trait :lastyear do
+      title { "posted lastyear" }
+      created_at { Time.zone.now.prev_year }
+    end
+
+    trait :yesterday do
+      title { "posted yseterday" }
+      created_at { 1.day.ago }
+    end
+
+    trait :now do
+      title { "post now" }
+      created_at { Time.zone.now }
+    end
   end
 end

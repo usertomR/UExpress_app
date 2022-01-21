@@ -98,4 +98,17 @@ RSpec.describe "<model>User", type: :model do
                     password_confirmation: "Testuser")
     expect(user.authenticated?(:remember, '')).to eq false
   end
+
+  describe ":dependent test" do
+    context "if user is quit" do
+      let!(:article) { FactoryBot.create(:article) }
+
+      it "one's article(s) is deleted" do
+        user = User.find(article.user_id)
+        expect do
+          user.destroy
+        end.to change(Article, :count).by(-1)
+      end
+    end
+  end
 end

@@ -24,7 +24,7 @@ RSpec.describe "<system>UserSignups", type: :system do
     end
   end
 
-  it "create new data when user submits valid information" do
+  xit "create new data when user submits valid information" do
     visit signup_path
     fill_in '名前', with: 'Example User'
     fill_in 'Email', with: 'user@example.com'
