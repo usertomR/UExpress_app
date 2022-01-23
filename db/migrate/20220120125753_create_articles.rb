@@ -5,9 +5,9 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.integer :accuracy_text
       t.integer :difficultylevel_text
       t.text :articletext
-      t.boolean :Eschool_level
-      t.boolean :JHschool_level
-      t.boolean :Hschool_level
+      t.boolean :Eschool_level, default: false
+      t.boolean :JHschool_level, default: false
+      t.boolean :Hschool_level, default: false
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

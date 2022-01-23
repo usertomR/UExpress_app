@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 2022_01_20_125753) do
     t.integer "accuracy_text"
     t.integer "difficultylevel_text"
     t.text "articletext"
-    t.boolean "Eschool_level"
-    t.boolean "JHschool_level"
-    t.boolean "Hschool_level"
+    t.boolean "Eschool_level", default: false
+    t.boolean "JHschool_level", default: false
+    t.boolean "Hschool_level", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

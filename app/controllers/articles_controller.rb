@@ -9,4 +9,8 @@ class ArticlesController < ApplicationController
 
   def index
   end
+
+  def browsing
+    @article = Article.find(params[:id])
+  end
 end

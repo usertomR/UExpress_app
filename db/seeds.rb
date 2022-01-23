@@ -15,3 +15,8 @@ User.create!(name: "Administrator", email: "satouhiroshi95@gmail.com",
 User.create!(name: "teruo", email: "timekeeper@gmail.com",
              password: "owacchata", password_confirmation: "owacchata",
              admin: false, activated: true)
+
+# Articleクラス用
+Article.create!(title: "Test1", accuracy_text: 1, difficultylevel_text: 1,
+                articletext: "This app's first article!", Eschool_level: false,
+                JHschool_level: true, Hschool_level: false, user_id: 1)
