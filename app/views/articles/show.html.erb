@@ -1,0 +1,23 @@
+<% provide(:title, "personal article list")%>
+<h1>記事投稿リスト</h1>
+
+<div class="sum_article">
+  <div>Article count / <%= @articles.count %></div>
+</div>
+<div class="personal_article_list">
+  <% if @user.articles.any? %>
+    <% @articles.each do |article| %>
+      <table>
+        <tbody>
+          <tr>
+            <%= link_to article.title, '#' %>
+            <br>
+            <%= article.updated_at %>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  <% else %>
+    <strong>まだ作成されていません</strong>
+  <% end %>
+</div>
