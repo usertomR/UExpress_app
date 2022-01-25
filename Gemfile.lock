@@ -122,6 +122,8 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
+    pagy (5.9.1)
+      activesupport
     parallel (1.21.0)
     parser (3.0.3.0)
       ast (~> 2.4.1)
@@ -281,6 +283,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.2)
   mysql2
+  pagy (~> 5.9)
   puma (~> 4.1)
   rails (~> 6.0.4, >= 6.0.4.1)
   rspec-rails (~> 4.1.0)

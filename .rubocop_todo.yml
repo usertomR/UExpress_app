@@ -3,6 +3,10 @@ Style/MutableConstant:
   Exclude:
     - 'app/models/user.rb'
 
+Style/LineEndConcatenation:
+  Exclude:
+    - 'db/seeds.rb'
+
 # bin/rails generate rspec:install 時の生成ファイルでの違反。重要な情報があるかもしれないのでExclude
 Style/BlockComments:
   Exclude:
@@ -38,6 +42,11 @@ Layout/IndentationConsistency:
     - 'app/controllers/users_controller.rb'
     - 'app/models/user.rb'
     - 'app/controllers/password_resets_controller.rb'
+
+# 公式(github)に載っているpagy.rbのデフォルトに合わせる。
+Layout/EmptyLines:
+  Exclude:
+    - 'config/initializers/pagy.rb'
 
 ####### Naming ##############
 Naming/PredicateName:

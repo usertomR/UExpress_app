@@ -6,8 +6,7 @@
 .personal_article_list {
   width: 60%;
   margin: 0 auto;
-  height: 20rem;
-  background-color: aqua;
+  height: auto;
 }
 
 /*上のクラスに合わせた。適用要素の左端、右端の位置を統一している*/
@@ -18,4 +17,8 @@
   font-size: 2rem;
   height: 3rem;
   background-color: gold;
+}
+
+.interspace_items {
+  margin-bottom: 0.4rem;
 }

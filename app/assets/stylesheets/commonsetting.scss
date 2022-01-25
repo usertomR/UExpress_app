@@ -56,3 +56,11 @@ textarea {
   width: 90%;
   margin: 0 auto;
 }
+
+/*記事リスト、質問リスト(検索結果・投稿リスト)の表示*/
+.an_item {
+  border: solid 3px #333;
+  border-radius: 10px;
+  background-color: rgb(127, 243, 185);
+}
+

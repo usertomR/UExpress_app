@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @articles = @user.articles
+    @pagy, @articles = pagy(@user.articles)
   end
 
   def index
