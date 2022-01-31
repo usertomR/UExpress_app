@@ -1,10 +1,13 @@
 /*ほぼ全てのページ*/
-a {
-  text-decoration: none;
+.z-index_minlevel {
+  position: relative;
+  top: 0;
+  right: 0px;
+  z-index: 0;
 }
 
-body {
-  margin-top:  40px;
+a {
+  text-decoration: none;
 }
 
 .body_container {
@@ -15,6 +18,69 @@ body {
 h1 {
   text-align: center;
   font-weight: bolder;
+}
+
+.header_flex_container {
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-between;
+  height: 4rem;
+  width: 100vw;
+}
+
+.header_btn {
+  position: relative;
+  right: 2rem;
+  top: 10%;
+  height: 2.5rem;
+  width: 2.7rem;
+  display:  block;
+  box-sizing: border-box;
+  background-color: coral;
+  .btn_element {
+    height: 2px;
+  width: 100%;
+  background-color: white;
+  display: block;
+  margin-bottom: 20%;
+  }
+}
+
+// z-indexはハンバーガーメニュー表示のため。
+.hidden_screen {
+  display: none;
+  width: 100vw;
+  height: calc(100vh - 4rem);
+  position: fixed;
+  top: 4rem;
+  right: 0;
+  z-index: 2;
+  background: linear-gradient(to right, 
+              rgba(26, 157, 209, 0.135) 0%,
+              rgba(26, 157, 209, 0.135) calc(100vw - 300px),
+              cadetblue calc(100vw - 300px),
+              cadetblue 100%);
+}
+
+.not_menu {
+  position: fixed;
+  width: calc(100vw - 300px);
+  height: calc(100vh - 4rem);
+  top: 4rem;
+  left: 0;
+  z-index: 2;
+}
+
+.header_menu {
+  position: absolute;
+  top: 0;
+  left: calc(100vw - 300px);
+  width: 300px;
+  height: calc(100vh - 4rem);
+}
+
+body.noscroll {
+  overflow: hidden;
 }
 
 /*主に入力フォームのページ*/

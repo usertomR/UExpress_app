@@ -1,39 +1,9 @@
-<% provide(:title, "personal article list")%>
-<h1>記事投稿リスト</h1>
-
-<div class="search_form">
-  <p><%= @user.name %>さんの記事</p>
-  <%= form_with url: personalrecord_searchresult_path(@user), method: :get, local: true do |f| %>
-    <%= f.text_field :content %>
-    <%= f.submit '検索' %>
-    <h2>文章の正確さ</h2>
-    
-    <% #url:https://apidock.com/rails/ActionView/Helpers/FormHelper/check_box %>
-    <% evaluations = [1,2,3,4,5] %>
-    <% evaluations.each do |eva| %>
-      <%= f.check_box :accuracy_select, { multiple: true }, eva, nil %>
-      <%= eva %>
-    <% end %> 
-
-    <h2>文章難易度</h2>
-    <% evaluations.each do |eva| %>
-      <%= f.check_box :difficulty_select, { multiple: true }, eva, nil %>
-      <%= eva %>
-    <% end %> 
-
-    <h2>期日</h2>
-    <%= f.date_field :term_from %> ~
-    <%= f.date_field :term_to %>
-
-  <% end %>
-</div>
-
-<div class="sum_article">
-  <div>Article count / <%= @user.articles.count %></div>
-</div>
+<% provide(:title, "search_result")%>
+<h1>結果</h1>
+<%=  @user.name %>
 <div class="personal_article_list">
   <% if @user.articles.any? %>
-    <% @articles.each do |article| %>
+    <% @records.each do |article| %>
       <div class="an_item interspace_items">
         <table>
           <tbody>
