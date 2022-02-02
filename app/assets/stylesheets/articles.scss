@@ -4,14 +4,14 @@
 
 /*showアクション：個人の全ての作成記事ページ*/
 .personal_article_list {
-  width: 60%;
+  width: 90%;
   margin: 0 auto;
   height: auto;
 }
 
 /*上のクラスに合わせた。適用要素の左端、右端の位置を統一している*/
 .sum_article {
-  width: 60%;
+  width: 90%;
   margin: 2.4rem auto 3.1rem;
   font-family: impact;
   font-size: 2rem;
@@ -21,4 +21,45 @@
 
 .interspace_items {
   margin-bottom: 0.4rem;
+}
+
+.search_form {
+  width: 90vw;
+  height: 40vh;
+  margin: 0 auto;
+  background-color: lightgray;
+  border-radius: 10px;
+  .search {
+    height: 6vh;
+    margin-bottom: 1vh;
+    .search_input {
+      height: 4.5vh;
+      width: 40%;
+    }
+    .button_size {
+      height: 4vh;
+    }
+  }
+  .user_name {
+    height: 4vh;
+    font-size: 3vh;
+    margin-bottom: 1vh;
+  }
+  .flex_container {
+    display: flex;
+    height: 4vh;
+    margin-bottom: 2vh;
+    .condition {
+      height: 4vh;
+      font-size: 3vh;
+    }
+    .checkbox {
+      height: 1.8vh;
+      margin: auto 0;
+    }
+    .input_term {
+      height: 1.8vh;
+      margin: auto 0;
+    }
+  }
 }

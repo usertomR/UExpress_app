@@ -1,6 +1,10 @@
 <header>
   <div class="header_flex_container">
-    <div class="header_logo">UExpress</div>
+    <div class="header_logo">
+      <div class="logo_position">
+        UExpress
+      </div>
+    </div>
     <div class="header_btn">
       <div class="btn_element"></div>
       <div class="btn_element"></div>
@@ -17,5 +21,27 @@
     <li class="header_menu_item">
       <a href='/'>home</a>
     </li>
+    <li class="header_menu_item">
+      <a href="/help">help</a>
+    </li>
+    <li class="header_menu_item">
+      <a href='/about'>about</a>
+    </li>
+    <li class="header_menu_item">
+      <a href='/contact'>contact</a>
+    </li>
+    <% if logged_in? %>
+      <li class="header_menu_item"><%= link_to "ログアウト", logout_path, method: :delete%></li>
+      <li class="header_menu_item"><%= link_to "アカウント更新", edit_user_path(current_user)%></li>
+      <li class="header_menu_item"><%= link_to "質問/記事作成", '#'%></li>
+      <li class="header_menu_item"><%= link_to "通知設定", '#'%></li>  
+      <li class="header_menu_item"><a href="#">niceリスト</a></li>
+      <li class="header_menu_item"><a href="#">気になるリスト</a></li>
+      <li class="header_menu_item"><a href="#">お気に入りの人リスト</a></li>
+      <li class="header_menu_item"><%= link_to "記事投稿リスト", article_path(current_user)%></li>       
+    <% end %>
+    <% if current_user && current_user.admin? %>
+        <li class="header_menu_item"><%= link_to "ユーザー削除", users_path%></li>
+    <% end %>
   </div>
 </div>
