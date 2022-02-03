@@ -34,6 +34,7 @@ class UsersController < ApplicationController
 
   # @user=・・がないのは、before_actionのcorrect_userで@userを定義しているから。
   def update
+    debugger
     if @user.update(user_params)
       flash[:success] = "アカウント更新成功!"
       redirect_to @user
@@ -52,7 +53,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-              :password_confirmation, :selfintrodution)
+              :password_confirmation, :selfintrodution, :avatar)
   end
 
   def logged_in_user

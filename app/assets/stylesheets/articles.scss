@@ -56,10 +56,14 @@
     .checkbox {
       height: 1.8vh;
       margin: auto 0;
+      .space {
+        margin-left: 4px;
+      }
     }
     .input_term {
       height: 1.8vh;
       margin: auto 0;
+      margin-left: 10px;
     }
   }
 }

@@ -1,3 +1,8 @@
 <% provide(:title, 'User Profile') %>
+
+<% if @user.avatar? %>
+  <%= image_tag @user.avatar.thumb.url , class: "avatar" %>
+<% end %>
+
 <%= @user.name %>
 <%= @user.selfintrodution %>

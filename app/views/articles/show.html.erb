@@ -16,7 +16,7 @@
       <% evaluations = [1,2,3,4,5] %>
       <div class="checkbox">
         <% evaluations.each do |eva| %>
-          <%= f.check_box :accuracy_select, { multiple: true }, eva, nil %>
+          <%= f.check_box :accuracy_select, { multiple: true, class: "space" }, eva, nil %>
           <%= eva %>
         <% end %>
       </div>
@@ -26,7 +26,7 @@
       <div class="condition">文章難易度</div>
       <div class="checkbox">
         <% evaluations.each do |eva| %>
-          <%= f.check_box :difficulty_select, { multiple: true }, eva, nil %>
+          <%= f.check_box :difficulty_select, { multiple: true, class: "space" }, eva, nil %>
           <%= eva %>
         <% end %>
       </div> 

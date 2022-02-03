@@ -30,7 +30,21 @@
         <%= f.text_area :selfintrodution, size: "40x5", class: "form-control" %>
     </div>
 
+    <div class="input_form">
+        <%= f.label :avatar, "プロフィール画像", class: "form-label" %>
+        <% if @user.avatar? %>
+            <%= image_tag @user.avatar.thumb.url , class: "avatar" %>
+        <% end %>
+        <%= f.file_field :avatar, class: "form-control" %>
+        <%= f.hidden_field :avatar_cache %>
+    </div>
+
+    <div class="input_form">
+        <%= f.label :remove_avatar, "プロフィール画像消去", class: "form-label" %>
+        <%= f.check_box :remove_avatar %>
+    </div>
+
     <div class="submit_button">
-    <%= f.submit "アカウント更新", class: "btn btn-primary" %>
+        <%= f.submit "アカウント更新", class: "btn btn-primary" %>
     </div>
 <% end %>

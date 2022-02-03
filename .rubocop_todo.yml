@@ -7,6 +7,11 @@ Style/LineEndConcatenation:
   Exclude:
     - 'db/seeds.rb'
 
+# carrierwaveのファイルはできるだけデフォルトの状態にしたい。
+Style/PercentLiteralDelimiters:
+  Exclude:
+    - 'app/uploaders/avatar_uploader.rb'
+
 # bin/rails generate rspec:install 時の生成ファイルでの違反。重要な情報があるかもしれないのでExclude
 Style/BlockComments:
   Exclude:

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_20_125753) do
+ActiveRecord::Schema.define(version: 2022_02_02_115009) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "title"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2022_01_20_125753) do
     t.boolean "activated", default: false
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
   end
