@@ -34,7 +34,6 @@ class UsersController < ApplicationController
 
   # @user=・・がないのは、before_actionのcorrect_userで@userを定義しているから。
   def update
-    debugger
     if @user.update(user_params)
       flash[:success] = "アカウント更新成功!"
       redirect_to @user

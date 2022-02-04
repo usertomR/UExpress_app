@@ -4,7 +4,7 @@
   top: 0;
   right: 0px;
   z-index: 0;
-  margin-top: 4rem;
+  margin-top: 5rem;
 }
 
 a {
@@ -30,6 +30,9 @@ h1 {
   justify-content: space-between;
   height: 4rem;
   width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 3;
 }
 
 .header_btn {
@@ -124,4 +127,10 @@ body.noscroll {
 /* アバター */
 .avatar {
   border-radius: 50%;
+  border: solid 1px black;
+}
+
+.form_postion_avatar {
+  width: 40%;
+  margin: 0 auto 1%;
 }

@@ -1,0 +1,45 @@
+/* ユーザーモデル関連のページ */
+/* profile_avatarの大きさは、表示するアバターのサイズを上回るようにする */
+.user_profile {
+  width: 80vw;
+  height: 500px;
+  margin: 0 auto 10%;
+  background-color: lightgray;
+  .page_name {
+    height: 30px;
+    font-size: 23px;
+    margin-bottom: 20px;
+  }
+  .user_identification {
+    display: flex;
+    height: 70px;
+    margin-bottom: 30px;
+    .profile_avatar {
+      margin-right: 15px;
+    }
+    .user_name {
+      font-size: 30px;
+      width: calc(80vw - 60px - 15px);
+      overflow: auto;
+    }
+  }
+  .profile_text {
+    width: 70vw;
+    height: 250px;
+    background-color: white;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+    margin: 0 auto 10px;
+  }
+  hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%,
+              rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0.1) 100%);
+  }
+  .article_link {
+    width: 70vw;
+    height: 30px;
+    margin: 15px auto;
+  }
+}
