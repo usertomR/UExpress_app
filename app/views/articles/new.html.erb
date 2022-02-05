@@ -1,2 +1,32 @@
-<h1>Articles#new</h1>
-<p>Find me in app/views/articles/new.html.erb</p>
+<h1>記事投稿</h1>
+
+<%= form_with(model: @article, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="article_form">
+    <%= f.label :title, "記事タイトル", class: "form-label" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="article_form">
+    <%= f.radio_button(:accuracy_text, "first") %>
+    <%= f.label(:accuracy_text_first, "1") %>
+
+    <%= f.radio_button(:accuracy_text, "second") %>
+    <%= f.label(:accuracy_text_second, "2") %>
+
+    <%= f.radio_button(:accuracy_text, "third") %>
+    <%= f.label(:accuracy_text_third, "3") %>
+
+    <%= f.radio_button(:accuracy_text, "4th") %>
+    <%= f.label(:accuracy_text_4th, "4") %>
+
+    <%= f.radio_button(:accuracy_text, "5th") %>
+    <%= f.label(:accuracy_text_5th, "5") %>
+  </div>
+
+  <div class="richtext_form">
+    <%= f.label :articletext, "記事本体", class: "form-label" %>
+    <%= f.rich_text_area :articletext, {class: "trix-content form_height"} %>
+  </div>
+<% end %>

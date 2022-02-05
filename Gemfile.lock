@@ -295,6 +295,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave (~> 2.0)
   factory_bot_rails
+  image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)

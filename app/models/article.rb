@@ -5,6 +5,9 @@ class Article < ApplicationRecord
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 100 }
 
+  # Action Textのリッチテキストを使用
+  has_rich_text :articletext
+
   # 小学生向け・中学生向け・高校生向けかを判別。引数はboolean型
   def self.inspect_level(level)
     if level

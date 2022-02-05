@@ -67,3 +67,22 @@
     }
   }
 }
+
+.article_form {
+  margin: 0 auto 1%;
+  width: 90vw;
+  .form-label {
+    font-weight: bold;
+  }
+}
+
+.richtext_form {
+  width: 90vw;
+  margin: 0 auto 1%;
+  .form-label {
+    font-weight: bold;
+  }
+  .form_height {
+    height: 50vh;
+  }
+}

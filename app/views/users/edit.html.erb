@@ -3,7 +3,7 @@
 
 
 <%= form_with(model: @user, local: true) do |f| %>
-    <%= render 'shared/error_messages' %>
+    <%= render 'shared/error_messages', object: f.object %>
 
     <div class="input_form">
         <%= f.label :name, "名前", class: "form-label" %>
