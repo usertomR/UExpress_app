@@ -69,10 +69,20 @@
 }
 
 .article_form {
-  margin: 0 auto 1%;
+  margin: 0 auto 30px;
   width: 90vw;
   .form-label {
     font-weight: bold;
+  }
+  .item {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .flex_mode {
+    display: flex;
+    .space, .checkbox {
+      margin-right: 10px;
+    }
   }
 }
 
@@ -83,6 +93,7 @@
     font-weight: bold;
   }
   .form_height {
-    height: 50vh;
+    height: 40vh;
+    overflow-y: auto;
   }
 }

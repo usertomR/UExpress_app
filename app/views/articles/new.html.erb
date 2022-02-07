@@ -9,24 +9,83 @@
   </div>
 
   <div class="article_form">
-    <%= f.radio_button(:accuracy_text, "first") %>
-    <%= f.label(:accuracy_text_first, "1") %>
+    <div class="item">
+      文章の正しさ
+    </div>
+    <div class="flex_mode">
+      <div class ="space">
+        <%= f.radio_button(:accuracy_text, 1) %>
+        <%= f.label(:accuracy_text_1, "1") %>
+      </div>
+      <div class ="space">
+        <%= f.radio_button(:accuracy_text, 2) %>
+        <%= f.label(:accuracy_text_2, "2") %>
+      </div>
+      <div class ="space">
+        <%= f.radio_button(:accuracy_text, 3) %>
+        <%= f.label(:accuracy_text_3, "3") %>
+      </div>
+      <div class ="space">
+        <%= f.radio_button(:accuracy_text, 4) %>
+        <%= f.label(:accuracy_text_4, "4") %>
+      </div>
+      <div class ="space">
+        <%= f.radio_button(:accuracy_text, 5) %>
+        <%= f.label(:accuracy_text_5, "5") %>
+      </div>
+    </div>  
+  </div>
 
-    <%= f.radio_button(:accuracy_text, "second") %>
-    <%= f.label(:accuracy_text_second, "2") %>
+  <div class="article_form">
+    <div class="item">
+      文章難易度
+    </div>
+    <div class="flex_mode">
+      <div class ="space">
+        <%= f.radio_button(:difficultylevel_text, 1) %>
+        <%= f.label(:difficultylevel_text_1, "1") %>
+      </div>
+      <div class ="space">
+        <%= f.radio_button(:difficultylevel_text, 2) %>
+        <%= f.label(:difficultylevel_text_2, "2") %>
+      </div>
+      <div class ="space">
+        <%= f.radio_button(:difficultylevel_text, 3) %>
+        <%= f.label(:difficultylevel_text_3, "3") %>
+      </div>
+      <div class ="space">
+        <%= f.radio_button(:difficultylevel_text, 4) %>
+        <%= f.label(:difficultylevel_text_4, "4") %>
+      </div>
+      <div class ="space">
+        <%= f.radio_button(:difficultylevel_text, 5) %>
+        <%= f.label(:difficultylevel_text_5, "5") %>
+      </div>
+    </div>  
+  </div>
 
-    <%= f.radio_button(:accuracy_text, "third") %>
-    <%= f.label(:accuracy_text_third, "3") %>
-
-    <%= f.radio_button(:accuracy_text, "4th") %>
-    <%= f.label(:accuracy_text_4th, "4") %>
-
-    <%= f.radio_button(:accuracy_text, "5th") %>
-    <%= f.label(:accuracy_text_5th, "5") %>
+  <div class="article_form">
+    <div class="item">
+      対象
+    </div>
+    <div class="flex_mode">
+      <% #url:https://apidock.com/rails/ActionView/Helpers/FormHelper/check_box %>
+      <% evaluations = ["小学生向け","中学生向け","高校生向け"] %>
+      <% evaluations.each do |eva| %>
+        <div class="checkbox">
+          <%= f.check_box :target_select, { multiple: true }, eva, nil %>
+          <%= eva %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="richtext_form">
     <%= f.label :articletext, "記事本体", class: "form-label" %>
     <%= f.rich_text_area :articletext, {class: "trix-content form_height"} %>
+  </div>
+
+  <div class="submit_button">
+    <%= f.submit "記事作成", class: "btn btn-primary" %>
   </div>
 <% end %>
