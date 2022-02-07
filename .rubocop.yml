@@ -94,12 +94,19 @@ Style/EmptyMethod:
 Style/ParenthesesAroundCondition:
   Enabled: false
 
+# if文を使えるようにする。
+Style/CaseLikeIf:
+  Enabled: false
+
 ##################### Lint ##################################
 
 # 一部変数(userなど)が使えない。可読性を下げるから使えるようにする。
 Lint/UselessAssignment:
   Enabled: false
 
+# if文の最後にelseを書いても良いようにする。
+Lint/ElseLayout:
+  Enabled: false
 
 ##################### Metrics ##################################
 

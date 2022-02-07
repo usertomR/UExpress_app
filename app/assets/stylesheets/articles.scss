@@ -70,7 +70,7 @@
 
 .article_form {
   margin: 0 auto 30px;
-  width: 90vw;
+  width: 70vw;
   .form-label {
     font-weight: bold;
   }
@@ -87,7 +87,7 @@
 }
 
 .richtext_form {
-  width: 90vw;
+  width: 70vw;
   margin: 0 auto 1%;
   .form-label {
     font-weight: bold;
@@ -95,5 +95,67 @@
   .form_height {
     height: 40vh;
     overflow-y: auto;
+    overflow-x: auto;
+  }
+}
+
+.browse_article_flex {
+  width: 100vw;
+  display: flex;
+  .main_view {
+    margin-left: 3vw;
+    margin-right: 3vw;
+    width:  70vw;
+    .title {
+      margin-bottom: 10px;
+      font-size: 3rem;
+      font-weight: bold;
+      height: 4.5rem;
+      overflow-x: auto;
+    }
+    hr {
+      border: none;
+      height: 2px;
+      margin-bottom: 30px;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%,
+                rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0.3) 100%);
+    }
+    .text {
+      margin-bottom: 50px;
+    }
+    .comment {
+      height: 100px;
+      background-color: gray;
+    }
+  }
+  .sub_view {
+    margin-right: 4vw;
+    width: 20vw;
+    .other_functions {
+      height: 100px;
+      margin-bottom: 50px;
+      background-color: gray;
+    }
+    .user_info {
+      height: 70px;
+      .name_and_avatar {
+        display: flex;
+        margin-bottom: 30px;
+        overflow-x: auto;
+        .avatar {
+          margin-right: 15px;
+        }
+        .name {
+          .vertical_center {
+            height: 2rem;
+            margin-top: 10px;
+            font-size: 1.5rem;
+          }
+        }
+      }
+      .selfintrodution {
+        overflow-y: auto;
+      }
+    }
   }
 }

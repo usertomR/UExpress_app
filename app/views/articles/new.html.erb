@@ -69,14 +69,18 @@
       対象
     </div>
     <div class="flex_mode">
-      <% #url:https://apidock.com/rails/ActionView/Helpers/FormHelper/check_box %>
-      <% evaluations = ["小学生向け","中学生向け","高校生向け"] %>
-      <% evaluations.each do |eva| %>
-        <div class="checkbox">
-          <%= f.check_box :target_select, { multiple: true }, eva, nil %>
-          <%= eva %>
-        </div>
-      <% end %>
+      <div class="checkbox">
+        <%= f.check_box :Eschool_level %>
+        <%= label_tag(:Eschool_level, "小学生向け") %>
+      </div>
+      <div class="checkbox">
+        <%= f.check_box :JHschool_level %>
+        <%= label_tag(:JHschool_level, "中学生向け") %>
+      </div>
+      <div class="checkbox">
+        <%= f.check_box :Hschool_level %>
+        <%= label_tag(:Hschool_level, "高校生向け") %>
+      </div>
     </div>
   </div>
 

@@ -53,6 +53,13 @@ Layout/EmptyLines:
   Exclude:
     - 'config/initializers/pagy.rb'
 
+# インデントの深さを間違えているとのこと。どう見ても合っている。
+# params[:article][:Hschool_level] = 1の部分
+Layout/IndentationConsistency:
+  Exclude:
+    - 'app/controllers/articles_controller.rb'
+    - 'app/models/user.rb'
+
 ####### Naming ##############
 Naming/PredicateName:
   Exclude:

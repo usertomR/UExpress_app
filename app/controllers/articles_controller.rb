@@ -6,6 +6,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    # チェックボックスのデフォルトは、チェック付けたならtrue,そうでないならfalseらしい。
+    # http://www.code-magagine.com/?p=12484
     @article = current_user.articles.build(article_params)
     if @article.save
       flash[:info] = "記事を作成しました"
@@ -40,7 +42,6 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :accuracy_text, :difficultylevel_text,
-                  :articletext, :Eschool_level, :JHschool_level, :Hschool_level,
-                  :target_select)
+                  :articletext, :Eschool_level, :JHschool_level, :Hschool_level)
   end
 end
