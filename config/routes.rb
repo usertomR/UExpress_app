@@ -11,21 +11,16 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :articles
+  resources :articles, except: :index
+
+  # articleモデルのルーティング「1つ」追加。記事1つの詳細(記事本体など)を表示する
+  # 本当に必要なルーティングのみを生成することで、メモリ使用量の節約とルーティングプロセスの速度向上が見込めます。[railsガイド抜粋]
+  # URL: https://railsguides.jp/routing.html?version=6.0#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%83%95%E3%83%AB%E3%81%A7%E3%81%AA%E3%81%84%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0
+  # URL: https://railsguides.jp/routing.html?version=6.0#%E5%90%8D%E5%89%8D%E4%BB%98%E3%81%8D%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0
+  get 'articles/:id/browsing', to: 'articles#browsing', as: :browsing_article
+
   get '/result', to: 'searchresults#result'
-
-  # articleモデルのルーティング追加。記事1つの詳細(記事本体など)を表示する
-  # URL: https://railsguides.jp/routing.html?version=6.0#restful%E3%81%AA%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E3%81%95%E3%82%89%E3%81%AB%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B
-  resources :articles do
-    member do
-      get 'browsing'
-    end
-  end
-
-  resources :searchresults do
-    member do
-      get 'personalrecord'
-    end
-  end
+  # personalrecord_searchresult GET    /searchresults/:id/personalrecord(.:format) searchresults#personalrecord
+  get '/searchresults/:id/personalrecord', to: 'searchresults#personalrecord', as: :personalrecord_searchresult
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

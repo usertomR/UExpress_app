@@ -22,6 +22,11 @@ Rails/FilePath:
   Exclude:
     - 'config/environments/development.rb'
 
+# とりあえずRailsチュートリアルの書き方に従っておく
+Rails/RequestReferer:
+  Exclude:
+    - 'app/controllers/articles_controller.rb'
+
 # パスワード＆その確認の認証ができないなどの理由で、使わざるを得ない
 Rails/SkipsModelValidations:
   Exclude:

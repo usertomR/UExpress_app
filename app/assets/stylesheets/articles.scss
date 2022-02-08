@@ -122,6 +122,7 @@
     }
     .text {
       margin-bottom: 50px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
     }
     .comment {
       height: 100px;
@@ -135,9 +136,10 @@
       height: 100px;
       margin-bottom: 50px;
       background-color: gray;
+      border: 1px solid rgba(0, 0, 0, 0.3);
     }
     .user_info {
-      height: 70px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
       .name_and_avatar {
         display: flex;
         margin-bottom: 30px;
@@ -151,6 +153,14 @@
             margin-top: 10px;
             font-size: 1.5rem;
           }
+        }
+        hr {
+          border: none;
+          height: 2px;
+          width: 100%;
+          margin-bottom: 30px;
+          background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%,
+                    rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0.3) 100%);
         }
       }
       .selfintrodution {
