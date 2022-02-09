@@ -19,12 +19,6 @@ RSpec.describe "<model>User", type: :model do
         expect(@user.errors[:name]).to include("can't be blank")
       end
 
-      it "is invalid without a name" do
-        user = User.new(name: nil)
-        user.valid?
-        expect(user.errors[:name]).to include("can't be blank")
-      end
-
       it "has not too long name" do
         user = User.new(name: "a" * 51)
         user.valid?

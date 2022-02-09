@@ -6,7 +6,7 @@ FactoryBot.define do
     articletext { "MyText" }
     Eschool_level { false }
     JHschool_level { false }
-    Hschool_level { false }
+    Hschool_level { true }
 
     association :user,
       factory: :user,
@@ -15,17 +15,20 @@ FactoryBot.define do
 
     trait :lastyear do
       title { "posted lastyear" }
-      created_at { Time.zone.now.prev_year }
+      created_at { Time.current.prev_year }
+      updated_at { Time.current.prev_year }
     end
 
     trait :yesterday do
-      title { "posted yseterday" }
-      created_at { 1.day.ago }
+      title { "posted yesterday" }
+      created_at { Time.current.yesterday }
+      updated_at { Time.current.yesterday }
     end
 
     trait :now do
       title { "post now" }
       created_at { Time.zone.now }
+      updated_at { Time.zone.now }
     end
   end
 end
