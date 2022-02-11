@@ -27,7 +27,7 @@ RSpec.describe "<system>Articles", type: :system do
         end
       end
 
-      it "because you do not log in(already activated)" do
+      it "because you don't log in(already activated)" do
         visit new_article_path
         expect(page).to have_content 'ログインして下さい'
       end
@@ -72,7 +72,7 @@ RSpec.describe "<system>Articles", type: :system do
         expect(page).not_to have_content '編集'
       end
 
-      it "because you do not log in(already activated && article writer)" do
+      it "because you don't log in(already activated && article writer)" do
         system_spec_log_out
         @article = Article.where("title LIKE ?", "Test")
         visit("/articles/#{@article[0].id}/edit")
@@ -91,6 +91,43 @@ RSpec.describe "<system>Articles", type: :system do
         fill_in_rich_text_area 'article_articletext', with: "RSpec!"
         click_on '記事更新'
         expect(page).to have_content '記事更新完了!'
+      end
+    end
+  end
+
+  describe ":When you delete an article", js: true do
+    before do
+      # 記事を作成しておく(作者:@user)
+      login_as(@user)
+      visit new_article_path
+      fill_in '記事タイトル', with: "Test"
+      choose 'article_accuracy_text_4'
+      choose 'article_difficultylevel_text_3'
+      check 'article_JHschool_level'
+      fill_in_rich_text_area 'article_articletext', with: "Test"
+      click_on '記事作成'
+      # 記事作成ここまで
+      @another = FactoryBot.create(:user, :activated)
+    end
+    context "you can't delete" do
+      it "because you have no right to delete" do
+        system_spec_log_out
+        login_as(@another)
+        visit("articles/#{@user.id}")
+        expect(page).not_to have_content '削除'
+      end
+    end
+
+    context "you can delete" do
+      it "because you are the article's writer" do
+        login_as(@user)
+        visit("articles/#{@user.id}")
+        expect do
+          accept_alert do
+            click_on '削除'
+          end
+          sleep(0.5)
+        end.to change(Article, :count).by(-1)
       end
     end
   end
