@@ -17,13 +17,14 @@ RSpec.describe "<system>UserLogins", type: :system do
     end
   end
 
-  xit "login succeeds when user submits valid information" do
+  it "login succeeds when user submits valid information", js: true do
     visit login_path
     fill_in 'Email', with: @user.email
     fill_in 'パスワード', with: @user.password
     click_button 'ログイン'
     aggregate_failures do
       expect(current_path).to eq user_path(@user)
+      find(".header_btn").click
       expect(page).to have_link 'ログアウト', href: logout_path
       expect(page).to have_link 'アカウント更新', href: edit_user_path(@user)
     end

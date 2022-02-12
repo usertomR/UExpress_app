@@ -126,6 +126,7 @@ RSpec.describe "<system>Articles", type: :system do
           accept_alert do
             click_on '削除'
           end
+          # sleep使わないと失敗する。ちょっと待とう。
           sleep(0.5)
         end.to change(Article, :count).by(-1)
       end
