@@ -23,5 +23,8 @@ module UExpressApp
       helper_specs: false,
       routing_specs: false
     end
+
+    # タイムゾーンの設定。もちろん東京
+    config.time_zone = 'Tokyo'
   end
 end

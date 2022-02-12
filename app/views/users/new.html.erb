@@ -3,7 +3,7 @@
 
 
 <%= form_with(model: @user, local: true) do |f| %>
-    <%= render 'shared/error_messages' %>
+    <%= render 'shared/error_messages', object: f.object %>
 
     <div class="input_form">
         <%= f.label :name, "名前", class: "form-label" %>
@@ -30,6 +30,11 @@
         <%= f.text_area :selfintrodution, size: "40x5", class: "form-control" %>
     </div>
 
+    <div class="input_form">
+        <%= f.label :avatar, "プロフィール画像", class: "form-label" %>
+        <%= f.file_field :avatar, class: "form-control" %>
+    </div>
+    
     <div class="submit_button">
         <%= f.submit "アカウント作成", class: "btn btn-primary" %>
     </div>

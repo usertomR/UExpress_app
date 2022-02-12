@@ -19,12 +19,6 @@ RSpec.describe "<model>User", type: :model do
         expect(@user.errors[:name]).to include("can't be blank")
       end
 
-      it "is invalid without a name" do
-        user = User.new(name: nil)
-        user.valid?
-        expect(user.errors[:name]).to include("can't be blank")
-      end
-
       it "has not too long name" do
         user = User.new(name: "a" * 51)
         user.valid?
@@ -97,5 +91,18 @@ RSpec.describe "<model>User", type: :model do
     user = User.new(name: "Tester", email: "Tester1@email.com", password: "Testuser",
                     password_confirmation: "Testuser")
     expect(user.authenticated?(:remember, '')).to eq false
+  end
+
+  describe ":dependent test" do
+    context "if user is quit" do
+      let!(:article) { FactoryBot.create(:article) }
+
+      it "one's article(s) is deleted" do
+        user = User.find(article.user_id)
+        expect do
+          user.destroy
+        end.to change(Article, :count).by(-1)
+      end
+    end
   end
 end

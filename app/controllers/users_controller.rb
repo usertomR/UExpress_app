@@ -34,6 +34,7 @@ class UsersController < ApplicationController
 
   # @user=・・がないのは、before_actionのcorrect_userで@userを定義しているから。
   def update
+    @user.remove_avatar! if (params[:user][:remove_avatar] == "1")
     if @user.update(user_params)
       flash[:success] = "アカウント更新成功!"
       redirect_to @user
@@ -52,15 +53,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-              :password_confirmation, :selfintrodution)
-  end
-
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
+              :password_confirmation, :selfintrodution, :avatar)
   end
 
   def correct_user

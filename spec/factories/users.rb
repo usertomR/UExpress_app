@@ -1,4 +1,4 @@
-# ユーザーを重複しないときに使う。作成する度にemailが変わるから。
+# ユーザーが重複しないときに使う。作成する度にemailが変わるから。
 FactoryBot.define do
   factory :user do
     sequence(:name) { |n| "Tester#{n}" }

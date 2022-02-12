@@ -94,12 +94,23 @@ Style/EmptyMethod:
 Style/ParenthesesAroundCondition:
   Enabled: false
 
+# if文を使えるようにする。
+Style/CaseLikeIf:
+  Enabled: false
+
+# if・unlessのbodyが1行なら&&か||を使う制約。無理に短くする必要はない。
+Style/IfUnlessModifier:
+  Enabled: false
+
 ##################### Lint ##################################
 
 # 一部変数(userなど)が使えない。可読性を下げるから使えるようにする。
 Lint/UselessAssignment:
   Enabled: false
 
+# if文の最後にelseを書いても良いようにする。
+Lint/ElseLayout:
+  Enabled: false
 
 ##################### Metrics ##################################
 

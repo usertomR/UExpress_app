@@ -1,3 +1,26 @@
 <% provide(:title, 'User Profile') %>
-<%= @user.name %>
-<%= @user.selfintrodution %>
+
+<div class="user_profile">
+  <div class="page_name">
+    ユーザープロフィール
+  </div>
+  <div class="user_identification">
+    <% if @user.avatar? %>
+      <div class="profile_avatar">
+        <%= image_tag @user.avatar.thumb_min.url , class: "avatar" %>
+      </div>
+    <% end %>
+    <div class="user_name">
+      <%= @user.name %>
+    </div>
+  </div>
+  <div class="profile_text">
+    <%= @user.selfintrodution %>
+  </div>
+  <hr>
+  <div class="article_link">
+    <%= link_to "記事投稿リスト", article_path(current_user)%>
+  </div>
+</div>
+
+

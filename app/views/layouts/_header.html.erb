@@ -1,52 +1,48 @@
 <header>
-  <nav class="navbar navbar-light bg-secondary fixed-top">
-    <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">UExpress</span>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">UExpress</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link" href='/'>home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/help">help</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href='/about'>about</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href='/contact'>contact</a>
-            </li>
-            <% if logged_in? %>
-              <li class="nav-item"><%= link_to "ログアウト", logout_path, method: :delete, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "アカウント更新", edit_user_path(current_user), class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "質問/記事作成", '#', class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "通知設定", '#', class: "nav-link" %></li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  リスト
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                  <li><a class="dropdown-item" href="#">niceリスト</a></li>
-                  <li><a class="dropdown-item" href="#">気になるリスト</a></li>
-                  <li><a class="dropdown-item" href="#">お気に入りの人リスト</a></li>
-                  <li><a class="dropdown-item" href="#">記事投稿リスト</a></li>
-                </ul>
-              </li>
-            <% end %>
-             <% if current_user && current_user.admin? %>
-              <li class="nav-item"><%= link_to "ユーザー削除", users_path, class: "nav-link" %></li>
-            <% end %>
-          </ul>
-        </div>
+  <div class="header_flex_container">
+    <div class="header_logo">
+      <div class="logo_position">
+        UExpress
       </div>
     </div>
-  </nav>
+    <div class="header_btn">
+      <div class="btn_element"></div>
+      <div class="btn_element"></div>
+      <div class="btn_element"></div>
+    </div>
+  </div>
 </header>
+
+<%# ハンバーガーメニュー表示部 %>
+<div class="hidden_screen">
+  <div class="not_menu">
+  </div>
+  <div class="header_menu">
+    <li class="header_menu_item">
+      <a href='/'>home</a>
+    </li>
+    <li class="header_menu_item">
+      <a href="/help">help</a>
+    </li>
+    <li class="header_menu_item">
+      <a href='/about'>about</a>
+    </li>
+    <li class="header_menu_item">
+      <a href='/contact'>contact</a>
+    </li>
+    <% if logged_in? %>
+      <li class="header_menu_item"><%= link_to "ログアウト", logout_path, method: :delete%></li>
+      <li class="header_menu_item"><%= link_to "アカウント更新", edit_user_path(current_user)%></li>
+      <li class="header_menu_item"><%= link_to "記事作成", new_article_path %></li>
+      <li class="header_menu_item"><%= link_to "質問作成", '#' %></li>
+      <li class="header_menu_item"><%= link_to "通知設定", '#'%></li>  
+      <li class="header_menu_item"><a href="#">niceリスト</a></li>
+      <li class="header_menu_item"><a href="#">気になるリスト</a></li>
+      <li class="header_menu_item"><a href="#">お気に入りの人リスト</a></li>
+      <li class="header_menu_item"><%= link_to "記事投稿リスト", article_path(current_user)%></li>       
+    <% end %>
+    <% if current_user && current_user.admin? %>
+        <li class="header_menu_item"><%= link_to "ユーザー削除", users_path%></li>
+    <% end %>
+  </div>
+</div>

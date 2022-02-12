@@ -15,8 +15,6 @@ RSpec.describe "<system>UserSignups", type: :system do
     execute_script('window.scrollBy(0,10000)')
     sleep 0.2
     click_on 'アカウント作成'
-    execute_script('window.scrollBy(0,-1000)')
-    sleep 0.2
     aggregate_failures do
       expect(current_path).to eq users_path
       expect(page).to have_content 'Signup'
@@ -24,12 +22,19 @@ RSpec.describe "<system>UserSignups", type: :system do
     end
   end
 
-  it "create new data when user submits valid information" do
+  it "create new data when user submits valid information", js: true do
     visit signup_path
     fill_in '名前', with: 'Example User'
     fill_in 'Email', with: 'user@example.com'
     fill_in 'パスワード', with: 'password'
     fill_in 'パスワード確認', with: 'password'
     fill_in '自己紹介', with: 'Test'
+    execute_script('window.scrollBy(0,10000)')
+    sleep 0.2
+    click_on 'アカウント作成'
+    aggregate_failures do
+      expect(current_path).to eq root_path
+      expect(page).to have_content "登録したemailを確認しよう!"
+    end
   end
 end

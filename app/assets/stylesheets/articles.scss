@@ -1,0 +1,171 @@
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+/*showアクション：個人の全ての作成記事ページ*/
+.personal_article_list {
+  width: 90%;
+  margin: 0 auto;
+  height: auto;
+}
+
+/*上のクラスに合わせた。適用要素の左端、右端の位置を統一している*/
+.sum_article {
+  width: 90%;
+  margin: 2.4rem auto 3.1rem;
+  font-family: impact;
+  font-size: 2rem;
+  height: 3rem;
+  background-color: gold;
+}
+
+.interspace_items {
+  margin-bottom: 0.4rem;
+}
+
+.search_form {
+  width: 90vw;
+  height: 40vh;
+  margin: 0 auto;
+  background-color: lightgray;
+  border-radius: 10px;
+  .search {
+    height: 6vh;
+    margin-bottom: 1vh;
+    .search_input {
+      height: 4.5vh;
+      width: 40%;
+    }
+    .button_size {
+      height: 4vh;
+    }
+  }
+  .user_name {
+    height: 4vh;
+    font-size: 3vh;
+    margin-bottom: 1vh;
+  }
+  .flex_container {
+    display: flex;
+    height: 4vh;
+    margin-bottom: 2vh;
+    .condition {
+      height: 4vh;
+      font-size: 3vh;
+    }
+    .checkbox {
+      height: 1.8vh;
+      margin: auto 0;
+      .space {
+        margin-left: 4px;
+      }
+    }
+    .input_term {
+      height: 1.8vh;
+      margin: auto 0;
+      margin-left: 10px;
+    }
+  }
+}
+
+.article_form {
+  margin: 0 auto 30px;
+  width: 70vw;
+  .form-label {
+    font-weight: bold;
+  }
+  .item {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .flex_mode {
+    display: flex;
+    .space, .checkbox {
+      margin-right: 10px;
+    }
+  }
+}
+
+.richtext_form {
+  width: 70vw;
+  margin: 0 auto 1%;
+  .form-label {
+    font-weight: bold;
+  }
+  .form_height {
+    height: 40vh;
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+}
+
+.browse_article_flex {
+  width: 100vw;
+  display: flex;
+  .main_view {
+    margin-left: 3vw;
+    margin-right: 3vw;
+    width:  70vw;
+    .title {
+      margin-bottom: 10px;
+      font-size: 3rem;
+      font-weight: bold;
+      height: 4.5rem;
+      overflow-x: auto;
+    }
+    hr {
+      border: none;
+      height: 2px;
+      margin-bottom: 30px;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%,
+                rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0.3) 100%);
+    }
+    .text {
+      margin-bottom: 50px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+    }
+    .comment {
+      height: 100px;
+      background-color: gray;
+    }
+  }
+  .sub_view {
+    margin-right: 4vw;
+    width: 20vw;
+    .other_functions {
+      height: 100px;
+      margin-bottom: 50px;
+      background-color: gray;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+    }
+    .user_info {
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      .name_and_avatar {
+        display: flex;
+        margin-bottom: 30px;
+        overflow-x: auto;
+        .avatar {
+          margin-right: 15px;
+        }
+        .name {
+          .vertical_center {
+            height: 2rem;
+            margin-top: 10px;
+            font-size: 1.5rem;
+          }
+        }
+        hr {
+          border: none;
+          height: 2px;
+          width: 100%;
+          margin-bottom: 30px;
+          background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%,
+                    rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0.3) 100%);
+        }
+      }
+      .selfintrodution {
+        overflow-y: auto;
+      }
+    }
+  }
+}
