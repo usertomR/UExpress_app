@@ -15,13 +15,4 @@ class Article < ApplicationRecord
 
   # Action Textのリッチテキストを使用
   has_rich_text :articletext
-
-  # 小学生向け・中学生向け・高校生向けかを判別。引数はboolean型
-  def self.inspect_level(level)
-    if level
-      "○"
-    else
-      "x"
-    end
-  end
 end

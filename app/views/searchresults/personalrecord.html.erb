@@ -16,9 +16,9 @@
               <td>最終修正日:<%= article.updated_at %></td>
             </tr>
             <tr>
-              <td>小学生向け:<%= Article.inspect_level(article.Eschool_level) %>&ensp;|&ensp;</td>
-              <td>中学生向け:<%= Article.inspect_level(article.JHschool_level) %>&ensp;|&ensp;</td>
-              <td>高校生向け:<%= Article.inspect_level(article.Hschool_level) %></td>
+              <td>小学生向け:<%= ApplicationRecord.inspect_level(article.Eschool_level) %>&ensp;|&ensp;</td>
+              <td>中学生向け:<%= ApplicationRecord.inspect_level(article.JHschool_level) %>&ensp;|&ensp;</td>
+              <td>高校生向け:<%= ApplicationRecord.inspect_level(article.Hschool_level) %></td>
             </tr>
           </tbody>
         </table>

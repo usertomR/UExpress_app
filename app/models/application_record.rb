@@ -9,4 +9,13 @@ class ApplicationRecord < ActiveRecord::Base
     return "対象:1つ以上選んで下さい" if (error == "Target can't be blank")
     return "記事本体:空欄にしないで下さい" if (error == "Articletext can't be blank")
   end
+
+  # 小学生向け・中学生向け・高校生向けかを判別。引数はboolean型
+  def self.inspect_level(level)
+    if level
+      "○"
+    else
+      "x"
+    end
+  end
 end
