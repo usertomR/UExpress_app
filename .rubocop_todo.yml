@@ -36,6 +36,17 @@ Rails/SkipsModelValidations:
     - 'spec/requests/password_reset_requests_spec.rb'
 
 ####### Metrics #######
+Metrics/AbcSize:
+  Exclude:
+    - 'app/models/application_record.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'app/models/application_record.rb'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'app/models/application_record.rb'
 
 ####### Layout ########
 

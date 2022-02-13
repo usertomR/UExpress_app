@@ -68,7 +68,8 @@
   }
 }
 
-.article_form {
+// 記事・質問作成&編集ページ
+.article_question_form {
   margin: 0 auto 30px;
   width: 70vw;
   .form-label {
@@ -99,6 +100,7 @@
   }
 }
 
+// 
 .browse_article_flex {
   width: 100vw;
   display: flex;

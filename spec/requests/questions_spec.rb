@@ -1,53 +1,56 @@
 require 'rails_helper'
+require './spec/support/test_helper'
 
-RSpec.describe "Questions", type: :request do
-  describe "GET /new" do
-    it "returns http success" do
-      get "/questions/new"
-      expect(response).to have_http_status(:success)
+RSpec.describe "<request>Questions", type: :request do
+  describe ":when you want to create a question" do
+    context "you can't create" do
+      it "because you don't login before access new acion" do
+        @user = FactoryBot.create(:user, :activated)
+        get '/questions/new'
+        expect(response).to redirect_to '/login'
+      end
+
+      it "because you don't login before access create acion" do
+        @user = FactoryBot.create(:user, :activated)
+        post questions_path
+        expect(response).to redirect_to '/login'
+      end
+
+      it "because your account are not activated" do
+        @user = FactoryBot.create(:user)
+        get '/questions/new'
+        expect(response).to redirect_to '/login'
+      end
+
+      it "because you input wrong infomation" do
+        @user = FactoryBot.create(:user, :activated)
+        log_in_as(@user)
+        post articles_path, params: { question: {
+          title: "   ",
+          Eschool_level: '0',
+          JHschool_level: '0',
+          Hschool_level: '0',
+          questiontext: "false"
+        } }
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context "you can create" do
+      it "because you input right infomation" do
+        @user = FactoryBot.create(:user, :activated)
+        log_in_as(@user)
+        post articles_path, params: { question: {
+          title: "success!",
+          accuracy_text: '4',
+          difficultylevel_text: '4',
+          Eschool_level: '1',
+          JHschool_level: '1',
+          Hschool_level: '1',
+          questiontext: "text"
+        } }
+        expect(response).to redirect_to root_path
+      end
     end
   end
-
-  describe "GET /create" do
-    it "returns http success" do
-      get "/questions/create"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /show" do
-    it "returns http success" do
-      get "/questions/show"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /browsing" do
-    it "returns http success" do
-      get "/questions/browsing"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /edit" do
-    it "returns http success" do
-      get "/questions/edit"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /update" do
-    it "returns http success" do
-      get "/questions/update"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /destroy" do
-    it "returns http success" do
-      get "/questions/destroy"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
 end

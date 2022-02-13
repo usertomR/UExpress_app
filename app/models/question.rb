@@ -12,8 +12,9 @@ class Question < ApplicationRecord
   # 小中高向けの、少なくともどれか1つは選ぶ制約のカスタムバリデーションを読み込む
   include ActiveModel::Validations
   validates_with TargetValidator
-  # 質問作成時はfalse(つまりdefault)にする。
-  validates :solve, presence: true
+  # 質問作成時はfalse(つまりdefault)にする.trueとfalseの2択
+  # URL: https://railsguides.jp/active_record_validations.html?version=6.0#presence
+  validates :solve, inclusion: { in: [true, false] }
   validates :user_id, presence: true
 
   # その他
