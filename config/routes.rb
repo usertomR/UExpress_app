@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'questions/:id/browsing', to: 'questions#browsing', as: :browsing_question
 
   get '/result', to: 'searchresults#result'
-  get '/searchresults/:id/personalrecord', to: 'searchresults#personalrecord', as: :personalrecord_searchresult
+  get '/searchresults/:id/personalarticle', to: 'searchresults#personalarticle', as: :searchresult_parsonal_article
+  get '/searchresults/:id/personalquestion', to: 'searchresults#personalquestion', as: :searchresult_parsonal_question
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

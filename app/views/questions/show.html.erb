@@ -3,7 +3,7 @@
 
 <div class="search_form">
   <div class="user_name"><%= @user.name %>さんの質問</div>
-  <%= form_with url: personalrecord_searchresult_path(@user), method: :get, local: true do |f| %>
+  <%= form_with url: searchresult_parsonal_question_path(@user), method: :get, local: true do |f| %>
 
     <div class="search">  
       <%= f.text_field :content, class: "search_input" %>
@@ -32,12 +32,28 @@
       </div> 
     </div>
 
-
     <div class="flex_container">
       <div class="condition">期日</div>
       <div class="input_term">
           <%= f.date_field :term_from %> ~
           <%= f.date_field :term_to %>
+      </div>
+    </div>
+
+    <% select_solve = [false,true] %>
+    <div class="flex_container">
+      <div class="condition">
+        解決/未解決
+      </div>
+      <div class="checkbox">
+          <% select_solve.each do |s| %>
+            <%= f.check_box :solve, { multiple: true, class: "space" }, s, nil %>
+            <% if s %>
+              <%= "解決" %>
+            <% else %>
+              <%= "未解決" %>
+            <% end %>
+          <% end %>
       </div>
     </div>
   <% end %>
