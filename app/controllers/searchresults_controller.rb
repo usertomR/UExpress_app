@@ -12,7 +12,6 @@ class SearchresultsController < ApplicationController
   end
 
   def personalquestion
-    debugger
     @user = User.find(params[:id])
     @pagy, @questions = pagy(Question.where("updated_at >= :start_date AND updated_at <= :end_date",
       { start_date: params[:term_from], end_date: params[:term_to] })

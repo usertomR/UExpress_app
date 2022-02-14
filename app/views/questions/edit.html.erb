@@ -86,18 +86,23 @@
   </div>
 
   <div class="richtext_form">
-    <%= f.label :articletext, "質問本体", class: "form-label" %>
-    <%= f.rich_text_area :articletext, {class: "trix-content form_height"} %>
+    <%= f.label :questiontext, "質問本体", class: "form-label" %>
+    <%= f.rich_text_area :questiontext, {class: "trix-content form_height"} %>
   </div>
 
-  <div class="question_edit_form_solve">
-    <div class="have_solved">
-      <%= f.radio_button(:solve, true) %>
-      <%= f.label(:solve_true, "解決") %>
+  <div class="article_question_form">
+    <div class="item">
+      解決/未解決
     </div>
-    <div class="not_solved">
-      <%= f.radio_button(:solve, false, {checked: true}) %>
-      <%= f.label(:solve_false, "未解決") %>
+    <div class="flex_mode">
+      <div class="have_solved">
+        <%= f.radio_button(:solve, true) %>
+        <%= f.label(:solve_true, "解決") %>
+      </div>
+      <div class="not_solved">
+        <%= f.radio_button(:solve, false, {checked: true}) %>
+        <%= f.label(:solve_false, "未解決") %>
+      </div>
     </div>
   </div>
 

@@ -94,7 +94,7 @@ RSpec.describe "<request>Articles", type: :request do
   end
 
   # browsingアクション
-  describe ":when you browse an article" do
+  describe ":when browse an article" do
     before do
       @user = FactoryBot.create(:user, :activated)
       log_in_as(@user)
@@ -209,6 +209,7 @@ RSpec.describe "<request>Articles", type: :request do
     end
   end
 
+  # destroyアクション
   describe ":when you delete an article" do
     before do
       @user = FactoryBot.create(:user, :activated)
