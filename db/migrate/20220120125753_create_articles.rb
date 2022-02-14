@@ -12,8 +12,8 @@ class CreateArticles < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    # user_idに関連付けられたすべての記事を作成時刻の逆順で取り出しやすくなる。
+    # user_idに関連付けられたすべての記事を更新時刻の逆順で取り出しやすくなる。
     # URL: https://stackoverflow.com/questions/14844780/what-is-a-multiple-key-index
-    add_index :articles, [:user_id, :created_at]
+    add_index :articles, [:user_id, :updated_at]
   end
 end

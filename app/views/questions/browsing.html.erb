@@ -1,13 +1,13 @@
-<% provide(:title, "Reading the Article")%>
+<% provide(:title, "Reading the Question")%>
 
 <div class="browse_question_article_flex">
   <div class="main_view">
     <div class="title">
-      <%= @article.title %>
+      <%= @question.title %>
     </div>
     <hr>
     <div class="text">
-      <%= @article.articletext %>
+      <%= @question.questiontext %>
     </div>
     <div class="comment">
       コメントーアカウント保持者限定ー
@@ -30,20 +30,20 @@
     </div>
     <div class="user_info">
       <div class="name_and_avatar">
-        <% if @article.user.avatar? %>
+        <% if @question.user.avatar? %>
           <div class="avatar_img">
-            <%= image_tag @article.user.avatar.thumb_min.url , class: "avatar" %>
+            <%= image_tag @question.user.avatar.thumb_min.url , class: "avatar" %>
           </div>
         <% end %>
         <div class="name">
           <div class="vertical_center">
-            <%= @article.user.name %>
+            <%= @question.user.name %>
           </div>
         </div>
       </div>
       <hr>
       <div class="selfintrodution">
-        <%= @article.user.selfintrodution %>
+        <%= @question.user.selfintrodution %>
       </div>
     </div>
   </div>

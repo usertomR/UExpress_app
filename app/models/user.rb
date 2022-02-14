@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   has_many :articles, dependent: :destroy
+  has_many :questions, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email

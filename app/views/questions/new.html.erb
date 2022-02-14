@@ -1,17 +1,19 @@
 <% provide(:title, "Create an Article")%>
-<h1>記事投稿</h1>
+<h1>質問投稿</h1>
 
-<%= form_with(model: @article, local: true) do |f| %>
+<%= form_with(model: @question, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
+  <%= f.hidden_field(:solve) %>
+
   <div class="article_question_form">
-    <%= f.label :title, "記事タイトル", class: "form-label" %>
+    <%= f.label :title, "質問タイトル", class: "form-label" %>
     <%= f.text_field :title, class: "form-control" %>
   </div>
 
   <div class="article_question_form">
     <div class="item">
-      文章の正しさ
+      文章の正しさ(希望)
     </div>
     <div class="flex_mode">
       <div class ="space">
@@ -39,7 +41,7 @@
 
   <div class="article_question_form">
     <div class="item">
-      文章難易度
+      文章難易度(希望)
     </div>
     <div class="flex_mode">
       <div class ="space">
@@ -86,11 +88,11 @@
   </div>
 
   <div class="richtext_form">
-    <%= f.label :articletext, "記事本体", class: "form-label" %>
-    <%= f.rich_text_area :articletext, {class: "trix-content form_height"} %>
+    <%= f.label :questiontext, "質問本体", class: "form-label" %>
+    <%= f.rich_text_area :questiontext, {class: "trix-content form_height"} %>
   </div>
 
   <div class="submit_button">
-    <%= f.submit "記事作成", class: "btn btn-primary" %>
+    <%= f.submit "質問作成", class: "btn btn-primary" %>
   </div>
 <% end %>

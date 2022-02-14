@@ -19,7 +19,7 @@ RSpec.describe "<system>Articles", type: :system do
         aggregate_failures do
           expect(current_path).to eq articles_path
           expect(page).to have_content 'The form contains 5 errors'
-          expect(page).to have_content '記事タイトル:空欄にしないで下さい'
+          expect(page).to have_content 'タイトル:空欄にしないで下さい'
           expect(page).to have_content '文章の正しさ:1つ選択して下さい'
           expect(page).to have_content '文章難易度:1つ選択して下さい'
           expect(page).to have_content '対象:1つ以上選んで下さい'

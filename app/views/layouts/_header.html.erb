@@ -34,12 +34,13 @@
       <li class="header_menu_item"><%= link_to "ログアウト", logout_path, method: :delete%></li>
       <li class="header_menu_item"><%= link_to "アカウント更新", edit_user_path(current_user)%></li>
       <li class="header_menu_item"><%= link_to "記事作成", new_article_path %></li>
-      <li class="header_menu_item"><%= link_to "質問作成", '#' %></li>
+      <li class="header_menu_item"><%= link_to "質問作成", new_question_path %></li>
       <li class="header_menu_item"><%= link_to "通知設定", '#'%></li>  
       <li class="header_menu_item"><a href="#">niceリスト</a></li>
       <li class="header_menu_item"><a href="#">気になるリスト</a></li>
       <li class="header_menu_item"><a href="#">お気に入りの人リスト</a></li>
-      <li class="header_menu_item"><%= link_to "記事投稿リスト", article_path(current_user)%></li>       
+      <li class="header_menu_item"><%= link_to "記事投稿リスト", article_path(current_user) %></li>
+      <li class="header_menu_item"><%= link_to "質問投稿リスト", question_path(current_user) %></li>       
     <% end %>
     <% if current_user && current_user.admin? %>
         <li class="header_menu_item"><%= link_to "ユーザー削除", users_path%></li>
