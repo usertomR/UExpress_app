@@ -25,7 +25,7 @@ RSpec.describe "<request>Questions", type: :request do
       it "because you input wrong infomation" do
         @user = FactoryBot.create(:user, :activated)
         log_in_as(@user)
-        post articles_path, params: { question: {
+        post questions_path, params: { question: {
           title: "   ",
           Eschool_level: '0',
           JHschool_level: '0',
@@ -40,7 +40,7 @@ RSpec.describe "<request>Questions", type: :request do
       it "because you input right infomation" do
         @user = FactoryBot.create(:user, :activated)
         log_in_as(@user)
-        post articles_path, params: { question: {
+        post questions_path, params: { question: {
           title: "success!",
           accuracy_text: '4',
           difficultylevel_text: '4',

@@ -2,15 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-/*showアクション：個人の全ての作成記事ページ*/
-.personal_article_list {
+/*showアクション：個人の全ての作成記事・質問ページ*/
+.personal_question_article_list {
   width: 90%;
   margin: 0 auto;
   height: auto;
+  .flex {
+    display: flex;
+  }
 }
-
 /*上のクラスに合わせた。適用要素の左端、右端の位置を統一している*/
-.sum_article {
+.sum_question_article {
   width: 90%;
   margin: 2.4rem auto 3.1rem;
   font-family: impact;
@@ -100,8 +102,8 @@
   }
 }
 
-// 
-.browse_article_flex {
+// article,questionモデルのbrowsing action
+.browse_question_article_flex {
   width: 100vw;
   display: flex;
   .main_view {

@@ -1,2 +1,50 @@
-<h1>Questions#browsing</h1>
-<p>Find me in app/views/questions/browsing.html.erb</p>
+<% provide(:title, "Reading the Question")%>
+
+<div class="browse_question_article_flex">
+  <div class="main_view">
+    <div class="title">
+      <%= @question.title %>
+    </div>
+    <hr>
+    <div class="text">
+      <%= @question.questiontext %>
+    </div>
+    <div class="comment">
+      コメントーアカウント保持者限定ー
+    </div>
+  </div>
+  <div class="sub_view">
+    <div class="other_functions">
+      <% if @question.nil? %>
+      <% else %>
+        <% if @question.solve %>
+          <div class="solve_question">
+            解決
+          </div>
+        <% else %>
+          <div class="not_solve_question">
+            未解決
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="user_info">
+      <div class="name_and_avatar">
+        <% if @question.user.avatar? %>
+          <div class="avatar_img">
+            <%= image_tag @question.user.avatar.thumb_min.url , class: "avatar" %>
+          </div>
+        <% end %>
+        <div class="name">
+          <div class="vertical_center">
+            <%= @question.user.name %>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="selfintrodution">
+        <%= @question.user.selfintrodution %>
+      </div>
+    </div>
+  </div>
+</div>

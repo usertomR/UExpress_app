@@ -1,6 +1,6 @@
 <% provide(:title, "Reading the Article")%>
 
-<div class="browse_article_flex">
+<div class="browse_question_article_flex">
   <div class="main_view">
     <div class="title">
       <%= @article.title %>
@@ -15,6 +15,18 @@
   </div>
   <div class="sub_view">
     <div class="other_functions">
+      <% if @question.nil? %>
+      <% else %>
+        <% if @question.solve %>
+          <div class="solve_question">
+            解決
+          </div>
+        <% else %>
+          <div class="not_solve_question">
+            未解決
+          </div>
+        <% end %>
+      <% end %>
     </div>
     <div class="user_info">
       <div class="name_and_avatar">

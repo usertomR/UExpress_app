@@ -17,18 +17,31 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @pagy, @questions = pagy(@user.questions)
   end
 
   def browsing
+    @question = Question.find(params[:id])
   end
 
+  # before_actionで,@questionを取得している。(update,destroyも)
   def edit
   end
 
   def update
+    if @question.update(question_params)
+      flash[:success] = "質問更新完了!"
+      redirect_to browsing_question_path(@question)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @question.destroy
+    flash[:success] = "1つの質問を削除しました。"
+    redirect_to root_url
   end
 
   private

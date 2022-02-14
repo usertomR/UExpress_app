@@ -4,7 +4,7 @@
 <%= form_with(model: @question, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.hidden_field(:solve, value: false) %>
+  <%= f.hidden_field(:solve) %>
 
   <div class="article_question_form">
     <%= f.label :title, "質問タイトル", class: "form-label" %>

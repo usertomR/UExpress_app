@@ -124,7 +124,9 @@ body.noscroll {
   border-radius: 10px;
   background-color: rgb(127, 243, 185);
   .separation {
-    border: solid black;
+    background: black;
+    height: 3px;
+    margin: 5px 0;
   }
 }
 

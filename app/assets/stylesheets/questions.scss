@@ -1,3 +1,38 @@
 // Place all the styles related to the Questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+// 質問投稿リスト
+.solve_question {
+  line-height: 1.5rem;
+  height: 1.5rem;
+  width: 2.5rem;
+  text-align: center;
+  border: 1px solid blue;
+  border-radius: 4px;
+  color: blue;
+  background: white;
+}
+
+.not_solve_question {
+  line-height: 1.5rem;
+  height: 1.5rem;
+  width: 3.8rem;
+  text-align: center;
+  border: 1px solid red;
+  border-radius: 4px;
+  color: red;
+  background: white;
+}
+
+//質問編集
+.question_edit_form_solve {
+  width: 70vw;
+  margin: 0 auto 1%;
+  display: flex;
+  .have_solved {
+    margin-right: 20vw;
+    margin-left: 20vw;
+  }
+}
