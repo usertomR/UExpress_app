@@ -1,0 +1,2 @@
+$(".follow_form").html("<%= escape_javascript(render('users/follow')) %>");
+$("#sum_follower").html('<%= @user.followers.count %>');

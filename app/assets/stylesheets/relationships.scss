@@ -1,3 +1,20 @@
 // Place all the styles related to the Relationships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+@mixin follow_unfollow_btn_base {
+  border: 1px solid;
+  border-radius: 1rem;
+}
+
+.unfollow_button {
+  @include follow_unfollow_btn_base;
+  background: rgba($color: #a219ccf3, $alpha: 0.8);
+  color: white;
+}
+
+.follow_button {
+  @include follow_unfollow_btn_base;
+  background: rgba($color: rgb(20, 128, 200), $alpha: 0.8);
+  color: white;
+}
