@@ -2,12 +2,18 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   has_many :articles, dependent: :destroy
   has_many :questions, dependent: :destroy
+
+  # ややこしいが、SNS・railsコード側では、follower:自分をフォローする人/follow:自分がフォローする人
+  # 一方、DB側では、follower:誰かにフォローする人/followed:誰かからフォローされる人
+  # DB側では、自分がフォローする場合、自分はfollower
   has_many :active_relationships, class_name: "Relationship",
                                    foreign_key: "follower_id",
-                                   dependent: :destroy
+                                   dependent: :destroy,
+                                   inverse_of: :follower
   has_many :passive_relationships, class_name: "Relationship",
                                    foreign_key: "followed_id",
-                                   dependent: :destroy
+                                   dependent: :destroy,
+                                   inverse_of: :followed
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
@@ -94,6 +100,7 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
         private
 
   # メールアドレスを全て小文字にする。DBによって大文字小文字を区別する物もある

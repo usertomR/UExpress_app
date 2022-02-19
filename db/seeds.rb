@@ -43,3 +43,12 @@ Article.create!(title: "Example-正しさ2の例-", accuracy_text: 2, difficulty
                 articletext: "ウサイン・ボルトは100mの世界記録保持者。2002年から2017年までの現役時代は数々の記録を樹立し" +
                 "人類史上最速のスプリンターと評された。全盛期には、稲妻を意味する「aaaaa」の愛称で呼ばれた。(3文目間違い)",
                 Eschool_level: true, JHschool_level: false, Hschool_level: false, user_id: 1)
+
+# フォロー・フォロワー
+
+user = User.find(1)
+users = User.all
+following = users[1..2]
+follower = users[2]
+following.each { |followed| user.follow(followed) }
+follower.follow(user)

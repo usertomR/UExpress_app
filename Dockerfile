@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 # yarn,nodejsインストール＋その他情報削除+α.多分3文目は必須。実行時にエラーが出るらしい(Docker or CircleCI)
-RUN apt-get update && apt-get install -y --no-install-recommends  nodejs \
+RUN apt-get update && apt-get install -y --no-install-recommends  nodejs  \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir /UExpress
@@ -20,6 +20,7 @@ COPY Gemfile.lock /UExpress/Gemfile.lock
 
 RUN gem install bundler
 RUN bundle install
+RUN rails action_text:install
 
 COPY . /UExpress
 
