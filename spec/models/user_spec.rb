@@ -105,4 +105,28 @@ RSpec.describe "<model>User", type: :model do
       end
     end
   end
+
+  describe ":follow and unfollow" do
+    before do
+      @user = FactoryBot.create(:user, :activated)
+      @other = FactoryBot.create(:user, :activated)
+      @user.follow(@other)
+    end
+
+    context "follow" do
+      it "suceeds" do
+        aggregate_failures do
+          expect(@user.following?(@other)).to be_truthy
+          expect(@other.followers.include?(@user)).to be_truthy
+        end
+      end
+    end
+
+    context "unfollow" do
+      it "suceeds" do
+        @user.unfollow(@other)
+        expect(@user.following?(@other)).to be_falsy
+      end
+    end
+  end
 end

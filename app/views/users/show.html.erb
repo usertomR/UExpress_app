@@ -30,14 +30,14 @@
     <% end %>
   </div>
   <div class="user_link">
-    <div class="profile_item"><%= link_to "記事投稿リスト", article_path(current_user)%></div>
-    <div class="profile_item"><%= link_to "質問投稿リスト", question_path(current_user)%></div>
+    <div class="profile_item"><%= link_to "記事投稿リスト", article_path(@user)%></div>
+    <div class="profile_item"><%= link_to "質問投稿リスト", question_path(@user)%></div>
     <div class="two_blocks">
       <div class="user_follow">
         <%= link_to "フォロー数", user_following_path(@user) %>
       </div>
       <div class="user_follow">
-        <a href="<%= user_following_path(@user) %>"><%= @user.following.count %></a>
+        <a href="<%= user_following_path(@user) %>" id="sum_follow"><%= @user.following.count %></a>
       </div>
     </div>
     <div class="two_blocks">
