@@ -37,7 +37,7 @@
         <% end %>
         <div class="name">
           <div class="vertical_center">
-            <%= @question.user.name %>
+            <a href="<%= user_path(@question.user) %>"><%= @question.user.name %></a>
           </div>
         </div>
       </div>

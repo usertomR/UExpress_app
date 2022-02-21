@@ -49,6 +49,16 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def following
+    @user = User.find(params[:id])
+    @pagy, @follows = pagy(@user.following)
+  end
+
+  def follower
+    @user = User.find(params[:id])
+    @pagy, @followers = pagy(@user.followers)
+  end
+
       private
 
   def user_params

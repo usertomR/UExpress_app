@@ -2,6 +2,21 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   has_many :articles, dependent: :destroy
   has_many :questions, dependent: :destroy
+
+  # ややこしいが、SNS・railsコード側では、follower:自分をフォローする人/follow:自分がフォローする人
+  # 一方、DB側では、follower:誰かにフォローする人/followed:誰かからフォローされる人
+  # DB側では、自分がフォローする場合、自分はfollower
+  has_many :active_relationships, class_name: "Relationship",
+                                   foreign_key: "follower_id",
+                                   dependent: :destroy,
+                                   inverse_of: :follower
+  has_many :passive_relationships, class_name: "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent: :destroy,
+                                   inverse_of: :followed
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email
@@ -68,6 +83,22 @@ class User < ApplicationRecord
   # パスワード再設定の期限が切れている場合はtrueを返す
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  # 以下3つは、メソッド内でself(呼び出し元のインスタンス変数)を省略している.
+  # 以下3つが使える理由は、このファイルで、has_many :following・・・を記述しているから。
+  # ユーザーをフォローする
+  def follow(other_user)
+    following << other_user
+  end
+
+  # ユーザーをフォロー解除する
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
   end
 
         private

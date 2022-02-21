@@ -1,26 +1,53 @@
 <% provide(:title, 'User Profile') %>
 
-<div class="user_profile">
-  <div class="page_name">
-    ユーザープロフィール
-  </div>
-  <div class="user_identification">
-    <% if @user.avatar? %>
-      <div class="profile_avatar">
-        <%= image_tag @user.avatar.thumb_min.url , class: "avatar" %>
+<div class="user_info">
+  <div class="user_profile">
+    <div class="page_name">
+      ユーザープロフィール
+    </div>
+    <div class="user_identification">
+      <% if @user.avatar? %>
+        <div class="profile_avatar">
+          <%= image_tag @user.avatar.thumb_min.url , class: "avatar" %>
+        </div>
+      <% end %>
+      <div class="user_name">
+        <%= @user.name %>
+      </div>
+    </div>
+    <div class="profile_text">
+      <%= @user.selfintrodution %>
+    </div>
+    <hr>
+    <% unless current_user?(@user) %>
+      <div class="follow_form">
+        <% if current_user.following?(@user) %>
+          <%= render 'unfollow' %>
+        <% else %>
+          <%= render 'follow' %>
+        <% end %>
       </div>
     <% end %>
-    <div class="user_name">
-      <%= @user.name %>
+  </div>
+  <div class="user_link">
+    <div class="profile_item"><%= link_to "記事投稿リスト", article_path(@user)%></div>
+    <div class="profile_item"><%= link_to "質問投稿リスト", question_path(@user)%></div>
+    <div class="two_blocks">
+      <div class="user_follow">
+        <%= link_to "フォロー数", user_following_path(@user) %>
+      </div>
+      <div class="user_follow">
+        <a href="<%= user_following_path(@user) %>" id="sum_follow"><%= @user.following.count %></a>
+      </div>
+    </div>
+    <div class="two_blocks">
+      <div class="user_follow">
+        <%= link_to "フォロワー数", user_follower_path(@user) %>
+      </div>
+      <div class="user_follow">
+        <a href="<%= user_follower_path(@user) %>" id="sum_follower"><%= @user.followers.count %></a>
+      </div>
     </div>
   </div>
-  <div class="profile_text">
-    <%= @user.selfintrodution %>
-  </div>
-  <hr>
-  <div class="article_link">
-    <%= link_to "記事投稿リスト", article_path(current_user)%>
-  </div>
 </div>
-
 

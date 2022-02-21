@@ -16,6 +16,10 @@ User.create!(name: "teruo", email: "timekeeper@gmail.com",
              password: "owacchata", password_confirmation: "owacchata",
              admin: false, activated: true)
 
+User.create!(name: "hattori", email: "hattori@gmail.com",
+             password: "hattori", password_confirmation: "hattori",
+             admin: false, activated: true)
+
 # Articleクラス用
 Article.create!(title: "First Example", accuracy_text: 1, difficultylevel_text: 1,
                 articletext: "This app's first article!", Eschool_level: false,
@@ -39,3 +43,12 @@ Article.create!(title: "Example-正しさ2の例-", accuracy_text: 2, difficulty
                 articletext: "ウサイン・ボルトは100mの世界記録保持者。2002年から2017年までの現役時代は数々の記録を樹立し" +
                 "人類史上最速のスプリンターと評された。全盛期には、稲妻を意味する「aaaaa」の愛称で呼ばれた。(3文目間違い)",
                 Eschool_level: true, JHschool_level: false, Hschool_level: false, user_id: 1)
+
+# フォロー・フォロワー
+
+user = User.find(1)
+users = User.all
+following = users[1..2]
+follower = users[2]
+following.each { |followed| user.follow(followed) }
+follower.follow(user)

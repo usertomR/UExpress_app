@@ -32,6 +32,7 @@
     </li>
     <% if logged_in? %>
       <li class="header_menu_item"><%= link_to "ログアウト", logout_path, method: :delete%></li>
+      <li class="header_menu_item"><%= link_to "プロフィール", user_path(current_user)%></li>
       <li class="header_menu_item"><%= link_to "アカウント更新", edit_user_path(current_user)%></li>
       <li class="header_menu_item"><%= link_to "記事作成", new_article_path %></li>
       <li class="header_menu_item"><%= link_to "質問作成", new_question_path %></li>

@@ -15,18 +15,7 @@
   </div>
   <div class="sub_view">
     <div class="other_functions">
-      <% if @question.nil? %>
-      <% else %>
-        <% if @question.solve %>
-          <div class="solve_question">
-            解決
-          </div>
-        <% else %>
-          <div class="not_solve_question">
-            未解決
-          </div>
-        <% end %>
-      <% end %>
+      
     </div>
     <div class="user_info">
       <div class="name_and_avatar">
@@ -37,7 +26,7 @@
         <% end %>
         <div class="name">
           <div class="vertical_center">
-            <%= @article.user.name %>
+            <a href="<%= user_path(@article.user) %>"><%= @article.user.name %></a>
           </div>
         </div>
       </div>
