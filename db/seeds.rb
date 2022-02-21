@@ -45,10 +45,17 @@ Article.create!(title: "Example-正しさ2の例-", accuracy_text: 2, difficulty
                 Eschool_level: true, JHschool_level: false, Hschool_level: false, user_id: 1)
 
 # フォロー・フォロワー
-
 user = User.find(1)
 users = User.all
 following = users[1..2]
 follower = users[2]
 following.each { |followed| user.follow(followed) }
 follower.follow(user)
+
+# 記事へのnice
+articles = Article.find(1, 5)
+articles.each do |article|
+  users[1..2].each do |u|
+    u.sum_nice_per_user << article
+  end
+end
