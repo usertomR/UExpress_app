@@ -2,7 +2,6 @@ require 'rails_helper'
 require './spec/support/test_helper'
 
 RSpec.describe "<request>Relationships", type: :request do
-
   describe ":Relationships#create" do
     let(:post_request) { post relationships_path }
 
