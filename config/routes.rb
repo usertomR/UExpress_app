@@ -25,8 +25,6 @@ Rails.application.routes.draw do
   get 'articles/:id/browsing', to: 'articles#browsing', as: :browsing_article
   get 'questions/:id/browsing', to: 'questions#browsing', as: :browsing_question
 
-
-
   get '/result', to: 'searchresults#result'
   get '/searchresults/:id/personalarticle', to: 'searchresults#personalarticle', as: :searchresult_parsonal_article
   get '/searchresults/:id/personalquestion', to: 'searchresults#personalquestion', as: :searchresult_parsonal_question

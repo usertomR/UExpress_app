@@ -1,4 +1,4 @@
 <%= form_with(model: current_user.nice_to_articles.find_by(article_id: @article.id),
               html: {method: :delete }, local: false) do |f| %>
-  <%= f.submit "not_nice", class: "" %>
+  <%= f.submit "nice", class: "nice_now" %>
 <% end %>

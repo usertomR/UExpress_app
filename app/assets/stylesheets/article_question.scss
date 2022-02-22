@@ -168,6 +168,28 @@
       height: 70px;
       margin-bottom: 20px;
       @include about_border;
+      .items {
+        margin-left: 10px;
+        margin-top: 5px;
+        width: fit-content;
+        .nice_button {
+          .not_nice_now {
+            color: green;
+            background-color: white;
+            border: 2px solid green;
+            border-radius: 14px;
+          }
+          .nice_now {
+            color: white;
+            background-color: green;
+            border: 2px solid green;
+            border-radius: 14px;
+          }
+        }
+        #number_nice {
+          text-align: center;
+        }
+      }
     }
     .text {
       margin-bottom: 50px;

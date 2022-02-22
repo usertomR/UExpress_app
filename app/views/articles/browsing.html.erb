@@ -24,14 +24,16 @@
       </div>
     </div>
     <div class="other_info">
-      <div class="nice_button">
-        <% if current_user != @article.user %>
-          <% if current_user.sum_nice_per_user.include?(@article) %>
-            <%= render 'notnice' %>
-          <% else %>
-            <%= render 'nice' %>
+      <div class="items">
+        <div class="nice_button">
+          <% if current_user != @article.user %>
+            <% if current_user.sum_nice_per_user.include?(@article) %>
+              <%= render 'notnice' %>
+            <% else %>
+              <%= render 'nice' %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
         <div id="number_nice">
           <%= @article.sum_nice_per_article.count %>
         </div>
