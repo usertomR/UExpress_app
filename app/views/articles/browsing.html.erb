@@ -24,7 +24,13 @@
       </div>
     </div>
     <div class="other_info">
-    
+      <% if current_user != @article.user %>
+        <% if current_user.sum_nice_per_user.include?(@article) %>
+          <%= render 'good' %>
+        <% else %>
+          <%= render 'notgood' %>
+        <% end %>
+      <% end %>
     </div>
     <div class="text">
       <%= @article.articletext %>
