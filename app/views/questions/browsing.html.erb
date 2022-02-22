@@ -6,15 +6,24 @@
       <%= @question.title %>
     </div>
     <hr>
-    <div class="text">
-      <%= @question.questiontext %>
+    <div class="user_info">
+      <div class="info_content">
+        <div>
+          <% if @question.user.avatar? %>
+            <div class="avatar_img">
+              <%= image_tag @question.user.avatar.thumb_min.url , class: "avatar" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="name">
+          <a href="<%= user_path(@question.user) %>"><%= @question.user.name %></a>
+        </div>
+      </div>
+      <div class="selfintrodution">
+        <%= @question.user.selfintrodution %>
+      </div>
     </div>
-    <div class="comment">
-      コメントーアカウント保持者限定ー
-    </div>
-  </div>
-  <div class="sub_view">
-    <div class="other_functions">
+    <div class="other_info">
       <% if @question.nil? %>
       <% else %>
         <% if @question.solve %>
@@ -27,24 +36,13 @@
           </div>
         <% end %>
       <% end %>
+      niceなど
     </div>
-    <div class="user_info">
-      <div class="name_and_avatar">
-        <% if @question.user.avatar? %>
-          <div class="avatar_img">
-            <%= image_tag @question.user.avatar.thumb_min.url , class: "avatar" %>
-          </div>
-        <% end %>
-        <div class="name">
-          <div class="vertical_center">
-            <a href="<%= user_path(@question.user) %>"><%= @question.user.name %></a>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="selfintrodution">
-        <%= @question.user.selfintrodution %>
-      </div>
+    <div class="text">
+      <%= @question.questiontext %>
+    </div>
+    <div class="comment">
+      コメントーアカウント保持者限定ー
     </div>
   </div>
 </div>
