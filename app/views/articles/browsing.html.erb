@@ -32,7 +32,11 @@
             <% else %>
               <%= render 'nice' %>
             <% end %>
-          <% end %>
+          <% else %>
+            <div class="author">
+              nice計
+            </div>
+          <% end%>
         </div>
         <div id="number_nice">
           <%= @article.sum_nice_per_article.count %>
