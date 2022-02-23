@@ -28,7 +28,7 @@ RSpec.describe "<request>Relationships", type: :request do
       it "because you do not login" do
         aggregate_failures do
           delete relationship_path(@relationship)
-          expect {response}.to change(Relationship, :count).by(0)
+          expect(response).to change(Relationship, :count).by(0)
         end
       end
 
