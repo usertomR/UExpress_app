@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :article do
-    title { "MyString" }
+    title { "Mystring" }
     accuracy_text { 1 }
     difficultylevel_text { 1 }
     articletext { "MyText" }
