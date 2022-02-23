@@ -23,26 +23,26 @@ User.create!(name: "hattori", email: "hattori@gmail.com",
 # Articleクラス用
 Article.create!(title: "First Example", accuracy_text: 1, difficultylevel_text: 1,
                 articletext: "This app's first article!", Eschool_level: false,
-                JHschool_level: true, Hschool_level: false, user_id: 1)
+                JHschool_level: true, Hschool_level: false, user_id: User.first.id)
 
 Article.create!(title: "Example-正しさの説明-", accuracy_text: 4, difficultylevel_text: 3,
                 articletext: "文章の正確さを5段階で評価する。確実に正しいことしか記事に書かれていなければ" +
                 "5で、正しいか分からない部分やわかりやすいけれど間違っている部分が多ければ評価が下がる。",
-                Eschool_level: false, JHschool_level: true, Hschool_level: true, user_id: 1)
+                Eschool_level: false, JHschool_level: true, Hschool_level: true, user_id: User.first.id)
 
 Article.create!(title: "Example-文章難易度の説明-", accuracy_text: 3, difficultylevel_text: 3,
                 articletext: "文章難易度を5段階で評価する。多くの人が流し読みで完全に理解できる文章なら1にして、" +
                 "構造が複雑な文が多い文章や、内容を理解し辛い文章なら5にする。",
-                Eschool_level: false, JHschool_level: true, Hschool_level: true, user_id: 1)
+                Eschool_level: false, JHschool_level: true, Hschool_level: true, user_id: User.first.id)
 
 Article.create!(title: "Example-正しさ1の例-", accuracy_text: 1, difficultylevel_text: 1,
                 articletext: "UExpress(本アプリ)の製作者は人間ではない。",
-                Eschool_level: true, JHschool_level: false, Hschool_level: false, user_id: 1)
+                Eschool_level: true, JHschool_level: false, Hschool_level: false, user_id: User.first.id)
 
 Article.create!(title: "Example-正しさ2の例-", accuracy_text: 2, difficultylevel_text: 2,
                 articletext: "ウサイン・ボルトは100mの世界記録保持者。2002年から2017年までの現役時代は数々の記録を樹立し" +
                 "人類史上最速のスプリンターと評された。全盛期には、稲妻を意味する「aaaaa」の愛称で呼ばれた。(3文目間違い)",
-                Eschool_level: true, JHschool_level: false, Hschool_level: false, user_id: 1)
+                Eschool_level: true, JHschool_level: false, Hschool_level: false, user_id: User.first.id)
 
 # フォロー・フォロワー
 user = User.find(1)
