@@ -107,13 +107,17 @@
 }
 
 // article,questionモデルのbrowsing action
+@mixin about_border {
+  border: 1px solid;
+  border-radius: 10px;
+}
+
 .browse_question_article_flex {
   width: 100vw;
-  display: flex;
   .main_view {
-    margin-left: 3vw;
-    margin-right: 3vw;
-    width:  70vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    width:  90vw;
     .title {
       margin-bottom: 10px;
       font-size: 3rem;
@@ -128,52 +132,77 @@
       background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%,
                 rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0.3) 100%);
     }
+    .user_info {
+      margin-bottom: 20px;
+      @include about_border;
+      height: calc(55px + 10px + 3rem);
+      display: flex;
+	    flex-direction: column;
+      .info_content {
+        display: flex;
+        height: 55px;
+        .avatar_img {
+          width: 55px;
+          margin-right: 10px;
+        }
+        .name {
+          overflow: hidden;
+          a {
+            line-height: 55px;
+            font-size: 1.4rem;
+            color: black;
+          }
+          a:hover {
+            color: blue;
+          }
+        }
+      }
+      .selfintrodution {
+        margin-top: 10px;
+        height: 3rem;
+        overflow: hidden;
+        overflow-wrap: break-word;
+      }
+    }
+    .other_info {
+      height: 70px;
+      margin-bottom: 20px;
+      @include about_border;
+      .items {
+        margin-left: 10px;
+        margin-top: 5px;
+        width: fit-content;
+        .nice_button {
+          .not_nice_now {
+            color: green;
+            background-color: white;
+            border: 2px solid green;
+            border-radius: 14px;
+          }
+          .nice_now {
+            color: white;
+            background-color: green;
+            border: 2px solid green;
+            border-radius: 14px;
+          }
+          .author {
+            color: green;
+          }
+        }
+        #number_nice {
+          text-align: center;
+        }
+      }
+    }
     .text {
       margin-bottom: 50px;
       border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
     }
     .comment {
       height: 100px;
       background-color: gray;
-    }
-  }
-  .sub_view {
-    margin-right: 4vw;
-    width: 20vw;
-    .other_functions {
-      height: 100px;
-      margin-bottom: 50px;
-      background-color: gray;
-      border: 1px solid rgba(0, 0, 0, 0.3);
-    }
-    .user_info {
-      border: 1px solid rgba(0, 0, 0, 0.3);
-      .name_and_avatar {
-        display: flex;
-        margin-bottom: 30px;
-        overflow-x: auto;
-        .avatar {
-          margin-right: 15px;
-        }
-        .name {
-          .vertical_center {
-            height: 2rem;
-            margin-top: 10px;
-            font-size: 1.5rem;
-          }
-        }
-        hr {
-          border: none;
-          height: 2px;
-          width: 100%;
-          margin-bottom: 30px;
-          background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%,
-                    rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0.3) 100%);
-        }
-      }
-      .selfintrodution {
-        overflow-y: auto;
-      }
+      @include about_border;
     }
   }
 }

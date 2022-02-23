@@ -17,28 +17,31 @@ RSpec.describe "<request>Relationships", type: :request do
   end
 
   describe ":Relationships#destroy" do
-    let(:user) { FactoryBot.create(:user) }
-    let(:other_user) { FactoryBot.create(:user) }
-    let(:delete_request) { delete relationship_path(other_user) }
-
-    before { user.following << other_user }
+    before do
+      @user = FactoryBot.create(:user, :activated)
+      @another = FactoryBot.create(:user, :activated)
+      @user.following << @another
+      @relationship = Relationship.where("followed_id = ?", @another.id)[0]
+    end
 
     context "doesn't change Relationship's count" do
       it "because you do not login" do
         aggregate_failures do
-          expect { delete_request }.to change(Relationship, :count).by(0)
+          delete relationship_path(@relationship)
+          expect { delete relationship_path(@relationship) }.to change(Relationship, :count).by(0)
         end
       end
 
       it "so, redirects to login_url" do
-        expect(delete_request).to redirect_to login_url
+        delete relationship_path(@relationship)
+        expect(response).to redirect_to login_url
       end
     end
 
     context "change Relationship's count" do
       it "because you login" do
-        log_in_as(user)
-        expect { delete_request }.to change(Relationship, :count).by(0)
+        log_in_as(@user)
+        expect { delete relationship_path(@relationship) }.to change(Relationship, :count).by(-1)
       end
     end
   end

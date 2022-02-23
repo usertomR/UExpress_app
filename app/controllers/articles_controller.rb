@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  # before_actionにbrowsingがあるのは、ログイン(テストログイン含む)しないでアクセスすると例外が発生するから。
+  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy, :browsing]
   before_action :correct_user, only: [:destroy, :edit, :update]
 
   def new

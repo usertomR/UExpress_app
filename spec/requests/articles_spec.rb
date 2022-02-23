@@ -108,11 +108,11 @@ RSpec.describe "<request>Articles", type: :request do
         articletext: "text"
       } }
     end
-    it "anyone can browse all articles(not activated)" do
+    it "anyone who do not login can't browse all articles" do
       delete logout_path
       @anyone = FactoryBot.create(:user)
       get browsing_article_path(@user.articles[0].id)
-      expect(response).to have_http_status(200)
+      expect(response).to redirect_to '/login'
     end
   end
 

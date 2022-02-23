@@ -17,6 +17,12 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  # 記事のnice数を記録するために記入
+  has_many :nice_to_articles, class_name: "NiceToArticle",
+                                dependent: :destroy,
+                                inverse_of: :user
+  has_many :sum_nice_per_user, through: :nice_to_articles, source: :article
+
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email

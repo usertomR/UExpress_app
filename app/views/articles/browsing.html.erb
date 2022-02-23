@@ -6,34 +6,48 @@
       <%= @article.title %>
     </div>
     <hr>
+    <div class="user_info">
+      <div class="info_content">
+        <div>
+          <% if @article.user.avatar? %>
+            <div class="avatar_img">
+              <%= image_tag @article.user.avatar.thumb_min.url , class: "avatar" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="name">
+          <a href="<%= user_path(@article.user) %>"><%= @article.user.name %></a>
+        </div>
+      </div>
+      <div class="selfintrodution">
+        <%= @article.user.selfintrodution %>
+      </div>
+    </div>
+    <div class="other_info">
+      <div class="items">
+        <div class="nice_button">
+          <% if current_user != @article.user %>
+            <% if current_user.sum_nice_per_user.include?(@article) %>
+              <%= render 'notnice' %>
+            <% else %>
+              <%= render 'nice' %>
+            <% end %>
+          <% else %>
+            <div class="author">
+              nice計
+            </div>
+          <% end%>
+        </div>
+        <div id="number_nice">
+          <%= @article.sum_nice_per_article.count %>
+        </div>
+      </div>
+    </div>
     <div class="text">
       <%= @article.articletext %>
     </div>
     <div class="comment">
       コメントーアカウント保持者限定ー
-    </div>
-  </div>
-  <div class="sub_view">
-    <div class="other_functions">
-      
-    </div>
-    <div class="user_info">
-      <div class="name_and_avatar">
-        <% if @article.user.avatar? %>
-          <div class="avatar_img">
-            <%= image_tag @article.user.avatar.thumb_min.url , class: "avatar" %>
-          </div>
-        <% end %>
-        <div class="name">
-          <div class="vertical_center">
-            <a href="<%= user_path(@article.user) %>"><%= @article.user.name %></a>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="selfintrodution">
-        <%= @article.user.selfintrodution %>
-      </div>
     </div>
   </div>
 </div>

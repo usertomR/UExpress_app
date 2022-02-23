@@ -1,0 +1,2 @@
+$(".nice_button").html("<%= escape_javascript(render('articles/notnice')) %>");
+$("#number_nice").html('<%= @article.sum_nice_per_article.count %>');
