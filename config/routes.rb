@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :questions, except: :index
   resources :relationships, only: [:create, :destroy]
   resources :nice_to_articles, only: [:create, :destroy]
+  resources :article_bookmarks, only: [:create, :destroy]
   # articleモデルのルーティング「1つ」追加。記事1つの詳細(記事本体など)を表示する
   # 本当に必要なルーティングのみを生成することで、メモリ使用量の節約とルーティングプロセスの速度向上が見込めます。[railsガイド抜粋]
   # URL: https://railsguides.jp/routing.html?version=6.0#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%83%95%E3%83%AB%E3%81%A7%E3%81%AA%E3%81%84%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   get 'questions/:id/browsing', to: 'questions#browsing', as: :browsing_question
 
   get 'user/:id/nice', to: 'users#nice', as: :user_nice
+  get 'user/:id/bookmark', to: 'users#bookmark', as: :user_bookmark
 
   get '/result', to: 'searchresults#result'
   get '/searchresults/:id/personalarticle', to: 'searchresults#personalarticle', as: :searchresult_parsonal_article

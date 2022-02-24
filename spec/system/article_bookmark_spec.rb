@@ -1,7 +1,7 @@
 require 'rails_helper'
 require './spec/support/test_helper'
 
-RSpec.describe "<system>nice_to_article", type: :system do
+RSpec.describe "<system>ArticleBookmark", type: :system do
   before do
     driven_by(:selenium_chrome_headless)
 
@@ -15,25 +15,25 @@ RSpec.describe "<system>nice_to_article", type: :system do
       JHschool_level: true, Hschool_level: false)
   end
 
-  describe ":nice_to_articles/create_action" do
+  describe ":article_bookmarks/create_action" do
     context "if @user login" do
       context "and @user are article's author," do
-        it "@user can't push nice button to the article" do
+        it "@user can't push bookmark button to the article" do
           login_as(@user)
           visit browsing_article_path(@user_article)
-          expect(page).to have_text 'nice計'
+          expect(page).to have_text 'bookmark計'
         end
       end
 
       context "and @user are not article's author," do
-        it "@user can push nice button to the article" do
+        it "@user can push bookmark button to the article" do
           login_as(@user)
           visit browsing_article_path(@another_article)
-          within(".nice_button") do
-            click_on 'nice'
+          within(".bookmark_button") do
+            click_on 'bookmark'
           end
           sleep 0.4
-          expect(@user.sum_nice_per_user[0]).to eq @another_article
+          expect(@user.sum_bookmark_per_user[0]).to eq @another_article
         end
       end
     end
@@ -46,7 +46,7 @@ RSpec.describe "<system>nice_to_article", type: :system do
     end
   end
 
-  describe ":nice_to_articles/destroy_action" do
+  describe ":article_bookmarks/destroy_action" do
     context "if @user do not login" do
       it "@user visits login page" do
         visit browsing_article_path(@another_article)
@@ -57,43 +57,43 @@ RSpec.describe "<system>nice_to_article", type: :system do
     context "if @user login" do
       context "and @user are article's author," do
         context "and  visits /articles/:id/browsing" do
-          it "@user can't push nice button to the article" do
+          it "@user can't push bookmark button to the article" do
             login_as(@user)
             visit browsing_article_path(@user_article)
-            expect(page).to have_text 'nice計'
+            expect(page).to have_text 'bookmark計'
           end
         end
 
-        context "and visits /user/:id/nice" do
-          it "@user can push 「nice取り消し」 button to the article" do
+        context "and visits /user/:id/bookmark" do
+          it "@user can push 「ブックマーク取り消し」 button to the article" do
             login_as(@user)
-            @user.nice_to_articles.create(article_id: @user_article.id)
-            visit user_nice_path(@user)
-            expect(page).to have_button 'nice取り消し'
+            @user.article_bookmarks.create(article_id: @user_article.id)
+            visit user_bookmark_path(@user)
+            expect(page).to have_button 'ブックマーク取り消し'
           end
         end
       end
 
       context "and @user are not article's author," do
         context "and  visits /articles/:id/browsing" do
-          it "@user can push nice button to the article" do
+          it "@user can push bookmark button to the article" do
             login_as(@user)
-            @user.nice_to_articles.create(article_id: @another_article.id)
+            @user.article_bookmarks.create(article_id: @another_article.id)
             visit browsing_article_path(@another_article)
-            within(".nice_button") do
-              click_on 'nice'
+            within(".bookmark_button") do
+              click_on 'bookmark'
             end
             sleep 0.3
-            expect(@user.sum_nice_per_user.count).to eq 0
+            expect(@user.sum_bookmark_per_user.count).to eq 0
           end
         end
 
-        context "and visits /user/:id/nice" do
-          it "@user can push 「nice取り消し」 button to the article" do
+        context "and visits /user/:id/bookmark" do
+          it "@user can push 「ブックマーク取り消し」 button to the article" do
             login_as(@user)
-            @user.nice_to_articles.create(article_id: @another_article.id)
-            visit user_nice_path(@user)
-            expect(page).to have_button 'nice取り消し'
+            @user.article_bookmarks.create(article_id: @another_article.id)
+            visit user_bookmark_path(@user)
+            expect(page).to have_button 'ブックマーク取り消し'
           end
         end
       end

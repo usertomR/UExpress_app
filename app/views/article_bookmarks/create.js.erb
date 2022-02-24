@@ -1,0 +1,2 @@
+$(".bookmark_button").html("<%= escape_javascript(render('articles/notbookmark')) %>");
+$("#number_bookmark").html('<%= @article.sum_bookmark_per_article.count %>');

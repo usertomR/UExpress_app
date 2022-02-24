@@ -21,6 +21,14 @@
           <div>中学生向け:<%= ApplicationRecord.inspect_level(nice.JHschool_level) %>&ensp;/&ensp;</div>
           <div>高校生向け:<%= ApplicationRecord.inspect_level(nice.Hschool_level) %></div>
         </div>
+        <div class="separation"></div>
+        <div>
+          <%= form_with(model: current_user.nice_to_articles.find_by(article_id: nice.id),
+            html: {method: :delete }, local: true) do |f| %>
+            <div><%= hidden_field_tag :not_ajax, true %></div>
+            <%= f.submit "nice取り消し", class: "" %>
+          <% end %>
+        </div>
       </div>
     <% end %>
     <%== pagy_bootstrap_nav(@pagy) %>
