@@ -23,6 +23,12 @@ class User < ApplicationRecord
                                 inverse_of: :user
   has_many :sum_nice_per_user, through: :nice_to_articles, source: :article
 
+  # 記事のブックマーク機能
+  has_many :article_bookmarks, class_name: "ArticleBookmark",
+                                dependent: :destroy,
+                                inverse_of: :user
+  has_many :sum_bookmark_per_user, through: :article_bookmarks, source: :article
+
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email

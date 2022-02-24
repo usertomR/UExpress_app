@@ -112,6 +112,13 @@
   border-radius: 10px;
 }
 
+@mixin button_design($text_color,$background_color,$border_color) {
+  color: $text_color;
+  background-color: $background_color;
+  border: 2px solid $border_color;
+  border-radius: 14px;
+}
+
 .browse_question_article_flex {
   width: 100vw;
   .main_view {
@@ -167,6 +174,7 @@
     .other_info {
       height: 70px;
       margin-bottom: 20px;
+      display: flex;
       @include about_border;
       .items {
         margin-left: 10px;
@@ -174,22 +182,30 @@
         width: fit-content;
         .nice_button {
           .not_nice_now {
-            color: green;
-            background-color: white;
-            border: 2px solid green;
-            border-radius: 14px;
+            @include button_design(green,white,green)
           }
           .nice_now {
-            color: white;
-            background-color: green;
-            border: 2px solid green;
-            border-radius: 14px;
+            @include button_design(white, green, green)
           }
           .author {
             color: green;
           }
         }
         #number_nice {
+          text-align: center;
+        }
+        .bookmark_button {
+          .not_bookmark_now {
+            @include button_design(rgb(91, 29, 238), white, rgb(91, 29, 238))
+          }
+          .bookmark_now {
+            @include button_design(white, rgb(91, 29, 238), rgb(91, 29, 238))
+          }
+          .author {
+            color: rgb(91, 29, 238);
+          }
+        }
+        #number_bookmark {
           text-align: center;
         }
       }

@@ -7,6 +7,12 @@ class Article < ApplicationRecord
                                 inverse_of: :article
   has_many :sum_nice_per_article, through: :nice_to_articles, source: :user
 
+  # 記事のブックマーク機能
+  has_many :article_bookmarks, class_name: "ArticleBookmark",
+                                dependent: :destroy,
+                                inverse_of: :article
+  has_many :sum_bookmark_per_article, through: :article_bookmarks, source: :user
+
   # 「個人の」記事について、更新経過時間の短い記事を上に表示する。
   default_scope -> { order(updated_at: :desc) }
   validates :user_id, presence: true
