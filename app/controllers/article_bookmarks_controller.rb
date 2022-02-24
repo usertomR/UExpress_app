@@ -13,9 +13,13 @@ class ArticleBookmarksController < ApplicationController
   def destroy
     @article = ArticleBookmark.find(params[:id]).article
     current_user.article_bookmarks.find_by(article_id: @article.id).destroy
-    respond_to do |format|
-      format.html { redirect_to browsing_article_path(@article) }
-      format.js
+    if (params[:not_ajax] == "true")
+      redirect_to user_bookmark_path(current_user)
+    else
+      respond_to do |format|
+        format.html { redirect_to browsing_article_path(@article) }
+        format.js
+      end
     end
   end
 end
