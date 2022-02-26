@@ -222,6 +222,20 @@
         #number_curious {
           text-align: center;
         }
+        .questionbookmark_button {
+          .author {
+            color: rgb(214, 29, 238);
+          }
+          .bookmark_now {
+            @include button_design(white, rgb(214, 29, 238), rgb(214, 29, 238))
+          }
+          .not_bookmark_now {
+            @include button_design(rgb(214, 29, 238), white, rgb(214, 29, 238))
+          }
+        }
+        #number_questionbookmark {
+          text-align: center;
+        }
       }
     }
     .text {

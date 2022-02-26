@@ -2,10 +2,10 @@
 <h1>お気に入りの記事</h1>
 
 <div class="sum_question_article">
-  <div>Bookmark article count / <%= @user.sum_bookmark_per_user.count %></div>
+  <div>Bookmark article count / <%= @user.sum_articlebookmark_per_user.count %></div>
 </div>
 <div class="personal_question_article_list">
-  <% if @user.sum_bookmark_per_user.any? %>
+  <% if @user.sum_articlebookmark_per_user.any? %>
     <% @bookmarks.each do |bookmark| %>
       <div class="an_item interspace_items">
         <div>

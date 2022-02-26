@@ -1,0 +1,2 @@
+$(".questionbookmark_button").html("<%= escape_javascript(render('questions/notbookmark')) %>");
+$("#number_questionbookmark").html('<%= @question.sum_questionbookmark_per_question.count %>');

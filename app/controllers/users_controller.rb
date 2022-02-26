@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :nice, :bookmark, :curious]
+  before_action :correct_user, only: [:edit, :update, :nice, :bookmark, :curious, :questionbookmark]
   before_action :admin_user, only: [:destroy, :index]
 
   def index
@@ -64,7 +64,11 @@ class UsersController < ApplicationController
   end
 
   def bookmark
-    @pagy, @bookmarks = pagy(@user.sum_bookmark_per_user)
+    @pagy, @bookmarks = pagy(@user.sum_articlebookmark_per_user)
+  end
+
+  def questionbookmark
+    @pagy, @questionbookmarks = pagy(@user.sum_questionbookmark_per_user)
   end
 
   def curious

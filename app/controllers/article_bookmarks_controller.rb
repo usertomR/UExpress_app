@@ -3,7 +3,7 @@ class ArticleBookmarksController < ApplicationController
 
   def create
     @article = Article.find(params[:article_id])
-    current_user.sum_bookmark_per_user << @article
+    current_user.sum_articlebookmark_per_user << @article
     respond_to do |format|
       format.html { redirect_to browsing_article_path(@article) }
       format.js

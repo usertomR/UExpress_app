@@ -53,6 +53,18 @@
           <%= @question.sum_curious_per_question.count %>
         </div>
       </div>
+      <div class="items">
+        <div class="questionbookmark_button">
+          <%if current_user.sum_questionbookmark_per_user.include?(@question) %>
+            <%= render 'notbookmark' %>
+          <% else %>
+            <%= render 'bookmark' %>
+          <% end %>
+        </div>
+        <div id="number_questionbookmark">
+          <%= @question.sum_questionbookmark_per_question.count %>
+        </div>
+      </div>
     </div>
     <div class="text">
       <%= @question.questiontext %>
