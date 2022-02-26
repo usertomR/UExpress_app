@@ -1,12 +1,11 @@
 class Article < ApplicationRecord
+  # アソシエーション
   belongs_to :user
-
   # 記事のnice数を記録するために記入
   has_many :nice_to_articles, class_name: "NiceToArticle",
                                 dependent: :destroy,
                                 inverse_of: :article
   has_many :sum_nice_per_article, through: :nice_to_articles, source: :user
-
   # 記事のブックマーク機能
   has_many :article_bookmarks, class_name: "ArticleBookmark",
                                 dependent: :destroy,

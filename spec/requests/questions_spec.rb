@@ -106,8 +106,7 @@ RSpec.describe "<request>Questions", type: :request do
         questiontext: "text"
       } }
     end
-    it "anyone can browse all questions(not activated)" do
-      delete logout_path
+    it "anyone who login(include test login) can browse all questions" do
       @anyone = FactoryBot.create(:user)
       get browsing_question_path(@user.questions[0].id)
       expect(response).to have_http_status(200)

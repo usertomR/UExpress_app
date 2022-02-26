@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
+
+  # association
   has_many :articles, dependent: :destroy
   has_many :questions, dependent: :destroy
-
   # ややこしいが、SNS・railsコード側では、follower:自分をフォローする人/follow:自分がフォローする人
   # 一方、DB側では、follower:誰かにフォローする人/followed:誰かからフォローされる人
   # DB側では、自分がフォローする場合、自分はfollower
@@ -28,6 +29,12 @@ class User < ApplicationRecord
                                 dependent: :destroy,
                                 inverse_of: :user
   has_many :sum_bookmark_per_user, through: :article_bookmarks, source: :article
+
+  # 記事の「気になるボタン」に関するの実装
+  has_many :curious_questions, class_name: "CuriousQuestion",
+                                dependent: :destroy,
+                                inverse_of: :user
+  has_many :sum_curious_per_user, through: :curious_questions, source: :question
 
   attr_accessor :remember_token, :activation_token, :reset_token
 

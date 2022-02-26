@@ -208,6 +208,20 @@
         #number_bookmark {
           text-align: center;
         }
+        .curious_button {
+          .not_curious_now {
+            @include button_design(brown, white, brown)
+          }
+          .curious_now {
+            @include button_design(white, brown, brown)
+          }
+          .already_solved {
+            color: brown;
+          }
+        }
+        #number_curious {
+          text-align: center;
+        }
       }
     }
     .text {

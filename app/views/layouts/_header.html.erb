@@ -38,13 +38,13 @@
       <li class="header_menu_item"><%= link_to "質問作成", new_question_path %></li>
       <li class="header_menu_item"><%= link_to "通知設定", '#'%></li>  
       <li class="header_menu_item"><%= link_to "記事niceリスト", user_nice_path(current_user) %></li>
-      <li class="header_menu_item"><a href="#"><%= link_to "記事ブックマーク", user_bookmark_path(current_user) %></a></li>
-      <li class="header_menu_item"><a href="#">気になる質問リスト</a></li>
+      <li class="header_menu_item"><%= link_to "記事ブックマーク", user_bookmark_path(current_user) %></li>
+      <li class="header_menu_item"><%= link_to "気になる質問リスト", user_curious_path(current_user) %></li>
       <li class="header_menu_item"><%= link_to "記事投稿リスト", article_path(current_user) %></li>
       <li class="header_menu_item"><%= link_to "質問投稿リスト", question_path(current_user) %></li>       
     <% end %>
     <% if current_user && current_user.admin? %>
-        <li class="header_menu_item"><%= link_to "ユーザー削除", users_path%></li>
+      <li class="header_menu_item"><%= link_to "ユーザー削除", users_path%></li>
     <% end %>
   </div>
 </div>

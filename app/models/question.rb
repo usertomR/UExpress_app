@@ -1,7 +1,15 @@
 class Question < ApplicationRecord
-  belongs_to :user
   # 「個人の」質問について、更新経過時間の短い記事を上に表示する。
   default_scope -> { order(updated_at: :desc) }
+
+  # association
+  belongs_to :user
+
+  # 「気になるボタン」関連の実装
+  has_many :curious_questions, class_name: "CuriousQuestion",
+                                dependent: :destroy,
+                                inverse_of: :question
+  has_many :sum_curious_per_question, through: :curious_questions, source: :user
 
   # バリデーション
   validates(:title, presence: true, length: { maximum: 100 },

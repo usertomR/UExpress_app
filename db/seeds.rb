@@ -44,6 +44,18 @@ Article.create!(title: "Example-正しさ2の例-", accuracy_text: 2, difficulty
                 "人類史上最速のスプリンターと評された。全盛期には、稲妻を意味する「aaaaa」の愛称で呼ばれた。(3文目間違い)",
                 Eschool_level: true, JHschool_level: false, Hschool_level: false, user_id: User.first.id)
 
+Question.create!(title: "2次方程式について", accuracy_text: 2, difficultylevel_text: 2,
+                 questiontext: "2次方程式って何？おいしいの？", Eschool_level: true, JHschool_level: false,
+                 Hschool_level: false, solve: false, user_id: User.second.id)
+
+Question.create!(title: "古文について", accuracy_text: 2, difficultylevel_text: 2,
+                 questiontext: "古文の試験受けまぁす。・・・<ピピピピ>オワッチャッタァ!", Eschool_level: true, JHschool_level: false,
+                 Hschool_level: false, solve: false, user_id: User.second.id)
+
+Question.create!(title: "背理法がわからない", accuracy_text: 5, difficultylevel_text: 5,
+                 questiontext: "青○ャートの115ページの背理法の証明のこの部分がわかんないっす。教えて下さい", Eschool_level: true, JHschool_level: false,
+                 Hschool_level: false, solve: false, user_id: User.second.id)
+
 # フォロー・フォロワー
 user = User.find(1)
 users = User.all

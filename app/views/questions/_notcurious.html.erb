@@ -1,0 +1,4 @@
+<%= form_with(model: current_user.curious_questions.find_by(question_id: @question.id),
+              html: {method: :delete }, local: false) do |f| %>
+  <%= f.submit "気になる", class: "curious_now" %>
+<% end %>
