@@ -55,16 +55,10 @@
       </div>
       <div class="items">
         <div class="questionbookmark_button">
-          <% if @question.user != current_user %>
-            <div class="author">
-              ブックマーク計
-            </div>
+          <%if current_user.sum_questionbookmark_per_user.include?(@question) %>
+            <%= render 'notbookmark' %>
           <% else %>
-            <%if current_user.sum_questionbookmark_per_user.include?(@question) %>
-              <%= render 'notbookmark' %>
-            <% else %>
-              <%= render 'bookmark' %>
-            <% end%>
+            <%= render 'bookmark' %>
           <% end %>
         </div>
         <div id="number_questionbookmark">
