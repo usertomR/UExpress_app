@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   get 'user/:id/nice', to: 'users#nice', as: :user_nice
   get 'user/:id/bookmark', to: 'users#bookmark', as: :user_bookmark
+  get 'user/:id/curious', to: 'users#curious', as: :user_curious
 
   get '/result', to: 'searchresults#result'
   get '/searchresults/:id/personalarticle', to: 'searchresults#personalarticle', as: :searchresult_parsonal_article
