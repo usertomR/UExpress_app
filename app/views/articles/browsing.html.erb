@@ -45,7 +45,7 @@
       <div class="items">
         <div class="bookmark_button">
           <% if current_user != @article.user %>
-            <% if current_user.sum_bookmark_per_user.include?(@article) %>
+            <% if current_user.sum_articlebookmark_per_user.include?(@article) %>
               <%= render 'notbookmark' %>
             <% else %>
               <%= render 'bookmark' %>

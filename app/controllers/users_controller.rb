@@ -64,7 +64,7 @@ class UsersController < ApplicationController
   end
 
   def bookmark
-    @pagy, @bookmarks = pagy(@user.sum_bookmark_per_user)
+    @pagy, @bookmarks = pagy(@user.sum_articlebookmark_per_user)
   end
 
   def curious

@@ -33,7 +33,7 @@ RSpec.describe "<system>ArticleBookmark", type: :system do
             click_on 'bookmark'
           end
           sleep 0.4
-          expect(@user.sum_bookmark_per_user[0]).to eq @another_article
+          expect(@user.sum_articlebookmark_per_user[0]).to eq @another_article
         end
       end
     end
@@ -84,7 +84,7 @@ RSpec.describe "<system>ArticleBookmark", type: :system do
               click_on 'bookmark'
             end
             sleep 0.3
-            expect(@user.sum_bookmark_per_user.count).to eq 0
+            expect(@user.sum_articlebookmark_per_user.count).to eq 0
           end
         end
 

@@ -28,13 +28,19 @@ class User < ApplicationRecord
   has_many :article_bookmarks, class_name: "ArticleBookmark",
                                 dependent: :destroy,
                                 inverse_of: :user
-  has_many :sum_bookmark_per_user, through: :article_bookmarks, source: :article
+  has_many :sum_articlebookmark_per_user, through: :article_bookmarks, source: :article
 
-  # 記事の「気になるボタン」に関するの実装
+  # 質問の「気になるボタン」に関するの実装
   has_many :curious_questions, class_name: "CuriousQuestion",
                                 dependent: :destroy,
                                 inverse_of: :user
   has_many :sum_curious_per_user, through: :curious_questions, source: :question
+
+  # 質問のブックマークに関する実装
+  has_many :question_bookmarks, class_name: "QuestionBookmark",
+                                dependent: :destroy,
+                                inverse_of: :user
+  has_many :sum_questionbookmark_per_user, through: :question_bookmarks, source: :question
 
   attr_accessor :remember_token, :activation_token, :reset_token
 

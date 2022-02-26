@@ -11,6 +11,12 @@ class Question < ApplicationRecord
                                 inverse_of: :question
   has_many :sum_curious_per_question, through: :curious_questions, source: :user
 
+  # 質問のブックマークに関する実装
+  has_many :question_bookmarks, class_name: "QuestionBookmark",
+                                dependent: :destroy,
+                                inverse_of: :question
+  has_many :sum_questionbookmark_per_question, through: :question_bookmarks, source: :user
+
   # バリデーション
   validates(:title, presence: true, length: { maximum: 100 },
     uniqueness: { case_sensitive: false })
