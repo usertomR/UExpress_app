@@ -31,7 +31,7 @@ class User < ApplicationRecord
   has_many :sum_bookmark_per_user, through: :article_bookmarks, source: :article
 
   # 記事の「気になるボタン」に関するの実装
-  has_many :curious_questions, classname: "CuriousQuestion",
+  has_many :curious_questions, class_name: "CuriousQuestion",
                                 dependent: :destroy,
                                 inverse_of: :user
   has_many :sum_curious_per_user, through: :curious_questions, source: :question

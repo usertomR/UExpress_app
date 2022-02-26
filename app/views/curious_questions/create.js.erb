@@ -1,0 +1,2 @@
+$(".curious_button").html("<%= escape_javascript(render('questions/notcurious')) %>");
+$("#number_curious").html('<%= @question.sum_curious_per_question.count %>');

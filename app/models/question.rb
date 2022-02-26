@@ -6,7 +6,7 @@ class Question < ApplicationRecord
   belongs_to :user
 
   # 「気になるボタン」関連の実装
-  has_many :curious_questions, classname: "CuriousQuestion",
+  has_many :curious_questions, class_name: "CuriousQuestion",
                                 dependent: :destroy,
                                 inverse_of: :question
   has_many :sum_curious_per_question, through: :curious_questions, source: :user

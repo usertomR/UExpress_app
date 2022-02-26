@@ -24,8 +24,7 @@
       </div>
     </div>
     <div class="other_info">
-      <% if @question.nil? %>
-      <% else %>
+      <div class="items">
         <% if @question.solve %>
           <div class="solve_question">
             解決
@@ -35,8 +34,25 @@
             未解決
           </div>
         <% end %>
-      <% end %>
-      niceなど
+      </div>
+      <div class="items">
+        <div class="curious_button">
+          <% if @question.solve %>
+            <div class="already_solved">
+              気になる計
+            </div>
+          <% else %>
+            <%if current_user.sum_curious_per_user.include?(@question) %>
+              <%= render 'notcurious' %>
+            <% else %>
+              <%= render 'curious' %>
+            <% end%>
+          <% end %>
+        </div>
+        <div id="number_curious">
+          <%= @question.sum_curious_per_question.count %>
+        </div>
+      </div>
     </div>
     <div class="text">
       <%= @question.questiontext %>

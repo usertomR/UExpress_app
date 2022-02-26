@@ -55,6 +55,7 @@ Question.create!(title: "古文について", accuracy_text: 2, difficultylevel_
 Question.create!(title: "背理法がわからない", accuracy_text: 5, difficultylevel_text: 5,
                  questiontext: "青○ャートの115ページの背理法の証明のこの部分がわかんないっす。教えて下さい", Eschool_level: true, JHschool_level: false,
                  Hschool_level: false, solve: false, user_id: User.second.id)
+
 # フォロー・フォロワー
 user = User.find(1)
 users = User.all
