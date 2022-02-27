@@ -64,8 +64,27 @@
     <div class="text">
       <%= @article.articletext %>
     </div>
-    <div class="comment">
-      コメントーアカウント保持者限定ー
+    <div class="comment_section">
+      <div class="mark_for_user">
+        コメント
+      </div>
+      <% @article.article_comments.each do |comment| %>
+        <div class="existing_comment">
+          <div class="comment_user">
+            <% if comment.user.avatar? %>
+              <div class="commenter_avatar">
+                <%= image_tag @article.user.avatar.thumb_min.url , class: "avatar" %>
+              </div>
+            <% end %>
+            <div class="name">
+              <%= comment.user.name %>
+            </div>
+          </div>
+          <div class="comment">
+            <%= comment.comment %><%= "やってみせろよマフティ"*50 %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -6,6 +6,6 @@ class CreateArticleComments < ActiveRecord::Migration[6.0]
       t.text :comment
       t.timestamps
     end
-    add_index :article_comments, :user_id
+    add_index :article_comments, [:article_id, :created_at]
   end
 end
