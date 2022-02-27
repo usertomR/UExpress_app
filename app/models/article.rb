@@ -11,6 +11,8 @@ class Article < ApplicationRecord
                                 dependent: :destroy,
                                 inverse_of: :article
   has_many :sum_bookmark_per_article, through: :article_bookmarks, source: :user
+  # 記事へのコメント機能
+  has_many :article_comments, dependent: :destroy
 
   # 「個人の」記事について、更新経過時間の短い記事を上に表示する。
   default_scope -> { order(updated_at: :desc) }
