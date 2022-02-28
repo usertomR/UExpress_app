@@ -81,10 +81,27 @@
             </div>
           </div>
           <div class="comment">
-            <%= comment.comment %><%= "やってみせろよマフティ"*50 %>
+            <%= comment.comment %>
           </div>
         </div>
       <% end %>
+      <div class="new_comment">
+        <%= form_with(model: @article.article_comments.build, local: true) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+
+          <div><%= f.hidden_field :article_id, :value => @article.id %></div>
+          <div><%= f.hidden_field :user_id, :value => current_user.id %></div>
+
+          <div class="richtext_form">
+            <%= f.label :comment, "コメント投稿", class: "form-label" %>
+            <%= f.rich_text_area :comment, {class: "trix-content form_height"} %>
+          </div>
+
+          <div class="submit_button">
+            <%= f.submit "コメント投稿", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
