@@ -73,7 +73,7 @@
           <div class="comment_user">
             <% if comment.user.avatar? %>
               <div class="commenter_avatar">
-                <%= image_tag @article.user.avatar.thumb_min.url , class: "avatar" %>
+                <%= image_tag comment.user.avatar.thumb_min.url , class: "avatar" %>
               </div>
             <% end %>
             <div class="name">
@@ -83,11 +83,15 @@
           <div class="comment">
             <%= comment.comment %>
           </div>
+          <% if comment.user == current_user %>
+            <div class="delete">
+              <%= link_to "削除", article_comment_path(comment), method: :delete, data: { confirm: "削除しますか?" } %>
+            </div>
+          <% end %>
         </div>
       <% end %>
       <div class="new_comment">
         <%= form_with(model: @article.article_comments.build, local: true) do |f| %>
-          <%= render 'shared/error_messages', object: f.object %>
 
           <div><%= f.hidden_field :article_id, :value => @article.id %></div>
           <div><%= f.hidden_field :user_id, :value => current_user.id %></div>
