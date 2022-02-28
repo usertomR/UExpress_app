@@ -7,7 +7,7 @@ RSpec.describe "<system>Articles", type: :system do
     @user = FactoryBot.create(:user, :activated)
   end
 
-  describe ":When you create an article" do
+  describe ":When you create an article", js: true do
     context "it is invalid" do
       it "because you write worng infomation" do
         login_as(@user)
