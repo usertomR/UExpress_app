@@ -71,3 +71,7 @@ articles.each do |article|
     u.sum_nice_per_user << article
   end
 end
+
+# 記事へのコメント
+articles[0].article_comments.create(user_id: User.first.id, comment: "オタァ!")
+articles[0].article_comments.create(user_id: User.second.id, comment: "オワッチャッタァ!")

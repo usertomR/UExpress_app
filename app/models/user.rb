@@ -17,30 +17,29 @@ class User < ApplicationRecord
                                    inverse_of: :followed
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-
   # 記事のnice数を記録するために記入
   has_many :nice_to_articles, class_name: "NiceToArticle",
                                 dependent: :destroy,
                                 inverse_of: :user
   has_many :sum_nice_per_user, through: :nice_to_articles, source: :article
-
   # 記事のブックマーク機能
   has_many :article_bookmarks, class_name: "ArticleBookmark",
                                 dependent: :destroy,
                                 inverse_of: :user
   has_many :sum_articlebookmark_per_user, through: :article_bookmarks, source: :article
-
   # 質問の「気になるボタン」に関するの実装
   has_many :curious_questions, class_name: "CuriousQuestion",
                                 dependent: :destroy,
                                 inverse_of: :user
   has_many :sum_curious_per_user, through: :curious_questions, source: :question
-
   # 質問のブックマークに関する実装
   has_many :question_bookmarks, class_name: "QuestionBookmark",
                                 dependent: :destroy,
                                 inverse_of: :user
   has_many :sum_questionbookmark_per_user, through: :question_bookmarks, source: :question
+  # 記事のコメント機能に関する実装
+  # ユーザーが消えたらその人のコメントも消えるという設定。変えるかも？
+  has_many :article_comments, dependent: :destroy
 
   attr_accessor :remember_token, :activation_token, :reset_token
 
