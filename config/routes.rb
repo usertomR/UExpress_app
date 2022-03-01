@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :question_bookmarks, only: [:create, :destroy]
   resources :curious_questions, only: [:create, :destroy]
   resources :article_comments, only: [:create, :destroy]
+  resources :question_comments, only: [:create, :destroy]
   # articleモデルのルーティング「1つ」追加。記事1つの詳細(記事本体など)を表示する
   # 本当に必要なルーティングのみを生成することで、メモリ使用量の節約とルーティングプロセスの速度向上が見込めます。[railsガイド抜粋]
   # URL: https://railsguides.jp/routing.html?version=6.0#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%83%95%E3%83%AB%E3%81%A7%E3%81%AA%E3%81%84%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0

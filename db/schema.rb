@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_27_015933) do
+ActiveRecord::Schema.define(version: 2022_03_01_011946) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", null: false
@@ -106,6 +106,15 @@ ActiveRecord::Schema.define(version: 2022_02_27_015933) do
     t.index ["question_id"], name: "index_question_bookmarks_on_question_id"
     t.index ["user_id", "question_id"], name: "index_question_bookmarks_on_user_id_and_question_id", unique: true
     t.index ["user_id"], name: "index_question_bookmarks_on_user_id"
+  end
+
+  create_table "question_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "question_id"
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id", "created_at"], name: "index_question_comments_on_question_id_and_created_at"
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
