@@ -135,7 +135,7 @@ Metrics/BlockLength:
 
 # 1行の文字数
 Layout/LineLength:
-  Max: 130
+  Max: 140
   Exclude:
     - "db/migrate/*.rb"
 
