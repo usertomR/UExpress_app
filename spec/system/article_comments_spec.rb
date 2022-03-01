@@ -68,7 +68,7 @@ RSpec.describe "<system>ArticleComment", type: :system do
           login_as(@user)
           visit browsing_article_path(@another_article)
           execute_script('window.scrollBy(0,10000)')
-          sleep 0.3
+          sleep 0.5
           expect do
             accept_alert do
               click_on '削除'

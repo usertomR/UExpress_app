@@ -4,18 +4,18 @@ class Question < ApplicationRecord
 
   # association
   belongs_to :user
-
   # 「気になるボタン」関連の実装
   has_many :curious_questions, class_name: "CuriousQuestion",
                                 dependent: :destroy,
                                 inverse_of: :question
   has_many :sum_curious_per_question, through: :curious_questions, source: :user
-
   # 質問のブックマークに関する実装
   has_many :question_bookmarks, class_name: "QuestionBookmark",
                                 dependent: :destroy,
                                 inverse_of: :question
   has_many :sum_questionbookmark_per_question, through: :question_bookmarks, source: :user
+  # 記事へのコメント機能に関する実装
+  has_many :question_comments, dependent: :destroy
 
   # バリデーション
   validates(:title, presence: true, length: { maximum: 100 },
