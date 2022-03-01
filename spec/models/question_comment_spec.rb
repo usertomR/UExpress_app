@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "<model>QuestionComment", type: :model do
+RSpec.describe "<model>AnswerToQuestion", type: :model do
   describe ":validation" do
     before do
       @user = FactoryBot.create(:user, :activated)
@@ -10,7 +10,7 @@ RSpec.describe "<model>QuestionComment", type: :model do
         difficultylevel_text: 1, questiontext: "This app's second question!", Eschool_level: false,
         JHschool_level: true, Hschool_level: false, solve: false)
 
-      @comment = @another_question.question_comments.create(user_id: @user.id, comment: "Test")
+      @comment = @another_question.answer_to_questions.create(user_id: @user.id, comment: "Test")
     end
 
     it "is valid" do

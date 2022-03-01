@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2022_03_01_011946) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "answer_to_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "question_id"
+    t.text "answer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id", "created_at"], name: "index_answer_to_questions_on_question_id_and_created_at"
+  end
+
   create_table "article_bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "user_id"
     t.integer "article_id"
@@ -59,7 +68,7 @@ ActiveRecord::Schema.define(version: 2022_03_01_011946) do
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_article_comments_on_user_id"
+    t.index ["article_id", "created_at"], name: "index_article_comments_on_article_id_and_created_at"
   end
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -106,15 +115,6 @@ ActiveRecord::Schema.define(version: 2022_03_01_011946) do
     t.index ["question_id"], name: "index_question_bookmarks_on_question_id"
     t.index ["user_id", "question_id"], name: "index_question_bookmarks_on_user_id_and_question_id", unique: true
     t.index ["user_id"], name: "index_question_bookmarks_on_user_id"
-  end
-
-  create_table "question_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "question_id"
-    t.text "comment"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["question_id", "created_at"], name: "index_question_comments_on_question_id_and_created_at"
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|

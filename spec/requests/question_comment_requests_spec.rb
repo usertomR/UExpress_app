@@ -1,7 +1,7 @@
 require 'rails_helper'
 require './spec/support/test_helper'
 
-RSpec.describe "<request>question_comments", type: :request do
+RSpec.describe "<request>answer_to_questions", type: :request do
   before do
     @user = FactoryBot.create(:user, :activated)
     @user_question = @user.questions.create(title: "First Example", accuracy_text: 1,
@@ -13,16 +13,16 @@ RSpec.describe "<request>question_comments", type: :request do
       JHschool_level: true, Hschool_level: false, solve: false)
   end
 
-  describe ":question_comments/create_action" do
+  describe ":answer_to_questions/create_action" do
     context "if you do not login" do
       it "you don't change question_comment's count" do
         expect do
-          post question_comments_path, params: { question_comment: {
+          post answer_to_questions_path, params: { question_comment: {
             user_id: @user.id.to_s,
             question_id: @another_question.id.to_s,
             comment: "Test"
           } }
-        end.to change(QuestionComment, :count).by(0)
+        end.to change(AnswerToQuestion, :count).by(0)
       end
     end
 
@@ -30,12 +30,12 @@ RSpec.describe "<request>question_comments", type: :request do
       it "you can't change question_comment's count" do
         log_in_as(@user)
         expect do
-          post question_comments_path, params: { question_comment: {
+          post answer_to_questions_path, params: { question_comment: {
             user_id: @another.id.to_s,
             question_id: @another_question.id.to_s,
             comment: "Test"
           } }
-        end.to change(QuestionComment, :count).by(0)
+        end.to change(AnswerToQuestion, :count).by(0)
       end
     end
 
@@ -43,35 +43,35 @@ RSpec.describe "<request>question_comments", type: :request do
       it "you can change question_comment's count with comment" do
         log_in_as(@user)
         expect do
-          post question_comments_path, params: { question_comment: {
+          post answer_to_questions_path, params: { question_comment: {
             user_id: @user.id.to_s,
             question_id: @another_question.id.to_s,
             comment: "Test"
           } }
-        end.to change(QuestionComment, :count).by(1)
+        end.to change(AnswerToQuestion, :count).by(1)
       end
 
       it "you can't change question_comment's count with no comment" do
         log_in_as(@user)
         expect do
-          post question_comments_path, params: { question_comment: {
+          post answer_to_questions_path, params: { question_comment: {
             user_id: @user.id.to_s,
             question_id: @another_question.id.to_s,
             comment: "   "
           } }
-        end.to change(QuestionComment, :count).by(0)
+        end.to change(AnswerToQuestion, :count).by(0)
       end
     end
   end
 
-  describe ":question_comments/destroy_action" do
-    let!(:comment) { @user.question_comments.create(user_id: @user.id, question_id: @another_question.id, comment: "RSpec test!") }
+  describe ":answer_to_questions/destroy_action" do
+    let!(:comment) { @user.answer_to_questions.create(user_id: @user.id, question_id: @another_question.id, comment: "RSpec test!") }
 
     context "if you do not login" do
       it "you can't decrease question_comment's count" do
         expect do
           delete question_comment_path(comment)
-        end.to change(QuestionComment, :count).by(0)
+        end.to change(AnswerToQuestion, :count).by(0)
       end
     end
 
@@ -80,7 +80,7 @@ RSpec.describe "<request>question_comments", type: :request do
         log_in_as(@another)
         expect do
           delete question_comment_path(comment)
-        end.to change(QuestionComment, :count).by(0)
+        end.to change(AnswerToQuestion, :count).by(0)
       end
     end
 
@@ -89,7 +89,7 @@ RSpec.describe "<request>question_comments", type: :request do
         log_in_as(@user)
         expect do
           delete question_comment_path(comment)
-        end.to change(QuestionComment, :count).by(-1)
+        end.to change(AnswerToQuestion, :count).by(-1)
       end
     end
   end

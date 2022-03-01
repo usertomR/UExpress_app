@@ -69,45 +69,45 @@
     <div class="text">
       <%= @question.questiontext %>
     </div>
-    <div class="comment_section">
-      <div class="mark_for_user">
-        コメント
-      </div>
-      <% @question.question_comments.each do |comment| %>
-        <div class="existing_comment">
-          <div class="comment_user">
-            <% if comment.user.avatar? %>
-              <div class="commenter_avatar">
-                <%= image_tag comment.user.avatar.thumb_min.url , class: "avatar" %>
+    <div class="answer_comment_section">
+      <div class="mark_of_answer">
+        回答&emsp;/&emsp;<%= @question.answer_to_questions.count %>件
+      <div>
+      <% @question.answer_to_questions.each do |answer| %>
+        <div class="existing_answer_comment">
+          <div class="answer_user">
+            <% if answer.user.avatar? %>
+              <div class="answer_avatar">
+                <%= image_tag answer.user.avatar.thumb_min.url , class: "avatar" %>
               </div>
             <% end %>
-            <div class="name">
-              <%= comment.user.name %>
+            <div class="answer_user_name">
+              <%= answer.user.name %>
             </div>
           </div>
-          <div class="comment">
-            <%= comment.comment %>
+          <div class="answer">
+            <%= answer.answer %>
           </div>
-          <% if comment.user == current_user %>
+          <% if answer.user == current_user %>
             <div class="delete">
-              <%= link_to "削除", question_comment_path(comment), method: :delete, data: { confirm: "削除しますか?" } %>
+              <%= link_to "削除", answer_to_question_path(answer), method: :delete, data: { confirm: "削除しますか?" } %>
             </div>
           <% end %>
         </div>
       <% end %>
-      <div class="new_comment">
-        <%= form_with(model: @question.question_comments.build, local: true) do |f| %>
+      <div class="new_answer">
+        <%= form_with(model: @question.answer_to_questions.build, local: true) do |f| %>
 
           <div><%= f.hidden_field :question_id, :value => @question.id %></div>
           <div><%= f.hidden_field :user_id, :value => current_user.id %></div>
 
           <div class="richtext_form">
-            <%= f.label :comment, "コメント投稿", class: "form-label" %>
-            <%= f.rich_text_area :comment, {class: "trix-content form_height"} %>
+            <%= f.label :answer, "回答", class: "form-label" %>
+            <%= f.rich_text_area :answer, {class: "trix-content form_height"} %>
           </div>
 
           <div class="submit_button">
-            <%= f.submit "コメント投稿", class: "btn btn-primary" %>
+            <%= f.submit "回答", class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>

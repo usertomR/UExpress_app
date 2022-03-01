@@ -41,7 +41,7 @@ class User < ApplicationRecord
   # ユーザーが消えたらその人のコメントも消えるという設定。変えるかも？
   has_many :article_comments, dependent: :destroy
   # 質問へのコメント機能に関する実装
-  has_many :question_comments, dependent: :destroy
+  has_many :answer_to_questions, dependent: :destroy
 
   attr_accessor :remember_token, :activation_token, :reset_token
 

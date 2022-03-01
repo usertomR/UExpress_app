@@ -1,7 +1,7 @@
 require 'rails_helper'
 require './spec/support/test_helper'
 
-RSpec.describe "<system>QuestionComment", type: :system do
+RSpec.describe "<system>AnswerToQuestion", type: :system do
   before do
     driven_by(:selenium_chrome_headless)
 
@@ -15,22 +15,22 @@ RSpec.describe "<system>QuestionComment", type: :system do
       JHschool_level: true, Hschool_level: false, solve: false)
   end
 
-  describe ":question_comments/create_action", js: true do
+  describe ":answer_to_questions/create_action", js: true do
     context "if @user login" do
       context "and @user make  a comment to a question," do
-        it "generated QuestionComment record's user_id is equal to @user.id" do
+        it "generated AnswerToQuestion record's user_id is equal to @user.id" do
           login_as(@user)
           visit browsing_question_path(@user_question)
           execute_script('window.scrollBy(0,10000)')
           sleep 0.4
           fill_in_rich_text_area 'question_comment_comment', with: "Test"
           click_on 'コメント投稿'
-          expect(@user.question_comments[0].user_id).to eq @user.id
+          expect(@user.answer_to_questions[0].user_id).to eq @user.id
         end
       end
 
       context "and @user don't make a comment to an question," do
-        it "@user can't increase QuestionComment's count by 1" do
+        it "@user can't increase AnswerToQuestion's count by 1" do
           login_as(@user)
           visit browsing_question_path(@user_question)
           execute_script('window.scrollBy(0,10000)')
@@ -39,7 +39,7 @@ RSpec.describe "<system>QuestionComment", type: :system do
             fill_in_rich_text_area 'question_comment_comment', with: "      "
             click_on 'コメント投稿'
             sleep 0.3
-          end.to change(QuestionComment, :count).by(0)
+          end.to change(AnswerToQuestion, :count).by(0)
         end
       end
     end
@@ -52,7 +52,7 @@ RSpec.describe "<system>QuestionComment", type: :system do
     end
   end
 
-  describe ":question_comments/destroy_action" do
+  describe ":answer_to_questions/destroy_action" do
     context "if @user do not login" do
       it "@user visits login page" do
         visit browsing_question_path(@another_question)
@@ -63,7 +63,7 @@ RSpec.describe "<system>QuestionComment", type: :system do
     context "if @user login" do
       context "and @user are question's author," do
         it "@user can push a button for deleting a comment" do
-          @comment = @user.question_comments.create(user_id: @user.id,
+          @comment = @user.answer_to_questions.create(user_id: @user.id,
             question_id: @another_question.id, comment: "RSpec test!")
           login_as(@user)
           visit browsing_question_path(@another_question)
@@ -74,13 +74,13 @@ RSpec.describe "<system>QuestionComment", type: :system do
               click_on '削除'
             end
             sleep 0.3
-          end.to change(QuestionComment, :count).by(-1)
+          end.to change(AnswerToQuestion, :count).by(-1)
         end
       end
 
       context "and @user are not question's author," do
         it "@user can't push a button for deleting a comment" do
-          @another_comment = @another.question_comments.create(user_id: @another.id,
+          @another_comment = @another.answer_to_questions.create(user_id: @another.id,
             question_id: @another_question.id, comment: "RSpec test!")
           login_as(@user)
           visit browsing_question_path(@another_question)

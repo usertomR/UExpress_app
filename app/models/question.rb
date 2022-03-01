@@ -15,7 +15,7 @@ class Question < ApplicationRecord
                                 inverse_of: :question
   has_many :sum_questionbookmark_per_question, through: :question_bookmarks, source: :user
   # 記事へのコメント機能に関する実装
-  has_many :question_comments, dependent: :destroy
+  has_many :answer_to_questions, dependent: :destroy
 
   # バリデーション
   validates(:title, presence: true, length: { maximum: 100 },
