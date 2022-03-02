@@ -13,7 +13,7 @@ RSpec.describe "<system>UserSignups", type: :system do
     fill_in 'パスワード確認', with: 'bar'
     fill_in '自己紹介', with: 'Test'
     execute_script('window.scrollBy(0,10000)')
-    sleep 0.2
+    sleep 0.5
     click_on 'アカウント作成'
     aggregate_failures do
       expect(current_path).to eq users_path
@@ -30,7 +30,7 @@ RSpec.describe "<system>UserSignups", type: :system do
     fill_in 'パスワード確認', with: 'password'
     fill_in '自己紹介', with: 'Test'
     execute_script('window.scrollBy(0,10000)')
-    sleep 0.2
+    sleep 0.5
     click_on 'アカウント作成'
     aggregate_failures do
       expect(current_path).to eq root_path

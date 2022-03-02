@@ -6,7 +6,6 @@ class AnswerToQuestionsController < ApplicationController
   # updateがないのは、コメントのやり取りがおかしくなる可能性があるから。
   # コメントを修正したいならもう一度コメントを作って追記する形にすると、話の流れがおかしくならない
   def create
-    debugger
     @question = Question.find(params[:answer_to_question][:question_id])
     @answer = @question.answer_to_questions.build(comment_params)
     if @answer.save

@@ -28,7 +28,7 @@ RSpec.describe "<system>question_bookmark", type: :system do
           visit browsing_question_path(@user_question)
           expect do
             click_on 'bookmark'
-            sleep 0.3
+            sleep 0.5
           end.to change(QuestionBookmark, :count).by(1)
         end
       end
@@ -40,7 +40,7 @@ RSpec.describe "<system>question_bookmark", type: :system do
           within(".questionbookmark_button") do
             click_on 'bookmark'
           end
-          sleep 0.3
+          sleep 0.5
           expect(@user.sum_questionbookmark_per_user[0]).to eq @another_question
         end
       end
@@ -60,7 +60,7 @@ RSpec.describe "<system>question_bookmark", type: :system do
           visit browsing_question_path(@user_question)
           expect do
             click_on 'bookmark'
-            sleep 0.3
+            sleep 0.5
           end.to change(QuestionBookmark, :count).by(1)
         end
       end
@@ -71,7 +71,7 @@ RSpec.describe "<system>question_bookmark", type: :system do
           visit browsing_question_path(@another_question)
           expect do
             click_on 'bookmark'
-            sleep 0.3
+            sleep 0.5
           end.to change(QuestionBookmark, :count).by(1)
         end
       end
@@ -108,7 +108,7 @@ RSpec.describe "<system>question_bookmark", type: :system do
             visit browsing_question_path(@user_question)
             expect do
               click_on 'bookmark'
-              sleep 0.3
+              sleep 0.5
             end.to change(QuestionBookmark, :count).by(-1)
           end
         end
@@ -119,6 +119,7 @@ RSpec.describe "<system>question_bookmark", type: :system do
             visit user_questionbookmark_path(@user)
             expect do
               click_on 'ブックマーク取り消し'
+              sleep 0.5
             end.to change(QuestionBookmark, :count).by(-1)
           end
         end
@@ -132,7 +133,7 @@ RSpec.describe "<system>question_bookmark", type: :system do
             within(".questionbookmark_button") do
               click_on 'bookmark'
             end
-            sleep 0.3
+            sleep 0.5
             expect(@user.sum_questionbookmark_per_user.count).to eq 0
           end
         end
@@ -143,7 +144,7 @@ RSpec.describe "<system>question_bookmark", type: :system do
             visit user_questionbookmark_path(@user)
             expect do
               click_on 'ブックマーク取り消し'
-              sleep 0.3
+              sleep 0.5
             end.to change(QuestionBookmark, :count).by(-1)
           end
         end

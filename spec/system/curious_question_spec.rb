@@ -28,7 +28,7 @@ RSpec.describe "<system>curious_question", type: :system do
           visit browsing_question_path(@user_question)
           expect do
             click_on '気になる'
-            sleep 0.4
+            sleep 0.5
           end.to change(CuriousQuestion, :count).by(1)
         end
       end
@@ -40,7 +40,7 @@ RSpec.describe "<system>curious_question", type: :system do
           within(".curious_button") do
             click_on '気になる'
           end
-          sleep 0.4
+          sleep 0.5
           expect(@user.sum_curious_per_user[0]).to eq @another_question
         end
       end
@@ -102,7 +102,7 @@ RSpec.describe "<system>curious_question", type: :system do
             visit browsing_question_path(@user_question)
             expect do
               click_on '気になる'
-              sleep 0.3
+              sleep 0.5
             end.to change(CuriousQuestion, :count).by(-1)
           end
         end
@@ -113,6 +113,7 @@ RSpec.describe "<system>curious_question", type: :system do
             visit user_curious_path(@user)
             expect do
               click_on '「気になる」取り消し'
+              sleep 0.5
             end.to change(CuriousQuestion, :count).by(-1)
           end
         end
@@ -126,7 +127,7 @@ RSpec.describe "<system>curious_question", type: :system do
             within(".curious_button") do
               click_on '気になる'
             end
-            sleep 0.3
+            sleep 0.5
             expect(@user.sum_curious_per_user.count).to eq 0
           end
         end
@@ -137,7 +138,7 @@ RSpec.describe "<system>curious_question", type: :system do
             visit user_curious_path(@user)
             expect do
               click_on '「気になる」取り消し'
-              sleep 0.4
+              sleep 0.5
             end.to change(CuriousQuestion, :count).by(-1)
           end
         end

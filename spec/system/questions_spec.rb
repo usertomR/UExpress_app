@@ -14,7 +14,7 @@ RSpec.describe "<system>Questions", type: :system do
         visit new_question_path
         fill_in '質問タイトル', with: '   '
         execute_script('window.scrollBy(0,10000)')
-        sleep 0.2
+        sleep 0.5
         click_on '質問作成'
         aggregate_failures do
           expect(current_path).to eq questions_path

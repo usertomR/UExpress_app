@@ -14,7 +14,7 @@ RSpec.describe "<system>Articles", type: :system do
         visit new_article_path
         fill_in '記事タイトル', with: '   '
         execute_script('window.scrollBy(0,10000)')
-        sleep 0.2
+        sleep 0.5
         click_on '記事作成'
         aggregate_failures do
           expect(current_path).to eq articles_path

@@ -22,9 +22,10 @@ RSpec.describe "<system>ArticleComment", type: :system do
           login_as(@user)
           visit browsing_article_path(@user_article)
           execute_script('window.scrollBy(0,10000)')
-          sleep 0.2
+          sleep 0.5
           fill_in_rich_text_area 'article_comment_comment', with: "Test"
           click_on 'コメント投稿'
+          sleep 0.5
           expect(@user.article_comments[0].user_id).to eq @user.id
         end
       end
@@ -34,11 +35,11 @@ RSpec.describe "<system>ArticleComment", type: :system do
           login_as(@user)
           visit browsing_article_path(@user_article)
           execute_script('window.scrollBy(0,10000)')
-          sleep 0.3
+          sleep 0.5
           expect do
             fill_in_rich_text_area 'article_comment_comment', with: "      "
             click_on 'コメント投稿'
-            sleep 0.3
+            sleep 0.5
           end.to change(ArticleComment, :count).by(0)
         end
       end
@@ -73,7 +74,7 @@ RSpec.describe "<system>ArticleComment", type: :system do
             accept_alert do
               click_on '削除'
             end
-            sleep 0.3
+            sleep 0.5
           end.to change(ArticleComment, :count).by(-1)
         end
       end
@@ -85,7 +86,7 @@ RSpec.describe "<system>ArticleComment", type: :system do
           login_as(@user)
           visit browsing_article_path(@another_article)
           execute_script('window.scrollBy(0,10000)')
-          sleep 0.3
+          sleep 0.5
           expect(page).not_to have_content '削除'
         end
       end

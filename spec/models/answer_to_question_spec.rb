@@ -10,26 +10,26 @@ RSpec.describe "<model>AnswerToQuestion", type: :model do
         difficultylevel_text: 1, questiontext: "This app's second question!", Eschool_level: false,
         JHschool_level: true, Hschool_level: false, solve: false)
 
-      @comment = @another_question.answer_to_questions.create(user_id: @user.id, comment: "Test")
+      @answer = @another_question.answer_to_questions.create(user_id: @user.id, answer: "Test")
     end
 
     it "is valid" do
-      expect(@comment).to be_valid
+      expect(@answer).to be_valid
     end
 
     it "is invaild without user_id" do
-      @comment.user_id = nil
-      expect(@comment).not_to be_valid
+      @answer.user_id = nil
+      expect(@answer).not_to be_valid
     end
 
     it "is invaild without question_id" do
-      @comment.question_id = nil
-      expect(@comment).to be_invalid
+      @answer.question_id = nil
+      expect(@answer).to be_invalid
     end
 
-    it "is invaild without comment" do
-      @comment.comment = nil
-      expect(@comment).to be_invalid
+    it "is invaild without answer" do
+      @answer.answer = nil
+      expect(@answer).to be_invalid
     end
   end
 end

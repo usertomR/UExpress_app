@@ -32,7 +32,7 @@ RSpec.describe "<system>nice_to_article", type: :system do
           within(".nice_button") do
             click_on 'nice'
           end
-          sleep 0.4
+          sleep 0.5
           expect(@user.sum_nice_per_user[0]).to eq @another_article
         end
       end
@@ -83,7 +83,7 @@ RSpec.describe "<system>nice_to_article", type: :system do
             within(".nice_button") do
               click_on 'nice'
             end
-            sleep 0.3
+            sleep 0.5
             expect(@user.sum_nice_per_user.count).to eq 0
           end
         end

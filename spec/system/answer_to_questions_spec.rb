@@ -17,28 +17,28 @@ RSpec.describe "<system>AnswerToQuestion", type: :system do
 
   describe ":answer_to_questions/create_action", js: true do
     context "if @user login" do
-      context "and @user make  a comment to a question," do
+      context "and @user answer to a question," do
         it "generated AnswerToQuestion record's user_id is equal to @user.id" do
           login_as(@user)
           visit browsing_question_path(@user_question)
           execute_script('window.scrollBy(0,10000)')
-          sleep 0.4
-          fill_in_rich_text_area 'question_comment_comment', with: "Test"
-          click_on 'コメント投稿'
+          sleep 0.5
+          fill_in_rich_text_area 'answer_to_question_answer', with: "Test"
+          click_on '回答'
           expect(@user.answer_to_questions[0].user_id).to eq @user.id
         end
       end
 
-      context "and @user don't make a comment to an question," do
-        it "@user can't increase AnswerToQuestion's count by 1" do
+      context "and @user don't answer to a question," do
+        it "@user can't increase AnswerToQuestion's count" do
           login_as(@user)
           visit browsing_question_path(@user_question)
           execute_script('window.scrollBy(0,10000)')
-          sleep 0.3
+          sleep 0.5
           expect do
-            fill_in_rich_text_area 'question_comment_comment', with: "      "
-            click_on 'コメント投稿'
-            sleep 0.3
+            fill_in_rich_text_area 'answer_to_question_answer', with: "      "
+            click_on '回答'
+            sleep 0.5
           end.to change(AnswerToQuestion, :count).by(0)
         end
       end
@@ -52,7 +52,7 @@ RSpec.describe "<system>AnswerToQuestion", type: :system do
     end
   end
 
-  describe ":answer_to_questions/destroy_action" do
+  describe ":answer_to_questions/destroy_action", js: true do
     context "if @user do not login" do
       it "@user visits login page" do
         visit browsing_question_path(@another_question)
@@ -62,9 +62,9 @@ RSpec.describe "<system>AnswerToQuestion", type: :system do
 
     context "if @user login" do
       context "and @user are question's author," do
-        it "@user can push a button for deleting a comment" do
-          @comment = @user.answer_to_questions.create(user_id: @user.id,
-            question_id: @another_question.id, comment: "RSpec test!")
+        it "@user can push a button for deleting a answer" do
+          @answer = @user.answer_to_questions.create(user_id: @user.id,
+            question_id: @another_question.id, answer: "RSpec test!")
           login_as(@user)
           visit browsing_question_path(@another_question)
           execute_script('window.scrollBy(0,10000)')
@@ -73,19 +73,19 @@ RSpec.describe "<system>AnswerToQuestion", type: :system do
             accept_alert do
               click_on '削除'
             end
-            sleep 0.3
+            sleep 0.5
           end.to change(AnswerToQuestion, :count).by(-1)
         end
       end
 
       context "and @user are not question's author," do
         it "@user can't push a button for deleting a comment" do
-          @another_comment = @another.answer_to_questions.create(user_id: @another.id,
-            question_id: @another_question.id, comment: "RSpec test!")
+          @another_answer = @another.answer_to_questions.create(user_id: @another.id,
+            question_id: @another_question.id, answer: "RSpec test!")
           login_as(@user)
           visit browsing_question_path(@another_question)
           execute_script('window.scrollBy(0,10000)')
-          sleep 0.3
+          sleep 0.5
           expect(page).not_to have_content '削除'
         end
       end
