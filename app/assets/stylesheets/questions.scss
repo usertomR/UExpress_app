@@ -67,6 +67,34 @@
         color: white;
       }
     }
+    .border {
+      border-top: 1px solid;
+    }
+    .existing_comment {
+      border-top: 1px solid;
+      .comment_user {
+        display:  flex;
+        width: 90%;
+        margin: 5px auto;
+        .commenter_avatar {
+          width: 55px;
+          height: 55px;
+          margin-right: 10px;
+        }
+        .name {
+          height: 55px;
+          line-height: 55px;
+        }
+      }
+      .comment {
+        width: 90%;
+        margin: 10px auto;
+      }
+    }
+    .new_comment {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
   }
   .new_answer {
     padding-top: 50px;

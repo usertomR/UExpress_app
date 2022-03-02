@@ -93,6 +93,48 @@
               <%= link_to "削除", answer_to_question_path(answer), method: :delete, data: { confirm: "削除しますか?" } %>
             </div>
           <% end %>
+          <% if answer.comment_to_answers.count == 0 %>
+            <div class="border">
+            </div>
+          <% end %>
+          <% answer.comment_to_answers.each do |comment| %>
+            <div class="existing_comment">
+              <div class="comment_user">
+                <% if comment.user.avatar? %>
+                  <div class="comment_avatar">
+                    <%= image_tag comment.user.avatar.thumb_min.url , class: "avatar" %>
+                  </div>
+                <% end %>
+                <div class="name">
+                  <%= comment.user.name %>
+                </div>
+              </div>
+              <div class="comment">
+                <%= comment.comment %>
+              </div>
+              <% if comment.user == current_user %>
+                <div class="delete">
+                  <%= link_to "削除", comment_to_answer_path(comment), method: :delete, data: { confirm: "削除しますか?" } %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+          <div class="new_comment">
+            <%= form_with(model: answer.comment_to_answers.build, local: true) do |f| %>
+
+              <div><%= f.hidden_field :answer_to_question_id, :value => answer.id %></div>
+              <div><%= f.hidden_field :user_id, :value => current_user.id %></div>
+
+              <div class="richtext_form">
+                <%= f.label :comment, "コメント投稿", class: "form-label" %>
+                <%= f.rich_text_area :comment, {class: "trix-content form_height"} %>
+              </div>
+
+              <div class="submit_button">
+                <%= f.submit "コメント投稿", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
         </div>
       <% end %>
       <div class="new_answer">
