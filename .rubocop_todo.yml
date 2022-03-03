@@ -7,6 +7,10 @@ Style/LineEndConcatenation:
   Exclude:
     - 'db/seeds.rb'
 
+Style/YodaCondition:
+  Exclude:
+    - 'app/controllers/comment_to_answers_controller.rb'
+
 # carrierwaveのファイルはできるだけデフォルトの状態にしたい。
 Style/PercentLiteralDelimiters:
   Exclude:
@@ -39,6 +43,7 @@ Rails/SkipsModelValidations:
 Metrics/AbcSize:
   Exclude:
     - 'app/models/application_record.rb'
+    - 'app/controllers/comment_to_answers_controller.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:

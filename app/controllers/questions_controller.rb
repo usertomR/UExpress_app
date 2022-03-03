@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
 
   def browsing
     @question = Question.find(params[:id])
+    @comment = CommentToAnswer.new
   end
 
   # before_actionで,@questionを取得している。(update,destroyも)

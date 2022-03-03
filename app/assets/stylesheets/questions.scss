@@ -67,8 +67,12 @@
         color: white;
       }
     }
-    .border {
+    .mark_of_comment {
       border-top: 1px solid;
+      height: 2rem;
+      line-height: 2rem;
+      font-size: 1.2rem;
+      font-weight: 700;
     }
     .existing_comment {
       border-top: 1px solid;
@@ -91,13 +95,20 @@
         margin: 10px auto;
       }
     }
-    .new_comment {
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
   }
   .new_answer {
     padding-top: 50px;
     padding-bottom: 20px;
+  }
+  .new_comment {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 40px;
+    .input_number {
+      margin-left: 10vw;
+      input {
+        width: 4rem;
+      }
+    }
   }
 }

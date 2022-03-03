@@ -73,7 +73,10 @@
       <div class="mark_of_answer">
         回答&emsp;/&emsp;<%= @question.answer_to_questions.count %>件
       <div>
+      <%# answer_id_array は、質問の回答1つ1つのidを格納 %>
+      <% answer_id_array = [] %>
       <% @question.answer_to_questions.each do |answer| %>
+        <% answer_id_array << answer.id %>
         <div class="existing_answer_comment">
           <div class="answer_user">
             <% if answer.user.avatar? %>
@@ -93,10 +96,9 @@
               <%= link_to "削除", answer_to_question_path(answer), method: :delete, data: { confirm: "削除しますか?" } %>
             </div>
           <% end %>
-          <% if answer.comment_to_answers.count == 0 %>
-            <div class="border">
-            </div>
-          <% end %>
+          <div class="mark_of_comment">
+            コメント
+          </div>
           <% answer.comment_to_answers.each do |comment| %>
             <div class="existing_comment">
               <div class="comment_user">
@@ -119,22 +121,6 @@
               <% end %>
             </div>
           <% end %>
-          <div class="new_comment">
-            <%= form_with(model: answer.comment_to_answers.build, local: true) do |f| %>
-
-              <div><%= f.hidden_field :answer_to_question_id, :value => answer.id %></div>
-              <div><%= f.hidden_field :user_id, :value => current_user.id %></div>
-
-              <div class="richtext_form">
-                <%= f.label :comment, "コメント投稿", class: "form-label" %>
-                <%= f.rich_text_area :comment, {class: "trix-content form_height"} %>
-              </div>
-
-              <div class="submit_button">
-                <%= f.submit "コメント投稿", class: "btn btn-primary" %>
-              </div>
-            <% end %>
-          </div>
         </div>
       <% end %>
       <div class="new_answer">
@@ -153,6 +139,30 @@
           </div>
         <% end %>
       </div>
+      <% if @question.answer_to_questions.count != 0 %>
+        <div class="new_comment">
+          <%= form_with(model: @comment, local: true) do |f| %>
+
+            <div class="input_number">
+              <%= f.number_field(:answer_id) %>番目の回答へのコメント
+            </div>
+            
+            <%# question_id を　コントローラーのcreateアクションで使いたい。エラー回避のため %>
+            <div><%= hidden_field_tag :question_id, @question.id %></div> 
+            <div><%= f.hidden_field :answer_id_array, :value => answer_id_array %></div>
+            <div><%= f.hidden_field :user_id, :value => current_user.id %></div>
+
+            <div class="richtext_form">
+              <%= f.label :comment, "コメント投稿", class: "form-label" %>
+              <%= f.rich_text_area :comment, {class: "trix-content form_height"} %>
+            </div>
+
+            <div class="submit_button">
+              <%= f.submit "コメント投稿", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
