@@ -67,8 +67,6 @@ RSpec.describe "<system>AnswerToQuestion", type: :system do
             question_id: @another_question.id, answer: "RSpec test!")
           login_as(@user)
           visit browsing_question_path(@another_question)
-          execute_script('window.scrollBy(0,10000)')
-          sleep 0.5
           expect do
             accept_alert do
               click_on '削除'

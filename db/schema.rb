@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_01_011946) do
+ActiveRecord::Schema.define(version: 2022_03_02_092202) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", null: false
@@ -85,6 +85,15 @@ ActiveRecord::Schema.define(version: 2022_03_01_011946) do
     t.index ["title"], name: "index_articles_on_title", unique: true
     t.index ["user_id", "updated_at"], name: "index_articles_on_user_id_and_updated_at"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "comment_to_answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "answer_to_question_id"
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_to_question_id", "created_at"], name: "index_comment_to_answers_on_answer_to_question_id_and_created_at"
   end
 
   create_table "curious_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
