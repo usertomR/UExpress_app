@@ -6,7 +6,7 @@ class CommentToAnswersController < ApplicationController
   def create
     answer_id_array_index = params[:comment_to_answer][:answer_id].to_i - 1
     # rubyでは、配列の[]内の数値はマイナスでも良い。そうだと、回答する対象が変わる可能性があるため、if文使用
-    if answer_id_array_index >= 1
+    if answer_id_array_index >= 0
       answer_to_question_id = params[:comment_to_answer][:answer_id_array].split(' ')[answer_id_array_index].to_i
     end
     @question = Question.find(params[:question_id])
@@ -19,7 +19,7 @@ class CommentToAnswersController < ApplicationController
     else
       # unlessの条件式を満たさない場合、flash[:danger]の文章を上書きする
       flash[:danger] = "コメント作成失敗"
-      unless 1 <= answer_id_array_index && answer_id_array_index <= params[:comment_to_answer][:answer_id_array].split(' ').count
+      unless 0 <= answer_id_array_index && answer_id_array_index <= params[:comment_to_answer][:answer_id_array].split(' ').count - 1
         flash[:danger] = "適切な番号を入力して下さい"
       end
     end
