@@ -10,7 +10,7 @@ RSpec.describe "<model>ArticleComment", type: :model do
         difficultylevel_text: 1, articletext: "This app's second article!", Eschool_level: false,
         JHschool_level: true, Hschool_level: false)
 
-      @comment = @another_article.article_comments.create(user_id: @user.id, comment: "Test")
+      @comment = @another_article.article_comments.build(user_id: @user.id, comment: "Test")
     end
 
     it "is valid" do

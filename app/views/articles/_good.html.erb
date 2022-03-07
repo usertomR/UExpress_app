@@ -1,0 +1,6 @@
+<%= form_with(model: current_user.nice_to_article_comments.build, local: true) do |f| %>
+  <div><%= hidden_field_tag :article_comment_id, comment.id %></div>
+  <div><%= hidden_field_tag :user_id, user.id %></div>
+  <div><%= hidden_field_tag :article_id, article.id %></div>
+  <%= f.submit "good", class: "not_good_now" %>
+<% end %>
