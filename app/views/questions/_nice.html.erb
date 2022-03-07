@@ -1,3 +1,5 @@
-<%= form_with(model: current_user.nice_to_answers.build, local: false) do |f| %>
+<%= form_with(model: current_user.nice_to_answers.build, local: true) do |f| %>
+  <%= hidden_field_tag :answer_to_question_id, answer.id %>
+  <%= hidden_field_tag :user_id, user.id %>
   <%= f.submit "nice", class: "not_nice_now" %>
 <% end %>

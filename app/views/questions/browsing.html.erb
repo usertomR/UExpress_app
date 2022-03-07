@@ -105,7 +105,7 @@
             <% if NiceToAnswer.find_by(answer_to_question_id: answer.id, user_id: current_user.id) %>
               <div class="about_nice_answer">
                 <div class="nice_button">
-                  <%= render 'notnice'%>
+                  <%= render partial: "notnice", locals: { answer: answer, user: current_user, question: @question } %>
                 </div>
                 <div id="sum_nice">
                   <%= answer.nice_to_answers.count %>
@@ -114,7 +114,7 @@
             <% else %>
               <div class="about_nice_answer">
                 <div class="nice_button">
-                  <%= render 'nice'%>
+                  <%= render partial: "nice", locals: { answer: answer, user: current_user } %>
                 </div>
                 <div id="sum_nice">
                   <%= answer.nice_to_answers.count %>
