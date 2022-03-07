@@ -67,6 +67,34 @@
         color: white;
       }
     }
+    .nice {
+      margin-bottom: 10px;
+      margin-left: 10px;
+      display: inline-block;
+      .nice_answer {
+        color: green;
+      }
+    }
+    .about_nice_answer {
+      margin-bottom: 10px;
+      margin-left: 10px;
+      width: fit-content;
+      .nice_now {
+        color: white;
+        background-color: green;
+        border: 2px solid green;
+        border-radius: 14px;
+      }
+      .not_nice_now {
+        color: green;
+        background-color: white;
+        border: 2px solid green;
+        border-radius: 14px;
+      }
+      #sum_nice {
+        text-align: center;
+      }
+    }
     .mark_of_comment {
       border-top: 1px solid;
       height: 2rem;

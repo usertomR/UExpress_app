@@ -1,0 +1,3 @@
+<%= form_with(model: current_user.nice_to_answers.build, local: false) do |f| %>
+  <%= f.submit "nice", class: "not_nice_now" %>
+<% end %>

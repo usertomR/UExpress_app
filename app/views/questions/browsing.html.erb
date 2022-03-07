@@ -95,6 +95,32 @@
             <div class="delete">
               <%= link_to "削除", answer_to_question_path(answer), method: :delete, data: { confirm: "削除しますか?" } %>
             </div>
+            <div class="nice">
+              <div class="nice_answer">
+                nice計<br>
+              </div>
+              <%= answer.nice_to_answers.count %>
+            </div>
+          <% else %>
+            <% if NiceToAnswer.find_by(answer_to_question_id: answer.id, user_id: current_user.id) %>
+              <div class="about_nice_answer">
+                <div class="nice_button">
+                  <%= render 'notnice'%>
+                </div>
+                <div id="sum_nice">
+                  <%= answer.nice_to_answers.count %>
+                </div>
+              </div>
+            <% else %>
+              <div class="about_nice_answer">
+                <div class="nice_button">
+                  <%= render 'nice'%>
+                </div>
+                <div id="sum_nice">
+                  <%= answer.nice_to_answers.count %>
+                </div>
+              </div>
+            <% end%>
           <% end %>
           <div class="mark_of_comment">
             コメント
