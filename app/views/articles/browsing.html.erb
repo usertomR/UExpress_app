@@ -87,6 +87,32 @@
             <div class="delete">
               <%= link_to "削除", article_comment_path(comment), method: :delete, data: { confirm: "削除しますか?" } %>
             </div>
+            <div class="good_statistics">
+              <div class ="sum_good_mark">
+                good計<br>
+              </div>
+              <%= comment.nice_to_article_comments.count %>
+            </div>
+          <% else %>
+            <% if NiceToArticleComment.find_by(user_id: current_user.id, article_comment_id: comment.id) %>
+              <div class="changeable_info">
+                <div class="changeable_button">
+                  <%= render partial: "notgood", locals: { comment: comment, article: @article } %>
+                </div>
+                <div id="changeable_sum_nice">
+                  <%= comment.nice_to_article_comments.count %>
+                </div>
+              </div>
+            <% else %>
+              <div class="changeable_info">
+                <div class="changeable_button">
+                  <%= render partial: "good", locals: { comment: comment, user: current_user, article: @article } %>
+                </div>
+                <div id="changeable_sum_nice">
+                  <%= comment.nice_to_article_comments.count %>
+                </div>
+              </div>
+            <% end %>
           <% end %>
         </div>
       <% end %>

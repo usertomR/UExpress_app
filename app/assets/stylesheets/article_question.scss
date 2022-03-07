@@ -285,6 +285,31 @@
             color: white;
           }
         }
+        .good_statistics {
+          margin-bottom: 10px;
+          margin-left: 10px;
+          display: inline-block;
+          text-align: center;
+          .sum_good_mark {
+            color: green;
+          }
+        }
+        .changeable_info {
+          display: inline-block;
+          margin-bottom: 10px;
+          margin-left: 10px;
+          .changeable_button {
+            .good_now {
+              @include button_design(white, green, green);
+            }
+            .not_good_now {
+              @include button_design(green,white,green);
+            }
+          }
+          #changeable_sum_nice {
+            text-align: center;
+          }
+        }
       }
       .new_comment {
         border-top: solid;
