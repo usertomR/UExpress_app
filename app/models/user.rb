@@ -46,6 +46,8 @@ class User < ApplicationRecord
   has_many :comment_to_answers, dependent: :destroy
   # 記事へのコメントに対するいいね機能の実装
   has_many :nice_to_article_comments, dependent: :destroy
+  # 回答に対するnice機能
+  has_many :nice_to_answers, dependent: :destroy
 
   attr_accessor :remember_token, :activation_token, :reset_token
 

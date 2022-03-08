@@ -21,11 +21,6 @@ class QuestionsController < ApplicationController
     @pagy, @questions = pagy(@user.questions)
   end
 
-  def browsing
-    @question = Question.find(params[:id])
-    @comment = CommentToAnswer.new
-  end
-
   # before_actionで,@questionを取得している。(update,destroyも)
   def edit
   end
@@ -37,6 +32,11 @@ class QuestionsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def browsing
+    @question = Question.find(params[:id])
+    @comment = CommentToAnswer.new
   end
 
   def destroy
