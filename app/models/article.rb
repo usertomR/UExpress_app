@@ -29,4 +29,35 @@ class Article < ApplicationRecord
 
   # Action Textのリッチテキストを使用
   has_rich_text :articletext
+
+  # 個人記事検索用のスコープ(showアクション)
+  # where(id: nil)で、強制的にActiveRecord::Relationの中身を空にしている
+
+  # content = params[:content]
+  scope :title, ->(content) {
+    if content.blank?
+      where(id: nil)
+    else
+      where("title LIKE ?", '%' + content + '%')
+    end
+  }
+  # dif_select = params[:difficulty_select]
+  def self.difficulty(dif_select)
+    where(difficultylevel_text: dif_select)
+  end
+
+  # ac_select = params[:accuracy_select]
+  def self.accuracy(ac_select)
+    where(accuracy_text: ac_select)
+  end
+
+  # term_from = params[:term_from], term_to = params[:term_to]
+  def self.term(term_from, term_to)
+    if term_from == "" || term_to == ""
+      where(id: nil)
+    else
+      where("updated_at >= :start_date AND updated_at <= :end_date",
+      { start_date: term_from, end_date: term_to })
+    end
+  end
 end
