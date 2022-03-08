@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 2022_03_07_063139) do
     t.integer "answer_to_question_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_to_question_id", "user_id"], name: "index_nice_to_answers_on_answer_to_question_id_and_user_id", unique: true
   end
 
   create_table "nice_to_article_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
