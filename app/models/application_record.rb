@@ -33,4 +33,40 @@ class ApplicationRecord < ActiveRecord::Base
       "x"
     end
   end
+
+  # 記事・質問検索用スコープ
+  # 検索結果数が0件の場合、where(id: nil)で、強制的にActiveRecord::Relationの中身を空にしている
+
+  def self.title(content)
+    if content.blank?
+      where(id: nil)
+    else
+      where("title LIKE ?", '%' + content + '%')
+    end
+  end
+
+  def self.difficulty(dif_select)
+    where(difficultylevel_text: dif_select)
+  end
+
+  def self.accuracy(ac_select)
+    where(accuracy_text: ac_select)
+  end
+
+  def self.term(term_from, term_to)
+    if term_from == "" || term_to == ""
+      where(id: nil)
+    else
+      where("updated_at >= :start_date AND updated_at <= :end_date",
+      { start_date: term_from, end_date: term_to })
+    end
+  end
+
+  def self.who(user_id)
+    where(user_id: user_id)
+  end
+
+  def self.solve?(solve)
+    where(solve: solve)
+  end
 end
