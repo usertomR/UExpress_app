@@ -36,7 +36,6 @@ class ApplicationRecord < ActiveRecord::Base
 
   # 記事・質問検索用スコープ
   # 検索結果数が0件の場合、where(id: nil)で、強制的にActiveRecord::Relationの中身を空にしている
-
   def self.title(content)
     if content.blank?
       where(id: nil)
@@ -68,5 +67,15 @@ class ApplicationRecord < ActiveRecord::Base
 
   def self.solve?(solve)
     where(solve: solve)
+  end
+
+  # root_pathアクセス時に表示される検索フォーム(ログイン前提)に関するメソッド
+  # 変数modelの取り得る値は、"Article"と"Question"のみ
+  def self.root_search_form(model = "Article")
+    if (model != "Article")
+      Question.new
+    else
+      Article.new
+    end
   end
 end

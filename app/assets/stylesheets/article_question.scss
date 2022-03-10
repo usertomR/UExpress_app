@@ -25,6 +25,26 @@
   margin-bottom: 0.4rem;
 }
 
+.select_article_question_tab {
+  display: flex;
+  margin-left: 5vw;
+  margin-top: 100px;
+  .article_tab {
+    width: 4rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    background-color: blanchedalmond;
+  }
+  .question_tab {
+    width: 4rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    background-color: rebeccapurple;
+  }
+}
+
 .search_form {
   width: 90vw;
   height: 40vh;
