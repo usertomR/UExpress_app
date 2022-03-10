@@ -10,6 +10,8 @@
             <div>
               <%= image_tag follower.avatar.thumb_min.url , class: "avatar" %>
             </div>
+          <% else %>
+            <%= render 'shared/default_avatar' %>
           <% end %>
         </div>
         <div class="one_text">

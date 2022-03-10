@@ -13,6 +13,8 @@
             <div class="avatar_img">
               <%= image_tag @question.user.avatar.thumb_min.url , class: "avatar" %>
             </div>
+          <% else %>
+            <%= render 'shared/default_avatar' %>
           <% end %>
         </div>
         <div class="name">
@@ -83,6 +85,8 @@
               <div class="answer_avatar">
                 <%= image_tag answer.user.avatar.thumb_min.url , class: "avatar" %>
               </div>
+              <% else %>
+              <%= render 'shared/default_avatar' %>
             <% end %>
             <div class="answer_user_name">
               <%= answer.user.name %>
@@ -132,6 +136,8 @@
                   <div class="comment_avatar">
                     <%= image_tag comment.user.avatar.thumb_min.url , class: "avatar" %>
                   </div>
+                <% else %>
+                  <%= render 'shared/default_avatar' %>
                 <% end %>
                 <div class="name">
                   <%= comment.user.name %>

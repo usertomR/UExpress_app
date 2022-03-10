@@ -134,10 +134,45 @@ body.noscroll {
 .avatar {
   border-radius: 50%;
   border: solid 1px black;
-  background-color: white;
+  background-color: rgb(246, 238, 238);
 }
 
-.form_postion_avatar {
+@mixin avatar_face {
   width: 40%;
-  margin: 0 auto 1%;
+  height: 40%;
+  border-radius: 50%;
+  margin: 20% auto 6%;
+  background: blue
+}
+
+@mixin avatar_body {
+  width: 90%;
+  height: 50%;
+  border-radius: 40% 40% 20% 20%;
+  margin: 0 auto;
+  background: blue
+}
+
+.avatar_normal_size {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  .face {
+    @include avatar_face
+  }
+  .body {
+    @include avatar_body
+  }
+}
+
+.avatar_large_size {
+  width: 75px;
+  height: 75px;
+  overflow: hidden;
+  .face {
+    @include avatar_face
+  }
+  .body {
+    @include avatar_body
+  }
 }

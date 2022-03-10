@@ -10,6 +10,8 @@
         <div class="profile_avatar">
           <%= image_tag @user.avatar.thumb_min.url , class: "avatar" %>
         </div>
+      <% else %>
+        <%= render 'shared/default_avatar' %>
       <% end %>
       <div class="user_name">
         <%= @user.name %>

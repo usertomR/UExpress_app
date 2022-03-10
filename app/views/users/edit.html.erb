@@ -33,9 +33,22 @@
     <div class="input_form">
         <%= f.label :avatar, "プロフィール画像", class: "form-label" %>
         <% if @user.avatar? %>
-            <div class="form_postion_avatar">
-                現在の画像
-                <%= image_tag @user.avatar.thumb.url , class: "avatar" %>
+            <div class="edit_avatar_flex">
+                <div class="place_adjustment">
+                    現在の画像
+                </div>
+                <div>
+                    <%= image_tag @user.avatar.thumb.url , class: "avatar" %>
+                </div>
+            </div>
+        <% else %>
+            <div class="edit_avatar_flex">
+                <div class="place_adjustment">
+                    現在の画像
+                </div>
+                <div>
+                    <%= render 'shared/default_large_avatar' %>
+                </div>
             </div>
         <% end %>
         <%= f.file_field :avatar, class: "form-control" %>
