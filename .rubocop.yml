@@ -54,6 +54,10 @@ Style/MultilineTernaryOperator:
 Style/StringLiterals:
   Enabled: false
 
+# lambdaメソッドの使い方忘れたので取り敢えず設定
+Style/Lambda:
+  Enabled: false
+
 # クラス継承に関わる。変にいじると動かなくなりそうだから追加
 Style/ClassAndModuleChildren:
   Enabled: false
