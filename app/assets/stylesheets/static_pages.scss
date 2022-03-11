@@ -31,13 +31,11 @@
         font-size: 300%;
         font-weight: 500;
       }
+      a:hover {
+        color: blue;
+      }
     }
   }
 }
 
-.link_line_design {
-  height: 4px;
-  width: 90%;
-  margin-bottom: 4px;
-  background: linear-gradient(to right, rgba(white,1), rgba(white,0));
-}
+

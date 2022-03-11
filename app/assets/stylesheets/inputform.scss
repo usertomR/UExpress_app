@@ -3,11 +3,34 @@ textarea {
   resize: vertical;
 }
 
+.form_inclosure {
+  margin: 20vh auto;
+  padding: 20px 0;
+  width: 75vw;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.705);
+  box-shadow: 10px 10px 12px rgba($color: #000000, $alpha: 0.35);
+  .login_sign {
+    width: 90%;
+    margin: 0 auto 1%;
+    font-size: 180%;
+    font-weight: 500;
+    color: white;
+  }
+  .replace_left {
+    margin-left: 5%;
+  }
+  .create_bottom_margin {
+    margin-bottom: 1rem;
+  }
+}
+
 .input_form {
-  width: 70%;
+  width: 90%;
   margin: 0 auto 1%;
   .form-label {
     font-weight: bold;
+    color: white;
   }
   .edit_avatar_flex {
     display: flex;
@@ -45,5 +68,8 @@ textarea {
 
 .message_container {
   width: 90%;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
 }
