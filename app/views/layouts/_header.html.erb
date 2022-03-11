@@ -19,17 +19,21 @@
   </div>
   <div class="header_menu">
     <li class="header_menu_item">
-      <a href='/'>home</a>
+      <a href='/'>Home</a>
     </li>
+    <div class="header_hirizontal_line"></div>
     <li class="header_menu_item">
-      <a href="/help">help</a>
+      <a href="/help">Help</a>
     </li>
+    <div class="header_hirizontal_line"></div>
     <li class="header_menu_item">
-      <a href='/about'>about</a>
+      <a href='/about'>About</a>
     </li>
+    <div class="header_hirizontal_line"></div>
     <li class="header_menu_item">
-      <a href='/contact'>contact</a>
+      <a href='/contact'>Contact</a>
     </li>
+    <div class="header_hirizontal_line"></div>
     <% if logged_in? %>
       <li class="header_menu_item"><%= link_to "ログアウト", logout_path, method: :delete%></li>
       <li class="header_menu_item"><%= link_to "プロフィール", user_path(current_user)%></li>

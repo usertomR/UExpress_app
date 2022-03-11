@@ -3,87 +3,41 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 /* staticpages_home */
-@mixin horizontal_line {
-  content: "";
-  height: 1px;
-  flex-grow: 1;
-  background-color: #666;
-}
-
-@mixin buttonsetting {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  padding:  15px;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-}
-
-.appname {
-  margin-top: 40px;
-  font-size: 500%;
-  text-align: center;
-  overflow-wrap: break-word;
-}
-
-.appcontent {
-  text-align: center;
-  font-size: 300%;
-  margin-bottom: 100px;
-  display: flex;
-  align-items: center;
-  &:before {
-    @include horizontal_line;
-    margin-right: 1rem;
-    background: linear-gradient(-90deg, #666, transparent);
-  }
-  &:after {
-    @include horizontal_line;
-    margin-left: 1rem;
-    background: linear-gradient(90deg, #666, transparent);
-  }
-}
-
-.button {
-  list-style: none;
-  > li {
-    width: 10em;
-      .loginbtn {
-        @include buttonsetting;
-        background: #33a81f;
-        box-shadow: 0 3px 0 #19530f;
-        text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
-        &:active {
-          top: 3px;
-          box-shadow: none;
-        }
+.image_display {
+  width: 100vw;
+  height: calc(100vh - 4rem);
+  background-image: image-url('home_image.jpg');
+  background-size: cover;
+  position: fixed;
+  top: 4rem;
+  overflow-y: auto;
+  .heading_and_links {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    margin-left: 5%;
+    .heading {
+      width: 100%;
+      overflow-wrap: break-word;
+      color: white;
+      font-size: 340%;
+      font-weight: bold;
+      margin-bottom: 50px;
+      margin-top: 35vh;
     }
-      .signupbtn {
-        @include buttonsetting;
-        background: rgb(83, 196, 167);
-        box-shadow: 0 3px 0 #275c4f;
-        text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
-        &:active {
-          top: 3px;
-          box-shadow: none;
-        }
-    }
-      .testloginbtn {
-        @include buttonsetting;
-        background: #21dd00;
-        box-shadow: 0 3px 0 #18a100;
-        text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
-        &:active {
-          top: 3px;
-          box-shadow: none;
-        }
+    .login_link, .signup_link, .test_login_link {
+      a {
+        color: white;
+        font-size: 300%;
+        font-weight: 500;
+      }
     }
   }
 }
 
-.card-body {
-  background-color: rgba(194, 195, 201, 0.856);
+.link_line_design {
+  height: 4px;
+  width: 90%;
+  margin-bottom: 4px;
+  background: linear-gradient(to right, rgba(white,1), rgba(white,0));
 }
