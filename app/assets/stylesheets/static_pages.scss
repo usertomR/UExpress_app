@@ -20,7 +20,7 @@
       width: 100%;
       overflow-wrap: break-word;
       color: white;
-      font-size: 340%;
+      font-size: calc( 40px + 2vw );
       font-weight: bold;
       margin-bottom: 50px;
       margin-top: 35vh;
@@ -28,7 +28,7 @@
     .login_link, .signup_link, .test_login_link {
       a {
         color: white;
-        font-size: 300%;
+        font-size: calc( 25px + 1.8vw );
         font-weight: 500;
       }
       a:hover {

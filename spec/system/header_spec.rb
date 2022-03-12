@@ -13,7 +13,6 @@ RSpec.describe "<system>headermenu", type: :system do
       find(".header_btn").click
       aggregate_failures do
         expect(page.body).to have_link 'Home'
-        expect(page.body).to have_link 'Help'
         expect(page.body).to have_link 'About'
         expect(page.body).to have_link 'Contact'
         expect(page.body).to have_link 'ログアウト'
@@ -38,7 +37,6 @@ RSpec.describe "<system>headermenu", type: :system do
       find(".header_btn").click
       aggregate_failures do
         expect(page.body).to have_link 'Home'
-        expect(page.body).to have_link 'Help'
         expect(page.body).to have_link 'About'
         expect(page.body).to have_link 'Contact'
         expect(page.body).not_to have_link 'ログアウト'

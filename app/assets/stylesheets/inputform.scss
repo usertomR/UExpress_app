@@ -8,9 +8,9 @@ textarea {
   padding: 20px 0;
   width: 75vw;
   border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.705);
+  background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 10px 10px 12px rgba($color: #000000, $alpha: 0.35);
-  .login_sign {
+  .login_sign, .signup_mark, .password_reset_sign {
     width: 90%;
     margin: 0 auto 1%;
     font-size: 180%;

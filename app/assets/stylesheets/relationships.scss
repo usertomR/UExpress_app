@@ -9,12 +9,12 @@
 
 .unfollow_button {
   @include follow_unfollow_btn_base;
-  background: rgba($color: #a219ccf3, $alpha: 0.8);
+  background: rgba($color: #9e1044f3, $alpha: 0.8);
   color: white;
 }
 
 .follow_button {
   @include follow_unfollow_btn_base;
-  background: rgba($color: rgb(20, 128, 200), $alpha: 0.8);
+  background: rgba($color: rgb(96, 88, 11), $alpha: 0.8);
   color: white;
 }
