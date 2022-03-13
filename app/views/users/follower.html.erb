@@ -1,5 +1,5 @@
 <% provide(:title, "follow")%>
-<h1><%= @user.name %>さんのフォロワー</h1>
+<div class="page_content"><%= @user.name %>さんのフォロワー</div>
 
 <% if @user.followers.any? %>
   <% @followers.each do |follower| %>
@@ -7,23 +7,23 @@
       <div class="top_part">
         <div class="one_avatar">
           <% if follower.avatar? %>
-            <div>
+            <a href="<%= user_path(follower) %>">
               <%= image_tag follower.avatar.thumb_min.url , class: "avatar" %>
-            </div>
+            </a>
           <% else %>
-            <%= render 'shared/default_avatar' %>
+            <a href="<%= user_path(follower) %>">
+              <%= render 'shared/default_avatar' %>
+            </a>
           <% end %>
         </div>
         <div class="one_text">
-          <%= link_to follower.name, user_path(follower) %>
+          <%= link_to follower.name, user_path(follower) %><%= "a" * 100 %>
         </div>
       </div>
       <div class="one_selfintrodution">
-        <%= follower.selfintrodution %>
+        <%= follower.selfintrodution %><%= "e" * 300 %>
       </div>
     </div>
   <% end %>
     <%== pagy_bootstrap_nav(@pagy) %>
-  <% else %>
-    <strong>まだ作成されていません</strong>
 <% end %>

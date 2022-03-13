@@ -66,7 +66,7 @@
       <div class="follow_link">
         <%= link_to "フォロー", user_following_path(@user) %>
       </div>
-      <div id="sum_follow">
+      <div>
         <a href="<%= user_following_path(@user) %>" id="sum_follow"><%= @user.following.count %></a>
       </div>
     </div>
@@ -74,7 +74,7 @@
       <div class="follower_link">
         <%= link_to "フォロワー", user_follower_path(@user) %>
       </div>
-      <div id="sum_follower">
+      <div>
         <a href="<%= user_follower_path(@user) %>" id="sum_follower"><%= @user.followers.count %></a>
       </div>
     </div>

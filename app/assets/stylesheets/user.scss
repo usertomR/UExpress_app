@@ -17,7 +17,7 @@
     font-weight: 500;
     margin-top: 30px;
     margin-bottom: 30px;
-    background-color: rgba(0, 0, 0, 0.86);
+    background-color: rgba(0, 0, 0, 0.84);
     color: white;
   }
   .user_identification {
@@ -78,12 +78,10 @@
 /* フォロー・フォロワーのページ。該当する人の画像・自己紹介・名前を表示 */
 
 .follow_follower_display {
-  width: 80vw;
-  height: 120px;
+  width: 70vw;
+  height: 160px;
   margin: 10px auto;
-  border: 1px solid;
-  border-radius: 10px;
-  background-color: rgba($color: #0dabd393, $alpha: 0.8 );
+  box-shadow: 10px 10px 12px rgba($color: #000000, $alpha: 0.4);
   .top_part {
     display: flex;
     width: 90%;
@@ -92,25 +90,29 @@
       height: 100%;
       width: 55px;
       margin-right: 15px;
+      a {
+        display: inline-block;
+      }
     }
     .one_text {
       height: 60px;
-      width: calc(80vw * 0.9 - 55px - 10px);
+      width: calc(90% - 55px - 10px);
       line-height: 60px;
-      font-size: 1.4rem;
+      font-size: calc(1rem + 1vw);
       overflow: hidden;
       a {
-        color: white;
+        color: black;
       }
     }
   }
   .one_selfintrodution {
-    height: calc(100% - 60px - 10px);
+    height: calc(100% - 60px - 30px);
     width: 90%;
-    margin: 5px auto;
+    margin: 15px auto;
     overflow: hidden;
     overflow-wrap: break-word;
-    color: white;
+    color: black;
+    font-size: calc(1rem + 0.4vw);
   }
 }
 

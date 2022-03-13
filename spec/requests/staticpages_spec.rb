@@ -29,20 +29,6 @@ RSpec.describe "<request>Staticpages", type: :request do
     end
   end
 
-  describe "get /help" do
-    context ":works well" do
-      it "returns http success" do
-        get '/help'
-        expect(response).to have_http_status(:success)
-      end
-
-      it "gives correct title" do
-        get '/help'
-        expect(response.body).to include "Help | UExpress"
-      end
-    end
-  end
-
   describe "get /contact" do
     context ":works well" do
       it "returns http success" do

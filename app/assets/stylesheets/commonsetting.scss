@@ -23,6 +23,15 @@ a:hover {
   color: blue;
 }
 
+.page_content {
+  width: 70vw;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 140px auto 30px;
+  background-color: rgba(0, 0, 0, 0.84);
+  color: white;
+}
+
 /* 左に行くにつれて色が薄くなる白色の水平線 */
 .link_line_design {
   height: 4px;
