@@ -1,7 +1,7 @@
 <% provide(:title, 'User Profile') %>
 
 <div class="info_display_range">
-  <div class="profile_section">
+  <div class="profile_section user_backgroundcolor">
       ユーザー
   </div>
   <div class="user_identification">
@@ -36,13 +36,13 @@
       <%= @user.name %>
     </div>
   </div>
-  <div class="profile_section">
+  <div class="profile_section selfintro_backgroundcolor">
     自己紹介
   </div>
   <div class="user_selfintro">
     <%= @user.selfintrodution %><%= "a" * 300 %>
   </div>
-  <div class="profile_section">
+  <div class="profile_section link_backgroundcolor">
     リンク
   </div>
   <div class="user_link">

@@ -17,8 +17,16 @@
     font-weight: 500;
     margin-top: 30px;
     margin-bottom: 30px;
-    background-color: rgba(0, 0, 0, 0.84);
     color: white;
+  }
+  .user_backgroundcolor {
+    background-color: rgb(223, 205, 173);
+  }
+  .selfintro_backgroundcolor {
+    background-color: rgb(212, 167, 93);
+  }
+  .link_backgroundcolor {
+    background-color: rgba($color: #000000, $alpha: 0.7)
   }
   .user_identification {
     display: flex;
