@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-/* staticpages_home */
+/* staticpages_home   ログインしていない時 */
 .image_display {
   width: 100vw;
   height: calc(100vh - 4rem);
@@ -38,4 +38,36 @@
   }
 }
 
+.select_article_question_tab {
+  .black {
+    width: 70px;
+    height: 50px;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-top: 2px solid rgba(0, 0, 0, 0.7);
+    border-left: 2px solid rgba(0, 0, 0, 0.7);
+    border-right: 2px solid rgba(0, 0, 0, 0.7);
+    border-bottom: 0px solid rgba(0, 0, 0, 0.7);
+    color: white;
+  }
+  .not_black {
+    width: 70px;
+    height: 50px;
+    display: block;
+    background-color: white;
+    border-top: 2px solid rgba(0, 0, 0, 0.7);
+    border-left: 2px solid rgba(0, 0, 0, 0.7);
+    border-right: 2px solid rgba(0, 0, 0, 0.7);
+    border-bottom: 0px solid rgba(0, 0, 0, 0.7);
+    color: rgba(0, 0, 0, 0.7);
+  }
+}
 
+
+
+/* staticpages_home   ログインしている時 */
+.form_name {
+  color: white;
+  overflow-wrap: break-word;
+  font-size: calc(1.8rem + 0.4vw);
+}

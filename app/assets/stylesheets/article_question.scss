@@ -29,31 +29,8 @@
 }
 
 
-.select_article_question_tab {
-  display: flex;
-  margin-left: 5vw;
-  margin-top: 100px;
-  .article_tab {
-    width: 4rem;
-    height: 2rem;
-    text-align: center;
-    line-height: 2rem;
-    background-color: blanchedalmond;
-  }
-  .question_tab {
-    width: 4rem;
-    height: 2rem;
-    text-align: center;
-    line-height: 2rem;
-    background-color: rebeccapurple;
-  }
-}
 
-.search_form {
-  width: 70vw;
-  margin: 150px auto 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 10px 10px 12px rgba($color: #000000, $alpha: 0.35);
+@mixin common_part_search_form {
   .adjust_position {
     width: 90%;
     margin: 0 auto;
@@ -110,6 +87,37 @@
     }
   }
 }
+
+.search_form {
+  width: 70vw;
+  margin: 150px auto 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 10px 10px 12px rgba($color: #000000, $alpha: 0.35);
+  @include common_part_search_form
+}
+
+.select_article_question_tab {
+  display: flex;
+  width: 70vw;
+  margin: 150px auto 0;
+  .article_tab {
+    width: fit-content;
+    text-align: center;
+  }
+  .question_tab {
+    width: fit-content;
+    text-align: center;
+  }
+}
+.home_search_form {
+  width: 70vw;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 10px 10px 12px rgba($color: #000000, $alpha: 0.35);
+  @include common_part_search_form
+}
+
+
 
 // 記事・質問作成&編集ページ
 .article_question_form {

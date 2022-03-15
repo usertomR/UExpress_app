@@ -36,8 +36,5 @@ Rails.application.routes.draw do
   get 'user/:id/bookmark', to: 'users#bookmark', as: :user_bookmark
   get 'user/:id/curious', to: 'users#curious', as: :user_curious
   get 'user/:id/questionbookmark', to: 'users#questionbookmark', as: :user_questionbookmark
-
-  get '/searchresults/matched_articles', to: 'searchresults#matched_articles', as: :searchresult_matched_articles
-  get '/searchresults/matched_questions', to: 'searchresults#matched_questions', as: :searchresult_matched_questions
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
