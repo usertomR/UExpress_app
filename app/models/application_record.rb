@@ -35,7 +35,7 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   # 記事・質問検索用スコープ
-  # 検索結果数が0件の場合、where(id: nil)で、強制的にActiveRecord::Relationの中身を空にしている
+  # 検索結果数が0件になる場合、where(id: nil)で、強制的にActiveRecord::Relationの中身を空にしている
   def self.title(content)
     if content.blank?
       where(id: nil)

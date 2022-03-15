@@ -4,8 +4,9 @@
   <div class="adjust_position">
     <div class="user_name"><%= @user.name %>さんの記事</div>
     <div class="link_line_design add_margin_bottom"></div>
-    <%= form_with url: searchresult_parsonal_article_path(@user), method: :get, local: true do |f| %>
-      <div class="search">  
+    <%= form_with url: article_path(@user), method: :get, local: true do |f| %>
+      <div><%= hidden_field_tag :use_form, "true" %></div>
+      <div class="search">
         <%= f.text_field :content, placeholder: "記事タイトルの検索", class: "search_input" %>
         <%= f.submit '検索', class: "button_size btn btn-primary" %>
       </div>
@@ -23,7 +24,7 @@
         </div>
       </div>
       <div class="flex_container">
-        <div class="condition add_margin_right">文章難易度</div>
+        <div class="condition add_margin_right_27">文章難易度</div>
         <div class="checkbox">
           <% evaluations.each do |eva| %>
             <%= f.check_box :difficulty_select, { multiple: true, class: "space" }, eva, nil %>
@@ -48,7 +49,11 @@
 </div>
 
 <div class="sum_question_article">
-  <div>Article count / <%= @user.articles.count %></div>
+  <% if @matched_articles.nil? %>
+    <div>合計記事数 / <%= @user.articles.count %></div>
+  <% else %>
+    <div>検索結果 / <%= @matched_articles.count %>件</div>
+  <% end %>
 </div>
 <div class="personal_question_article_list">
   <% if @user.articles.any? %>
