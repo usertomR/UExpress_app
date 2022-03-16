@@ -168,6 +168,171 @@
   border-radius: 14px;
 }
 
+.browse_question_article {
+  width: 70%;
+  margin: 130px auto 0;
+  .title_etc {
+    background-color: rgb(235, 230, 223);
+    .user_name_avatar {
+      display: flex;
+      margin-bottom: 10px;
+      .avatar_img {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        a {
+          display: inline-block;
+        }
+      }
+      .name {
+        overflow: hidden;
+        line-height: 25px;
+          font-size: 1rem;
+          color: black;
+      }
+    }
+    .date {
+      display: flex;
+      margin-bottom: 30px;
+      .create {
+        margin-right: 12px;
+      }
+    }
+    .title {
+      font-size: calc(1.5rem + 1vw);
+      font-weight: bold;
+      overflow-wrap: break-word;
+    }
+  }
+  .button_info {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    .items {
+      margin-right: 30px;
+      width: fit-content;
+      .nice_button {
+        .not_nice_now {
+          @include button_design(green,white,green)
+        }
+        .nice_now {
+          @include button_design(white, green, green)
+        }
+        .author {
+          color: green;
+        }
+      }
+      #number_nice {
+        text-align: center;
+      }
+      .bookmark_button {
+        .not_bookmark_now {
+          @include button_design(rgb(91, 29, 238), white, rgb(91, 29, 238))
+        }
+        .bookmark_now {
+          @include button_design(white, rgb(91, 29, 238), rgb(91, 29, 238))
+        }
+        .author {
+          color: rgb(91, 29, 238);
+        }
+      }
+      #number_bookmark {
+        text-align: center;
+      }
+    }
+  }
+  .article_body_mark {
+    margin-top: 40px;
+    font-size: 30px;
+    background-color: rgb(235, 230, 223);
+  }
+  .article_body {
+    margin-top: 30px;
+    margin-bottom: 70px;
+    overflow-wrap: break-word;
+  }
+  .comment_section {
+    .mark_for_user {
+      font-size: 30px;
+      font-weight: 300;
+      background-color: rgb(235, 230, 223);
+    }
+    .existing_comment {
+      border-top: 0.8px solid;
+      .comment_user {
+        display:  flex;
+        width: 90%;
+        margin: 5px auto;
+        .commenter_avatar {
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
+        }
+        .name {
+          height: 55px;
+          line-height: 55px;
+        }
+      }
+      .comment {
+        width: 90%;
+        margin: 10px auto;
+      }
+      .delete {
+        margin-bottom: 10px;
+        margin-left: 10px;
+        width: 3rem;
+        height: 1.5rem;
+        border: 1px solid red;
+        border-radius:  10px;
+        background-color: red;
+        text-align: center;
+        a {
+          display: block;
+          color: white;
+        }
+      }
+      .good_statistics {
+        margin-bottom: 10px;
+        margin-left: 10px;
+        display: inline-block;
+        text-align: center;
+        .sum_good_mark {
+          color: green;
+        }
+      }
+      .changeable_info {
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        .changeable_button {
+          .good_now {
+            @include button_design(white, green, green);
+          }
+          .not_good_now {
+            @include button_design(green,white,green);
+          }
+        }
+        #changeable_sum_nice {
+          text-align: center;
+        }
+      }
+    }
+    .new_comment {
+      border-top: 0.8px solid;
+      padding-top: 50px;
+      padding-bottom: 20px;
+      .post_comment_mark {
+        font-size: 30px;
+        font-weight: 300;
+        background-color: rgb(235, 230, 223);
+      }
+      .margin_bottom {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+
 .browse_question_article_flex {
   width: 100vw;
   .main_view {

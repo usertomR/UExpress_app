@@ -66,7 +66,7 @@
           <div class="flex">
             <div class="flex_item_adjustment">文章の正しさ&thinsp;/&thinsp;<%= article.accuracy_text %></div>
             <div class="flex_item_adjustment">文章難易度&thinsp;/&thinsp;<%= article.difficultylevel_text %></div>
-            <div>最終修正日&thinsp;/&thinsp;<%= article.updated_at %></div>
+            <div>最終修正日&thinsp;/&thinsp;<%= ApplicationRecord.date_expression_change(article.updated_at) %></div>
           </div>
           <div class="flex">
             <div class="flex_item_adjustment">小学生向け&thinsp;:&thinsp;<%= ApplicationRecord.inspect_level(article.Eschool_level) %></div>

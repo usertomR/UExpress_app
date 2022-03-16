@@ -7,7 +7,7 @@
   <div class="user_identification">
     <% if @user.avatar? %>
       <div class="profile_avatar_and_button">
-        <%= image_tag @user.avatar.thumb_min.url , class: "avatar" %>
+        <%= image_tag @user.avatar.thumb_mid.url , class: "avatar" %>
         <% unless current_user?(@user) %>
           <div class="follow_form">
             <% if current_user.following?(@user) %>

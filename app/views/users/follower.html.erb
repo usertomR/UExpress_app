@@ -8,7 +8,7 @@
         <div class="one_avatar">
           <% if follower.avatar? %>
             <a href="<%= user_path(follower) %>">
-              <%= image_tag follower.avatar.thumb_min.url , class: "avatar" %>
+              <%= image_tag follower.avatar.thumb_mid.url , class: "avatar" %>
             </a>
           <% else %>
             <a href="<%= user_path(follower) %>">

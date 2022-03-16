@@ -10,7 +10,7 @@ textarea {
   border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 10px 10px 12px rgba($color: #000000, $alpha: 0.35);
-  .login_sign, .signup_mark, .password_reset_sign {
+  .login_sign, .signup_mark, .password_reset_sign, .user_edit_mark, .new_password {
     width: 90%;
     margin: 0 auto 1%;
     font-size: 180%;
@@ -40,13 +40,18 @@ textarea {
       height: 75px;
       line-height: 75px;
       margin-right: 10px;
+      color: white;
     }
   }
 }
 
 .submit_button {
-  width: 10%;
+  width: 90%;
   margin: 0 auto;
+  div {
+    width: fit-content;
+    margin: 0 auto;
+  }
 }
 
 .submit_checkbox {

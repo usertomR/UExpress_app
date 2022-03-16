@@ -9,7 +9,7 @@
         <div class="one_avatar">
           <% if follow.avatar? %>
             <a href="<%= user_path(follow) %>">
-              <%= image_tag follow.avatar.thumb_min.url , class: "avatar" %>
+              <%= image_tag follow.avatar.thumb_mid.url , class: "avatar" %>
             </a>
           <% else %>
             <a href="<%= user_path(follow) %>">

@@ -7,6 +7,7 @@
   margin-top: 4rem;
 }
 
+
 a {
   text-decoration: none;
 }
@@ -185,6 +186,18 @@ body.noscroll {
   border-radius: 40% 40% 20% 20%;
   margin: 0 auto;
   background: blue
+}
+
+.avatar_min_size {
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  .face {
+    @include avatar_face
+  }
+  .body {
+    @include avatar_body
+  }
 }
 
 .avatar_normal_size {
