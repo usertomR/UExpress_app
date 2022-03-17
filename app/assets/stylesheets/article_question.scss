@@ -156,11 +156,6 @@
 }
 
 // article,questionモデルのbrowsing action
-@mixin about_border {
-  border: 1px solid;
-  border-radius: 10px;
-}
-
 @mixin button_design($text_color,$background_color,$border_color) {
   color: $text_color;
   background-color: $background_color;
@@ -239,14 +234,42 @@
       #number_bookmark {
         text-align: center;
       }
+      .curious_button {
+        .not_curious_now {
+          @include button_design(brown, white, brown)
+        }
+        .curious_now {
+          @include button_design(white, brown, brown)
+        }
+        .already_solved {
+          color: brown;
+        }
+      }
+      #number_curious {
+        text-align: center;
+      }
+      .questionbookmark_button {
+        .author {
+          color: rgb(214, 29, 238);
+        }
+        .bookmark_now {
+          @include button_design(white, rgb(214, 29, 238), rgb(214, 29, 238))
+        }
+        .not_bookmark_now {
+          @include button_design(rgb(214, 29, 238), white, rgb(214, 29, 238))
+        }
+      }
+      #number_questionbookmark {
+        text-align: center;
+      }
     }
   }
-  .article_body_mark {
+  .article_body_mark, .question_body_mark {
     margin-top: 40px;
     font-size: 30px;
     background-color: rgb(235, 230, 223);
   }
-  .article_body {
+  .article_body, .question_body {
     margin-top: 30px;
     margin-bottom: 70px;
     overflow-wrap: break-word;
@@ -328,207 +351,6 @@
       }
       .margin_bottom {
         margin-bottom: 30px;
-      }
-    }
-  }
-}
-
-.browse_question_article_flex {
-  width: 100vw;
-  .main_view {
-    margin-left: 5vw;
-    margin-right: 5vw;
-    width:  90vw;
-    .title {
-      margin-bottom: 10px;
-      font-size: 3rem;
-      font-weight: bold;
-      height: 4.5rem;
-      overflow-x: auto;
-    }
-    hr {
-      border: none;
-      height: 2px;
-      margin-bottom: 30px;
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%,
-                rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0.3) 100%);
-    }
-    .user_info {
-      margin-bottom: 20px;
-      @include about_border;
-      height: calc(55px + 10px + 3rem);
-      display: flex;
-	    flex-direction: column;
-      .info_content {
-        display: flex;
-        height: 55px;
-        .avatar_img {
-          width: 55px;
-          margin-right: 10px;
-        }
-        .name {
-          overflow: hidden;
-          a {
-            line-height: 55px;
-            font-size: 1.4rem;
-            color: black;
-          }
-          a:hover {
-            color: blue;
-          }
-        }
-      }
-      .selfintrodution {
-        margin-top: 10px;
-        height: 3rem;
-        overflow: hidden;
-        overflow-wrap: break-word;
-      }
-    }
-    .other_info {
-      height: 70px;
-      margin-bottom: 20px;
-      display: flex;
-      @include about_border;
-      .items {
-        margin-left: 10px;
-        margin-top: 5px;
-        width: fit-content;
-        .nice_button {
-          .not_nice_now {
-            @include button_design(green,white,green)
-          }
-          .nice_now {
-            @include button_design(white, green, green)
-          }
-          .author {
-            color: green;
-          }
-        }
-        #number_nice {
-          text-align: center;
-        }
-        .bookmark_button {
-          .not_bookmark_now {
-            @include button_design(rgb(91, 29, 238), white, rgb(91, 29, 238))
-          }
-          .bookmark_now {
-            @include button_design(white, rgb(91, 29, 238), rgb(91, 29, 238))
-          }
-          .author {
-            color: rgb(91, 29, 238);
-          }
-        }
-        #number_bookmark {
-          text-align: center;
-        }
-        .curious_button {
-          .not_curious_now {
-            @include button_design(brown, white, brown)
-          }
-          .curious_now {
-            @include button_design(white, brown, brown)
-          }
-          .already_solved {
-            color: brown;
-          }
-        }
-        #number_curious {
-          text-align: center;
-        }
-        .questionbookmark_button {
-          .author {
-            color: rgb(214, 29, 238);
-          }
-          .bookmark_now {
-            @include button_design(white, rgb(214, 29, 238), rgb(214, 29, 238))
-          }
-          .not_bookmark_now {
-            @include button_design(rgb(214, 29, 238), white, rgb(214, 29, 238))
-          }
-        }
-        #number_questionbookmark {
-          text-align: center;
-        }
-      }
-    }
-    .text {
-      margin-bottom: 50px;
-      border: 1px solid rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-    }
-    .comment_section {
-      @include about_border;
-      .mark_for_user {
-        height: 2rem;
-        line-height: 2rem;
-        font-size: 1.2rem;
-        font-weight: 700;
-      }
-      .existing_comment {
-        border-top: solid;
-        .comment_user {
-          display:  flex;
-          width: 90%;
-          margin: 5px auto;
-          .commenter_avatar {
-            width: 55px;
-            height: 55px;
-            margin-right: 10px;
-          }
-          .name {
-            height: 55px;
-            line-height: 55px;
-          }
-        }
-        .comment {
-          width: 90%;
-          margin: 10px auto;
-        }
-        .delete {
-          margin-bottom: 10px;
-          margin-left: 10px;
-          width: 3rem;
-          height: 1.5rem;
-          border: 1px solid red;
-          border-radius:  10px;
-          background-color: red;
-          text-align: center;
-          a {
-            display: block;
-            color: white;
-          }
-        }
-        .good_statistics {
-          margin-bottom: 10px;
-          margin-left: 10px;
-          display: inline-block;
-          text-align: center;
-          .sum_good_mark {
-            color: green;
-          }
-        }
-        .changeable_info {
-          display: inline-block;
-          margin-bottom: 10px;
-          margin-left: 10px;
-          .changeable_button {
-            .good_now {
-              @include button_design(white, green, green);
-            }
-            .not_good_now {
-              @include button_design(green,white,green);
-            }
-          }
-          #changeable_sum_nice {
-            text-align: center;
-          }
-        }
-      }
-      .new_comment {
-        border-top: solid;
-        padding-top: 50px;
-        padding-bottom: 20px;
       }
     }
   }

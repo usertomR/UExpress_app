@@ -46,7 +46,7 @@ class ApplicationRecord < ActiveRecord::Base
       end
       figure
     end
-    y_m_d[0].to_s + "年" + y_m_d[1].to_s + "月" + y_m_d[2] + "日"
+    y_m_d[0] + "年" + y_m_d[1] + "月" + y_m_d[2] + "日"
   end
 
   # 記事・質問検索用スコープ

@@ -1,200 +1,228 @@
 <% provide(:title, "Reading the Question")%>
 
-<div class="browse_question_article_flex">
-  <div class="main_view">
+<div class="browse_question_article">
+  <div class="title_etc">
+    <div class="user_name_avatar">
+      <% if @question.user.avatar? %>
+        <div class="avatar_img">
+          <a href="<%= user_path(@question.user) %>">
+            <%= image_tag @question.user.avatar.thumb_min.url , class: "avatar" %>
+          </a>
+        </div>
+      <% else %>
+        <div class="avatar_img">
+          <a href="<%= user_path(@question.user) %>">
+            <%= render 'shared/default_min_avatar' %>
+          </a>
+        </div>
+      <% end %>
+      <div class="name">
+        <%= @question.user.name %><%= "a" * 100 %>
+      </div>
+    </div>
+    <div class="date">
+      <div class="create">
+        作成日&thinsp;&thinsp;<%= ApplicationRecord.date_expression_change(@question.created_at) %>
+      </div>
+      <div class="update">
+        最終修正日&thinsp;&thinsp;<%= ApplicationRecord.date_expression_change(@question.updated_at) %>
+      </div>
+    </div>
     <div class="title">
-      <%= @question.title %>
+      <%= @question.title %><%= "a" * 100 %>
     </div>
-    <hr>
-    <div class="user_info">
-      <div class="info_content">
-        <div>
-          <% if @question.user.avatar? %>
-            <div class="avatar_img">
-              <%= image_tag @question.user.avatar.thumb_min.url , class: "avatar" %>
-            </div>
-          <% else %>
-            <%= render 'shared/default_avatar' %>
-          <% end %>
-        </div>
-        <div class="name">
-          <a href="<%= user_path(@question.user) %>"><%= @question.user.name %></a>
-        </div>
-      </div>
-      <div class="selfintrodution">
-        <%= @question.user.selfintrodution %>
-      </div>
-    </div>
-    <div class="other_info">
-      <div class="items">
+  </div>
+  <div class="distinction_line">
+  </div>
+  <div class="button_info">
+    <div class="items">
+      <div class="curious_button">
         <% if @question.solve %>
-          <div class="solve_question">
-            解決
+          <div class="already_solved">
+            気になる計
           </div>
         <% else %>
-          <div class="not_solve_question">
-            未解決
-          </div>
+          <%if current_user.sum_curious_per_user.include?(@question) %>
+            <%= render 'notcurious' %>
+          <% else %>
+            <%= render 'curious' %>
+          <% end %>
         <% end %>
       </div>
-      <div class="items">
-        <div class="curious_button">
-          <% if @question.solve %>
-            <div class="already_solved">
-              気になる計
-            </div>
-          <% else %>
-            <%if current_user.sum_curious_per_user.include?(@question) %>
-              <%= render 'notcurious' %>
-            <% else %>
-              <%= render 'curious' %>
-            <% end%>
-          <% end %>
-        </div>
-        <div id="number_curious">
-          <%= @question.sum_curious_per_question.count %>
-        </div>
-      </div>
-      <div class="items">
-        <div class="questionbookmark_button">
-          <%if current_user.sum_questionbookmark_per_user.include?(@question) %>
-            <%= render 'notbookmark' %>
-          <% else %>
-            <%= render 'bookmark' %>
-          <% end %>
-        </div>
-        <div id="number_questionbookmark">
-          <%= @question.sum_questionbookmark_per_question.count %>
-        </div>
+      <div id="number_curious">
+        <%= @question.sum_curious_per_question.count %>
       </div>
     </div>
-    <div class="text">
-      <%= @question.questiontext %>
+    <div class="items">
+      <div class="questionbookmark_button">
+        <%if current_user.sum_questionbookmark_per_user.include?(@question) %>
+          <%= render 'notbookmark' %>
+        <% else %>
+          <%= render 'bookmark' %>
+        <% end %>
+      </div>
+      <div id="number_questionbookmark">
+        <%= @question.sum_questionbookmark_per_question.count %>
+      </div>
     </div>
-    <div class="answer_comment_section">
-      <div class="mark_of_answer">
-        回答&emsp;/&emsp;<%= @question.answer_to_questions.count %>件
-      <div>
-      <%# answer_id_array は、質問の回答1つ1つのidを格納 %>
-      <% answer_id_array = [] %>
-      <% @question.answer_to_questions.each do |answer| %>
-        <% answer_id_array << answer.id %>
-        <div class="existing_answer_comment">
-          <div class="answer_user">
-            <% if answer.user.avatar? %>
-              <div class="answer_avatar">
-                <%= image_tag answer.user.avatar.thumb_min.url , class: "avatar" %>
-              </div>
-              <% else %>
-              <%= render 'shared/default_avatar' %>
-            <% end %>
-            <div class="answer_user_name">
-              <%= answer.user.name %>
+    <div class="items">
+      <% if @question.solve %>
+        <div class="solve_question">
+          解決
+        </div>
+      <% else %>
+        <div class="not_solve_question">
+          未解決
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="question_body_mark">
+    質問本体
+  </div>
+  <div class="distinction_line">
+  </div>
+  <div class="question_body">
+    <%= @question.questiontext %>
+  </div>
+  <div class="answer_comment_section">
+    <div class="mark_of_answer">
+      回答&emsp;/&emsp;<%= @question.answer_to_questions.count %>件
+    </div>
+    <%# answer_id_array は、質問の回答1つ1つのidを格納 %>
+    <% answer_id_array = [] %>
+    <% @question.answer_to_questions.each do |answer| %>
+      <% answer_id_array << answer.id %>
+      <div class="existing_answer_comment">
+        <div class="answer_user">
+          <% if answer.user.avatar? %>
+            <div class="answer_avatar">
+              <a href="<%= user_path(answer.user) %>">
+                <%= image_tag answer.user.avatar.thumb_mid.url , class: "avatar" %>
+              </a>
             </div>
-          </div>
-          <div class="answer">
-            <%= answer.answer %>
-          </div>
-          <% if answer.user == current_user %>
-            <div class="delete">
-              <%= link_to "削除", answer_to_question_path(answer), method: :delete, data: { confirm: "削除しますか?" } %>
+          <% else %>
+            <div class="answer_avatar">
+              <a href="<%= user_path(answer.user) %>">
+                <%= render 'shared/default_avatar' %>
+              </a>
             </div>
-            <div class="nice">
-              <div class="nice_answer">
-                nice計<br>
-              </div>
+          <% end %>
+          <div class="answer_user_name">
+            <%= answer.user.name %>
+          </div>
+        </div>
+        <div class="answer">
+          <%= answer.answer %>
+        </div>
+        <% if answer.user == current_user %>
+          <div class="delete">
+            <%= link_to "削除", answer_to_question_path(answer), method: :delete, data: { confirm: "削除しますか?" } %>
+          </div>
+          <div class="nice">
+            <div class="nice_answer">
+              nice計<br>
+            </div>
               <%= answer.nice_to_answers.count %>
+          </div>
+        <% else %>
+          <% if NiceToAnswer.find_by(answer_to_question_id: answer.id, user_id: current_user.id) %>
+            <div class="about_nice_answer">
+              <div class="nice_button">
+                <%= render partial: "notnice", locals: { answer: answer, user: current_user, question: @question } %>
+              </div>
+              <div id="sum_nice">
+                <%= answer.nice_to_answers.count %>
+              </div>
             </div>
           <% else %>
-            <% if NiceToAnswer.find_by(answer_to_question_id: answer.id, user_id: current_user.id) %>
-              <div class="about_nice_answer">
-                <div class="nice_button">
-                  <%= render partial: "notnice", locals: { answer: answer, user: current_user, question: @question } %>
-                </div>
-                <div id="sum_nice">
-                  <%= answer.nice_to_answers.count %>
-                </div>
+            <div class="about_nice_answer">
+              <div class="nice_button">
+                <%= render partial: "nice", locals: { answer: answer, user: current_user } %>
               </div>
-            <% else %>
-              <div class="about_nice_answer">
-                <div class="nice_button">
-                  <%= render partial: "nice", locals: { answer: answer, user: current_user } %>
-                </div>
-                <div id="sum_nice">
-                  <%= answer.nice_to_answers.count %>
-                </div>
+              <div id="sum_nice">
+                <%= answer.nice_to_answers.count %>
               </div>
-            <% end%>
+            </div>
           <% end %>
+        <% end %>
+        <% if answer.comment_to_answers.count != 0 %>
           <div class="mark_of_comment">
             コメント
           </div>
-          <% answer.comment_to_answers.each do |comment| %>
-            <div class="existing_comment">
-              <div class="comment_user">
-                <% if comment.user.avatar? %>
-                  <div class="comment_avatar">
+        <% end %>
+        <% answer.comment_to_answers.each do |comment| %>
+          <div class="existing_comment">
+            <div class="comment_user">
+              <% if comment.user.avatar? %>
+                <div class="comment_avatar">
+                  <a href="<%= user_path(comment.user) %>">
                     <%= image_tag comment.user.avatar.thumb_min.url , class: "avatar" %>
-                  </div>
-                <% else %>
-                  <%= render 'shared/default_avatar' %>
-                <% end %>
-                <div class="name">
-                  <%= comment.user.name %>
+                  </a>
                 </div>
-              </div>
-              <div class="comment">
-                <%= comment.comment %>
-              </div>
-              <% if comment.user == current_user %>
-                <div class="delete">
-                  <%= link_to "削除", comment_to_answer_path(comment), method: :delete, data: { confirm: "削除しますか?" } %>
+              <% else %>
+                <div class="comment_avatar">
+                  <a href="<%= user_path(comment.user) %>">
+                    <%= render 'shared/default_min_avatar' %>
+                  </a>
                 </div>
               <% end %>
+              <div class="name">
+                <%= comment.user.name %>
+              </div>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-      <div class="new_answer">
-        <%= form_with(model: @question.answer_to_questions.build, local: true) do |f| %>
-
-          <div><%= f.hidden_field :question_id, :value => @question.id %></div>
-          <div><%= f.hidden_field :user_id, :value => current_user.id %></div>
-
-          <div class="richtext_form">
-            <%= f.label :answer, "回答", class: "form-label" %>
-            <%= f.rich_text_area :answer, {class: "trix-content form_height"} %>
-          </div>
-
-          <div class="submit_button">
-            <%= f.submit "回答", class: "btn btn-primary" %>
+            <div class="comment">
+              <%= comment.comment %>
+            </div>
+            <% if comment.user == current_user %>
+              <div class="delete">
+                <%= link_to "削除", comment_to_answer_path(comment), method: :delete, data: { confirm: "削除しますか?" } %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
-      <% if @question.answer_to_questions.count != 0 %>
-        <div class="new_comment">
-          <%= form_with(model: @comment, local: true) do |f| %>
-
-            <div class="input_number">
-              <%= f.number_field(:answer_id) %>番目の回答へのコメント
-            </div>
-            
-            <%# question_id を　コントローラーのcreateアクションで使いたい。エラー回避のため %>
-            <div><%= hidden_field_tag :question_id, @question.id %></div> 
-            <div><%= f.hidden_field :answer_id_array, :value => answer_id_array %></div>
-            <div><%= f.hidden_field :user_id, :value => current_user.id %></div>
-
-            <div class="richtext_form">
-              <%= f.label :comment, "コメント投稿", class: "form-label" %>
-              <%= f.rich_text_area :comment, {class: "trix-content form_height"} %>
-            </div>
-
-            <div class="submit_button">
-              <%= f.submit "コメント投稿", class: "btn btn-primary" %>
-            </div>
-          <% end %>
+    <% end %>
+    <div class="new_answer">
+      <div class="post_answer_mark">
+        回答投稿
+      </div>
+      <%= form_with(model: @question.answer_to_questions.build, local: true) do |f| %>
+        <div><%= f.hidden_field :question_id, :value => @question.id %></div>
+        <div><%= f.hidden_field :user_id, :value => current_user.id %></div>
+        <div class="richtext_form">
+          <%= f.rich_text_area :answer, {class: "trix-content form_height"} %>
+        </div>
+        <div class="submit_button">
+          <div>
+            <%= f.submit "回答", class: "btn btn-primary" %>
+          </div>
         </div>
       <% end %>
     </div>
+    <% if @question.answer_to_questions.count != 0 %>
+      <div class="new_comment">
+        <div class="post_comment_mark">
+          コメント投稿
+        </div>
+        <%= form_with(model: @comment, local: true) do |f| %>
+          <div class="input_number">
+            <%= f.number_field(:answer_id) %>番目の回答へのコメント
+          </div>
+          <%# question_id を　コントローラーのcreateアクションで使いたい。エラー回避のため %>
+          <div><%= hidden_field_tag :question_id, @question.id %></div> 
+          <div><%= f.hidden_field :answer_id_array, :value => answer_id_array %></div>
+          <div><%= f.hidden_field :user_id, :value => current_user.id %></div>
+          <div class="richtext_form">
+            <%= f.rich_text_area :comment, {class: "trix-content form_height"} %>
+          </div>
+          <div class="submit_button">
+            <div>
+              <%= f.submit "コメント投稿", class: "btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
