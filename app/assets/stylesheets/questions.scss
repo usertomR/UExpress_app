@@ -11,8 +11,9 @@
   text-align: center;
   border: 1px solid blue;
   border-radius: 4px;
-  color: blue;
-  background: white;
+  color: white;
+  background: blue;
+  margin-bottom: 7px;
 }
 
 .not_solve_question {
@@ -22,31 +23,36 @@
   text-align: center;
   border: 1px solid red;
   border-radius: 4px;
-  color: red;
-  background: white;
+  color: white;
+  background: red;
+  margin-bottom: 7px;
 }
 
 // 質問閲覧ページ
 .answer_comment_section {
   .mark_of_answer {
-    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 300;
+    color: white;
+    background-color: rgba($color: #cf3333, $alpha: 0.7);
   }
   .existing_answer_comment {
-    margin-bottom: 40px;
-    border: 1px solid;
-    border-radius: 10px;
+    padding-top: 40px;
+    border-top: 0.8px solid;
     .answer_user {
       display:  flex;
-      width: 90%;
-      margin: 5px auto;
+      margin: 5px 0;
       .answer_avatar {
-        width: 55px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
         margin-right: 10px;
+        a {
+          display: inline-block;
+        }
       }
       .answer_user_name {
-        height: 55px;
-        line-height: 55px;
+        height: 50px;
+        line-height: 50px;
       }
     }
     .answer {
@@ -55,7 +61,6 @@
     }
     .delete {
       margin-bottom: 10px;
-      margin-left: 10px;
       width: 3rem;
       height: 1.5rem;
       border: 1px solid red;
@@ -69,15 +74,14 @@
     }
     .nice {
       margin-bottom: 10px;
-      margin-left: 10px;
       display: inline-block;
+      text-align: center;
       .nice_answer {
         color: green;
       }
     }
     .about_nice_answer {
       margin-bottom: 10px;
-      margin-left: 10px;
       width: fit-content;
       .nice_now {
         color: white;
@@ -96,44 +100,67 @@
       }
     }
     .mark_of_comment {
-      border-top: 1px solid;
-      height: 2rem;
-      line-height: 2rem;
-      font-size: 1.2rem;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 300;
+      background-color: rgb(235, 230, 223);
+      width: 90%;
+      margin-left: 10%;
     }
     .existing_comment {
-      border-top: 1px solid;
+      width: 90%;
+      margin-left: 10%;
+      border-top: 0.8px solid;
+      margin-bottom: 20px;
       .comment_user {
         display:  flex;
-        width: 90%;
-        margin: 5px auto;
-        .commenter_avatar {
-          width: 55px;
-          height: 55px;
+        margin: 5px 0;
+        .comment_avatar {
+          width: 25px;
+          height: 25px;
           margin-right: 10px;
+          a {
+            display: inline-block;
+          }
         }
         .name {
-          height: 55px;
-          line-height: 55px;
+          height: 25px;
+          line-height: 25px;
         }
       }
       .comment {
         width: 90%;
-        margin: 10px auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10%;
       }
     }
   }
   .new_answer {
     padding-top: 50px;
     padding-bottom: 20px;
+    .post_answer_mark {
+      font-size: 30px;
+      font-weight: 300;
+      color: white;
+      background-color: rgba(255, 0, 212, 0.6);
+      border-bottom: 0.8px solid;
+      margin-bottom: 20px;
+    }
   }
   .new_comment {
     padding-top: 10px;
     padding-bottom: 10px;
     margin-top: 40px;
+    .post_comment_mark {
+      font-size: 30px;
+      font-weight: 300;
+      color: white;
+      background-color: rgba(255, 0, 212, 0.6);
+      border-bottom: 0.8px solid;
+      margin-bottom: 20px;
+    }
     .input_number {
-      margin-left: 10vw;
+      margin-bottom: 20px;
       input {
         width: 4rem;
       }

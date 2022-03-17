@@ -12,10 +12,9 @@ RSpec.describe "<system>headermenu", type: :system do
       login_as(@user)
       find(".header_btn").click
       aggregate_failures do
-        expect(page.body).to have_link 'home'
-        expect(page.body).to have_link 'help'
-        expect(page.body).to have_link 'about'
-        expect(page.body).to have_link 'contact'
+        expect(page.body).to have_link 'Home'
+        expect(page.body).to have_link 'About'
+        expect(page.body).to have_link 'Contact'
         expect(page.body).to have_link 'ログアウト'
         expect(page.body).to have_link 'プロフィール'
         expect(page.body).to have_link 'アカウント更新'
@@ -37,10 +36,9 @@ RSpec.describe "<system>headermenu", type: :system do
       visit root_path
       find(".header_btn").click
       aggregate_failures do
-        expect(page.body).to have_link 'home'
-        expect(page.body).to have_link 'help'
-        expect(page.body).to have_link 'about'
-        expect(page.body).to have_link 'contact'
+        expect(page.body).to have_link 'Home'
+        expect(page.body).to have_link 'About'
+        expect(page.body).to have_link 'Contact'
         expect(page.body).not_to have_link 'ログアウト'
         expect(page.body).not_to have_link 'プロフィール'
         expect(page.body).not_to have_link 'アカウント更新'

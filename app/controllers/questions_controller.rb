@@ -18,7 +18,16 @@ class QuestionsController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @pagy, @questions = pagy(@user.questions)
+    if params[:use_form] != "true"
+      @pagy, @questions = pagy(@user.questions)
+    else
+      @matched_questions = @user.questions.term(params[:term_from], params[:term_to])
+                                .accuracy(params[:accuracy_select])
+                                .difficulty(params[:difficulty_select])
+                                .title(params[:content])
+                                .solve?(params[:solve])
+      @pagy, @questions = pagy(@matched_questions)
+    end
   end
 
   # before_actionで,@questionを取得している。(update,destroyも)

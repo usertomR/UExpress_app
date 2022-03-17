@@ -21,6 +21,10 @@ Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
 
+Style/IfInsideElse:
+  Exclude:
+    - 'app/controllers/static_pages_controller.rb'
+
 ######## Rails ########
 Rails/FilePath:
   Exclude:
@@ -44,6 +48,12 @@ Metrics/AbcSize:
   Exclude:
     - 'app/models/application_record.rb'
     - 'app/controllers/comment_to_answers_controller.rb'
+    - 'app/controllers/static_pages_controller.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'app/controllers/static_pages_controller.rb'
+    - 'db/migrate/*.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:

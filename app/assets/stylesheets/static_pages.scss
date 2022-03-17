@@ -2,88 +2,72 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-/* staticpages_home */
-@mixin horizontal_line {
-  content: "";
-  height: 1px;
-  flex-grow: 1;
-  background-color: #666;
+/* staticpages_home   ログインしていない時 */
+.image_display {
+  width: 100vw;
+  height: calc(100vh - 4rem);
+  background-image: image-url('home_image.jpg');
+  background-size: cover;
+  position: fixed;
+  top: 4rem;
+  overflow-y: auto;
+  .heading_and_links {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    margin-left: 5%;
+    .heading {
+      width: 100%;
+      overflow-wrap: break-word;
+      color: white;
+      font-size: calc( 40px + 2vw );
+      font-weight: bold;
+      margin-bottom: 50px;
+      margin-top: 35vh;
+    }
+    .login_link, .signup_link, .test_login_link {
+      a {
+        color: white;
+        font-size: calc( 25px + 1.8vw );
+        font-weight: 500;
+      }
+      a:hover {
+        color: blue;
+      }
+    }
+  }
 }
 
-@mixin buttonsetting {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  padding:  15px;
-  text-align: center;
+.select_article_question_tab {
+  .black {
+    width: 70px;
+    height: 50px;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-top: 2px solid rgba(0, 0, 0, 0.7);
+    border-left: 2px solid rgba(0, 0, 0, 0.7);
+    border-right: 2px solid rgba(0, 0, 0, 0.7);
+    border-bottom: 0px solid rgba(0, 0, 0, 0.7);
+    color: white;
+  }
+  .not_black {
+    width: 70px;
+    height: 50px;
+    display: block;
+    background-color: white;
+    border-top: 2px solid rgba(0, 0, 0, 0.7);
+    border-left: 2px solid rgba(0, 0, 0, 0.7);
+    border-right: 2px solid rgba(0, 0, 0, 0.7);
+    border-bottom: 0px solid rgba(0, 0, 0, 0.7);
+    color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+
+
+/* staticpages_home   ログインしている時 */
+.form_name {
   color: white;
-  font-weight: bold;
-}
-
-.appname {
-  margin-top: 40px;
-  font-size: 500%;
-  text-align: center;
   overflow-wrap: break-word;
-}
-
-.appcontent {
-  text-align: center;
-  font-size: 300%;
-  margin-bottom: 100px;
-  display: flex;
-  align-items: center;
-  &:before {
-    @include horizontal_line;
-    margin-right: 1rem;
-    background: linear-gradient(-90deg, #666, transparent);
-  }
-  &:after {
-    @include horizontal_line;
-    margin-left: 1rem;
-    background: linear-gradient(90deg, #666, transparent);
-  }
-}
-
-.button {
-  list-style: none;
-  > li {
-    width: 10em;
-      .loginbtn {
-        @include buttonsetting;
-        background: #33a81f;
-        box-shadow: 0 3px 0 #19530f;
-        text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
-        &:active {
-          top: 3px;
-          box-shadow: none;
-        }
-    }
-      .signupbtn {
-        @include buttonsetting;
-        background: rgb(83, 196, 167);
-        box-shadow: 0 3px 0 #275c4f;
-        text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
-        &:active {
-          top: 3px;
-          box-shadow: none;
-        }
-    }
-      .testloginbtn {
-        @include buttonsetting;
-        background: #21dd00;
-        box-shadow: 0 3px 0 #18a100;
-        text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
-        &:active {
-          top: 3px;
-          box-shadow: none;
-        }
-    }
-  }
-}
-
-.card-body {
-  background-color: rgba(194, 195, 201, 0.856);
+  font-size: calc(1.8rem + 0.4vw);
 }

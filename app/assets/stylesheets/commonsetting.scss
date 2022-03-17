@@ -4,8 +4,9 @@
   top: 0;
   right: 0px;
   z-index: 0;
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
+
 
 a {
   text-decoration: none;
@@ -19,13 +20,29 @@ li {
   margin: 0 auto;
 }
 
-h1 {
-  text-align: center;
-  font-weight: bolder;
+a:hover {
+  color: blue;
+}
+
+.page_content {
+  width: 70vw;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 140px auto 30px;
+  background-color: rgba(0, 0, 0, 0.84);
+  color: white;
+}
+
+/* 左に行くにつれて色が薄くなる白色の水平線 */
+.link_line_design {
+  height: 4px;
+  width: 90%;
+  margin-bottom: 4px;
+  background: linear-gradient(to right, rgba(white,1), rgba(white,0));
 }
 
 .header_flex_container {
-  background-color: aquamarine;
+  background-color: rgb(216, 110, 10);
   display: flex;
   justify-content: space-between;
   height: 4rem;
@@ -67,6 +84,10 @@ h1 {
   }
 }
 
+.letter_white {
+  color: white;
+}
+
 // z-indexはハンバーガーメニュー表示のため。
 .hidden_screen {
   display: none;
@@ -77,10 +98,10 @@ h1 {
   right: 0;
   z-index: 2;
   background: linear-gradient(to right, 
-              rgba(26, 157, 209, 0.135) 0%,
-              rgba(26, 157, 209, 0.135) calc(100vw - 300px),
-              cadetblue calc(100vw - 300px),
-              cadetblue 100%);
+              rgba(37, 25, 1, 0.135) 0%,
+              rgba(37, 25, 1, 0.135) calc(100vw - 300px),
+              rgba(165, 139, 25, 0.863) calc(100vw - 300px),
+              rgba(165, 139, 25, 0.863) 100%);
 }
 
 .not_menu {
@@ -100,14 +121,23 @@ h1 {
   height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  .header_hirizontal_line {
+    width: 80%;
+    margin: 4px auto;
+    border: 1px solid white;
+  }
 }
 
 .header_menu_item {
   box-sizing: border-box;
   width: 80%;
-  height: 1.2rem;
-  margin: 6px auto;
+  height: 1.6rem;
+  margin: 0 auto;
   a {
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 2rem;
     color: white;
   }
 }
@@ -120,21 +150,26 @@ body.noscroll {
 
 /*記事リスト、質問リスト(検索結果・投稿リスト)の表示*/
 .an_item {
-  border: solid 3px #333;
-  border-radius: 10px;
-  background-color: rgb(127, 243, 185);
-  .separation {
-    background: black;
-    height: 3px;
-    margin: 5px 0;
+  background-color: rgb(235, 230, 223);
+  .content {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+    .title a {
+      font-size: calc(1.6rem + 0.2vw);
+    }
   }
+}
+.distinction_line {
+  height: 0.8px;
+  background-color: rgba($color: #000000, $alpha: 0.5);
 }
 
 /* アバター */
 .avatar {
   border-radius: 50%;
-  border: solid 1px black;
-  background-color: rgb(246, 238, 238);
+  border: solid 1px white;
+  background-color: rgb(193, 212, 255)
 }
 
 @mixin avatar_face {
@@ -151,6 +186,18 @@ body.noscroll {
   border-radius: 40% 40% 20% 20%;
   margin: 0 auto;
   background: blue
+}
+
+.avatar_min_size {
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  .face {
+    @include avatar_face
+  }
+  .body {
+    @include avatar_body
+  }
 }
 
 .avatar_normal_size {

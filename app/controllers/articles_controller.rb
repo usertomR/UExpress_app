@@ -19,9 +19,19 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # 検索フォームを使わずに当アクションにアクセスしたら、個人の記事全てを表示。
+  # 検索フォームで検索または検索後のページネーションボタンを使うと、該当する記事のみ表示する仕様
   def show
     @user = User.find(params[:id])
-    @pagy, @articles = pagy(@user.articles)
+    if params[:use_form] != "true"
+      @pagy, @articles = pagy(@user.articles)
+    else
+      @matched_articles = @user.articles.term(params[:term_from], params[:term_to])
+                               .accuracy(params[:accuracy_select])
+                               .difficulty(params[:difficulty_select])
+                               .title(params[:content])
+      @pagy, @articles = pagy(@matched_articles)
+    end
   end
 
   def browsing

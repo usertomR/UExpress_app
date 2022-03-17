@@ -34,8 +34,23 @@ class ApplicationRecord < ActiveRecord::Base
     end
   end
 
+  # モデル作成時にカラムに追加されるcreated_atとupdated_atの表記を変換
+  def self.date_expression_change(before_expression)
+    # 右から順に年・月・日の情報を取得。配列に格納される
+    date = before_expression.to_s.scan(/\d{4}-\d{1,2}-\d{1,2}/)
+    splited = date[0].split("-")
+    # 月・日の一文字目の0を消す。(ex: "03"→"3")
+    y_m_d = splited.map do |figure|
+      if figure[0] == "0"
+        figure = figure[1]
+      end
+      figure
+    end
+    y_m_d[0] + "年" + y_m_d[1] + "月" + y_m_d[2] + "日"
+  end
+
   # 記事・質問検索用スコープ
-  # 検索結果数が0件の場合、where(id: nil)で、強制的にActiveRecord::Relationの中身を空にしている
+  # 検索結果数が0件になる場合、where(id: nil)で、強制的にActiveRecord::Relationの中身を空にしている
   def self.title(content)
     if content.blank?
       where(id: nil)

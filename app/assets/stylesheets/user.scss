@@ -1,91 +1,96 @@
 /* ユーザーモデル関連のページ */
 /* profile_avatarの大きさは、表示するアバターのサイズを上回るようにする */
-.user_info { 
-  display: flex;
-  .user_profile {
-    width: calc(100vw - 20px - 130px - 20px - 20px);
-    height: 500px;
-    margin-left: 20px;
-    background-color: rgba($color: #15925e, $alpha: 0.7);
-    .page_name {
-      height: 30px;
-      font-size: 23px;
-      margin-bottom: 20px;
-      color: whitesmoke;
-    }
-    .user_identification {
-      display: flex;
-      height: 70px;
-      margin-bottom: 30px;
-      .profile_avatar {
-        margin-right: 15px;
-      }
-      .user_name {
-        font-size: 30px;
-        width: calc(100% - 60px - 15px);
-        overflow: auto;
-        color: whitesmoke;
-      }
-    }
-    .profile_text {
-      width: 85%;
-      height: 250px;
-      background-color: white;
-      overflow-wrap: break-word;
-      overflow-y: auto;
-      border-radius: 1rem;
-      margin: 0 auto 10px;
-    }
-    hr {
-      border: none;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%,
-                rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0.1) 100%);
-    }
+
+.info_display_range {
+  width: 70vw;
+  margin: 0 auto;
+  padding-top: 50px;
+  .button_and_section {
+    display: flex;
     .follow_form {
-      display: inline-block;
+      margin-top: 36px;
       margin-left: 20px;
     }
   }
-  .user_link {
-    height: 500px;
-    width: 130px;
-    margin-left: 20px;
-    margin-right: 20px;
-    background-color: rgba($color: #6a9c1a, $alpha: 0.8);
-    .profile_item {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      a {
-        color: whitesmoke;
+  .profile_section {
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: white;
+  }
+  .user_backgroundcolor {
+    background-color: rgb(223, 205, 173);
+  }
+  .selfintro_backgroundcolor {
+    background-color: rgb(212, 167, 93);
+  }
+  .link_backgroundcolor {
+    background-color: rgba($color: #000000, $alpha: 0.7)
+  }
+  .user_identification {
+    display: flex;
+    .profile_avatar_and_button {
+      margin-right: 20px;
+      width: 110px;
+      .follow_form {
+        margin-top: 10px;
       }
     }
-    .two_blocks {
-      height: 3rem;
-      border: 1px solid white;
-      border-radius: 0.5rem;
-      width: 90%;
-      margin: 10px auto;
-      .user_follow {
-        height: 1.5rem;
-        line-height: 1.5rem;
-        a {
-          color: whitesmoke;
-        }
+    .user_name {
+      font-size: 30px;
+      overflow-wrap: break-word;
+      width: calc(70vw - 110px - 20px);
+      line-height: 50px;
+    }
+  }
+  .user_selfintro {
+    overflow-wrap: break-word;
+    font-size: calc(1rem + 0.7vw);
+  }
+  .user_link {
+    display: flex;
+    flex-wrap: wrap;
+    .all_article {
+      background-color: rgba($color: #0dabd3b7, $alpha: 0.7 )
+    }
+    .all_question {
+      background-color: rgba($color: #32e5b8b7, $alpha: 0.7 )
+    }
+    .user_follow {
+      background-color: rgba($color: #8f31e7b7, $alpha: 0.7 )
+    }
+    .user_follower {
+      background-color: rgba($color: #e50e0eb7, $alpha: 0.7 )
+    }
+    .all_article, .all_question, .user_follow {
+      margin-right: 40px;
+    }
+    .all_article, .all_question, .user_follow, .user_follower {
+      margin-bottom: 15px;
+      padding: 10px;
+      text-align: center;
+      color: white;
+      a {
+        color: white;
+      }
+      a:hover {
+        color: blue;
       }
     }
   }
 }
 
+
+
 /* フォロー・フォロワーのページ。該当する人の画像・自己紹介・名前を表示 */
 
 .follow_follower_display {
-  width: 80vw;
-  height: 120px;
+  width: 70vw;
+  height: 160px;
   margin: 10px auto;
-  border: 1px solid;
-  border-radius: 10px;
-  background-color: rgba($color: #0dabd393, $alpha: 0.8 );
+  box-shadow: 10px 10px 12px rgba($color: #000000, $alpha: 0.4);
+  background-color: rgb(235, 230, 223);
   .top_part {
     display: flex;
     width: 90%;
@@ -94,25 +99,32 @@
       height: 100%;
       width: 55px;
       margin-right: 15px;
+      a {
+        display: inline-block;
+      }
     }
     .one_text {
       height: 60px;
-      width: calc(80vw * 0.9 - 55px - 10px);
+      width: calc(90% - 55px - 10px);
       line-height: 60px;
-      font-size: 1.4rem;
+      font-size: calc(1rem + 1vw);
       overflow: hidden;
       a {
-        color: white;
+        color: black;
       }
     }
   }
   .one_selfintrodution {
-    height: calc(100% - 60px - 10px);
+    height: calc(100% - 60px - 30px);
     width: 90%;
-    margin: 5px auto;
+    margin: 15px auto;
     overflow: hidden;
     overflow-wrap: break-word;
-    color: white;
+    color: black;
+    font-size: calc(1rem + 0.4vw);
   }
 }
-
+.pagy_position {
+  margin-left: 15vw;
+  margin-top: 30px;
+}

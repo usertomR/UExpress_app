@@ -1,55 +1,82 @@
 <% provide(:title, 'User Profile') %>
 
-<div class="user_info">
-  <div class="user_profile">
-    <div class="page_name">
-      ユーザープロフィール
-    </div>
-    <div class="user_identification">
-      <% if @user.avatar? %>
-        <div class="profile_avatar">
-          <%= image_tag @user.avatar.thumb_min.url , class: "avatar" %>
-        </div>
-      <% else %>
-        <%= render 'shared/default_avatar' %>
-      <% end %>
-      <div class="user_name">
-        <%= @user.name %>
+<div class="info_display_range">
+  <div class="profile_section user_backgroundcolor">
+      ユーザー
+  </div>
+  <div class="user_identification">
+    <% if @user.avatar? %>
+      <div class="profile_avatar_and_button">
+        <%= image_tag @user.avatar.thumb_mid.url , class: "avatar" %>
+        <% unless current_user?(@user) %>
+          <div class="follow_form">
+            <% if current_user.following?(@user) %>
+              <%= render 'unfollow' %>
+            <% else %>
+              <%= render 'follow' %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-    </div>
-    <div class="profile_text">
-      <%= @user.selfintrodution %>
-    </div>
-    <hr>
-    <% unless current_user?(@user) %>
-      <div class="follow_form">
-        <% if current_user.following?(@user) %>
-          <%= render 'unfollow' %>
-        <% else %>
-          <%= render 'follow' %>
+    <% else %>
+      <div class="profile_avatar_and_button">
+        <%= render 'shared/default_avatar' %>
+        <% unless current_user?(@user) %>
+          <div class="follow_form">
+            <% if current_user.following?(@user) %>
+              <%= render 'unfollow' %>
+            <% else %>
+              <%= render 'follow' %>
+            <% end %>
+          </div>
         <% end %>
       </div>
     <% end %>
+    <div class="user_name">
+      <%= @user.name %>
+    </div>
+  </div>
+  <div class="profile_section selfintro_backgroundcolor">
+    自己紹介
+  </div>
+  <div class="user_selfintro">
+    <%= @user.selfintrodution %><%= "a" * 300 %>
+  </div>
+  <div class="profile_section link_backgroundcolor">
+    リンク
   </div>
   <div class="user_link">
-    <div class="profile_item"><%= link_to "記事投稿リスト", article_path(@user)%></div>
-    <div class="profile_item"><%= link_to "質問投稿リスト", question_path(@user)%></div>
-    <div class="two_blocks">
-      <div class="user_follow">
-        <%= link_to "フォロー数", user_following_path(@user) %>
+    <div class="all_article">
+      <div class="link">
+        <%= link_to "記事投稿", article_path(@user)%>
       </div>
-      <div class="user_follow">
+      <div class="sum_article">
+        <%= @user.articles.count %>
+      </div>
+    </div>
+    <div class="all_question">
+      <div class="link">
+        <%= link_to "質問投稿", question_path(@user)%>
+      </div>
+      <div class="sum_question">
+        <%= @user.questions.count %>
+      </div>
+    </div>
+    <div class="user_follow">
+      <div class="follow_link">
+        <%= link_to "フォロー", user_following_path(@user) %>
+      </div>
+      <div>
         <a href="<%= user_following_path(@user) %>" id="sum_follow"><%= @user.following.count %></a>
       </div>
     </div>
-    <div class="two_blocks">
-      <div class="user_follow">
-        <%= link_to "フォロワー数", user_follower_path(@user) %>
+    <div class="user_follower">
+      <div class="follower_link">
+        <%= link_to "フォロワー", user_follower_path(@user) %>
       </div>
-      <div class="user_follow">
+      <div>
         <a href="<%= user_follower_path(@user) %>" id="sum_follower"><%= @user.followers.count %></a>
       </div>
     </div>
   </div>
 </div>
-

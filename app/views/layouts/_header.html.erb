@@ -19,33 +19,46 @@
   </div>
   <div class="header_menu">
     <li class="header_menu_item">
-      <a href='/'>home</a>
+      <a href='/'>Home</a>
     </li>
+    <div class="header_hirizontal_line"></div>
     <li class="header_menu_item">
-      <a href="/help">help</a>
+      <a href='/about'>About</a>
     </li>
+    <div class="header_hirizontal_line"></div>
     <li class="header_menu_item">
-      <a href='/about'>about</a>
+      <a href='/contact'>Contact</a>
     </li>
-    <li class="header_menu_item">
-      <a href='/contact'>contact</a>
-    </li>
+    <div class="header_hirizontal_line"></div>
     <% if logged_in? %>
       <li class="header_menu_item"><%= link_to "ログアウト", logout_path, method: :delete%></li>
+      <div class="header_hirizontal_line"></div>
       <li class="header_menu_item"><%= link_to "プロフィール", user_path(current_user)%></li>
+      <div class="header_hirizontal_line"></div>
       <li class="header_menu_item"><%= link_to "アカウント更新", edit_user_path(current_user)%></li>
+      <div class="header_hirizontal_line"></div>
       <li class="header_menu_item"><%= link_to "記事作成", new_article_path %></li>
+      <div class="header_hirizontal_line"></div>
       <li class="header_menu_item"><%= link_to "質問作成", new_question_path %></li>
+      <div class="header_hirizontal_line"></div>
       <li class="header_menu_item"><%= link_to "通知設定", '#'%></li>  
+      <div class="header_hirizontal_line"></div>
       <li class="header_menu_item"><%= link_to "記事niceリスト", user_nice_path(current_user) %></li>
+      <div class="header_hirizontal_line"></div>
       <li class="header_menu_item"><%= link_to "記事ブックマーク", user_bookmark_path(current_user) %></li>
+      <div class="header_hirizontal_line"></div>
       <li class="header_menu_item"><%= link_to "質問ブックマーク", user_questionbookmark_path(current_user) %></li>
+      <div class="header_hirizontal_line"></div>
       <li class="header_menu_item"><%= link_to "気になる質問リスト", user_curious_path(current_user) %></li>
+      <div class="header_hirizontal_line"></div>
       <li class="header_menu_item"><%= link_to "記事投稿リスト", article_path(current_user) %></li>
-      <li class="header_menu_item"><%= link_to "質問投稿リスト", question_path(current_user) %></li>       
+      <div class="header_hirizontal_line"></div>
+      <li class="header_menu_item"><%= link_to "質問投稿リスト", question_path(current_user) %></li>
+      <div class="header_hirizontal_line"></div>      
     <% end %>
     <% if current_user && current_user.admin? %>
       <li class="header_menu_item"><%= link_to "ユーザー削除", users_path%></li>
+      <div class="header_hirizontal_line"></div>
     <% end %>
   </div>
 </div>

@@ -129,8 +129,6 @@ Metrics/CyclomaticComplexity:
 # メソッドの行数
 Metrics/MethodLength:
   Max: 20
-  Exclude:
-    - "db/migrate/*.rb"
 
 Metrics/BlockLength:
   Enabled: false

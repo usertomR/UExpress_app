@@ -4,107 +4,146 @@
 
 /*showアクション：個人の全ての作成記事・質問ページ*/
 .personal_question_article_list {
-  width: 90%;
+  width: 70%;
   margin: 0 auto;
   height: auto;
   .flex {
     display: flex;
+    margin-bottom: 20px;
+    .flex_item_adjustment {
+      margin-right: 20px;
+    }
+  }
+  .delete_button_design {
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+  }
+  .pagenation {
+    margin-top: 30px;
   }
 }
 /*上のクラスに合わせた。適用要素の左端、右端の位置を統一している*/
 .sum_question_article {
-  width: 90%;
-  margin: 2.4rem auto 3.1rem;
-  font-family: impact;
+  width: 70%;
+  margin: 100px auto 0;
   font-size: 2rem;
   height: 3rem;
-  background-color: gold;
+  background-color: rgba(255, 0, 64, 0.7);
+  color: white;
 }
 
-.interspace_items {
-  margin-bottom: 0.4rem;
-}
 
-.select_article_question_tab {
-  display: flex;
-  margin-left: 5vw;
-  margin-top: 100px;
-  .article_tab {
-    width: 4rem;
-    height: 2rem;
-    text-align: center;
-    line-height: 2rem;
-    background-color: blanchedalmond;
-  }
-  .question_tab {
-    width: 4rem;
-    height: 2rem;
-    text-align: center;
-    line-height: 2rem;
-    background-color: rebeccapurple;
+
+@mixin common_part_search_form {
+  .adjust_position {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    .user_name {
+      color: white;
+      overflow-wrap: break-word;
+      font-size: calc(1.8rem + 0.4vw);
+    }
+    .add_margin_bottom {
+      margin-bottom: 20px;
+    }
+    .search {
+      height: 6vh;
+      margin-bottom: 1vh;
+      .search_input {
+        height: 4.5vh;
+        width: 40%;
+      }
+      .button_size {
+        height: 4vh;
+      }
+    }
+    .flex_container {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 2vh;
+      .condition {
+        height: 4vh;
+        font-size: 3vh;
+        color: white;
+        font-size: calc(1.6rem + 0.2vw);
+        margin-bottom: 5px;
+      }
+      .add_margin_right_27 {
+        margin-right: 27px;
+      }
+      .add_margin_right_16 {
+        margin-right: 16px;
+      }
+      .checkbox {
+        height: 1.8vh;
+        margin: auto 0;
+        .space {
+          margin-left: 4px;
+        }
+      }
+      .input_term {
+        height: 1.8vh;
+        margin: auto 0;
+        margin-left: 10px;
+      }
+    }
   }
 }
 
 .search_form {
-  width: 90vw;
-  height: 40vh;
-  margin: 0 auto;
-  background-color: lightgray;
-  border-radius: 10px;
-  .search {
-    height: 6vh;
-    margin-bottom: 1vh;
-    .search_input {
-      height: 4.5vh;
-      width: 40%;
-    }
-    .button_size {
-      height: 4vh;
-    }
+  width: 70vw;
+  margin: 150px auto 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 10px 10px 12px rgba($color: #000000, $alpha: 0.35);
+  @include common_part_search_form
+}
+
+.select_article_question_tab {
+  display: flex;
+  width: 70vw;
+  margin: 150px auto 0;
+  .article_tab {
+    width: fit-content;
+    text-align: center;
   }
-  .user_name {
-    height: 4vh;
-    font-size: 3vh;
-    margin-bottom: 1vh;
-  }
-  .flex_container {
-    display: flex;
-    height: 4vh;
-    margin-bottom: 2vh;
-    .condition {
-      height: 4vh;
-      font-size: 3vh;
-    }
-    .checkbox {
-      height: 1.8vh;
-      margin: auto 0;
-      .space {
-        margin-left: 4px;
-      }
-    }
-    .input_term {
-      height: 1.8vh;
-      margin: auto 0;
-      margin-left: 10px;
-    }
+  .question_tab {
+    width: fit-content;
+    text-align: center;
   }
 }
+.home_search_form {
+  width: 70vw;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 10px 10px 12px rgba($color: #000000, $alpha: 0.35);
+  @include common_part_search_form
+}
+
+
 
 // 記事・質問作成&編集ページ
 .article_question_form {
   margin: 0 auto 30px;
-  width: 70vw;
+  width: 90%;
   .form-label {
     font-weight: bold;
+    color: white;
   }
   .item {
     font-weight: bold;
     margin-bottom: 10px;
+    color: white;
   }
   .flex_mode {
     display: flex;
     .space, .checkbox {
       margin-right: 10px;
+    }
+    .white_text {
+      color: white;
     }
     .have_solved {
       margin-left: 20vw;
@@ -114,24 +153,25 @@
 }
 
 .richtext_form {
-  width: 70vw;
+  width: 90%;
   margin: 0 auto 1%;
   .form-label {
     font-weight: bold;
+  }
+  .white_text {
+    color: white;
   }
   .form_height {
     height: 40vh;
     overflow-y: auto;
     overflow-x: auto;
   }
+  .white_background {
+    background-color: white;
+  }
 }
 
 // article,questionモデルのbrowsing action
-@mixin about_border {
-  border: 1px solid;
-  border-radius: 10px;
-}
-
 @mixin button_design($text_color,$background_color,$border_color) {
   color: $text_color;
   background-color: $background_color;
@@ -139,202 +179,194 @@
   border-radius: 14px;
 }
 
-.browse_question_article_flex {
-  width: 100vw;
-  .main_view {
-    margin-left: 5vw;
-    margin-right: 5vw;
-    width:  90vw;
-    .title {
-      margin-bottom: 10px;
-      font-size: 3rem;
-      font-weight: bold;
-      height: 4.5rem;
-      overflow-x: auto;
-    }
-    hr {
-      border: none;
-      height: 2px;
-      margin-bottom: 30px;
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%,
-                rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0.3) 100%);
-    }
-    .user_info {
-      margin-bottom: 20px;
-      @include about_border;
-      height: calc(55px + 10px + 3rem);
+.browse_question_article {
+  width: 70%;
+  margin: 130px auto 0;
+  .title_etc {
+    background-color: rgb(235, 230, 223);
+    .user_name_avatar {
       display: flex;
-	    flex-direction: column;
-      .info_content {
-        display: flex;
-        height: 55px;
-        .avatar_img {
-          width: 55px;
+      margin-bottom: 10px;
+      .avatar_img {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        a {
+          display: inline-block;
+        }
+      }
+      .name {
+        overflow: hidden;
+        line-height: 25px;
+          font-size: 1rem;
+          color: black;
+      }
+    }
+    .date {
+      display: flex;
+      margin-bottom: 30px;
+      .create {
+        margin-right: 12px;
+      }
+    }
+    .title {
+      font-size: calc(1.5rem + 1vw);
+      font-weight: bold;
+      overflow-wrap: break-word;
+    }
+  }
+  .button_info {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    .items {
+      margin-right: 30px;
+      width: fit-content;
+      .nice_button {
+        .not_nice_now {
+          @include button_design(green,white,green)
+        }
+        .nice_now {
+          @include button_design(white, green, green)
+        }
+        .author {
+          color: green;
+        }
+      }
+      #number_nice {
+        text-align: center;
+      }
+      .bookmark_button {
+        .not_bookmark_now {
+          @include button_design(rgb(91, 29, 238), white, rgb(91, 29, 238))
+        }
+        .bookmark_now {
+          @include button_design(white, rgb(91, 29, 238), rgb(91, 29, 238))
+        }
+        .author {
+          color: rgb(91, 29, 238);
+        }
+      }
+      #number_bookmark {
+        text-align: center;
+      }
+      .curious_button {
+        .not_curious_now {
+          @include button_design(brown, white, brown)
+        }
+        .curious_now {
+          @include button_design(white, brown, brown)
+        }
+        .already_solved {
+          color: brown;
+        }
+      }
+      #number_curious {
+        text-align: center;
+      }
+      .questionbookmark_button {
+        .author {
+          color: rgb(214, 29, 238);
+        }
+        .bookmark_now {
+          @include button_design(white, rgb(214, 29, 238), rgb(214, 29, 238))
+        }
+        .not_bookmark_now {
+          @include button_design(rgb(214, 29, 238), white, rgb(214, 29, 238))
+        }
+      }
+      #number_questionbookmark {
+        text-align: center;
+      }
+    }
+  }
+  .article_body_mark, .question_body_mark {
+    margin-top: 40px;
+    font-size: 30px;
+    background-color: rgb(235, 230, 223);
+  }
+  .article_body, .question_body {
+    margin-top: 30px;
+    margin-bottom: 70px;
+    overflow-wrap: break-word;
+  }
+  .comment_section {
+    .mark_for_user {
+      font-size: 30px;
+      font-weight: 300;
+      background-color: rgb(235, 230, 223);
+    }
+    .existing_comment {
+      border-top: 0.8px solid;
+      .comment_user {
+        display:  flex;
+        width: 90%;
+        margin: 5px auto;
+        .commenter_avatar {
+          width: 50px;
+          height: 50px;
           margin-right: 10px;
         }
         .name {
-          overflow: hidden;
-          a {
-            line-height: 55px;
-            font-size: 1.4rem;
-            color: black;
-          }
-          a:hover {
-            color: blue;
-          }
+          height: 55px;
+          line-height: 55px;
         }
       }
-      .selfintrodution {
-        margin-top: 10px;
-        height: 3rem;
-        overflow: hidden;
-        overflow-wrap: break-word;
+      .comment {
+        width: 90%;
+        margin: 10px auto;
       }
-    }
-    .other_info {
-      height: 70px;
-      margin-bottom: 20px;
-      display: flex;
-      @include about_border;
-      .items {
+      .delete {
+        margin-bottom: 10px;
         margin-left: 10px;
-        margin-top: 5px;
-        width: fit-content;
-        .nice_button {
-          .not_nice_now {
-            @include button_design(green,white,green)
+        width: 3rem;
+        height: 1.5rem;
+        border: 1px solid red;
+        border-radius:  10px;
+        background-color: red;
+        text-align: center;
+        a {
+          display: block;
+          color: white;
+        }
+      }
+      .good_statistics {
+        margin-bottom: 10px;
+        margin-left: 10px;
+        display: inline-block;
+        text-align: center;
+        .sum_good_mark {
+          color: green;
+        }
+      }
+      .changeable_info {
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        .changeable_button {
+          .good_now {
+            @include button_design(white, green, green);
           }
-          .nice_now {
-            @include button_design(white, green, green)
-          }
-          .author {
-            color: green;
+          .not_good_now {
+            @include button_design(green,white,green);
           }
         }
-        #number_nice {
-          text-align: center;
-        }
-        .bookmark_button {
-          .not_bookmark_now {
-            @include button_design(rgb(91, 29, 238), white, rgb(91, 29, 238))
-          }
-          .bookmark_now {
-            @include button_design(white, rgb(91, 29, 238), rgb(91, 29, 238))
-          }
-          .author {
-            color: rgb(91, 29, 238);
-          }
-        }
-        #number_bookmark {
-          text-align: center;
-        }
-        .curious_button {
-          .not_curious_now {
-            @include button_design(brown, white, brown)
-          }
-          .curious_now {
-            @include button_design(white, brown, brown)
-          }
-          .already_solved {
-            color: brown;
-          }
-        }
-        #number_curious {
-          text-align: center;
-        }
-        .questionbookmark_button {
-          .author {
-            color: rgb(214, 29, 238);
-          }
-          .bookmark_now {
-            @include button_design(white, rgb(214, 29, 238), rgb(214, 29, 238))
-          }
-          .not_bookmark_now {
-            @include button_design(rgb(214, 29, 238), white, rgb(214, 29, 238))
-          }
-        }
-        #number_questionbookmark {
+        #changeable_sum_nice {
           text-align: center;
         }
       }
     }
-    .text {
-      margin-bottom: 50px;
-      border: 1px solid rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-    }
-    .comment_section {
-      @include about_border;
-      .mark_for_user {
-        height: 2rem;
-        line-height: 2rem;
-        font-size: 1.2rem;
-        font-weight: 700;
+    .new_comment {
+      border-top: 0.8px solid;
+      padding-top: 50px;
+      padding-bottom: 20px;
+      .post_comment_mark {
+        font-size: 30px;
+        font-weight: 300;
+        background-color: rgb(235, 230, 223);
       }
-      .existing_comment {
-        border-top: solid;
-        .comment_user {
-          display:  flex;
-          width: 90%;
-          margin: 5px auto;
-          .commenter_avatar {
-            width: 55px;
-            height: 55px;
-            margin-right: 10px;
-          }
-          .name {
-            height: 55px;
-            line-height: 55px;
-          }
-        }
-        .comment {
-          width: 90%;
-          margin: 10px auto;
-        }
-        .delete {
-          margin-bottom: 10px;
-          margin-left: 10px;
-          width: 3rem;
-          height: 1.5rem;
-          border: 1px solid red;
-          border-radius:  10px;
-          background-color: red;
-          text-align: center;
-          a {
-            display: block;
-            color: white;
-          }
-        }
-        .good_statistics {
-          margin-bottom: 10px;
-          margin-left: 10px;
-          display: inline-block;
-          text-align: center;
-          .sum_good_mark {
-            color: green;
-          }
-        }
-        .changeable_info {
-          display: inline-block;
-          margin-bottom: 10px;
-          margin-left: 10px;
-          .changeable_button {
-            .good_now {
-              @include button_design(white, green, green);
-            }
-            .not_good_now {
-              @include button_design(green,white,green);
-            }
-          }
-          #changeable_sum_nice {
-            text-align: center;
-          }
-        }
-      }
-      .new_comment {
-        border-top: solid;
-        padding-top: 50px;
-        padding-bottom: 20px;
+      .margin_bottom {
+        margin-bottom: 30px;
       }
     }
   }
