@@ -1,96 +1,101 @@
 <% provide(:title, "Create an Article")%>
-<h1>記事編集</h1>
 
 <%= form_with(model: @article, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <div class="article_question_form">
-    <%= f.label :title, "記事タイトル", class: "form-label" %>
-    <%= f.text_field :title, class: "form-control" %>
-  </div>
-
-  <div class="article_question_form">
-    <div class="item">
-      文章の正しさ
+  <div class="form_inclosure">
+    <div class="edit_article_mark">
+      記事編集
     </div>
-    <div class="flex_mode">
-      <div class ="space">
-        <%= f.radio_button(:accuracy_text, 1) %>
-        <%= f.label(:accuracy_text_1, "1") %>
-      </div>
-      <div class ="space">
-        <%= f.radio_button(:accuracy_text, 2) %>
-        <%= f.label(:accuracy_text_2, "2") %>
-      </div>
-      <div class ="space">
-        <%= f.radio_button(:accuracy_text, 3) %>
-        <%= f.label(:accuracy_text_3, "3") %>
-      </div>
-      <div class ="space">
-        <%= f.radio_button(:accuracy_text, 4) %>
-        <%= f.label(:accuracy_text_4, "4") %>
-      </div>
-      <div class ="space">
-        <%= f.radio_button(:accuracy_text, 5) %>
-        <%= f.label(:accuracy_text_5, "5") %>
-      </div>
-    </div>  
-  </div>
-
-  <div class="article_question_form">
-    <div class="item">
-      文章難易度
+    <div class="link_line_design replace_left create_bottom_margin">
     </div>
-    <div class="flex_mode">
-      <div class ="space">
-        <%= f.radio_button(:difficultylevel_text, 1) %>
-        <%= f.label(:difficultylevel_text_1, "1") %>
-      </div>
-      <div class ="space">
-        <%= f.radio_button(:difficultylevel_text, 2) %>
-        <%= f.label(:difficultylevel_text_2, "2") %>
-      </div>
-      <div class ="space">
-        <%= f.radio_button(:difficultylevel_text, 3) %>
-        <%= f.label(:difficultylevel_text_3, "3") %>
-      </div>
-      <div class ="space">
-        <%= f.radio_button(:difficultylevel_text, 4) %>
-        <%= f.label(:difficultylevel_text_4, "4") %>
-      </div>
-      <div class ="space">
-        <%= f.radio_button(:difficultylevel_text, 5) %>
-        <%= f.label(:difficultylevel_text_5, "5") %>
-      </div>
-    </div>  
-  </div>
-
-  <div class="article_question_form">
-    <div class="item">
-      対象
+    <div class="article_question_form">
+      <%= f.label :title, "記事タイトル", class: "form-label" %>
+      <%= f.text_field :title, class: "form-control" %>
     </div>
-    <div class="flex_mode">
-      <div class="checkbox">
-        <%= f.check_box :Eschool_level %>
-        <%= label_tag(:Eschool_level, "小学生向け") %>
+    <div class="article_question_form">
+      <div class="item">
+        文章の正しさ
       </div>
-      <div class="checkbox">
-        <%= f.check_box :JHschool_level %>
-        <%= label_tag(:JHschool_level, "中学生向け") %>
+      <div class="flex_mode">
+        <div class ="space white_text">
+          <%= f.radio_button(:accuracy_text, 1) %>
+          <%= f.label(:accuracy_text_1, "1") %>
+        </div>
+        <div class ="space white_text">
+          <%= f.radio_button(:accuracy_text, 2) %>
+          <%= f.label(:accuracy_text_2, "2") %>
+        </div>
+        <div class ="space white_text">
+          <%= f.radio_button(:accuracy_text, 3) %>
+          <%= f.label(:accuracy_text_3, "3") %>
+        </div>
+        <div class ="space white_text">
+          <%= f.radio_button(:accuracy_text, 4) %>
+          <%= f.label(:accuracy_text_4, "4") %>
+        </div>
+        <div class ="space white_text">
+          <%= f.radio_button(:accuracy_text, 5) %>
+          <%= f.label(:accuracy_text_5, "5") %>
+        </div>
+      </div>  
+    </div>
+    <div class="article_question_form">
+      <div class="item">
+        文章難易度
       </div>
-      <div class="checkbox">
-        <%= f.check_box :Hschool_level %>
-        <%= label_tag(:Hschool_level, "高校生向け") %>
+      <div class="flex_mode">
+        <div class ="space white_text">
+          <%= f.radio_button(:difficultylevel_text, 1) %>
+          <%= f.label(:difficultylevel_text_1, "1") %>
+        </div>
+        <div class ="space white_text">
+          <%= f.radio_button(:difficultylevel_text, 2) %>
+          <%= f.label(:difficultylevel_text_2, "2") %>
+        </div>
+        <div class ="space white_text">
+          <%= f.radio_button(:difficultylevel_text, 3) %>
+          <%= f.label(:difficultylevel_text_3, "3") %>
+        </div>
+        <div class ="space white_text">
+          <%= f.radio_button(:difficultylevel_text, 4) %>
+          <%= f.label(:difficultylevel_text_4, "4") %>
+        </div>
+        <div class ="space white_text">
+          <%= f.radio_button(:difficultylevel_text, 5) %>
+          <%= f.label(:difficultylevel_text_5, "5") %>
+        </div>
+      </div>  
+    </div>
+    <div class="article_question_form">
+      <div class="item">
+        対象
+      </div>
+      <div class="flex_mode">
+        <div class="checkbox white_text">
+          <%= f.check_box :Eschool_level %>
+          <%= label_tag(:Eschool_level, "小学生向け") %>
+        </div>
+        <div class="checkbox white_text">
+          <%= f.check_box :JHschool_level %>
+          <%= label_tag(:JHschool_level, "中学生向け") %>
+        </div>
+        <div class="checkbox white_text">
+          <%= f.check_box :Hschool_level %>
+          <%= label_tag(:Hschool_level, "高校生向け") %>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="richtext_form">
-    <%= f.label :articletext, "記事本体", class: "form-label" %>
-    <%= f.rich_text_area :articletext, {class: "trix-content form_height"} %>
-  </div>
-
-  <div class="submit_button">
-    <%= f.submit "記事更新", class: "btn btn-primary" %>
+    <div class="richtext_form">
+      <%= f.label :articletext, "記事本体", class: "form-label white_text" %>
+      <div class="white_background">
+        <%= f.rich_text_area :articletext, {class: "trix-content form_height"} %>
+      </div>
+    </div>
+    <div class="submit_button">
+      <div>
+        <%= f.submit "記事更新", class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
 <% end %>

@@ -89,11 +89,15 @@
         <div class="comment_user">
           <% if comment.user.avatar? %>
             <div class="commenter_avatar">
-              <%= image_tag comment.user.avatar.thumb_mid.url , class: "avatar" %>
+              <a href="<%= user_path(comment.user) %>">
+                <%= image_tag comment.user.avatar.thumb_mid.url , class: "avatar" %>
+              </a>
             </div>
           <% else %>
             <div class="commenter_avatar">
-              <%= render 'shared/default_avatar' %>
+              <a href="<%= user_path(comment.user) %>">
+                <%= render 'shared/default_avatar' %>
+              </a>
             </div>
           <% end %>
           <div class="name">

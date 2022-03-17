@@ -13,32 +13,26 @@
             <%= f.label :name, "名前", class: "form-label" %>
             <%= f.text_field :name, class: "form-control" %>
         </div>
-        
         <div class="input_form">
             <%= f.label :email, class: "form-label" %>
             <%= f.email_field :email, class: "form-control" %>
         </div>
-
         <div class="input_form">
             <%= f.label :password, "パスワード", class: "form-label" %>
             <%= f.password_field :password, class: "form-control" %>
         </div>
-
         <div class="input_form">
             <%= f.label :password_confirmation, "パスワード確認", class: "form-label" %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
-
         <div class="input_form">
             <%= f.label :selfintrodution, "自己紹介（空白OK）", class: "form-label" %>
             <%= f.text_area :selfintrodution, size: "40x5", class: "form-control" %>
         </div>
-
         <div class="input_form">
             <%= f.label :avatar, "プロフィール画像", class: "form-label" %>
             <%= f.file_field :avatar, class: "form-control" %>
         </div>
-        
         <div class="submit_button">
             <div>
                 <%= f.submit "アカウント作成", class: "btn btn-primary" %>

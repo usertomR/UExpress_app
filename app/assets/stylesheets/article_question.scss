@@ -14,6 +14,11 @@
       margin-right: 20px;
     }
   }
+  .delete_button_design {
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+  }
   .pagenation {
     margin-top: 30px;
   }
@@ -21,7 +26,7 @@
 /*上のクラスに合わせた。適用要素の左端、右端の位置を統一している*/
 .sum_question_article {
   width: 70%;
-  margin: 60px auto 0;
+  margin: 100px auto 0;
   font-size: 2rem;
   height: 3rem;
   background-color: rgba(255, 0, 64, 0.7);
@@ -122,18 +127,23 @@
 // 記事・質問作成&編集ページ
 .article_question_form {
   margin: 0 auto 30px;
-  width: 70vw;
+  width: 90%;
   .form-label {
     font-weight: bold;
+    color: white;
   }
   .item {
     font-weight: bold;
     margin-bottom: 10px;
+    color: white;
   }
   .flex_mode {
     display: flex;
     .space, .checkbox {
       margin-right: 10px;
+    }
+    .white_text {
+      color: white;
     }
     .have_solved {
       margin-left: 20vw;
@@ -143,15 +153,21 @@
 }
 
 .richtext_form {
-  width: 70vw;
+  width: 90%;
   margin: 0 auto 1%;
   .form-label {
     font-weight: bold;
+  }
+  .white_text {
+    color: white;
   }
   .form_height {
     height: 40vh;
     overflow-y: auto;
     overflow-x: auto;
+  }
+  .white_background {
+    background-color: white;
   }
 }
 

@@ -3,6 +3,14 @@ textarea {
   resize: vertical;
 }
 
+@mixin mark {
+  width: 90%;
+  margin: 0 auto 1%;
+  font-size: 180%;
+  font-weight: 500;
+  color: white;
+}
+
 .form_inclosure {
   margin: 20vh auto;
   padding: 20px 0;
@@ -11,11 +19,10 @@ textarea {
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 10px 10px 12px rgba($color: #000000, $alpha: 0.35);
   .login_sign, .signup_mark, .password_reset_sign, .user_edit_mark, .new_password {
-    width: 90%;
-    margin: 0 auto 1%;
-    font-size: 180%;
-    font-weight: 500;
-    color: white;
+    @include mark;
+  }
+  .create_article_mark, .create_question_mark, .edit_article_mark,.edit_question_mark {
+    @include mark;
   }
   .replace_left {
     margin-left: 5%;

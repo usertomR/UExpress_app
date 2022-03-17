@@ -90,6 +90,7 @@
   height: 160px;
   margin: 10px auto;
   box-shadow: 10px 10px 12px rgba($color: #000000, $alpha: 0.4);
+  background-color: rgb(235, 230, 223);
   .top_part {
     display: flex;
     width: 90%;
@@ -123,4 +124,7 @@
     font-size: calc(1rem + 0.4vw);
   }
 }
-
+.pagy_position {
+  margin-left: 15vw;
+  margin-top: 30px;
+}
