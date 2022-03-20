@@ -1,0 +1,25 @@
+// Place all the styles related to the rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.dm_area {
+  display: flex;
+  .my_info, .partner_info {
+    width: 15vw;
+    position: fixed;
+    overflow-wrap: break-word;
+  }
+  .my_info {
+    left: 0;
+  }
+  .partner_info {
+    right: 0;
+  }
+  .message_area {
+    margin-right: 15vw;
+    margin-left: 15vw;
+    width: 70vw;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+  }
+}

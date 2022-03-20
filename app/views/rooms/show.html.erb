@@ -1,0 +1,50 @@
+<div class="dm_area">
+  <div class="my_info">
+    <% if current_user.avatar? %>
+      <div>
+        <%= image_tag current_user.avatar.thumb_mid.url , class: "avatar" %>
+      </div>
+      <div>
+        <%= current_user.name %>
+      </div>
+    <% else %>
+      <div>
+        <%= render 'shared/default_avatar' %>
+      </div>
+      <div>
+        <%= current_user.name %><%= "v" * 100 %>
+      </div>
+    <% end %>
+  </div>
+  <div class="message_area">
+    <div class="message_display">
+      divを時系列順に上から重ねる。marginを少しだけ
+      テキスト表示欄の上端に線を引く
+      <%= "a" * 2000 %>
+    </div>
+    <div class="input_message">
+      メッセージ入力欄
+    </div>
+  </div>
+  <div class="partner_info">
+    <% @entries.each do |entry| %>
+      <% if entry.user != current_user %>
+        <% if entry.user.avatar? %>
+          <div>
+            <%= image_tag entry.user.avatar.avatar.thumb_mid.url , class: "avatar" %>
+          </div>
+          <div>
+            <%= entry.user.name %>
+          </div>
+        <% else %>
+          <div>
+            <%= render 'shared/default_avatar' %>
+          </div>
+          <div>
+            <%= entry.user.name %><%= "v" * 100 %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

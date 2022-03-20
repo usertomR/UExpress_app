@@ -28,7 +28,12 @@ Style/IfInsideElse:
 # マイグレーションファイルのchangeメソッドの中身は、ブロックで統一したい
 Style/SymbolProc:
   Exclude:
-  - 'db/migrate/20220320002911_create_rooms.rb'
+  - 'db/migrate/20220320002000_create_rooms.rb'
+
+# returnをつけないと意図通り動かない
+Style/RedundantReturn:
+  Exclude:
+  - 'app/models/room.rb'
 
 ######## Rails ########
 Rails/FilePath:
