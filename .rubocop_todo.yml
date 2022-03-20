@@ -25,6 +25,11 @@ Style/IfInsideElse:
   Exclude:
     - 'app/controllers/static_pages_controller.rb'
 
+# マイグレーションファイルのchangeメソッドの中身は、ブロックで統一したい
+Style/SymbolProc:
+  Exclude:
+  - 'db/migrate/20220320002911_create_rooms.rb'
+
 ######## Rails ########
 Rails/FilePath:
   Exclude:
