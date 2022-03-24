@@ -2,24 +2,80 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+/* (14 / 170) * 100vw - 24.7px の部分の意味 */
+/* 画面横幅が2000pxの時に、7vw(2000*0.07px)のmarginをとり、 */
+/* 画面横幅300pxの時に,0pxのmarginをとる */
+
 .dm_area {
-  display: flex;
-  .my_info, .partner_info {
-    width: 15vw;
+  .not_input_area {
+    display: flex;
+    padding-bottom: 4rem;
+    .my_info, .partner_info {
+      width: 15vw;
+      position: fixed;
+      overflow-wrap: break-word;
+      overflow: hidden;
+    }
+    .my_info {
+      left: 0;
+      .room_my_avatar {
+      margin-left: calc(15vw - 50px);
+      }
+      .name_area {
+        margin-left: calc((14 / 170) * 100vw - 24.7px);
+      }
+    }
+    .partner_info {
+      right: 0;
+      .name_area {
+        margin-right: calc((14 / 170) * 100vw - 24.7px);
+      }
+    }
+    .message_area {
+      margin-right: 15vw;
+      margin-left: 15vw;
+      width: 70vw;
+      overflow-y: auto;
+      .date_display {
+        width: 80%;
+        margin: 15px auto;
+        background-color: rgb(70, 70, 70);
+        color: white;
+      }
+      .display_left {
+        width: calc((8 / 17) * 100vw + 58.8px);
+        margin: 20px auto;
+        .content {
+          color: white;
+          .one_line {
+            display: inline-block;
+            background-color: rgb(206, 24, 121);
+            padding: 7px;
+          }
+          .multiple_lines {
+            overflow-wrap: break-word;
+            width: 95%;
+            margin: 0 auto;
+            padding: 7px;
+          }
+        }
+      }
+      .content_background_color {
+        background-color: rgb(206, 24, 121);
+      }
+      .display_right {
+        width: calc((8 / 17) * 100vw + 58.8px);
+        margin: 20px auto;
+        background-color: rgb(170, 162, 166);
+        color: white;
+        overflow-wrap: break-word;
+      }
+    }
+  }
+  .input_area {
     position: fixed;
-    overflow-wrap: break-word;
-  }
-  .my_info {
-    left: 0;
-  }
-  .partner_info {
-    right: 0;
-  }
-  .message_area {
-    margin-right: 15vw;
-    margin-left: 15vw;
-    width: 70vw;
-    overflow-y: auto;
-    overflow-wrap: break-word;
+    width: 100vw;
+    bottom: 0;
+    background-color: gray;
   }
 }

@@ -1,50 +1,81 @@
-<div class="dm_area">
-  <div class="my_info">
-    <% if current_user.avatar? %>
-      <div>
-        <%= image_tag current_user.avatar.thumb_mid.url , class: "avatar" %>
-      </div>
-      <div>
-        <%= current_user.name %>
-      </div>
-    <% else %>
-      <div>
-        <%= render 'shared/default_avatar' %>
-      </div>
-      <div>
-        <%= current_user.name %><%= "v" * 100 %>
-      </div>
-    <% end %>
-  </div>
-  <div class="message_area">
-    <div class="message_display">
-      divを時系列順に上から重ねる。marginを少しだけ
-      テキスト表示欄の上端に線を引く
-      <%= "a" * 2000 %>
+<div class="dm_area"> 
+  <div class="not_input_area">
+    <div class="my_info">
+      <% if current_user.avatar? %>
+        <div class="room_my_avatar">
+          <%= image_tag current_user.avatar.thumb_mid.url , class: "avatar" %>
+        </div>
+        <div class="name_area">
+          <%= current_user.name %>
+        </div>
+      <% else %>
+        <div class="room_my_avatar">
+          <%= render 'shared/default_avatar' %>
+        </div>
+        <div class="name_area">
+          <%= current_user.name %><%= "v" * 50 %>
+        </div>
+      <% end %>
     </div>
-    <div class="input_message">
-      メッセージ入力欄
+    <div class="message_area">
+      <div class="message_display">
+        <% prev_date = nil %>
+        <% @messages.each do |message| %>
+          <% treating_message = message.created_at.to_s.scan(/\d{4}-\d{1,2}-\d{1,2}/) %>
+          <% treating_message_date = treating_message[0].split("-") %>
+          <% if prev_date == nil %>
+            <div class="date_display">
+                <%= ApplicationRecord.date_expression_change(message.created_at) %>
+            </div>
+          <% else %>
+            <% if treating_message_date != prev_date %>
+              <div class="date_display">
+                <%= ApplicationRecord.date_expression_change(message.created_at) %>
+              </div>
+            <% end %>
+          <% end %>
+          <% if message.user_id == current_user.id %>
+            <div class="display_left">
+              <div class="content">
+                <div class="one_line">
+                  <%= message.content %><%= "a" * 500 %>
+                </div>
+              </div>
+            </div>
+          <% else %>
+            <div class="display_right">
+              <%= message.content %><%= "a" * 800 %>
+            </div>
+          <% end %>
+          <% previous_message = message.created_at.to_s.scan(/\d{4}-\d{1,2}-\d{1,2}/) %>
+          <% prev_date = previous_message[0].split("-") %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <div class="partner_info">
-    <% @entries.each do |entry| %>
-      <% if entry.user != current_user %>
-        <% if entry.user.avatar? %>
-          <div>
-            <%= image_tag entry.user.avatar.avatar.thumb_mid.url , class: "avatar" %>
-          </div>
-          <div>
-            <%= entry.user.name %>
-          </div>
-        <% else %>
-          <div>
-            <%= render 'shared/default_avatar' %>
-          </div>
-          <div>
-            <%= entry.user.name %><%= "v" * 100 %>
-          </div>
+    <div class="partner_info">
+      <% @entries.each do |entry| %>
+        <% if entry.user != current_user %>
+          <% if entry.user.avatar? %>
+            <div>
+              <%= image_tag entry.user.avatar.avatar.thumb_mid.url , class: "avatar" %>
+            </div>
+            <div>
+              <%= entry.user.name %>
+            </div>
+          <% else %>
+            <div>
+              <%= render 'shared/default_avatar' %>
+            </div>
+            <div class="name_area">
+              <%= entry.user.name %><%= "v" * 100 %>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
+    </div>
+  </div>
+  <div class="input_area">
+      メッセージ入力欄
   </div>
 </div>
+<%= javascript_pack_tag 'sample', 'data-turbolinks-track': 'reload' %>
