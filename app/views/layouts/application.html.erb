@@ -27,6 +27,16 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <%# URL: https://qiita.com/TMTN/items/0a8879971d7cdf74b938#%E3%81%BE%E3%81%A8%E3%82%81%>
-    <%= javascript_pack_tag 'hamburgermenu', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(".header_btn, .not_menu").on("click", function () {
+          $(".hidden_screen").fadeToggle(0);
+          $("body").toggleClass("noscroll");
+        });
+        $(".header_menu_item a[href]").on("click", function (event) {
+          $(".header_btn").trigger("click");
+        });
+      });
+    </script>
   </body>
 </html>

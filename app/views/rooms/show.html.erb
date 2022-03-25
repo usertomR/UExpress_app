@@ -13,7 +13,7 @@
           <%= render 'shared/default_avatar' %>
         </div>
         <div class="name_area">
-          <%= current_user.name %><%= "v" * 50 %>
+          <%= current_user.name %>
         </div>
       <% end %>
     </div>
@@ -38,13 +38,17 @@
             <div class="display_left">
               <div class="content">
                 <div class="one_line">
-                  <%= message.content %><%= "a" * 500 %>
+                  <%= message.content %>
                 </div>
               </div>
             </div>
           <% else %>
             <div class="display_right">
-              <%= message.content %><%= "a" * 800 %>
+              <div class="content">
+                <div class="one_line">
+                  <%= message.content %><%= "a" * 40 %>
+                </div>
+              </div>
             </div>
           <% end %>
           <% previous_message = message.created_at.to_s.scan(/\d{4}-\d{1,2}-\d{1,2}/) %>
@@ -67,7 +71,7 @@
               <%= render 'shared/default_avatar' %>
             </div>
             <div class="name_area">
-              <%= entry.user.name %><%= "v" * 100 %>
+              <%= entry.user.name %>
             </div>
           <% end %>
         <% end %>
@@ -78,4 +82,4 @@
       メッセージ入力欄
   </div>
 </div>
-<%= javascript_pack_tag 'sample', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'directmail', 'data-turbolinks-track': 'reload' %>

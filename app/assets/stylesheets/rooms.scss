@@ -13,22 +13,32 @@
     .my_info, .partner_info {
       width: 15vw;
       position: fixed;
-      overflow-wrap: break-word;
-      overflow: hidden;
     }
     .my_info {
       left: 0;
       .room_my_avatar {
-      margin-left: calc(15vw - 50px);
+        margin-left: calc(15vw - 50px);
       }
       .name_area {
         margin-left: calc((14 / 170) * 100vw - 24.7px);
+        overflow: hidden;
+        color: white;
+        background-color: rgb(206, 24, 121);
+        text-align: center;
+        overflow-wrap: break-word;
+        border-radius: 10px;
       }
     }
     .partner_info {
       right: 0;
       .name_area {
         margin-right: calc((14 / 170) * 100vw - 24.7px);
+        overflow: hidden;
+        color: white;
+        background-color: rgb(170, 162, 166);
+        text-align: center;
+        overflow-wrap: break-word;
+        border-radius: 10px;
       }
     }
     .message_area {
@@ -41,16 +51,20 @@
         margin: 15px auto;
         background-color: rgb(70, 70, 70);
         color: white;
+        border-radius: 10px;
       }
       .display_left {
         width: calc((8 / 17) * 100vw + 58.8px);
         margin: 20px auto;
         .content {
           color: white;
+          font-size: calc(1rem + 0.2vw);
           .one_line {
-            display: inline-block;
+            margin-right: auto;
+            width: fit-content;
             background-color: rgb(206, 24, 121);
             padding: 7px;
+            border-radius: 10px;
           }
           .multiple_lines {
             overflow-wrap: break-word;
@@ -60,15 +74,34 @@
           }
         }
       }
-      .content_background_color {
+      .left_content_background_color {
         background-color: rgb(206, 24, 121);
+        border-radius: 10px;
       }
       .display_right {
         width: calc((8 / 17) * 100vw + 58.8px);
         margin: 20px auto;
+        .content {
+          color: white;
+          font-size: calc(1rem + 0.2vw);
+          .one_line {
+            margin-left: auto;
+            width: fit-content;
+            background-color: rgb(170, 162, 166);
+            padding: 7px;
+            border-radius: 10px;
+          }
+          .multiple_lines {
+            overflow-wrap: break-word;
+            width: 95%;
+            margin: 0 auto;
+            padding: 7px;
+          }
+        }
+      }
+      .right_content_background_color {
         background-color: rgb(170, 162, 166);
-        color: white;
-        overflow-wrap: break-word;
+        border-radius: 10px;
       }
     }
   }
