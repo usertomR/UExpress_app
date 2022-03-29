@@ -21,7 +21,9 @@
         </div>
       </div>
       <div class="one_selfintrodution">
-        <%= follower.selfintrodution %><%= "e" * 300 %>
+        <% unless follower.selfintrodution.blank? %>
+          <%= safe_join(follower.selfintrodution.split("\n"),tag.br) %>
+        <% end %>
       </div>
     </div>
   <% end %>

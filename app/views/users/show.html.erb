@@ -40,7 +40,9 @@
     自己紹介
   </div>
   <div class="user_selfintro">
-    <%= @user.selfintrodution %><%= "a" * 300 %>
+    <% unless @user.selfintrodution.blank? %>
+      <%= safe_join(@user.selfintrodution.split("\n"),tag.br) %>
+    <% end %>
   </div>
   <div class="profile_section link_backgroundcolor">
     リンク
@@ -82,7 +84,9 @@
       <div class="direct_mail">
         <div class="room_link">
           <% if room_id = Room.room_id_present?(@user, current_user) %>
-            <%= link_to "DMを送る", room_path(room_id) %>
+            <div class="direct_mail_sign">
+              <%= link_to "DMを送る", room_path(room_id) %>
+            </div>
           <% else %>
             <%= form_with(url: rooms_path, local: true) do |f| %>
               <%= hidden_field_tag :sending_user_id, current_user.id %>

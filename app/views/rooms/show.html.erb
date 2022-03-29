@@ -25,7 +25,7 @@
           <% treating_message_date = treating_message[0].split("-") %>
           <% if prev_date == nil %>
             <div class="date_display">
-                <%= ApplicationRecord.date_expression_change(message.created_at) %>
+              <%= ApplicationRecord.date_expression_change(message.created_at) %>
             </div>
           <% else %>
             <% if treating_message_date != prev_date %>
@@ -36,19 +36,11 @@
           <% end %>
           <% if message.user_id == current_user.id %>
             <div class="display_left">
-              <div class="content">
-                <div class="one_line">
-                  <%= message.content %>
-                </div>
-              </div>
+              <%= safe_join(message.content.split("\n"),tag.br) %>
             </div>
           <% else %>
             <div class="display_right">
-              <div class="content">
-                <div class="one_line">
-                  <%= message.content %><%= "a" * 40 %>
-                </div>
-              </div>
+              <%= safe_join(message.content.split("\n"),tag.br) %>
             </div>
           <% end %>
           <% previous_message = message.created_at.to_s.scan(/\d{4}-\d{1,2}-\d{1,2}/) %>
@@ -79,7 +71,18 @@
     </div>
   </div>
   <div class="input_area">
-      メッセージ入力欄
+    <%= form_with(model: @message, local: true) do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <div class="center_form">
+        <div>
+          <%= f.text_area :content, class: "input_message_form" %>
+        </div>
+        <div>
+          <%= f.submit "送信", class: "message_submit_button" %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 <%= javascript_pack_tag 'directmail', 'data-turbolinks-track': 'reload' %>
