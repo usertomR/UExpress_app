@@ -6,6 +6,17 @@
 /* 画面横幅が2000pxの時に、7vw(2000*0.07px)のmarginをとり、 */
 /* 画面横幅300pxの時に,0pxのmarginをとる */
 
+@mixin base_massage_css {
+  width: calc((8 / 17) * 100vw + 38.8px);
+  padding: 5px 10px;
+  overflow-wrap: break-word;
+  color: white;
+  font-size: calc(1rem + 0.2vw);
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
 .dm_area {
   .not_input_area {
     display: flex;
@@ -56,28 +67,14 @@
         border-radius: 10px;
       }
       .display_left {
-        width: calc((8 / 17) * 100vw + 38.8px);
-        padding: 5px 10px;
-        overflow-wrap: break-word;
-        font-size: calc(1rem + 0.2vw);
+        @include base_massage_css;
         margin-left: 20px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        color: white;
         background-color: rgb(206, 24, 121);
-        border-radius: 10px;
       }
       .display_right {
-        width: calc((8 / 17) * 100vw + 38.8px);
-        padding: 5px 10px;
-        overflow-wrap: break-word;
-        color: white;
-        font-size: calc(1rem + 0.2vw);
+        @include base_massage_css;
         margin-left: calc( 70vw - ((8 / 17) * 100vw + 38.8px) - 20px);
-        margin-top: 15px;
-        margin-bottom: 15px;
         background-color: rgb(170, 162, 166);
-        border-radius: 10px;
       }
       .for_width_check {
         width: fit-content;

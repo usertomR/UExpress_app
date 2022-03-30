@@ -26,12 +26,14 @@ function change_message_width() {
         if (left_or_right === "display_right") {
           message.style.marginLeft = (seventy_vw - (message_width + 20) - 20) + "px";
         }
+      } else {
+        message.style.marginLeft = ""
       }
     }
   });
 }
  
-function delete_style() {
+function delete_style_width() {
   display_left_or_right.forEach(left_or_right => {
     const messages = document.getElementsByClassName(left_or_right);
     const messages_count = messages.length;
@@ -43,8 +45,17 @@ function delete_style() {
   });
 }
 
+function scroll_bottom() {
+  const scroll_target = document.getElementsByClassName("message_area")[0];
+  const message_display_height = scroll_target.scrollHeight;
+  window.scrollBy(0, message_display_height);
+}
+
 // ページアクセス時に実行
+scroll_bottom();
 change_message_width();
+
+
 // アクセス時に実行した際に指定したmessage.style.widthの値をリセットする
-window.addEventListener("resize", delete_style);
+window.addEventListener("resize", delete_style_width);
 window.addEventListener("resize", change_message_width);
