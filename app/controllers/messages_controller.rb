@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :logged_in_user, only: [:create]
+
   def create
     @message = Message.new(message_params)
     unless @message.save
