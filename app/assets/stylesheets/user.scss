@@ -63,10 +63,20 @@
     .user_follower {
       background-color: rgba($color: #e50e0eb7, $alpha: 0.7 )
     }
-    .all_article, .all_question, .user_follow {
-      margin-right: 40px;
+    .direct_mail {
+      .direct_mail_sign {
+        background-color: rgba($color: #e41483, $alpha: 0.7);
+        border: 0.3px solid rgba($color: #e41483, $alpha: 0.7);
+        color: white;
+      }
+      .direct_mail_sign:hover {
+        color: blue;
+      }
     }
     .all_article, .all_question, .user_follow, .user_follower {
+      margin-right: 40px;
+    }
+    .all_article, .all_question, .user_follow, .user_follower, .direct_mail_sign {
       margin-bottom: 15px;
       padding: 10px;
       text-align: center;

@@ -1,0 +1,120 @@
+// Place all the styles related to the rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+/* (14 / 170) * 100vw - 24.7px の部分の意味 */
+/* 画面横幅が2000pxの時に、7vw(2000*0.07px)のmarginをとり、 */
+/* 画面横幅300pxの時に,0pxのmarginをとる */
+
+@mixin base_massage_css {
+  width: calc((8 / 17) * 100vw + 38.8px);
+  padding: 5px 10px;
+  overflow-wrap: break-word;
+  color: white;
+  font-size: calc(1rem + 0.2vw);
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.dm_area {
+  .not_input_area {
+    display: flex;
+    padding-bottom: calc(2rem + 6vh);
+    .my_info, .partner_info {
+      width: 15vw;
+      position: fixed;
+    }
+    .my_info {
+      left: 0;
+      .room_my_avatar {
+        margin-left: calc(15vw - 50px);
+      }
+      .name_area {
+        margin-left: calc((14 / 170) * 100vw - 24.7px);
+        overflow: hidden;
+        color: white;
+        background-color: rgb(206, 24, 121);
+        text-align: center;
+        overflow-wrap: break-word;
+        border-radius: 10px;
+      }
+    }
+    .partner_info {
+      right: 0;
+      .name_area {
+        margin-right: calc((14 / 170) * 100vw - 24.7px);
+        overflow: hidden;
+        color: white;
+        background-color: rgb(170, 162, 166);
+        text-align: center;
+        overflow-wrap: break-word;
+        border-radius: 10px;
+      }
+    }
+    .message_area {
+      margin-right: 15vw;
+      margin-left: 15vw;
+      width: 70vw;
+      overflow-y: auto;
+      overflow-x: hidden;
+      .date_display {
+        width: 80%;
+        margin: 15px auto;
+        background-color: rgb(70, 70, 70);
+        color: white;
+        text-align: center;
+        border-radius: 10px;
+      }
+      .display_left {
+        @include base_massage_css;
+        margin-left: 20px;
+        background-color: rgb(206, 24, 121);
+      }
+      .display_right {
+        @include base_massage_css;
+        margin-left: calc( 70vw - ((8 / 17) * 100vw + 38.8px) - 20px);
+        background-color: rgb(170, 162, 166);
+      }
+      .for_width_check {
+        width: fit-content;
+        font-size: calc(1rem + 0.2vw);
+      }
+    }
+  }
+  .input_area {
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+    background-color: rgb(216, 110, 10);
+    height: calc(2rem + 4.6vh);
+    .center_form {
+      display: flex;
+      width: fit-content;
+      height: calc(2rem + 1.4vh);
+      margin: calc((4.6vh - 1.4vh) / 2) auto;
+      .input_message_form {
+        width: calc(70vw - 60px);
+        height: 100%;
+        border-top-left-radius: 1.4vh;
+        border-bottom-left-radius: 1.4vh;
+        border-top: 1px solid rgb(216, 110, 10);
+        border-left: 1px solid rgb(216, 110, 10);
+        border-bottom: 1px solid rgb(216, 110, 10);
+        overflow-y: auto;
+        overflow-wrap: break-word;
+      }
+      .message_submit_button {
+        width: 60px;
+        height: 100%;
+        border-top-right-radius: 1.4vh;
+        border-bottom-right-radius: 1.4vh;
+        border-top: 1px solid rgb(216, 110, 10);
+        border-right: 1px solid rgb(216, 110, 10);
+        border-bottom: 1px solid rgb(216, 110, 10);
+        color: white;
+        background-color: rgb(90, 90, 90);
+      }
+    }
+  }
+}

@@ -18,11 +18,13 @@
           <% end %>
         </div>
         <div class="one_text">
-          <%= link_to follow.name , user_path(follow) %><%= "a" * 100 %>
+          <%= link_to follow.name , user_path(follow) %>
         </div>
       </div>
       <div class="one_selfintrodution">
-        <%= follow.selfintrodution %><%= "e" * 300 %>
+        <% unless follow.selfintrodution.blank? %>
+          <%= safe_join(follow.selfintrodution.split("\n"),tag.br) %>
+        <% end %>
       </div>
     </div>
   <% end %>

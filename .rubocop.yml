@@ -133,6 +133,9 @@ Metrics/MethodLength:
 Metrics/BlockLength:
   Enabled: false
 
+Metrics/ClassLength:
+  Enabled: false
+
 #################### Layout #####################################
 
 # 1行の文字数

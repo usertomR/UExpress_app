@@ -1,0 +1,88 @@
+<div class="dm_area"> 
+  <div class="not_input_area">
+    <div class="my_info">
+      <% if current_user.avatar? %>
+        <div class="room_my_avatar">
+          <%= image_tag current_user.avatar.thumb_mid.url , class: "avatar" %>
+        </div>
+        <div class="name_area">
+          <%= current_user.name %>
+        </div>
+      <% else %>
+        <div class="room_my_avatar">
+          <%= render 'shared/default_avatar' %>
+        </div>
+        <div class="name_area">
+          <%= current_user.name %>
+        </div>
+      <% end %>
+    </div>
+    <div class="message_area">
+      <div class="message_display">
+        <% prev_date = nil %>
+        <% @messages.each do |message| %>
+          <% treating_message = message.created_at.to_s.scan(/\d{4}-\d{1,2}-\d{1,2}/) %>
+          <% treating_message_date = treating_message[0].split("-") %>
+          <% if prev_date == nil %>
+            <div class="date_display">
+              <%= ApplicationRecord.date_expression_change(message.created_at) %>
+            </div>
+          <% else %>
+            <% if treating_message_date != prev_date %>
+              <div class="date_display">
+                <%= ApplicationRecord.date_expression_change(message.created_at) %>
+              </div>
+            <% end %>
+          <% end %>
+          <% if message.user_id == current_user.id %>
+            <div class="display_left">
+              <%= safe_join(message.content.split("\n"),tag.br) %>
+            </div>
+          <% else %>
+            <div class="display_right">
+              <%= safe_join(message.content.split("\n"),tag.br) %>
+            </div>
+          <% end %>
+          <% previous_message = message.created_at.to_s.scan(/\d{4}-\d{1,2}-\d{1,2}/) %>
+          <% prev_date = previous_message[0].split("-") %>
+        <% end %>
+      </div>
+    </div>
+    <div class="partner_info">
+      <% @entries.each do |entry| %>
+        <% if entry.user != current_user %>
+          <% if entry.user.avatar? %>
+            <div>
+              <%= image_tag entry.user.avatar.avatar.thumb_mid.url , class: "avatar" %>
+            </div>
+            <div>
+              <%= entry.user.name %>
+            </div>
+          <% else %>
+            <div>
+              <%= render 'shared/default_avatar' %>
+            </div>
+            <div class="name_area">
+              <%= entry.user.name %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="input_area">
+    <%= form_with(model: @message, local: true) do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <div class="center_form">
+        <div>
+          <%= f.text_area :content, class: "input_message_form" %>
+        </div>
+        <div>
+          <%= f.submit "送信", class: "message_submit_button" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= javascript_pack_tag 'directmail', 'data-turbolinks-track': 'reload' %>

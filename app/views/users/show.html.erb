@@ -2,7 +2,7 @@
 
 <div class="info_display_range">
   <div class="profile_section user_backgroundcolor">
-      ユーザー
+    ユーザー
   </div>
   <div class="user_identification">
     <% if @user.avatar? %>
@@ -40,7 +40,9 @@
     自己紹介
   </div>
   <div class="user_selfintro">
-    <%= @user.selfintrodution %><%= "a" * 300 %>
+    <% unless @user.selfintrodution.blank? %>
+      <%= safe_join(@user.selfintrodution.split("\n"),tag.br) %>
+    <% end %>
   </div>
   <div class="profile_section link_backgroundcolor">
     リンク
@@ -78,5 +80,22 @@
         <a href="<%= user_follower_path(@user) %>" id="sum_follower"><%= @user.followers.count %></a>
       </div>
     </div>
+    <% if @user != current_user %>
+      <div class="direct_mail">
+        <div class="room_link">
+          <% if room_id = Room.room_id_present?(@user, current_user) %>
+            <div class="direct_mail_sign">
+              <%= link_to "DMを送る", room_path(room_id) %>
+            </div>
+          <% else %>
+            <%= form_with(url: rooms_path, local: true) do |f| %>
+              <%= hidden_field_tag :sending_user_id, current_user.id %>
+              <%= hidden_field_tag :sended_user_id, @user.id %>
+              <%= f.submit "DMを送る", class: "direct_mail_sign" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

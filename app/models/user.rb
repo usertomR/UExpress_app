@@ -48,6 +48,10 @@ class User < ApplicationRecord
   has_many :nice_to_article_comments, dependent: :destroy
   # 回答に対するnice機能
   has_many :nice_to_answers, dependent: :destroy
+  # DM機能における特定のユーザとトークルームの結びつけ
+  has_many :entries, class_name: "Entry", dependent: :destroy
+  # DM機能における特定のユーザーとメッセージ内容の結びつけ
+  has_many :messages, dependent: :destroy
 
   attr_accessor :remember_token, :activation_token, :reset_token
 
