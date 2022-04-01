@@ -57,7 +57,7 @@ Question.create!(title: "背理法がわからない", accuracy_text: 5, difficu
                  Hschool_level: false, solve: false, user_id: User.second.id)
 
 # フォロー・フォロワー
-user = User.find(1)
+user = User.first
 users = User.all
 following = users[1..2]
 follower = users[2]
@@ -65,7 +65,7 @@ following.each { |followed| user.follow(followed) }
 follower.follow(user)
 
 # 記事へのnice
-articles = Article.find(1, 5)
+articles = Article.take(2)
 articles.each do |article|
   users[1..2].each do |u|
     u.sum_nice_per_user << article
