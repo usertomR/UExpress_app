@@ -28,7 +28,7 @@ jobs:
         command: mysqld --default-authentication-plugin=mysql_native_password
         environment:
           MYSQL_DATABASE: UExpress_app_test
-          MYSQL_ROOT_PASSWORD: MYSQL_PASSWORD
+          MYSQL_ROOT_PASSWORD: $MYSQL_PASSWORD
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
