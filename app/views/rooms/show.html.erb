@@ -53,7 +53,7 @@
         <% if entry.user != current_user %>
           <% if entry.user.avatar? %>
             <div>
-              <%= image_tag entry.user.avatar.avatar.thumb_mid.url , class: "avatar" %>
+              <%= image_tag entry.user.avatar.thumb_mid.url , class: "avatar" %>
             </div>
             <div>
               <%= entry.user.name %>

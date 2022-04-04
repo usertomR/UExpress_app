@@ -22,7 +22,9 @@ RUN gem install bundler
 RUN bundle install
 RUN rails action_text:install
 
+# ホストのUExpressディレクトリのものを全てコンテナにコピー
 COPY . /UExpress
-
+# puma.sockを配置するディレクトリを作成
+RUN mkdir -p tmp/sockets
 # rails sの代用?
 CMD ["rails", "server", "-b", "0.0.0.0"]
