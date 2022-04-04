@@ -11,19 +11,19 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 RUN apt-get update && apt-get install -y --no-install-recommends  nodejs  \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && mkdir /UExpress
+    && mkdir /uexpress
 
-WORKDIR /UExpress
+WORKDIR /uexpress
 
-COPY Gemfile /UExpress/Gemfile
-COPY Gemfile.lock /UExpress/Gemfile.lock
+COPY Gemfile /uexpress/Gemfile
+COPY Gemfile.lock /uexpress/Gemfile.lock
 
 RUN gem install bundler
 RUN bundle install
 RUN rails action_text:install
 
 # ホストのUExpressディレクトリのものを全てコンテナにコピー
-COPY . /UExpress
+COPY . /uexpress
 # puma.sockを配置するディレクトリを作成
 RUN mkdir -p tmp/sockets
 # rails sの代用?

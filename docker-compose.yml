@@ -5,30 +5,23 @@ services:
       context: .
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/UExpress
-      - public-data:/UExpress/public
-      - tmp-data:/UExpress/tmp
-      - log-data:/UExpress/log
-    networks:
-      - UExpress-network
+      - .:/uexpress
+      - public-data:/uexpress/public
+      - tmp-data:/uexpress/tmp
+      - log-data:/uexpress/log
     depends_on:
       - db
-    ports:
-      - "3000:3000"
+
 
   db:
     image: mysql:8.0.27
     # mysqlログイン時の画面の文字化け防止
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-    ports: 
-      - '3306:3306'
     volumes:
       - mysql_data:/var/lib/mysql 
     environment:
       MYSQL_DATABASE: UExpress_DB
       MYSQL_ROOT_PASSWORD: Mysql_tomita
-    networks:
-      - UExpress-network
 
 
   web:   #nginxのコンテナ作成
@@ -38,15 +31,12 @@ services:
       - app
     ports:
       - "80:80"
-    networks:
-      - UExpress-network
+    volumes:
+      - public-data:/uexpress/public
+      - tmp-data:/uexpress/tmp
 
 volumes:
   mysql_data:
   public-data:
   tmp-data:
   log-data:
-
-networks:
-  UExpress-network:
-    external: true
