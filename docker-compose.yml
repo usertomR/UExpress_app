@@ -3,37 +3,23 @@ services:
   app:  # rails用コンテナ
     build:
       context: .
-    command: bundle exec puma -C config/puma.rb
+    command: bundle exec puma -C config/puma.rb -e production
     volumes:
       - .:/uexpress
       - public-data:/uexpress/public
       - tmp-data:/uexpress/tmp
       - log-data:/uexpress/log
-    depends_on:
-      - db
-
-
-  db:
-    image: mysql:8.0.27
-    # mysqlログイン時の画面の文字化け防止
-    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-    volumes:
-      - mysql_data:/var/lib/mysql 
-    environment:
-      MYSQL_DATABASE: UExpress_DB
-      MYSQL_ROOT_PASSWORD: Mysql_tomita
-
 
   web:   #nginxのコンテナ作成
     build:
       context: ./nginx_docker
-    depends_on:
-      - app
-    ports:
-      - "80:80"
     volumes:
       - public-data:/uexpress/public
       - tmp-data:/uexpress/tmp
+    ports:
+      - "80:80"
+    depends_on:
+      - app    
 
 volumes:
   mysql_data:

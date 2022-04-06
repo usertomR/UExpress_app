@@ -43,3 +43,6 @@ yarn-debug.log*
 
 # DS_Storeファイルを無視
 .DS_Store
+
+# 環境変数記載のファイルをpushしない
+.env

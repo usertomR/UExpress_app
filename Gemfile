@@ -7,6 +7,8 @@ ruby '2.7.4'
 gem 'bcrypt'
 gem 'bootstrap', '~> 5.1.3'
 gem 'carrierwave', '~> 2.0'
+# コンテナ用の環境変数の設定のため。
+gem 'dotenv-rails'
 gem "mini_magick"
 gem 'mysql2'
 gem 'rails', '~> 6.0.4', '>= 6.0.4.1'

@@ -3,15 +3,15 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: <%= ENV.fetch('MYSQL_USER', 'root') %>
-  password: <%= ENV.fetch('MYSQL_PASSWORD', 'Mysql_tomita') %>
-  
+
 
 development:
   <<: *default
   database: UExpress_DB
   host: db
   socket: /tmp/mysql.sock
+  username: <%= ENV.fetch('MYSQL_USER') %>
+  password: <%= ENV.fetch('MYSQL_PASSWORD') %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -21,9 +21,13 @@ test:
   database: UExpress_app_test
   host: 127.0.0.1
   port: 3306
-  
+  username: <%= ENV.fetch('MYSQL_USER') %>
+  password: <%= ENV.fetch('MYSQL_PASSWORD') %>
 
 production:
   <<: *default
-  database: UExpress_app_production
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
   socket: /var/lib/mysql/mysql.sock
