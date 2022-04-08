@@ -3,7 +3,9 @@ services:
   app:  # rails用コンテナ
     build:
       context: .
-    command: bundle exec puma -C config/puma.rb -e production
+    command: bundle exec puma -C config/puma.rb RAILS_ENV=production
+    environment:
+      RAILS_ENV: production
     volumes:
       - .:/uexpress
       - public-data:/uexpress/public
