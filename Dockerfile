@@ -1,6 +1,8 @@
 # UExpressのrubyのバージョン
 FROM ruby:2.7.4
 
+ENV RAILS_ENV=development
+
 # /上1文/開発に便利なコマンドをインストールしていると思われる
 # /下2文/上記指定ではDebian(DockerHub説明文&多分)+Debianの場合のyarnのinstall方法(公式)
 RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
