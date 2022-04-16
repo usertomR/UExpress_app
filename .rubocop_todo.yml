@@ -11,6 +11,10 @@ Style/YodaCondition:
   Exclude:
     - 'app/controllers/comment_to_answers_controller.rb'
 
+Style/ConditionalAssignment:
+  Exclude:
+  - 'app/controllers/incremental_searchs_controller.rb'
+
 # carrierwaveのファイルはできるだけデフォルトの状態にしたい。
 Style/PercentLiteralDelimiters:
   Exclude:
@@ -59,6 +63,7 @@ Metrics/AbcSize:
     - 'app/models/application_record.rb'
     - 'app/controllers/comment_to_answers_controller.rb'
     - 'app/controllers/static_pages_controller.rb'
+    - 'app/controllers/incremental_searchs_controller.rb'
 
 Metrics/MethodLength:
   Exclude:

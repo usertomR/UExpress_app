@@ -20,13 +20,14 @@
             <%= f.text_field :content, placeholder: "記事タイトルの検索", class: "search_input" %>
             <%= f.submit '検索', class: "button_size btn btn-primary" %>
           </div>
+          <div class="necessary_space"></div>
           <div class="flex_container">
             <div class="condition">文章の正確さ</div>
             <% #url:https://apidock.com/rails/ActionView/Helpers/FormHelper/check_box %>
             <% evaluations = [1,2,3,4,5] %>
             <div class="checkbox">
               <% evaluations.each do |eva| %>
-                <%= f.check_box :accuracy_select, { multiple: true, class: "space" }, eva, nil %>
+                <%= f.check_box :accuracy_select, { multiple: true, class: "space", :checked => true }, eva, nil %>
                 <span class="letter_white">
                   <%= eva %>
                 </span>
@@ -37,7 +38,7 @@
             <div class="condition add_margin_right_27">文章難易度</div>
             <div class="checkbox">
               <% evaluations.each do |eva| %>
-                <%= f.check_box :difficulty_select, { multiple: true, class: "space" }, eva, nil %>
+                <%= f.check_box :difficulty_select, { multiple: true, class: "space", :checked => true }, eva, nil %>
                 <span class="letter_white">
                   <%= eva %>
                 </span>
@@ -47,11 +48,11 @@
           <div class="flex_container">
             <div class="condition">期日</div>
             <div class="input_term">
-                <%= f.date_field :term_from %>
+                <%= f.date_field :term_from, value: "2022-01-01".to_date %>
                 <span class="letter_white">
                   ~
                 </span>
-                <%= f.date_field :term_to %>
+                <%= f.date_field :term_to, value: Time.zone.now.to_date %>
             </div>
           </div>
         <% end %>
@@ -120,13 +121,14 @@
             <%= f.text_field :content, class: "search_input" %>
             <%= f.submit '検索', class: "button_size btn btn-primary" %>
           </div>
+          <div class="necessary_space"></div>
           <div class="flex_container">
             <div class="condition">文章の正確さ</div>
             <% #url:https://apidock.com/rails/ActionView/Helpers/FormHelper/check_box %>
             <% evaluations = [1,2,3,4,5] %>
             <div class="checkbox">
               <% evaluations.each do |eva| %>
-                <%= f.check_box :accuracy_select, { multiple: true, class: "space" }, eva, nil %>
+                <%= f.check_box :accuracy_select, { multiple: true, class: "space", :checked => true }, eva, nil %>
                 <span class="letter_white">
                   <%= eva %>
                 </span>
@@ -137,7 +139,7 @@
             <div class="condition add_margin_right_27">文章難易度</div>
             <div class="checkbox">
               <% evaluations.each do |eva| %>
-                <%= f.check_box :difficulty_select, { multiple: true, class: "space" }, eva, nil %>
+                <%= f.check_box :difficulty_select, { multiple: true, class: "space", :checked => true }, eva, nil %>
                 <span class="letter_white">
                   <%= eva %>
                 </span>
@@ -151,7 +153,7 @@
             </div>
             <div class="checkbox">
                 <% select_solve.each do |s| %>
-                  <%= f.check_box :solve, { multiple: true, class: "space" }, s, nil %>
+                  <%= f.check_box :solve, { multiple: true, class: "space", :checked => true }, s, nil %>
                   <% if s %>
                     <span class="letter_white">
                       <%= "解決" %>
@@ -167,11 +169,11 @@
           <div class="flex_container">
             <div class="condition">期日</div>
             <div class="input_term">
-                <%= f.date_field :term_from %>
+                <%= f.date_field :term_from, value: "2022-01-01".to_date %>
                 <span class="letter_white">
                   ~
                 </span>
-                <%= f.date_field :term_to %>
+                <%= f.date_field :term_to, value: Time.zone.now.to_date %>
             </div>
           </div>
         <% end %>
@@ -256,3 +258,4 @@
   </div>
 </div>
 <% end %>
+<%= javascript_pack_tag 'incremental_search', 'data-turbolinks-track': 'reload' %>
