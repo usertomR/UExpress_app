@@ -50,15 +50,41 @@
       margin-bottom: 20px;
     }
     .search {
-      height: 6vh;
-      margin-bottom: 1vh;
+      height: 4.5vh;
       .search_input {
-        height: 4.5vh;
-        width: 40%;
+        height: 100%;
+        // 60px は　右隣の検索ボタンの横幅を考慮した値
+        width: calc(95% - 60px);
       }
       .button_size {
-        height: 4vh;
+        height: 100%;
       }
+    }
+    .result_display_space {
+      width: calc( (70vw * 0.9 * 0.95 - 60px));
+      background: rgb(157, 156, 156);
+      position: absolute;
+      z-index: 1;
+      .count_display_space {
+        font-size: calc(1rem + 0.3vw);
+        color: white;
+        height: 25px;
+      }
+      .each_result {
+        height: 35px;
+        width: 100%;
+        overflow-x: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        .link {
+          font-size: calc(1rem + 0.6vw);
+          color: aqua;
+        }
+      }
+    }
+    .necessary_space {
+      height: 2.5vh;
+      width: 100%;
     }
     .flex_container {
       display: flex;

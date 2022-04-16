@@ -67,12 +67,14 @@ class ApplicationRecord < ActiveRecord::Base
     where(accuracy_text: ac_select)
   end
 
+  # "年-月-日"の形式の場合、何故かupdated_atとend_dateの年・月・日が同じだとその日の記事・質問がヒットしない
+  # のでこのようにした
   def self.term(term_from, term_to)
     if term_from == "" || term_to == ""
       where(id: nil)
     else
       where("updated_at >= :start_date AND updated_at <= :end_date",
-      { start_date: term_from, end_date: term_to })
+      { start_date: term_from, end_date: term_to + " 23:59:59" })
     end
   end
 
