@@ -38,6 +38,7 @@ Style/SymbolProc:
 Style/RedundantReturn:
   Exclude:
   - 'app/models/room.rb'
+  - 'app/models/application_record.rb'
 
 ######## Rails ########
 Rails/FilePath:

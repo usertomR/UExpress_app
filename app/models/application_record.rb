@@ -55,7 +55,17 @@ class ApplicationRecord < ActiveRecord::Base
     if content.blank?
       where(id: nil)
     else
-      where("title LIKE ?", '%' + content + '%')
+      # 空白で検索文字列を区切る
+      splited_content = content.split(/[[:blank:]]+/)
+      # 検索結果用変数の生成(Userでなくても良い/空のActiveRecord::Relation生成)
+      @all = User.none
+      # 1ワードごとに検索
+      splited_content.each do |word|
+        # 先頭の空白対策。空文字で検索すると全レコードを返すらしい
+        next if word == ""
+        @all = @all.or(self.where("title LIKE ?", '%' + word + '%'))
+      end
+      return @all
     end
   end
 

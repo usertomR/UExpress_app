@@ -7,7 +7,7 @@
     <%= form_with url: question_path(@user), method: :get, local: true do |f| %>
       <%= hidden_field_tag :use_form, "true" %>
       <div class="search">
-        <%= f.text_field :content, class: "search_input" %>
+        <%= f.text_field :content, placeholder: "質問タイトルの検索", class: "search_input" %>
         <%= f.submit '検索', class: "button_size btn btn-primary" %>
       </div>
       <div class="necessary_space"></div>
