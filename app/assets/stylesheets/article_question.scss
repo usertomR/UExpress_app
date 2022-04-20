@@ -68,10 +68,10 @@
       .count_display_space {
         font-size: calc(1rem + 0.3vw);
         color: white;
-        height: 25px;
+        height: calc(21px + 0.3vw);
       }
       .each_result {
-        height: 35px;
+        height: calc(30px + 0.6vw);
         width: 100%;
         overflow-x: hidden;
         white-space: nowrap;
