@@ -14,16 +14,16 @@
   .heading_and_links {
     display: flex;
     flex-direction: column;
-    width: 40vw;
+    width: fit-content;
     margin-left: 5%;
     .heading {
       width: 100%;
       overflow-wrap: break-word;
-      color: white;
+      color: red;
       font-size: calc( 40px + 2vw );
       font-weight: bold;
       margin-bottom: 50px;
-      margin-top: 35vh;
+      margin-top: 50vh;
     }
     .login_link, .signup_link, .test_login_link {
       a {

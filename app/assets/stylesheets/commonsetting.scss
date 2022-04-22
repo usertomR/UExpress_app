@@ -146,6 +146,10 @@ body.noscroll {
   overflow: hidden;
 }
 
+body {
+  overflow: auto;
+}
+
 
 
 /*記事リスト、質問リスト(検索結果・投稿リスト)の表示*/
