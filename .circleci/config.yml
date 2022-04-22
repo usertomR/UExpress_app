@@ -52,7 +52,7 @@ workflows:
           requires:
             - build
           # リポジトリ名
-          repo: "nginx"
+          repo: nginx
           # Dockerfileの場所。デフォルトはWorkingDirectory
           path: "nginx_docker/"
           # 上記のrepoの値の名前が無かったらその名前のリポジトリを作るという意味だと思われる
@@ -75,7 +75,7 @@ workflows:
           name: 'rails/build-and-push-image'
           requires:
             - build
-          repo: "rails"
+          repo: rails
           create-repo: true
           filters:
               branches:
