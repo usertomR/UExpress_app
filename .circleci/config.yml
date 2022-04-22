@@ -1,25 +1,13 @@
-# herokuへのデプロイは、このURL: https://circleci.com/docs/ja/2.0/deployment-integrations/#heroku%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E7%B0%A1%E5%8D%98%E3%81%AA%E4%BE%8B
-
 version: 2.1
 
 orbs:
   ruby: circleci/ruby@1.1.2
   node: circleci/node@4.2.0
-  heroku: circleci/heroku@1.2.6 # Heroku orbを起動する.デプロイするには、環境変数を設定する必要あり。上URL参照。
-
-workflows:
-  heroku_deploy:   # ワークフローの名前
-    jobs:
-      - build
-      - heroku/deploy-via-git: # 事前に設定されたジョブ deploy-via-git を使う
-          requires:
-            - build
-          filters:   #実行するブランチを定義するマップ。https://circleci.com/docs/ja/2.0/configuration-reference/#jobfilters
-            branches:
-              only: main # onlyで指定したブランチでheroku/deploy-via-gitジョブを実行する(多分).mainにマージしたらデプロイされる(多分)。
+  aws-ecr: circleci/aws-ecr@8.0.0
+  aws-ecs: circleci/aws-ecs@2.2.1
 
 jobs:
-  build:
+  build: # 注意：ビルドとテスト両方行う
     docker:
       - image: cimg/ruby:2.7.4-node
         environment:
@@ -53,3 +41,47 @@ jobs:
           command: bundle exec rails db:schema:load --trace
       - ruby/rubocop-check
       - ruby/rspec-test
+
+workflows:
+  build_test:
+    jobs:
+      - build # 注意：ビルドとテスト両方行う
+  nginx-deploy:
+    jobs:
+      - aws-ecr/build-and-push-image:
+        requires:
+          - build
+        # リポジトリ名
+        repo: "nginx"
+        # Dockerfileの場所。デフォルトはWorkingDirectory
+        path: "nginx_docker/"
+        # 上記のrepoの値の名前が無かったらその名前のリポジトリを作るという意味だと思われる
+        create-repo: true
+        filters:
+            branches:
+              only: main
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          # ECSのクラスター名かARNのフルパス
+          cluster-name: 'uexp-cluster'
+          # ECSのタスク定義名
+          family: 'uexp-task'
+          # コンテナ名とタグ名を決める
+          container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
+  rails-deploy:
+    jobs:
+      - aws-ecr/build-and-push-image:
+        requires:
+          - build
+        repo: "rails"
+        create-repo: true
+        filters:
+            branches:
+              only: main
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          cluster-name: 'uexp-cluster'
+          family: 'uexp-task'
+          container-image-name-updates: "container=rails,tag=${CIRCLE_SHA1}"
