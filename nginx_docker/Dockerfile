@@ -4,7 +4,7 @@ FROM nginx:1.15.8
 RUN rm -f /etc/nginx/conf.d/*
 
 # Nginxの設定ファイルをコンテナにコピー
-ADD /nginx_docker/nginx.conf /etc/nginx/conf.d/uexpress.conf
+ADD nginx.conf /etc/nginx/conf.d/uexpress.conf
 
 # for health check
 RUN apt-get update && apt-get install -y curl

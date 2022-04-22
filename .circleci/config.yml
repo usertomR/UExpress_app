@@ -66,6 +66,7 @@ workflows:
             - nginx/build-and-push-image
           # ECSのクラスター名かARNのフルパス
           cluster-name: 'uexp-cluster'
+          service-name: 'uexp-service'
           # ECSのタスク定義名
           family: 'uexp-task'
           # コンテナ名とタグ名を決める
@@ -85,5 +86,6 @@ workflows:
           requires:
             - rails/build-and-push-image
           cluster-name: 'uexp-cluster'
+          service-name: "$uexp-service"
           family: 'uexp-task'
           container-image-name-updates: "container=rails,tag=${CIRCLE_SHA1}"
