@@ -43,45 +43,47 @@ jobs:
       - ruby/rspec-test
 
 workflows:
-  build_test:
+  build_test_deploy:
     jobs:
       - build # 注意：ビルドとテスト両方行う
-  nginx-deploy:
-    jobs:
+      # nginxコンテナのビルドからデプロイまで
       - aws-ecr/build-and-push-image:
-        requires:
-          - build
-        # リポジトリ名
-        repo: "nginx"
-        # Dockerfileの場所。デフォルトはWorkingDirectory
-        path: "nginx_docker/"
-        # 上記のrepoの値の名前が無かったらその名前のリポジトリを作るという意味だと思われる
-        create-repo: true
-        filters:
-            branches:
-              only: main
-      - aws-ecs/deploy-service-update:
+          name: 'nginx/build-and-push-image'
           requires:
-            - aws-ecr/build-and-push-image
+            - build
+          # リポジトリ名
+          repo: "nginx"
+          # Dockerfileの場所。デフォルトはWorkingDirectory
+          path: "nginx_docker/"
+          # 上記のrepoの値の名前が無かったらその名前のリポジトリを作るという意味だと思われる
+          create-repo: true
+          filters:
+              branches:
+                only: main
+      - aws-ecs/deploy-service-update:
+          name: 'nginx/deploy-service-update'
+          requires:
+            - nginx/build-and-push-image
           # ECSのクラスター名かARNのフルパス
           cluster-name: 'uexp-cluster'
           # ECSのタスク定義名
           family: 'uexp-task'
           # コンテナ名とタグ名を決める
           container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
-  rails-deploy:
-    jobs:
+      # railsコンテナビルドからデプロイまで
       - aws-ecr/build-and-push-image:
-        requires:
-          - build
-        repo: "rails"
-        create-repo: true
-        filters:
-            branches:
-              only: main
-      - aws-ecs/deploy-service-update:
+          name: 'rails/build-and-push-image'
           requires:
-            - aws-ecr/build-and-push-image
+            - build
+          repo: "rails"
+          create-repo: true
+          filters:
+              branches:
+                only: main
+      - aws-ecs/deploy-service-update:
+          name: 'rails/deploy-service-update'
+          requires:
+            - rails/build-and-push-image
           cluster-name: 'uexp-cluster'
           family: 'uexp-task'
           container-image-name-updates: "container=rails,tag=${CIRCLE_SHA1}"
