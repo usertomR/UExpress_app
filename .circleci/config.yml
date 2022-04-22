@@ -86,6 +86,6 @@ workflows:
           requires:
             - rails/build-and-push-image
           cluster-name: 'uexp-cluster'
-          service-name: "$uexp-service"
+          service-name: 'uexp-service'
           family: 'uexp-task'
           container-image-name-updates: "container=rails,tag=${CIRCLE_SHA1}"
