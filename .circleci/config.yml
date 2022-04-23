@@ -57,6 +57,8 @@ workflows:
           path: "nginx_docker/"
           # 上記のrepoの値の名前が無かったらその名前のリポジトリを作るという意味だと思われる
           create-repo: true
+          # タグ付け
+          tag: "${CIRCLE_SHA1}"
           filters:
               branches:
                 only: main
@@ -71,8 +73,6 @@ workflows:
           family: 'uexp-task'
           # コンテナ名とタグ名を決める
           container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
-          # 強制的に新しいコンテナに変える
-          force-new-deployment: true
       # railsコンテナビルドからデプロイまで
       - aws-ecr/build-and-push-image:
           name: 'rails/build-and-push-image'
@@ -80,6 +80,7 @@ workflows:
             - build
           repo: rails
           create-repo: true
+          tag: "${CIRCLE_SHA1}"
           filters:
               branches:
                 only: main
@@ -91,4 +92,3 @@ workflows:
           service-name: 'uexp-service'
           family: 'uexp-task'
           container-image-name-updates: "container=rails,tag=${CIRCLE_SHA1}"
-          force-new-deployment: true
