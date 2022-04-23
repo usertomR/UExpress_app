@@ -71,6 +71,8 @@ workflows:
           family: 'uexp-task'
           # コンテナ名とタグ名を決める
           container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
+          # 強制的に新しいコンテナに変える
+          force-new-deployment: true
       # railsコンテナビルドからデプロイまで
       - aws-ecr/build-and-push-image:
           name: 'rails/build-and-push-image'
@@ -89,3 +91,4 @@ workflows:
           service-name: 'uexp-service'
           family: 'uexp-task'
           container-image-name-updates: "container=rails,tag=${CIRCLE_SHA1}"
+          force-new-deployment: true
