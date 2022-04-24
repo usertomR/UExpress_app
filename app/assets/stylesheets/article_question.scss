@@ -27,8 +27,9 @@
 .sum_question_article {
   width: 70%;
   margin: 100px auto 0;
-  font-size: 2rem;
-  height: 3rem;
+  font-size: calc(1.1rem + 1vw);
+  height: calc(2.1rem + 1vw);
+  line-height: calc(2.1rem + 1vw);
   background-color: rgba(255, 0, 64, 0.7);
   color: white;
 }
@@ -50,7 +51,7 @@
       margin-bottom: 20px;
     }
     .search {
-      height: 4.5vh;
+      height: calc(1.8rem + 0.6vh + 0.1vw);
       .search_input {
         height: 100%;
         // 60px は　右隣の検索ボタンの横幅を考慮した値
@@ -58,6 +59,8 @@
       }
       .button_size {
         height: 100%;
+        font-size: calc((1.8rem + 0.6vh + 0.1vw) * 0.4);
+        line-height: 100%;
       }
     }
     .result_display_space {
@@ -89,12 +92,10 @@
     .flex_container {
       display: flex;
       flex-wrap: wrap;
-      margin-bottom: 2vh;
+      margin-bottom: calc(2vh + 0.3vw);
       .condition {
-        height: 4vh;
-        font-size: 3vh;
         color: white;
-        font-size: calc(1.6rem + 0.2vw);
+        font-size: calc(1.2rem + 1vh + 0.2vw);
         margin-bottom: 5px;
       }
       .add_margin_right_27 {
@@ -104,16 +105,20 @@
         margin-right: 16px;
       }
       .checkbox {
-        height: 1.8vh;
+        height: calc(1rem + 1vh + 0.1vw);
+        font-size: calc(1rem + 0.1vh + 0.01vw);
         margin: auto 0;
         .space {
-          margin-left: 4px;
+          margin-left: calc(2px + 0.01vh + 0.01vw);
         }
       }
       .input_term {
-        height: 1.8vh;
         margin: auto 0;
         margin-left: 10px;
+        input {
+          height: calc(1.1rem + 1vh + 0.1vw);
+          width: calc(8rem + 1vh + 0.1vw);
+        }
       }
     }
   }
