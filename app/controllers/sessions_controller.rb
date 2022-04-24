@@ -25,4 +25,11 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url
   end
+
+  def testlogin
+    tester = User.find_by(email: "testuser@understandexpress.com")
+    log_in tester
+    flash[:info] = "テストユーザーとしてログインしました"
+    redirect_to root_url
+  end
 end

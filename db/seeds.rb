@@ -11,6 +11,11 @@ User.create!(name: "Administrator", email: "satouhiroshi95@gmail.com",
              password: "LearnRails", password_confirmation: "LearnRails",
              admin: true, activated: true)
 
+# テストユーザー(1人)
+User.create!(name: "Test_User", email: "testuser@understandexpress.com",
+             password: "testuser", password_confirmation: "testuser",
+             admin: false, activated: true)
+
 # 一般ユーザー
 User.create!(name: "teruo", email: "timekeeper@gmail.com",
              password: "owacchata", password_confirmation: "owacchata",
