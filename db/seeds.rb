@@ -13,7 +13,7 @@ User.create!(name: "Administrator", email: "administrator@gmail.com",
 
 # 一般ユーザー
 User.create!(name: "teruo", email: "teruo@gmail.com",
-             password: "teruo", password_confirmation: "teruo",
+             password: "bokuteruo", password_confirmation: "bokuteruo",
              admin: false, activated: true)
 
 User.create!(name: "hattori", email: "hattori@gmail.com",
@@ -21,11 +21,11 @@ User.create!(name: "hattori", email: "hattori@gmail.com",
              admin: false, activated: true)
 
 User.create!(name: "akira", email: "akira@gmail.com",
-             password: "akira", password_confirmation: "akira",
+             password: "wanttobewriter", password_confirmation: "wanttobewriter",
              admin: false, activated: true)
 
 User.create!(name: "red pepper", email: "red pepper@gmail.com",
-             password: "唐辛子", password_confirmation: "唐辛子",
+             password: "tougarashi", password_confirmation: "tougarashi",
              admin: false, activated: true)
 
 # テストユーザー(1人)
