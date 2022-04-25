@@ -24,7 +24,7 @@ User.create!(name: "akira", email: "akira@gmail.com",
              password: "wanttobewriter", password_confirmation: "wanttobewriter",
              admin: false, activated: true)
 
-User.create!(name: "red pepper", email: "red pepper@gmail.com",
+User.create!(name: "red pepper", email: "redpepper@gmail.com",
              password: "tougarashi", password_confirmation: "tougarashi",
              admin: false, activated: true)
 
