@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'noreply@understandexpress.net'
+  default from: 'noreply@portfolio-uexpress.net'
   layout 'mailer'
 end
