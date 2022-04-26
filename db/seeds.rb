@@ -7,54 +7,31 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # 管理者ユーザー(1人)
-User.create!(name: "Administrator", email: "satouhiroshi95@gmail.com",
+User.create!(name: "Administrator", email: "administrator@gmail.com",
              password: "LearnRails", password_confirmation: "LearnRails",
              admin: true, activated: true)
 
 # 一般ユーザー
-User.create!(name: "teruo", email: "timekeeper@gmail.com",
-             password: "owacchata", password_confirmation: "owacchata",
+User.create!(name: "teruo", email: "teruo@gmail.com",
+             password: "bokuteruo", password_confirmation: "bokuteruo",
              admin: false, activated: true)
 
 User.create!(name: "hattori", email: "hattori@gmail.com",
              password: "hattori", password_confirmation: "hattori",
              admin: false, activated: true)
 
-# Articleクラス用
-Article.create!(title: "First Example", accuracy_text: 1, difficultylevel_text: 1,
-                articletext: "This app's first article!", Eschool_level: false,
-                JHschool_level: true, Hschool_level: false, user_id: User.first.id)
+User.create!(name: "akira", email: "akira@gmail.com",
+             password: "wanttobewriter", password_confirmation: "wanttobewriter",
+             admin: false, activated: true)
 
-Article.create!(title: "Example-正しさの説明-", accuracy_text: 4, difficultylevel_text: 3,
-                articletext: "文章の正確さを5段階で評価する。確実に正しいことしか記事に書かれていなければ" +
-                "5で、正しいか分からない部分やわかりやすいけれど間違っている部分が多ければ評価が下がる。",
-                Eschool_level: false, JHschool_level: true, Hschool_level: true, user_id: User.first.id)
+User.create!(name: "red pepper", email: "redpepper@gmail.com",
+             password: "tougarashi", password_confirmation: "tougarashi",
+             admin: false, activated: true)
 
-Article.create!(title: "Example-文章難易度の説明-", accuracy_text: 3, difficultylevel_text: 3,
-                articletext: "文章難易度を5段階で評価する。多くの人が流し読みで完全に理解できる文章なら1にして、" +
-                "構造が複雑な文が多い文章や、内容を理解し辛い文章なら5にする。",
-                Eschool_level: false, JHschool_level: true, Hschool_level: true, user_id: User.first.id)
-
-Article.create!(title: "Example-正しさ1の例-", accuracy_text: 1, difficultylevel_text: 1,
-                articletext: "UExpress(本アプリ)の製作者は人間ではない。",
-                Eschool_level: true, JHschool_level: false, Hschool_level: false, user_id: User.first.id)
-
-Article.create!(title: "Example-正しさ2の例-", accuracy_text: 2, difficultylevel_text: 2,
-                articletext: "ウサイン・ボルトは100mの世界記録保持者。2002年から2017年までの現役時代は数々の記録を樹立し" +
-                "人類史上最速のスプリンターと評された。全盛期には、稲妻を意味する「aaaaa」の愛称で呼ばれた。(3文目間違い)",
-                Eschool_level: true, JHschool_level: false, Hschool_level: false, user_id: User.first.id)
-
-Question.create!(title: "2次方程式について", accuracy_text: 2, difficultylevel_text: 2,
-                 questiontext: "2次方程式って何？おいしいの？", Eschool_level: true, JHschool_level: false,
-                 Hschool_level: false, solve: false, user_id: User.second.id)
-
-Question.create!(title: "古文について", accuracy_text: 2, difficultylevel_text: 2,
-                 questiontext: "古文の試験受けまぁす。・・・<ピピピピ>オワッチャッタァ!", Eschool_level: true, JHschool_level: false,
-                 Hschool_level: false, solve: false, user_id: User.second.id)
-
-Question.create!(title: "背理法がわからない", accuracy_text: 5, difficultylevel_text: 5,
-                 questiontext: "青○ャートの115ページの背理法の証明のこの部分がわかんないっす。教えて下さい", Eschool_level: true, JHschool_level: false,
-                 Hschool_level: false, solve: false, user_id: User.second.id)
+# テストユーザー(1人)
+User.create!(name: "Test_User", email: "testuser@understandexpress.com",
+  password: "testuser", password_confirmation: "testuser",
+  admin: false, activated: true)
 
 # フォロー・フォロワー
 user = User.first
@@ -71,7 +48,3 @@ articles.each do |article|
     u.sum_nice_per_user << article
   end
 end
-
-# 記事へのコメント
-articles[0].article_comments.create(user_id: User.first.id, comment: "オタァ!")
-articles[0].article_comments.create(user_id: User.second.id, comment: "オワッチャッタァ!")

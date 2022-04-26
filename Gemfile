@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.4'
 
+# awsのsesサービス(メール送信サービス)の使用のため
+gem 'aws-sdk-rails'
 # S3との連携のため(activestrage)
 gem "aws-sdk-s3", require: false
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'

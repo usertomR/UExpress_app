@@ -68,7 +68,7 @@ RSpec.describe "<system>ArticleComment", type: :system do
                 article_id: @another_article.id, comment: "RSpec test!")
           login_as(@user)
           visit browsing_article_path(@another_article)
-          execute_script('window.scrollBy(0,800)')
+          execute_script('window.scrollBy(0,650)')
           sleep  0.5
           expect do
             accept_alert do

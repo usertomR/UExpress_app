@@ -11,6 +11,12 @@
   position: fixed;
   top: 4rem;
   overflow-y: auto;
+  .for_root_page {
+    position: absolute;
+    width: 90%;
+    top: 2rem;
+    right: 5%;
+  }
   .heading_and_links {
     display: flex;
     flex-direction: column;
@@ -19,7 +25,7 @@
     .heading {
       width: 100%;
       overflow-wrap: break-word;
-      color: red;
+      color: white;
       font-size: calc( 40px + 2vw );
       font-weight: bold;
       margin-bottom: 50px;

@@ -9,7 +9,7 @@ RSpec.describe "<mailer>UserMailer", type: :mailer do
       aggregate_failures do
         expect(mail.subject).to eq "アカウント有効化メール/UExpress"
         expect(mail.to).to eq([user.email])
-        expect(mail.from).to eq(["noreply@example.com"])
+        expect(mail.from).to eq(["noreply@portfolio-uexpress.net"])
       end
     end
 
@@ -33,7 +33,7 @@ RSpec.describe "<mailer>UserMailer", type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("パスワード再設定/UExpress")
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq(["noreply@example.com"])
+      expect(mail.from).to eq(["noreply@portfolio-uexpress.net"])
     end
 
     it "renders the body" do

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :nice, :bookmark, :curious, :questionbookmark]
   before_action :admin_user, only: [:destroy, :index]
+  before_action :not_test_user, only: [:edit]
 
   def index
     @users = User.where(activated: true)
@@ -90,5 +91,14 @@ class UsersController < ApplicationController
   # 管理者かどうか確認
   def admin_user
     redirect_to(root_url) unless current_user.admin?
+  end
+
+  # テストユーザーではないことを確認
+  def not_test_user
+    @testuser_or_not = User.find(params[:id])
+    if @testuser_or_not.email == "testuser@understandexpress.com"
+      flash[:warning] = "サインアップをお願いします"
+      redirect_to signup_path
+    end
   end
 end

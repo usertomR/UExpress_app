@@ -110,17 +110,20 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  # heroku用設定
+  # AWSのSES用設定
+  creds = Aws::Credentials.new(
+    ENV['AWS_ACCESS_KEY_ID'],
+    ENV['AWS_SECRET_ACESS_KEY']
+  )
+
+  Aws::Rails.add_action_mailer_delivery_method(
+    :ses,
+    credentials: creds,
+    region: 'ap-northeast-1'
+  )
+
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  host = 'UExpress.herokuapp.com'
-  config.action_mailer.default_url_options = { host: host }
-  ActionMailer::Base.smtp_settings = {
-    :port => ENV['MAILGUN_SMTP_PORT'],
-    :address => ENV['MAILGUN_SMTP_SERVER'],
-    :user_name => ENV['MAILGUN_SMTP_LOGIN'],
-    :password => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain => host,
-    :authentication => :plain
-  }
+  config.action_mailer.delivery_method = :ses
+  host = 'www.portfolio-uexpress.net'
+  config.action_mailer.default_url_options = { host: host, :protocol => 'https' }
 end

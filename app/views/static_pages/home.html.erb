@@ -234,6 +234,11 @@
   <% end %>
 <% else %>
 <div class="image_display">
+  <div class="for_root_page">
+    <% flash.each do |message_type,message| %>
+      <div class="alert alert-<%= message_type %>" role="alert"><%= message %></div>
+    <% end %> 
+  </div>
   <div class="heading_and_links">
     <div class="heading">
       Understand
@@ -251,7 +256,7 @@
     <div class="link_line_design">
     </div>
     <div class="test_login_link">
-      <%= link_to "Test login", '#' %>
+      <%= link_to "Test login", testlogin_path %>
     </div>
     <div class="link_line_design">
     </div>
