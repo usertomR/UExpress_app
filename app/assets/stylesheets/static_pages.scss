@@ -11,6 +11,13 @@
   position: fixed;
   top: 4rem;
   overflow-y: auto;
+  .for_root_page {
+    position: absolute;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    top: 5rem;
+  }
   .heading_and_links {
     display: flex;
     flex-direction: column;
