@@ -20,41 +20,7 @@
             <%= f.text_field :content, placeholder: "記事タイトルの検索", class: "search_input" %>
             <%= f.submit '検索', class: "button_size btn btn-primary" %>
           </div>
-          <div class="necessary_space"></div>
-          <div class="flex_container">
-            <div class="condition">文章の正確さ</div>
-            <% #url:https://apidock.com/rails/ActionView/Helpers/FormHelper/check_box %>
-            <% evaluations = [1,2,3,4,5] %>
-            <div class="checkbox">
-              <% evaluations.each do |eva| %>
-                <%= f.check_box :accuracy_select, { multiple: true, class: "space", :checked => true }, eva, nil %>
-                <span class="letter_white">
-                  <%= eva %>
-                </span>
-              <% end %>
-            </div>
-          </div>
-          <div class="flex_container">
-            <div class="condition add_margin_right_27">文章難易度</div>
-            <div class="checkbox">
-              <% evaluations.each do |eva| %>
-                <%= f.check_box :difficulty_select, { multiple: true, class: "space", :checked => true }, eva, nil %>
-                <span class="letter_white">
-                  <%= eva %>
-                </span>
-              <% end %>
-            </div> 
-          </div>
-          <div class="flex_container">
-            <div class="condition">期日</div>
-            <div class="input_term">
-                <%= f.date_field :term_from, value: "2022-01-01".to_date %>
-                <span class="letter_white">
-                  ~
-                </span>
-                <%= f.date_field :term_to, value: Time.zone.now.to_date %>
-            </div>
-          </div>
+          <%= render partial: 'shared/search_form_common', locals: { f: f, question_article: "article" } %>
         <% end %>
       </div>
     </div>
@@ -121,61 +87,7 @@
             <%= f.text_field :content, placeholder: "質問タイトルの検索", class: "search_input" %>
             <%= f.submit '検索', class: "button_size btn btn-primary" %>
           </div>
-          <div class="necessary_space"></div>
-          <div class="flex_container">
-            <div class="condition">文章の正確さ</div>
-            <% #url:https://apidock.com/rails/ActionView/Helpers/FormHelper/check_box %>
-            <% evaluations = [1,2,3,4,5] %>
-            <div class="checkbox">
-              <% evaluations.each do |eva| %>
-                <%= f.check_box :accuracy_select, { multiple: true, class: "space", :checked => true }, eva, nil %>
-                <span class="letter_white">
-                  <%= eva %>
-                </span>
-              <% end %>
-            </div>
-          </div>
-          <div class="flex_container">
-            <div class="condition add_margin_right_27">文章難易度</div>
-            <div class="checkbox">
-              <% evaluations.each do |eva| %>
-                <%= f.check_box :difficulty_select, { multiple: true, class: "space", :checked => true }, eva, nil %>
-                <span class="letter_white">
-                  <%= eva %>
-                </span>
-              <% end %>
-            </div>
-          </div>
-          <% select_solve = [false,true] %>
-          <div class="flex_container">
-            <div class="condition add_margin_right_16">
-              解決/未解決
-            </div>
-            <div class="checkbox">
-                <% select_solve.each do |s| %>
-                  <%= f.check_box :solve, { multiple: true, class: "space", :checked => true }, s, nil %>
-                  <% if s %>
-                    <span class="letter_white">
-                      <%= "解決" %>
-                    </span>
-                  <% else %>
-                    <span class="letter_white">
-                      <%= "未解決" %>
-                    </span>
-                  <% end %>
-                <% end %>
-            </div>
-          </div>
-          <div class="flex_container">
-            <div class="condition">期日</div>
-            <div class="input_term">
-                <%= f.date_field :term_from, value: "2022-01-01".to_date %>
-                <span class="letter_white">
-                  ~
-                </span>
-                <%= f.date_field :term_to, value: Time.zone.now.to_date %>
-            </div>
-          </div>
+          <%= render partial: 'shared/search_form_common', locals: { f: f, question_article: "question" } %>
         <% end %>
       </div>
     </div>
