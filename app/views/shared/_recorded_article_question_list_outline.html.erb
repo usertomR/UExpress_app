@@ -1,0 +1,52 @@
+<% one_type_instance_collection.each do |one_type_instance| %>
+  <div class="an_item">
+    <div class="content">
+      <div class="title">
+        <%= link_to one_type_instance.title, browsing_article_path(one_type_instance) %>
+      </div>
+      <div class="flex">
+        <div class="flex_item_adjustment">文章の正しさ&thinsp;/&thinsp;<%= one_type_instance.accuracy_text %></div>
+        <div class="flex_item_adjustment">読みやすさ&thinsp;/&thinsp;<%= one_type_instance.difficultylevel_text %></div>
+        <div>最終修正日&thinsp;/&thinsp;<%= ApplicationRecord.date_expression_change(one_type_instance.updated_at) %></div>
+      </div>
+      <div class="flex">
+        <div class="flex_item_adjustment">小学生向け&thinsp;/&thinsp;<%= ApplicationRecord.inspect_level(one_type_instance.Eschool_level) %></div>
+        <div class="flex_item_adjustment">中学生向け&thinsp;/&thinsp;<%= ApplicationRecord.inspect_level(one_type_instance.JHschool_level) %></div>
+        <div>高校生向け&thinsp;/&thinsp;<%= ApplicationRecord.inspect_level(one_type_instance.Hschool_level) %></div>
+      </div>
+      <div class="separation"></div>
+      <div>
+      <%# if...end毎にある4つの取り消しマーク %>
+        <% if type == "articlebookmark" %>
+          <%= form_with(model: current_user.article_bookmarks.find_by(article_id: one_type_instance.id),
+            html: {method: :delete }, local: true) do |f| %>
+            <div><%= hidden_field_tag :not_ajax, true %></div>
+            <%= f.submit "ブックマーク取り消し", class: "delete_button_design" %>
+          <% end %>
+        <% end %>
+        <% if type == "nice" %>
+          <%= form_with(model: current_user.nice_to_articles.find_by(article_id: one_type_instance.id),
+            html: {method: :delete }, local: true) do |f| %>
+            <div><%= hidden_field_tag :not_ajax, true %></div>
+            <%= f.submit "nice取り消し", class: "delete_button_design" %>
+          <% end %>
+        <% end %>
+        <% if type == "questionbookmark" %>
+          <%= form_with(model: current_user.question_bookmarks.find_by(question_id: one_type_instance.id),
+            html: {method: :delete }, local: true) do |f| %>
+            <div><%= hidden_field_tag :not_ajax, true %></div>
+            <%= f.submit "ブックマーク取り消し", class: "delete_button_design" %>
+          <% end %>
+        <% end %>
+        <% if type == "curious" %>
+          <%= form_with(model: current_user.curious_questions.find_by(question_id: one_type_instance.id),
+            html: {method: :delete }, local: true) do |f| %>
+            <div><%= hidden_field_tag :not_ajax, true %></div>
+            <%= f.submit "「気になる」取り消し", class: "delete_button_design" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="distinction_line"></div>
+<% end %>
