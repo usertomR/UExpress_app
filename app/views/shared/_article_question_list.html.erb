@@ -1,0 +1,46 @@
+<% article_or_question_collection.each do |article_or_question| %>
+  <div class="an_item">
+    <div class="content">
+      <div class="title">
+        <% if article_or_question_collection[0].class == Question %>
+          <%= link_to article_or_question.title, browsing_question_path(article_or_question) %>
+        <% else %>
+          <%= link_to article_or_question.title, browsing_article_path(article_or_question) %>
+        <% end %>
+      </div>
+      <div class="flex">
+        <div class="flex_item_adjustment">文章の正しさ&thinsp;/&thinsp;<%= article_or_question.accuracy_text %></div>
+        <div class="flex_item_adjustment">読みやすさ&thinsp;/&thinsp;<%= article_or_question.difficultylevel_text %></div>
+        <div>最終修正日&thinsp;/&thinsp;<%= ApplicationRecord.date_expression_change(article_or_question.updated_at) %></div>
+      </div>
+      <div class="flex">
+        <div class="flex_item_adjustment">小学生向け&thinsp;:&thinsp;<%= ApplicationRecord.inspect_level(article_or_question.Eschool_level) %></div>
+        <div class="flex_item_adjustment">中学生向け&thinsp;:&thinsp;<%= ApplicationRecord.inspect_level(article_or_question.JHschool_level) %></div>
+        <div>高校生向け&thinsp;:&thinsp;<%= ApplicationRecord.inspect_level(article_or_question.Hschool_level) %></div>
+      </div>
+      <% if article_or_question_collection[0].class == Question %>
+        <% if article_or_question.solve %>
+          <div class="solve_question">
+            解決
+          </div>
+        <% else %>
+          <div class="not_solve_question">
+            未解決
+          </div>
+        <% end %>
+      <% end %>
+      <% if current_user?(article_or_question.user) %>
+        <div>
+          <%= link_to "削除", article_or_question, method: :delete, data: { confirm: "削除しますか?" } %>
+          &ensp;&ensp;
+          <% if article_or_question_collection[0].class == Question %>
+            <%= link_to "編集", edit_question_path(article_or_question) %>
+          <% else %>
+            <%= link_to "編集", edit_article_path(article_or_question) %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="distinction_line"></div>
+<% end %>
