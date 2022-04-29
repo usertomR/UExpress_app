@@ -244,6 +244,6 @@
 
 require 'pagy/extras/bootstrap'
 
-Pagy::DEFAULT[:items] = 2
+Pagy::DEFAULT[:items] = 4
 # When you are done setting your own default freeze it, so it will not get changed accidentally
 Pagy::DEFAULT.freeze
