@@ -1,0 +1,25 @@
+<% followers_or_follows.each do |follower_or_follow| %>
+  <div class="follow_follower_display">
+    <div class="top_part">
+      <div class="one_avatar">
+        <% if follower_or_follow.avatar? %>
+          <a href="<%= user_path(follower_or_follow) %>">
+            <%= image_tag follower_or_follow.avatar.thumb_mid.url , class: "avatar" %>
+          </a>
+        <% else %>
+          <a href="<%= user_path(follower_or_follow) %>">
+            <%= render 'shared/default_avatar' %>
+          </a>
+        <% end %>
+      </div>
+      <div class="one_text">
+        <%= link_to follower_or_follow.name, user_path(follower_or_follow) %>
+      </div>
+    </div>
+    <div class="one_selfintrodution">
+      <% unless follower_or_follow.selfintrodution.blank? %>
+        <%= safe_join(follower_or_follow.selfintrodution.split("\n"),tag.br) %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
