@@ -1,0 +1,38 @@
+<div class="necessary_space"></div>
+<div class="flex_container">
+  <div class="condition">文章の正確さ</div>
+  <% #url:https://apidock.com/rails/ActionView/Helpers/FormHelper/check_box %>
+  <% evaluations = [1,2,3,4,5] %>
+  <div class="checkbox">
+    <% evaluations.each do |eva| %>
+      <%= f.check_box :accuracy_select, { multiple: true, class: "space", :checked => true }, eva, nil %>
+      <span class="letter_white">
+        <%= eva %>
+      </span>
+    <% end %>
+  </div>
+</div>
+<div class="flex_container">
+  <div class="condition add_margin_right_27">読みやすさ</div>
+  <div class="checkbox">
+    <% evaluations.each do |eva| %>
+      <%= f.check_box :difficulty_select, { multiple: true, class: "space", :checked => true }, eva, nil %>
+      <span class="letter_white">
+        <%= eva %>
+      </span>
+    <% end %>
+  </div>
+</div>
+<% if question_or_article == "question" %>
+<%= render partial: 'shared/searchform_solve_or_not', locals: { f: f } %>
+<% end %>
+<div class="flex_container">
+  <div class="condition">期日</div>
+  <div class="input_term">
+      <%= f.date_field :term_from, value: "2022-01-01".to_date %>
+      <span class="letter_white">
+        ~
+      </span>
+      <%= f.date_field :term_to, value: Time.zone.now.to_date %>
+  </div>
+</div>

@@ -1,33 +1,7 @@
 <% provide(:title, "follow")%>
 <div class="page_content"><%= @user.name %>さんのフォロー</div>
-
-
 <% if @user.following.any? %>
-  <% @follows.each do |follow| %>
-    <div class="follow_follower_display">
-      <div class="top_part">
-        <div class="one_avatar">
-          <% if follow.avatar? %>
-            <a href="<%= user_path(follow) %>">
-              <%= image_tag follow.avatar.thumb_mid.url , class: "avatar" %>
-            </a>
-          <% else %>
-            <a href="<%= user_path(follow) %>">
-              <%= render 'shared/default_avatar' %>
-            </a>
-          <% end %>
-        </div>
-        <div class="one_text">
-          <%= link_to follow.name , user_path(follow) %>
-        </div>
-      </div>
-      <div class="one_selfintrodution">
-        <% unless follow.selfintrodution.blank? %>
-          <%= safe_join(follow.selfintrodution.split("\n"),tag.br) %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/follow_follower_page', locals: { followers_or_follows: @follows } %>
     <div class="pagy_position">
       <%== pagy_bootstrap_nav(@pagy) %>
     </div>

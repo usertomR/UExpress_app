@@ -1,0 +1,31 @@
+<div class="title_etc">
+  <div class="user_name_avatar">
+    <% if article_or_question.user.avatar? %>
+      <div class="avatar_img">
+        <a href="<%= user_path(article_or_question.user) %>">
+          <%= image_tag article_or_question.user.avatar.thumb_min.url , class: "avatar" %>
+        </a>
+      </div>
+    <% else %>
+      <div class="avatar_img">
+        <a href="<%= user_path(article_or_question.user) %>">
+          <%= render 'shared/default_min_avatar' %>
+        </a>
+      </div>
+    <% end %>
+    <div class="name">
+      <%= article_or_question.user.name %>
+    </div>
+  </div>
+  <div class="date">
+    <div class="create">
+      作成日&thinsp;&thinsp;<%= ApplicationRecord.date_expression_change(article_or_question.created_at) %>
+    </div>
+    <div class="update">
+      最終修正日&thinsp;&thinsp;<%= ApplicationRecord.date_expression_change(article_or_question.updated_at) %>
+    </div>
+  </div>
+  <div class="title">
+    <%= article_or_question.title %>
+  </div>
+</div>

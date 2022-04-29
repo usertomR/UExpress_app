@@ -1,0 +1,20 @@
+<% select_solve = [false,true] %>
+<div class="flex_container">
+  <div class="condition add_margin_right_16">
+    解決/未解決
+  </div>
+  <div class="checkbox">
+      <% select_solve.each do |s| %>
+        <%= f.check_box :solve, { multiple: true, class: "space", :checked => true }, s, nil %>
+        <% if s %>
+          <span class="letter_white">
+            <%= "解決" %>
+          </span>
+        <% else %>
+          <span class="letter_white">
+            <%= "未解決" %>
+          </span>
+        <% end %>
+      <% end %>
+  </div>
+</div>

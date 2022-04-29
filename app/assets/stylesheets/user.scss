@@ -125,13 +125,13 @@
     }
   }
   .one_selfintrodution {
-    height: calc(100% - 60px - 30px);
+    height: calc(100% - 60px - 15px);
     width: 90%;
     margin: 15px auto;
     overflow: hidden;
     overflow-wrap: break-word;
     color: black;
-    font-size: calc(1rem + 0.4vw);
+    font-size: calc(0.8rem + 0.3vw);
   }
 }
 .pagy_position {

@@ -1,0 +1,13 @@
+<% if role.user.avatar? %>
+  <div class=<%="#{role_str}_avatar"%>>
+    <a href="<%= user_path(role.user) %>">
+      <%= image_tag role.user.avatar.thumb_mid.url , class: "avatar" %>
+    </a>
+  </div>
+<% else %>
+  <div class=<%="#{role_str}_avatar"%>>
+    <a href="<%= user_path(role.user) %>">
+      <%= render 'shared/default_avatar' %>
+    </a>
+  </div>
+<% end %>

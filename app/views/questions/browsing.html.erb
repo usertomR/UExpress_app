@@ -1,37 +1,7 @@
 <% provide(:title, "Reading the Question")%>
 
 <div class="browse_question_article">
-  <div class="title_etc">
-    <div class="user_name_avatar">
-      <% if @question.user.avatar? %>
-        <div class="avatar_img">
-          <a href="<%= user_path(@question.user) %>">
-            <%= image_tag @question.user.avatar.thumb_min.url , class: "avatar" %>
-          </a>
-        </div>
-      <% else %>
-        <div class="avatar_img">
-          <a href="<%= user_path(@question.user) %>">
-            <%= render 'shared/default_min_avatar' %>
-          </a>
-        </div>
-      <% end %>
-      <div class="name">
-        <%= @question.user.name %>
-      </div>
-    </div>
-    <div class="date">
-      <div class="create">
-        作成日&thinsp;&thinsp;<%= ApplicationRecord.date_expression_change(@question.created_at) %>
-      </div>
-      <div class="update">
-        最終修正日&thinsp;&thinsp;<%= ApplicationRecord.date_expression_change(@question.updated_at) %>
-      </div>
-    </div>
-    <div class="title">
-      <%= @question.title %>
-    </div>
-  </div>
+  <%= render partial: 'shared/article_question_heading', locals: { article_or_question: @question } %>
   <div class="distinction_line">
   </div>
   <div class="button_info">
@@ -95,19 +65,7 @@
       <% answer_id_array << answer.id %>
       <div class="existing_answer_comment">
         <div class="answer_user">
-          <% if answer.user.avatar? %>
-            <div class="answer_avatar">
-              <a href="<%= user_path(answer.user) %>">
-                <%= image_tag answer.user.avatar.thumb_mid.url , class: "avatar" %>
-              </a>
-            </div>
-          <% else %>
-            <div class="answer_avatar">
-              <a href="<%= user_path(answer.user) %>">
-                <%= render 'shared/default_avatar' %>
-              </a>
-            </div>
-          <% end %>
+          <%= render partial: 'shared/avatar_for_browsing_page', locals: { role: answer, role_str: "answer" } %>
           <div class="answer_user_name">
             <%= answer.user.name %>
           </div>

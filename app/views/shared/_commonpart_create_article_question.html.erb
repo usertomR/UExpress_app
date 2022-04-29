@@ -1,0 +1,81 @@
+<div class="article_question_form">
+  <div class="item">
+    <% if article_or_question == "article" %>
+      文章の正しさ
+    <% else %>
+      文章の正しさ（希望）
+    <% end %>
+  </div>
+  <div class="flex_mode">
+    <div class ="space white_text">
+      <%= f.radio_button(:accuracy_text, 1) %>
+      <%= f.label(:accuracy_text_1, "1") %>
+    </div>
+    <div class ="space white_text">
+      <%= f.radio_button(:accuracy_text, 2) %>
+      <%= f.label(:accuracy_text_2, "2") %>
+    </div>
+    <div class ="space white_text">
+      <%= f.radio_button(:accuracy_text, 3) %>
+      <%= f.label(:accuracy_text_3, "3") %>
+    </div>
+    <div class ="space white_text">
+      <%= f.radio_button(:accuracy_text, 4) %>
+      <%= f.label(:accuracy_text_4, "4") %>
+    </div>
+    <div class ="space white_text">
+      <%= f.radio_button(:accuracy_text, 5) %>
+      <%= f.label(:accuracy_text_5, "5") %>
+    </div>
+  </div>  
+</div>
+<div class="article_question_form">
+  <div class="item">
+    <% if article_or_question == "article" %>
+      読みやすさ
+    <% else %>
+      読みやすさ（希望）
+    <% end %>
+  </div>
+  <div class="flex_mode">
+    <div class ="space white_text">
+      <%= f.radio_button(:difficultylevel_text, 1) %>
+      <%= f.label(:difficultylevel_text_1, "1") %>
+    </div>
+    <div class ="space white_text">
+      <%= f.radio_button(:difficultylevel_text, 2) %>
+      <%= f.label(:difficultylevel_text_2, "2") %>
+    </div>
+    <div class ="space white_text">
+      <%= f.radio_button(:difficultylevel_text, 3) %>
+      <%= f.label(:difficultylevel_text_3, "3") %>
+    </div>
+    <div class ="space white_text">
+      <%= f.radio_button(:difficultylevel_text, 4) %>
+      <%= f.label(:difficultylevel_text_4, "4") %>
+    </div>
+    <div class ="space white_text">
+      <%= f.radio_button(:difficultylevel_text, 5) %>
+      <%= f.label(:difficultylevel_text_5, "5") %>
+    </div>
+  </div>  
+</div>
+<div class="article_question_form">
+  <div class="item">
+    対象
+  </div>
+  <div class="flex_mode">
+    <div class="checkbox white_text">
+      <%= f.check_box :Eschool_level %>
+      <%= label_tag(:Eschool_level, "小学生向け") %>
+    </div>
+    <div class="checkbox white_text">
+      <%= f.check_box :JHschool_level %>
+      <%= label_tag(:JHschool_level, "中学生向け") %>
+    </div>
+    <div class="checkbox white_text">
+      <%= f.check_box :Hschool_level %>
+      <%= label_tag(:Hschool_level, "高校生向け") %>
+    </div>
+  </div>
+</div>
