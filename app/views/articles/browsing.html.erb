@@ -1,37 +1,7 @@
 <% provide(:title, "Reading the Article")%>
 
 <div class="browse_question_article">
-  <div class="title_etc">
-    <div class="user_name_avatar">
-      <% if @article.user.avatar? %>
-        <div class="avatar_img">
-          <a href="<%= user_path(@article.user) %>">
-            <%= image_tag @article.user.avatar.thumb_min.url , class: "avatar" %>
-          </a>
-        </div>
-      <% else %>
-        <div class="avatar_img">
-          <a href="<%= user_path(@article.user) %>">
-            <%= render 'shared/default_min_avatar' %>
-          </a>
-        </div>
-      <% end %>
-      <div class="name">
-        <%= @article.user.name %>
-      </div>
-    </div>
-    <div class="date">
-      <div class="create">
-        作成日&thinsp;&thinsp;<%= ApplicationRecord.date_expression_change(@article.created_at) %>
-      </div>
-      <div class="update">
-        最終修正日&thinsp;&thinsp;<%= ApplicationRecord.date_expression_change(@article.updated_at) %>
-      </div>
-    </div>
-    <div class="title">
-      <%= @article.title %>
-    </div>
-  </div>
+  <%= render partial: 'shared/article_question_heading', locals: { article_or_question: @article } %>
   <div class="distinction_line">
   </div>
   <div class="button_info">
@@ -87,19 +57,7 @@
     <% @article.article_comments.each do |comment| %>
       <div class="existing_comment">
         <div class="comment_user">
-          <% if comment.user.avatar? %>
-            <div class="commenter_avatar">
-              <a href="<%= user_path(comment.user) %>">
-                <%= image_tag comment.user.avatar.thumb_mid.url , class: "avatar" %>
-              </a>
-            </div>
-          <% else %>
-            <div class="commenter_avatar">
-              <a href="<%= user_path(comment.user) %>">
-                <%= render 'shared/default_avatar' %>
-              </a>
-            </div>
-          <% end %>
+          <%= render partial: 'shared/avatar_for_browsing_page', locals: { role: comment, role_str: "comment" } %>
           <div class="name">
             <%= comment.user.name %>
           </div>
