@@ -1,24 +1,78 @@
-# README
+# Understand Express
+URL(https://www.portfolio-uexpress.net)
+<img width="1680" alt="スクリーンショット 2022-04-30 17 34 41" src="https://user-images.githubusercontent.com/87595304/166099507-6d30ea32-d818-48ed-8f32-b9ed3afa8144.png">
+Understand Express(以下UExpress)は、学校で習う内容を早く理解したい小学生・中学生・高校生と顧客(すなわち小学生・中学生・高校生)を獲得したい人の**マッチングアプリ**です。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+児童・生徒は、教える側が作る記事や自身の投稿に対する質問の回答などにより早く理解できるようにし、教える側は記事の作成や未回答の質問への回答などにより顧客を獲得することを目指します。
+## 製作背景
+中学・高校時代の私は勉強が不得意で、特に高校時代は教科書や参考書の内容を理解するのに長い時間を要したり理解できなかったりして苦戦しました。児童・学生全員が不得意ということはないでしょうが、多くの人が不得意だと思います。より早く学習内容を理解できるようにすることで、過去の私のように勉強に苦しむ人の学習時間を減らせるようにしたいと思い、UExpressを作りました。
+## 使用技術
+- フロントエンド
+  - html
+  - css(Scss)
+  - javascript
+  - bootstrap5
+  - jQuery
+- バックエンド
+  - Ruby2.7.4
+  - Ruby on Rails 6.0.4.1
+  - MySQL 8.0.27
+- インフラ
+  - Puma
+  - Nginx
+  - Docker/Docker-compose
+  - AWS(ECS/Fargate/ECR/Route53/ACM/ALB/RDS/SES/S3/VPC/IAM)
+  - CircleCI(CI/CD)
+- その他
+  - Rubocop(コード解析ツール)
+  - RSpec(テスト)
+## アピールポイント
+- 検索機能
+  - javascriptのみで作ったインクリメンタルサーチ機能
+  - 単語ごとに空白で区切る複数単語検索機能
+- CirclCIによるCIとECS/Fargateへのデプロイ
+## インフラ構成図
+![インフラ構成図 drawio](https://user-images.githubusercontent.com/87595304/166099448-ae15d1e3-3094-4055-9958-0a88210f428a.png)
+## ER図
+![Datagram_Portfolio drawio](https://user-images.githubusercontent.com/87595304/166099203-beeda9be-f225-424e-b695-cb112beec789.png)
+## 機能一覧
+- 検索機能
+  - インクリメンタルサーチ
+  - 単語ごとに空白で区切る複数単語検索
+  - 絞り込み検索
+  - 検索対象選択可能(記事か質問か選択/ルートページのみ)
+- 記事・質問共通
+  - 閲覧・作成・編集・削除
+  - コメント作成・削除
+  - 作成した記事・質問のリストの閲覧
+- 記事関連
+  - 記事に対するnice/nice取り消し機能
+  - niceボタンを押した記事リスト閲覧・その内の任意の記事の削除
+  - 記事のブックマーク機能
+  - ブックマークボタンを押した記事リスト閲覧・その内の任意の記事の削除
+  - コメントに対するgood/good取り消し機能
+- 質問関連
+  - 質問に対する「気になる」/「気になる」取り消し機能(他者が作った質問に「自分もその答えが知りたい」と思った時にそのボタンを押す)
+  - 「気になる」ボタンを押した質問リスト閲覧・その内の任意の質問の削除
+  - 質問のブックマーク/ブックマーク取り消し
+  - ブックマークボタンを押した質問リスト閲覧・その内の任意の質問の削除
+  - 解決/未解決表示・変更
+  - 回答作成・削除
+  - 回答に対するnice/nice取り消し機能
+- ユーザー関連
+  - サインアップ (すなわち新規ユーザー作成/任意のアバター画像選択可能)
+  - アカウントプロフィール閲覧・編集
+  - フォロー/アンフォロー機能
+  - フォロワー機能
+  - ユーザー削除(もちろん管理者のみ)
+- その他
+  - ログイン
+  - テストログイン(アカウント作成なしでログイン)
+  - ハンバーガーメニュー
+  - ログアウト
+  - dm機能
+  - ページネーション
+## ページ画像(一部)
+<img width="1680" alt="スクリーンショット 2022-04-30 17 37 06" src="https://user-images.githubusercontent.com/87595304/166099559-98a5588a-a6d8-4d51-b94d-b3346dc092c6.png">
+<img width="1680" alt="スクリーンショット 2022-04-30 17 35 29" src="https://user-images.githubusercontent.com/87595304/166099565-00a365e1-02f8-4de8-a10c-0501e2500e93.png">
+<img width="1680" alt="スクリーンショット 2022-04-30 17 33 37" src="https://user-images.githubusercontent.com/87595304/166099570-f0c064df-ccd2-4b8d-b7fd-db021edefd8e.png">
