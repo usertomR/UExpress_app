@@ -15,7 +15,7 @@
       <%= f.label :title, "質問タイトル", class: "form-label" %>
       <%= f.text_field :title, class: "form-control" %>
     </div>
-    <%= render partial: 'shared/commonpart_create_article_question', locals: { f: f, article_or_question: "question" } %>
+    <%= render partial: 'shared/commonpart_create_edit_article_question', locals: { f: f, article_or_question: "question" } %>
     <div class="richtext_form">
       <%= f.label :questiontext, "質問本体", class: "form-label white_text" %>
       <div class="white_background">

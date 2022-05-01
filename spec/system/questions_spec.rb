@@ -21,7 +21,7 @@ RSpec.describe "<system>Questions", type: :system do
           expect(page).to have_content 'The form contains 5 errors'
           expect(page).to have_content 'タイトル:空欄にしないで下さい'
           expect(page).to have_content '文章の正しさ:1つ選択して下さい'
-          expect(page).to have_content '文章難易度:1つ選択して下さい'
+          expect(page).to have_content '読みやすさ:1つ選択して下さい'
           expect(page).to have_content '対象:1つ以上選んで下さい'
           expect(page).to have_content '質問本体:空欄にしないで下さい'
         end
