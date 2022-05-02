@@ -34,7 +34,7 @@ if (browser_sending_data['question_or_article'] === '') {
   // URLのidの部分を抜き出す
   let pathname = location.pathname;
   let id = pathname.match(/\d{1,}/g);
-  data['personalID'] = id[0];
+  browser_sending_data['personalID'] = id[0];
   if (pathname[1] === 'q') {
     browser_sending_data['question_or_article'] = '質問';
   } else {
