@@ -7,6 +7,9 @@
     <title> <%= full_title(yield(:title)) %></title>
     <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim'%>
+    <% if request.fullpath == "/" %>
+      <meta name="turbolinks-visit-control" content="reload">
+    <% end %>
   </head>
 
   <body>
