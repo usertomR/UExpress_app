@@ -93,7 +93,7 @@ let token = document.getElementsByName('csrf-token')[0].content; //HTMLのヘッ
 const url = "/incrementalsearch"; // アクセス先のURL
 
 // キーを離す(文字を打つ)度にインクリメンタルサーチ
-search_word.addEventListener('keyup', () => {
+search_word.addEventListener('input', () => {
   browser_sending_data['word'] = search_word.value;
 
   const options = {
