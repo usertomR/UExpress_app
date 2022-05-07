@@ -29,8 +29,9 @@ Understand Express(以下UExpress)は、学校で習う内容を早く理解し�
 ## アピールポイント
 - 検索機能
   - javascriptのみで作ったインクリメンタルサーチ機能
-  - 単語ごとに空白で区切る複数単語検索機能
+  - 単語ごとに空白で区切る複数単語検索機能(例：国語　古文)
 - CirclCIによるCIとECS/Fargateへのデプロイ
+- テストコードを沢山書いている
 ## インフラ構成図
 ![インフラ構成図 drawio](https://user-images.githubusercontent.com/87595304/166099448-ae15d1e3-3094-4055-9958-0a88210f428a.png)
 ## ER図
