@@ -20,6 +20,8 @@ gem 'mysql2'
 gem 'rails', '~> 6.0.4', '>= 6.0.4.1'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
+# for SPA(react) 注意・webpackerのバージョンは4までしかサポートしていないらしい。
+gem 'react-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker

@@ -98,6 +98,10 @@ GEM
       rack (~> 2)
     aws-sigv4 (1.4.0)
       aws-eventstream (~> 1, >= 1.0.2)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.1)
@@ -127,6 +131,7 @@ GEM
       ssrf_filter (~> 1.0)
     childprocess (4.1.0)
     concurrent-ruby (1.1.9)
+    connection_pool (2.2.5)
     crass (1.0.6)
     diff-lcs (1.4.4)
     dotenv (2.7.6)
@@ -243,6 +248,12 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    react-rails (2.6.2)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     regexp_parser (2.1.1)
     rexml (3.2.5)
     rspec-core (3.10.1)
@@ -371,6 +382,7 @@ DEPENDENCIES
   pagy (~> 5.9)
   puma (~> 4.1)
   rails (~> 6.0.4, >= 6.0.4.1)
+  react-rails
   rspec-rails (~> 4.1.0)
   rspec_junit_formatter
   rubocop

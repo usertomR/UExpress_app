@@ -1,7 +1,7 @@
 # UExpressのrubyのバージョン
 FROM ruby:2.7.4
 
-ENV RAILS_ENV=production
+ENV RAILS_ENV=development
 
 # /上1文/開発に便利なコマンドをインストールしていると思われる
 # /下2文/上記指定ではDebian(DockerHub説明文&多分)+Debianの場合のyarnのinstall方法(公式)
@@ -23,19 +23,14 @@ COPY Gemfile.lock /uexpress/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
 RUN rails action_text:install
-
+# react-rails用の設定
+RUN rails webpacker:install
+RUN rails webpacker:install:react
+RUN rails generate react:install
+RUN yarn add react-router-dom
 # ホストのUExpressディレクトリのものを全てコンテナにコピー
 COPY . /uexpress
 # puma.sockを配置するディレクトリを作成
 RUN mkdir -p tmp/sockets
-RUN mkdir -p tmp/pids
-
-VOLUME /uexpress/public
-VOLUME /uexpress/tmp
-
-# Add a script to be executed every time the container starts.
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-
-CMD /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
+# rails sの代用?
+CMD ["rails", "server", "-b", "0.0.0.0"]
