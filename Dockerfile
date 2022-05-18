@@ -28,6 +28,7 @@ RUN rails webpacker:install
 RUN rails webpacker:install:react
 RUN rails generate react:install
 RUN yarn add react-router-dom
+RUN yarn add node-sass
 # ホストのUExpressディレクトリのものを全てコンテナにコピー
 COPY . /uexpress
 # puma.sockを配置するディレクトリを作成
