@@ -3,11 +3,10 @@
 
 import { App } from '../App';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <App />,
-    document.getElementsByClassName("for_react_spa")[0]
-  )
+  const container = document.getElementsByClassName("for_react_spa")[0];
+  const root = createRoot(container);
+  root.render(<App />);
 })
