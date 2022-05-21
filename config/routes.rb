@@ -41,7 +41,12 @@ Rails.application.routes.draw do
   post 'incrementalsearch', to: 'incremental_searchs#ajaxsearch'
 
   namespace :spa do
-    get 'helloworld', to: 'helloworlds#show'
+    namespace :frontend do
+      get 'helloworld', to: 'helloworlds#show'
+    end
+    namespace :backend do
+      get 'helloworld', to: 'helloworlds#show'
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
