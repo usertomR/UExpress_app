@@ -4,7 +4,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import { Firstreact } from '../javascript/components/Firstreact';
+import { Firstreact } from '../javascript/container/Firstreact';
 
 
 export const App = () => {

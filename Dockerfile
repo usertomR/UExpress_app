@@ -23,12 +23,13 @@ COPY Gemfile.lock /uexpress/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
 RUN rails action_text:install
-# react-rails用の設定
+# react-rails用/SPA用の設定
 RUN rails webpacker:install
 RUN rails webpacker:install:react
 RUN rails generate react:install
 RUN yarn add react-router-dom
 RUN yarn add node-sass
+RUN yarn add axios
 # ホストのUExpressディレクトリのものを全てコンテナにコピー
 COPY . /uexpress
 # puma.sockを配置するディレクトリを作成
