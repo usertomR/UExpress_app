@@ -24,7 +24,7 @@ export const Header = (props) => {
         </div>
         <div className={"header_menu"}>
           <li className={"header_menu_item"}>
-            <a href='/'>Home</a>
+          <Link to="spa/frontend/">Home</Link>
           </li>
           <div className={"header_hirizontal_line"}></div>
           {
@@ -32,27 +32,27 @@ export const Header = (props) => {
               if (props.login === "true") {
                 return (
                   <>
-                    <li className="header_menu_item"><Link to="/logout" rel="nofollow" data-method="delete">ログアウト</Link></li>
+                    <li className="header_menu_item"><Link to="spa/frontend/logout">ログアウト</Link></li>
                     <div className="header_hirizontal_line"></div>
-                    <li className="header_menu_item"><Link to={`/users/${props.user_id}`}>プロフィール</Link></li>
+                    <li className="header_menu_item"><Link to={`/spa/frontend/users/${props.user_id}`}>プロフィール</Link></li>
                     <div className="header_hirizontal_line"></div>
-                    <li className="header_menu_item"><Link to={`/users/${props.user_id}/edit`}>アカウント更新</Link></li>
+                    <li className="header_menu_item"><Link to={`/spa/frontend/users/${props.user_id}/edit`}>アカウント更新</Link></li>
                     <div className="header_hirizontal_line"></div>
-                    <li className="header_menu_item"><Link to="articles/new">記事作成</Link></li>
+                    <li className="header_menu_item"><Link to="/spa/frontend/articles/new">記事作成</Link></li>
                     <div className="header_hirizontal_line"></div>
-                    <li className="header_menu_item"><Link to="questions/new">プロフィール</Link></li>
+                    <li className="header_menu_item"><Link to="/spa/frontend/questions/new">プロフィール</Link></li>
                     <div className="header_hirizontal_line"></div>
-                    <li className="header_menu_item"><Link to={`/user/${props.user_id}/nice`}>記事niceリスト</Link></li>
+                    <li className="header_menu_item"><Link to={`/spa/frontend/user/${props.user_id}/nice`}>記事niceリスト</Link></li>
                     <div className="header_hirizontal_line"></div>
-                    <li className="header_menu_item"><Link to={`/user/${props.user_id}/bookmark`}>記事ブックマーク</Link></li>
+                    <li className="header_menu_item"><Link to={`/spa/frontend/user/${props.user_id}/bookmark`}>記事ブックマーク</Link></li>
                     <div className="header_hirizontal_line"></div>
-                    <li className="header_menu_item"><Link to={`/user/${props.user_id}/questionbookmark`}>質問ブックマーク</Link></li>
+                    <li className="header_menu_item"><Link to={`/spa/frontend/user/${props.user_id}/questionbookmark`}>質問ブックマーク</Link></li>
                     <div className="header_hirizontal_line"></div>
-                    <li className="header_menu_item"><Link to={`/user/${props.user_id}/curious`}>気になる質問リスト</Link></li>
+                    <li className="header_menu_item"><Link to={`/spa/frontend/user/${props.user_id}/curious`}>気になる質問リスト</Link></li>
                     <div className="header_hirizontal_line"></div>
-                    <li className="header_menu_item"><Link to={`/articles/${props.user_id}`}>記事投稿リスト</Link></li>
+                    <li className="header_menu_item"><Link to={`/spa/frontend/articles/${props.user_id}`}>記事投稿リスト</Link></li>
                     <div className="header_hirizontal_line"></div>
-                    <li className="header_menu_item"><Link to={`/questions/${props.user_id}`}>質問投稿リスト</Link></li>
+                    <li className="header_menu_item"><Link to={`/spa/frontend/questions/${props.user_id}`}>質問投稿リスト</Link></li>
                     <div className="header_hirizontal_line"></div>
                   </>
                 )
@@ -64,7 +64,7 @@ export const Header = (props) => {
               if (props.login_and_admin === "true") {
                 return (
                   <>
-                    <li className="header_menu_item"><Link to="/users">ユーザー削除</Link></li>
+                    <li className="header_menu_item"><Link to="/spa/frontend/users">ユーザー削除</Link></li>
                     <div className="header_hirizontal_line"></div>
                   </>
                 )
