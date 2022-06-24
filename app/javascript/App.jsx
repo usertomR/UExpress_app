@@ -12,13 +12,15 @@ import { NotSupport } from './container/Not_support';
 
 export const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path='/spa/frontend/helloworld' element={<Firstreact />}>
-        </Route>
-        <Route path='*' element={<NotSupport />}>
-        </Route>
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Routes>
+          <Route path='/spa/frontend/helloworld' element={<Firstreact />}>
+          </Route>
+          <Route path='*' element={<NotSupport />}>
+          </Route>
+        </Routes>
+      </Router>
+    </>
   )
 }

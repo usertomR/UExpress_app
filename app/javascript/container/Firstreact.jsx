@@ -7,6 +7,8 @@ import { DEFAULT_API_LOCALHOST } from "../url_spa/index";
 const first_sending_url = `${DEFAULT_API_LOCALHOST}/helloworld`;
 // componemt
 import { Header } from "../components/header";
+// function
+import { HunburgerMenu } from "../function/humburgermenu";
 // reducers
 import {
   initialState,
@@ -44,6 +46,7 @@ export const Firstreact = () => {
         <h1 className={"forh1 "+ classes.forh1}>First React!</h1>
         <h2 className={classes.forh2}>SPA実装していこう!</h2>
       </div>
+      <HunburgerMenu/>
     </>
   )
 }

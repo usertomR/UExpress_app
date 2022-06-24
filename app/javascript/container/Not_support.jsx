@@ -8,6 +8,8 @@ import { DEFAULT_API_LOCALHOST } from "../url_spa";
 const first_sending_url = `${DEFAULT_API_LOCALHOST}/helloworld`;
 // component
 import { Header } from "../components/header";
+// function
+import { HunburgerMenu } from "../function/humburgermenu";
 // reducers
 import {
   initialState,
@@ -43,6 +45,7 @@ export const NotSupport = () => {
         </div>
         <h1>SPA化未対応</h1>
       </div>
+      <HunburgerMenu/>
     </>
   )
   
