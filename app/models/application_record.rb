@@ -83,7 +83,7 @@ class ApplicationRecord < ActiveRecord::Base
     if term_from == "" || term_to == ""
       where(id: nil)
     else
-      where("updated_at >= :start_date AND updated_at <= :end_date",
+      where("articles.updated_at >= :start_date AND articles.updated_at <= :end_date",
       { start_date: term_from, end_date: term_to + " 23:59:59" })
     end
   end
@@ -94,6 +94,28 @@ class ApplicationRecord < ActiveRecord::Base
 
   def self.solve?(solve)
     where(solve: solve)
+  end
+
+  def self.order_how_what?(asc_or_desc, ordered_thing)
+    if asc_or_desc == "asc" # 昇順に並べる場合
+      if ordered_thing == "updated_at"
+        return order(updated_at: :asc)
+      end
+
+      if ordered_thing == "nice_to_article"
+        return left_outer_joins(:nice_to_articles).select('articles.*, COUNT(nice_to_articles.id) AS nice_count')
+                                                  .group('articles.id').order(nice_count: :asc)
+      end
+    else # 降順に並べる場合/ asc_or_desc == "desc"
+      if ordered_thing == "updated_at"
+        return order(updated_at: :desc)
+      end
+
+      if ordered_thing == "nice_to_article"
+        return left_outer_joins(:nice_to_articles).select('articles.*, COUNT(nice_to_articles.id) AS nice_count')
+                                                  .group('articles.id').order(nice_count: :desc)
+      end
+    end
   end
 
   # root_pathアクセス時に表示される検索フォーム(ログイン前提)に関するメソッド

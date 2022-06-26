@@ -21,6 +21,11 @@
             <%= f.submit '検索', class: "button_size btn btn-primary" %>
           </div>
           <%= render partial: 'shared/search_form_common', locals: { f: f, question_or_article: "article" } %>
+          <div class="flex_container">
+            <div class="condition">ならびかえ</div>
+            <%= f.select :asc_or_desc, [["降順", "desc"], ["昇順", "asc"]] %>
+            <%= f.select :sorted_target, [["更新日時", "updated_at"],["nice数", "nice_to_article"]] %>
+          </div>
         <% end %>
       </div>
     </div>

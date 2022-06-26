@@ -14,8 +14,6 @@ class Article < ApplicationRecord
   # 記事へのコメント機能
   has_many :article_comments, dependent: :destroy
 
-  # 「個人の」記事について、更新経過時間の短い記事を上に表示する。
-  default_scope -> { order(updated_at: :desc) }
   validates :user_id, presence: true
   validates :articletext, presence: true
   validates :accuracy_text, presence: true

@@ -8,10 +8,10 @@ default: &default
 development:
   <<: *default
   database: UExpress_DB
-  username: <%= ENV['MYSQL_USER'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
-  host: db
-  port: 3306
+  username: root
+  password: Mysql_tomita
+  socket: /tmp/mysql.sock
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
