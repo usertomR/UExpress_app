@@ -6,7 +6,11 @@ class MessagesController < ApplicationController
     unless @message.save
       flash[:danger] = "メッセージを記入して下さい"
     end
-    redirect_to room_path(params[:message][:room_id])
+    if @message.save
+      ActionCable.server.broadcast 'message_channel', content: @message
+    end
+    # redirect_to room_path(params[:message][:room_id])
+    # 上の行を入れないと、連続でメッセージを送信できない。
   end
 
   private
