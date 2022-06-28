@@ -3,14 +3,13 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    unless @message.save
-      flash[:danger] = "メッセージを記入して下さい"
-    end
     if @message.save
-      ActionCable.server.broadcast 'message_channel', content: @message
+      date = ApplicationRecord.date_expression_change(@message.created_at)
+      ActionCable.server.broadcast 'message_channel', message: @message, post_date: date, post_user: current_user
+    else
+      flash[:danger] = "メッセージを記入して下さい"
+      redirect_to room_path(params[:message][:room_id])
     end
-    # redirect_to room_path(params[:message][:room_id])
-    # 上の行を入れないと、連続でメッセージを送信できない。
   end
 
   private
