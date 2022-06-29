@@ -13,7 +13,7 @@ threads min_threads_count, max_threads_count
 
 # Specifies the `environment` that Puma will run in.
 #
-environment ENV.fetch("RAILS_ENV") { "development" }
+environment ENV.fetch("RAILS_ENV") { "production" }
 
 # Specifies the `pidfile` that Puma will use.
 # pidとは、process IDのこと。プロセスIDを指定する
