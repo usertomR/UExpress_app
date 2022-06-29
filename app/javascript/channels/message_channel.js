@@ -48,28 +48,76 @@ consumer.subscriptions.create("MessageChannel", {
       });
     }
 
-    console.log(data);
+    function delete_style_width() {
+      display_left_or_right.forEach(left_or_right => {
+        const messages = document.getElementsByClassName(left_or_right);
+        const messages_count = messages.length;
+        
+        for (let i = 0; i < messages_count; i++) {
+          message = messages[i];
+          message.style.width = "";
+        }
+      });
+    }
+
     const post_user_avater_name_area = document.getElementsByClassName("my_info")[0];
     const post_user_name_area = post_user_avater_name_area.getElementsByClassName("name_area")[0];
     const post_user_name = post_user_name_area.innerText;
     const post_dates = document.getElementsByClassName("date_display");
-    const message_display = document.getElementsByClassName("message_display")[0];
+    let message_display = document.getElementsByClassName("message_display")[0];
     const input_message_form = document.getElementsByClassName("input_message_form")[0];
     if (post_dates.length == 0) {
       let date_display = `<div class="date_display">${data.post_date}</div>`;
       message_display.insertAdjacentHTML('afterbegin',date_display);
       date_display = document.getElementsByClassName("date_display")[0];
       if (post_user_name == data.post_user.name) {
-        // ¥nマークを<br>に変えよう！
-        const my_message_area = `<div class="display_left">${data.message.content}</div>`;
-        date_display.insertAdjacentHTML('afterend',my_message_area); 
+        let my_message = (data.message.content).replace(/(\r\n)|\n|\r/g, "<br>");
+        const my_message_area = `<div class="display_left">${my_message}</div>`;
+        date_display.insertAdjacentHTML('afterend',my_message_area);
         input_message_form.value = '';
+        // これがなければ、メッセージ送信者は、リロードボタンの押下・ページ遷移なしに連続でメッセージを送信できない
+        document.getElementsByClassName("message_submit_button")[0].disabled = ""
       } else {
-        const parter_message_area = `<div class="display_right">${data.message.content}</div>`;
+        let parter_message = (data.message.content).replace(/(\r\n)|\n|\r/g, "<br>");
+        let parter_message_area = `<div class="display_right">${parter_message}</div>`;
         date_display.insertAdjacentHTML('afterend',parter_message_area); 
+      }
+    } else {
+      const last_post_date = post_dates[post_dates.length - 1].innerText;
+      message_display = document.getElementsByClassName("message_display")[0];
+      if (last_post_date != data.post_date) {
+        const date_display = `<div class="date_display">${data.post_date}</div>`;
+        message_display.insertAdjacentHTML('beforeend',date_display);
+        message_display = document.getElementsByClassName("message_display")[0];
+        if (post_user_name == data.post_user.name) {
+          let my_message = (data.message.content).replace(/(\r\n)|\n|\r/g, "<br>");
+          const my_message_area = `<div class="display_left">${my_message}</div>`;
+          message_display.insertAdjacentHTML('beforeend',my_message_area);
+          input_message_form.value = '';
+          // これがなければ、メッセージ送信者は、リロードボタンの押下・ページ遷移なしに連続でメッセージを送信できない
+          document.getElementsByClassName("message_submit_button")[0].disabled = ""
+        } else {
+          let parter_message = (data.message.content).replace(/(\r\n)|\n|\r/g, "<br>");
+          let parter_message_area = `<div class="display_right">${parter_message}</div>`;
+          message_display.insertAdjacentHTML('beforeend',parter_message_area);
+        }
+      } else {
+        if (post_user_name == data.post_user.name) {
+          let my_message = (data.message.content).replace(/(\r\n)|\n|\r/g, "<br>");
+          const my_message_area = `<div class="display_left">${my_message}</div>`;
+          message_display.insertAdjacentHTML('beforeend',my_message_area);
+          input_message_form.value = '';
+          // これがなければ、メッセージ送信者は、リロードボタンの押下・ページ遷移なしに連続でメッセージを送信できない
+          document.getElementsByClassName("message_submit_button")[0].disabled = ""
+        } else {
+          let parter_message = (data.message.content).replace(/(\r\n)|\n|\r/g, "<br>");
+          let parter_message_area = `<div class="display_right">${parter_message}</div>`;
+          message_display.insertAdjacentHTML('beforeend',parter_message_area);
+        }
       }
     }
     // メッセージを打ったら実行
+    delete_style_width();
     change_message_width();
   }
 });

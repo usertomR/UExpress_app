@@ -19,7 +19,7 @@ development:
 test:
   <<: *default
   database: UExpress_app_test
-  host: db
+  host: 127.0.0.1
   port: 3306
   username: <%= ENV.fetch('MYSQL_USER') %>
   password: <%= ENV.fetch('MYSQL_PASSWORD') %>

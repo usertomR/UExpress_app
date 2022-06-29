@@ -31,7 +31,7 @@
           <% else %>
             <% if treating_message_date != prev_date %>
               <div class="date_display">
-                <%= ApplicontcationRecord.date_expression_change(message.created_at) %>
+                <%= ApplicationRecord.date_expression_change(message.created_at) %>
               </div>
             <% end %>
           <% end %>

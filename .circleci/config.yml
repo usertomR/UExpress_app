@@ -63,7 +63,7 @@ workflows:
               branches:
                 only:
                   - main
-                  - preparation_releasing_site
+                  - real_time_dm
       - aws-ecs/deploy-service-update:
           name: 'nginx/deploy-service-update'
           requires:
@@ -87,7 +87,7 @@ workflows:
               branches:
                 only:
                   - main
-                  - preparation_releasing_site
+                  - real_time_dm
       - aws-ecs/deploy-service-update:
           name: 'rails/deploy-service-update'
           requires:
