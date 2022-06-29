@@ -28,14 +28,5 @@ RUN rails action_text:install
 COPY . /uexpress
 # puma.sockを配置するディレクトリを作成
 RUN mkdir -p tmp/sockets
-RUN mkdir -p tmp/pids
-
-VOLUME /uexpress/public
-VOLUME /uexpress/tmp
-
-# Add a script to be executed every time the container starts.
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-
-CMD /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
+# rails sの代用?
+CMD ["rails", "server", "-b", "0.0.0.0"]
